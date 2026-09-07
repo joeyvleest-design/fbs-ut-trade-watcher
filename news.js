@@ -6,6 +6,7 @@
   const coinFormatter = new Intl.NumberFormat("nl-NL");
   const localDashboard = new Set(["127.0.0.1", "localhost"]).has(location.hostname) && location.port === "8765";
   const dataUrl = localDashboard ? "/public/data/releases.json" : "data/releases.json";
+  const metaDataUrl = localDashboard ? "/public/data/meta-watch.json" : "data/meta-watch.json";
   const standaloneNewsPage = document.body.dataset.page === "news";
 
   function make(tag, className, text) {
@@ -44,6 +45,35 @@
       && ["NL", "NLD"].includes(String(card.nation_code || "").toUpperCase())
       && String(card.base_item_tier || "").toLowerCase() === "gold"
       && Number(card.base_rating) >= 75;
+  }
+
+  function normalizedPlayerName(value) {
+    return String(value || "")
+      .normalize("NFKD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .trim()
+      .toLocaleLowerCase("nl-NL")
+      .replace(/\s+/g, " ");
+  }
+
+  function isEligibleMetaPlayer(player) {
+    return Boolean(player)
+      && ["NL", "NLD"].includes(String(player.nation_code || "").toUpperCase())
+      && Number(player.rating) > 75;
+  }
+
+  function metaPlayerNames(releaseData, metaData) {
+    const names = new Set(
+      (releaseData?.meta_watch_exclusions || [])
+        .map(normalizedPlayerName)
+        .filter(Boolean),
+    );
+    (metaData?.players || [])
+      .filter(isEligibleMetaPlayer)
+      .map((player) => normalizedPlayerName(player.name))
+      .filter(Boolean)
+      .forEach((name) => names.add(name));
+    return names;
   }
 
   function stateLabel(status) {
@@ -191,13 +221,15 @@
     releases.forEach((release) => board.append(renderRelease(release, marketData)));
   }
 
-  function renderDutchGold(data, marketData) {
+  function renderDutchGold(data, marketData, metaData) {
     const grid = $("#dutch-gold-grid");
     const rule = $("#dutch-gold-rule");
     const seen = new Set();
+    const metaNames = metaPlayerNames(data, metaData);
     const releaseCards = (data.releases || []).flatMap((release) => (release.cards || []).map((card) => ({ ...card, releaseSource: release.source, releaseKind: release.kind })));
     const candidates = [...(data.dutch_gold_watch || []), ...releaseCards]
       .filter(isDutchGold)
+      .filter((card) => !metaNames.has(normalizedPlayerName(card.name)))
       .filter((card) => {
         const key = String(card.id || `${card.name}-${card.position}`);
         if (seen.has(key)) return false;
@@ -217,7 +249,32 @@
     }
   }
 
-  function render(data, marketData) {
+  function renderSbcOfWeek(sbc) {
+    const container = $("#sbc-week-card");
+    if (!container) return;
+    container.replaceChildren();
+    const card = make("article", `sbc-card${sbc?.status === "confirmed" ? " sbc-card--confirmed" : ""}`);
+    const head = make("header", "sbc-card__head");
+    const copy = make("div", "");
+    copy.append(make("p", "kicker", sbc?.window || "ZONDAGAVOND · WACHT OP EA"));
+    copy.append(make("h3", "", sbc?.title || "Must-do SBC van de week"));
+    copy.append(make("p", "sbc-card__summary", sbc?.summary || "Geen officiële SBC-details, dus ook geen geforceerde ‘must do’ uit de duim."));
+    head.append(copy, make("span", "sbc-card__status", stateLabel(sbc?.status)));
+    card.append(head);
+    const reasons = Array.isArray(sbc?.why) ? sbc.why : [];
+    if (reasons.length) {
+      card.append(make("p", "sbc-card__label", "WAAROM WEL / NIET"));
+      const list = make("ul", "sbc-card__reasons");
+      reasons.forEach((reason) => list.append(make("li", "", reason)));
+      card.append(list);
+    }
+    if (sbc?.risk) card.append(make("p", "sbc-card__risk", sbc.risk));
+    const source = safeLink(sbc?.source);
+    if (source) card.append(source);
+    container.append(card);
+  }
+
+  function render(data, marketData, metaData) {
     const releases = Array.isArray(data.releases) ? data.releases : [];
     const cardCount = releases.reduce((total, release) => total + (Array.isArray(release.cards) ? release.cards.length : 0), 0);
     const confirmed = releases.some((release) => release.status === "confirmed");
@@ -231,7 +288,8 @@
       : (data.notice || "We wachten op de officiële EA-fluit. Tot die tijd geen kaartfantasie.");
     renderSchedule(data.schedule);
     renderReleaseBoard(releases, marketData);
-    renderDutchGold(data, marketData);
+    renderSbcOfWeek(data.sbc_of_week);
+    renderDutchGold(data, marketData, metaData);
   }
 
   async function getCurrentMarketData() {
@@ -243,14 +301,24 @@
     }
   }
 
+  async function getMetaWatchData() {
+    try {
+      const response = await fetch(metaDataUrl, { cache: "no-store", headers: { Accept: "application/json" } });
+      return response.ok ? response.json() : null;
+    } catch (_) {
+      return null;
+    }
+  }
+
   async function load() {
     try {
-      const [response, marketData] = await Promise.all([
+      const [response, marketData, metaData] = await Promise.all([
         fetch(dataUrl, { cache: "no-store", headers: { Accept: "application/json" } }),
         getCurrentMarketData(),
+        getMetaWatchData(),
       ]);
       if (!response.ok) throw new Error(`Release-data niet beschikbaar (${response.status})`);
-      render(await response.json(), await marketData);
+      render(await response.json(), await marketData, await metaData);
     } catch (error) {
       $("#news-status-title").textContent = "De nieuwsradar hapert";
       $("#news-status-detail").textContent = error instanceof Error ? error.message : "Onbekende fout bij het laden van releases.";

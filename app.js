@@ -4,7 +4,7 @@
   const $ = (selector) => document.querySelector(selector);
   const coinsFormatter = new Intl.NumberFormat("nl-NL");
   const percentFormatter = new Intl.NumberFormat("nl-NL", { style: "percent", signDisplay: "always", maximumFractionDigits: 1 });
-  const timeFormatter = new Intl.DateTimeFormat("nl-NL", { dateStyle: "medium", timeStyle: "short" });
+  const timeFormatter = new Intl.DateTimeFormat("nl-NL", { dateStyle: "medium", timeStyle: "short", timeZone: "Europe/Amsterdam" });
 
   function make(tag, className, text) {
     const node = document.createElement(tag);
@@ -21,13 +21,18 @@
   function safeLink(url, label, className = "evidence") {
     try {
       const parsed = new URL(url);
-      if (!/^https?:$/.test(parsed.protocol)) return make("span", "", label);
+      if (!/^https?:$/.test(parsed.protocol)) return null;
       const link = make("a", className, label);
       link.href = parsed.href;
       link.target = "_blank";
       link.rel = "noreferrer";
       return link;
-    } catch (_) { return make("span", "", label); }
+    } catch (_) { return null; }
+  }
+
+  function validDate(value) {
+    const date = value ? new Date(value) : null;
+    return date && !Number.isNaN(date.getTime()) ? date : null;
   }
 
   function addReasons(card, title, values, risk) {
@@ -41,7 +46,8 @@
   function addEvidence(card, evidence) {
     if (!evidence || evidence.length === 0) return;
     const source = evidence[0];
-    card.append(safeLink(source.url, `Bron: ${source.source} — ${source.title}`));
+    const link = safeLink(source.url, `Bron: ${source.source} — ${source.title}`);
+    if (link) card.append(link);
   }
 
   function empty(text) { return make("div", "empty", text); }
@@ -177,6 +183,20 @@
     const index = make("div", "football-card__index");
     index.append(make("span", "", "BIBS META-METER"), make("strong", "", player.meta_index === null || player.meta_index === undefined ? "—" : `${player.meta_index}/100`));
     card.append(index);
+    const playstyles = Array.isArray(player.playstyles)
+      ? player.playstyles.filter((style) => typeof style?.name === "string" && style.name.trim())
+      : [];
+    if (playstyles.length) {
+      const playstylePanel = make("section", "football-card__playstyles");
+      playstylePanel.append(make("p", "football-card__note-title", "Bevestigde PlayStyles"));
+      const playstyleList = make("div", "football-card__playstyle-list");
+      playstyles.forEach((style) => {
+        const isPlus = String(style.tier || "").trim().toLowerCase() === "playstyle+";
+        playstyleList.append(make("span", `playstyle-chip${isPlus ? " playstyle-chip--plus" : ""}`, `${style.name.trim()}${isPlus ? "+" : ""}`));
+      });
+      playstylePanel.append(playstyleList);
+      card.append(playstylePanel);
+    }
     const notes = make("div", "football-card__notes");
     notes.append(make("p", "football-card__note-title", "Waarom deze lekker speelt"));
     const strengths = make("ul", "football-card__list"); (player.strengths || []).forEach((reason) => strengths.append(make("li", "", reason))); notes.append(strengths);
@@ -185,7 +205,10 @@
       const caveats = make("ul", "football-card__list football-card__list--risk"); player.caveats.forEach((reason) => caveats.append(make("li", "", reason))); notes.append(caveats);
     }
     card.append(notes, make("p", "football-card__meta-note", player.meta_note || "Meta-only · geen prijsgoochelwerk"));
-    if (player.source?.url) card.append(safeLink(player.source.url, player.source.label || "Officiële bron", "meta-source"));
+    if (player.source?.url) {
+      const source = safeLink(player.source.url, player.source.label || "Officiële bron", "meta-source");
+      if (source) card.append(source);
+    }
     return card;
   }
 
@@ -213,18 +236,63 @@
       method.append(label, text);
       if (data.notice) method.append(make("p", "meta-method-note", data.notice));
       if (data.updated_at) {
-        const updated = new Date(data.updated_at);
-        if (!Number.isNaN(updated)) method.append(make("p", "meta-method-updated", `Brondata bijgewerkt ${timeFormatter.format(updated)}`));
+        const updated = validDate(data.updated_at);
+        if (updated) method.append(make("p", "meta-method-updated", `Brondata bijgewerkt ${timeFormatter.format(updated)}`));
       }
     }
+  }
+
+  function renderMarketwatch(data) {
+    const container = $("#marketwatch-card");
+    if (!container) return;
+    container.replaceChildren();
+    if (!data) {
+      container.append(empty("De ochtendbriefing is nog onderweg. Geen bron = geen marktdrama."));
+      return;
+    }
+    const article = make("article", "marketwatch-article");
+    const head = make("header", "marketwatch-article__head");
+    const status = make("span", "marketwatch-status", data.status_label || "BRONNEN NODIG");
+    const copy = make("div", "");
+    copy.append(make("p", "kicker", data.window || "DAGELIJKSE MARKETWATCH"), make("h3", "", data.title || "Marketwatch wacht op bronnen"));
+    if (data.summary) copy.append(make("p", "marketwatch-article__summary", data.summary));
+    head.append(copy, status);
+    article.append(head);
+    const body = Array.isArray(data.article) ? data.article : [];
+    if (body.length) {
+      const prose = make("div", "marketwatch-article__prose");
+      body.forEach((paragraph) => prose.append(make("p", "", paragraph)));
+      article.append(prose);
+    }
+    const signals = Array.isArray(data.signals) ? data.signals : [];
+    if (signals.length) {
+      article.append(make("p", "marketwatch-article__label", "WAT WE WEL / NIET WETEN"));
+      const list = make("ul", "marketwatch-article__signals");
+      signals.forEach((signal) => list.append(make("li", "", signal)));
+      article.append(list);
+    }
+    const sources = Array.isArray(data.sources) ? data.sources : [];
+    if (sources.length) {
+      const links = make("div", "marketwatch-article__sources");
+      sources.forEach((source) => {
+        const link = safeLink(source?.url, source?.label || "Bron", "marketwatch-source");
+        if (link) links.append(link);
+      });
+      if (links.children.length) article.append(links);
+    }
+    if (data.updated_at) {
+      const updated = validDate(data.updated_at);
+      if (updated) article.append(make("p", "marketwatch-article__updated", `Laatst gecontroleerd ${timeFormatter.format(updated)}`));
+    }
+    container.append(article);
   }
 
   function render(data) {
     const isDemo = data.mode === "demo";
     document.title = `de flikkerbibsjes UT Trade watcher · ${(data.platform || "").toUpperCase()}`;
     const badge = $("#mode-badge"); badge.textContent = isDemo ? "Demo · speelgeld" : "Live snapshot"; badge.className = `badge ${isDemo ? "demo" : "live"}`;
-    const generated = data.generated_at ? new Date(data.generated_at) : null;
-    $("#updated-at").textContent = generated && !Number.isNaN(generated) ? `Bijgewerkt ${timeFormatter.format(generated)}` : "Tijdstip onbekend";
+    const generated = validDate(data.generated_at);
+    $("#updated-at").textContent = generated ? `Bijgewerkt ${timeFormatter.format(generated)}` : "Tijdstip onbekend";
     $("#status-title").textContent = data.market_data_licensed ? "Prijsanalyse aan" : "Watch-modus: handen op de coins";
     $("#status-detail").textContent = data.market_data_licensed ? "Actuele data, tax en risico vormen samen een signaal — geen glazen bol." : "Geen toegestane live prijsfeed, dus ook geen verzonnen koopprijzen.";
     renderMetrics(data);
@@ -246,11 +314,26 @@
     return response.json();
   }
 
+  async function getMarketwatchData(cacheBust = false) {
+    const response = await fetch(`data/marketwatch.json${cacheBust ? `?t=${Date.now()}` : ""}`, { cache: "no-store", headers: { Accept: "application/json" } });
+    if (!response.ok) throw new Error(`Marketwatch niet beschikbaar (${response.status})`);
+    return response.json();
+  }
+
   async function load(fresh = false) {
     const button = $("#refresh-button");
     if (fresh) { button.disabled = true; button.textContent = "Even graven…"; }
-    const [metaResult, dataResult] = await Promise.allSettled([getMetaData(fresh), getData(fresh)]);
+    const [metaResult, marketwatchResult, dataResult] = await Promise.allSettled([getMetaData(fresh), getMarketwatchData(fresh), getData(fresh)]);
     const meta = metaResult.status === "fulfilled" ? metaResult.value : null;
+    const marketwatch = marketwatchResult.status === "fulfilled" ? marketwatchResult.value : {
+      mode: "unavailable",
+      status_label: "RADAR OFFLINE",
+      title: "De ochtendbriefing is tijdelijk niet bereikbaar",
+      summary: "De site kreeg geen bruikbare Marketwatch binnen. We houden de vorige marktstand niet stiekem voor vers en verzinnen geen update.",
+      article: ["De volgende geplande controle probeert het opnieuw. De rest van de site blijft beschikbaar, maar zonder verifieerbare bron verschijnt er geen koop- of verkoopcall."],
+      signals: ["Geen verse briefing gepubliceerd.", "Controleer de bronstatus voordat je op een oud marktsignaal handelt."],
+      sources: [],
+    };
     try {
       if (dataResult.status === "rejected") throw dataResult.reason;
       render(dataResult.value);
@@ -261,7 +344,7 @@
         $("#status-title").textContent = "Radar uitgevallen";
         $("#status-detail").textContent = error instanceof Error ? error.message : "Onbekende fout bij het laden van data.";
       }
-    } finally { renderMetaWatch(meta); button.disabled = false; button.textContent = "Ververs"; }
+    } finally { renderMetaWatch(meta); renderMarketwatch(marketwatch); button.disabled = false; button.textContent = "Ververs"; }
   }
 
   $("#refresh-button").addEventListener("click", () => load(true));
