@@ -1,0 +1,56 @@
+name: Refresh official FBS news and deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  # GitHub Actions uses UTC. The worker itself applies Europe/Amsterdam and
+  # skips the duplicate daylight-saving candidate.
+  schedule:
+    - cron: "0 6,7 * * *"
+    - cron: "1 17,18 * * 0,3,5"
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
+jobs:
+  refresh-and-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Refresh from official EA Press RSS when due
+        shell: bash
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        run: |
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            python3 scripts/refresh_official_rss.py --site-root . --scheduled --post-discord
+          else
+            python3 scripts/refresh_official_rss.py --site-root . --post-discord
+          fi
+
+      - name: Build a public-only Pages artifact
+        shell: bash
+        run: |
+          mkdir -p _site
+          cp .nojekyll app.js discord.html discord.js favicon.svg index.html logo.svg news.html news.js styles.css _site/
+          cp -R data _site/data
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+
+      - id: deployment
+        uses: actions/deploy-pages@v4
