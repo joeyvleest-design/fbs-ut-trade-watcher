@@ -1,0 +1,18 @@
+{
+  "mode": "awaiting_allowed_data",
+  "updated_at": "2026-09-07T12:00:00+00:00",
+  "window": "DAGELIJKSE MARKETWATCH",
+  "status_label": "BRONNEN NODIG",
+  "title": "De ochtendbriefing wacht op een toegestane prijsfeed",
+  "summary": "Zonder een bron die actuele prijzen en historie legaal mag leveren, krijgt niemand hier een verzonnen koop- of verkoopcall.",
+  "article": [
+    "De marketwatch verschijnt elke ochtend zodra er bronbare informatie is. Officiële EA-updates, toegestane feeds en eigen historie mogen erin; vibes zonder bewijs blijven buiten de deur.",
+    "Tot die tijd is het advies saai maar bruikbaar: check pack-aanbod, officiële content en je eigen club voordat je coins een avontuurlijke vakantie laat boeken."
+  ],
+  "signals": [
+    "Prijs- en historiedata: geen toegestane live feed gekoppeld.",
+    "X-monitoring: uit totdat er een toegestane X API is geconfigureerd.",
+    "Nieuwe kaarten en SBC’s: alleen na een officiële EA-bron."
+  ],
+  "sources": []
+}

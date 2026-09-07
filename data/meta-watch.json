@@ -2,8 +2,8 @@
   "mode": "verified",
   "updated_at": "2026-09-07T12:00:00+00:00",
   "title": "NL 75+ Meta Watch",
-  "methodology": "De Bibs Meta-Meter is een eigen basisprofielscore: 25% snelheid, 25% schieten, 20% passen, 20% dribbelen en 10% fysiek. Alleen Nederlandse basiskaarten boven 75 ALG met officiële basisstats tellen mee; geen prijs, coins, onzichtbare PlayStyles of marktvoorspelling. Minder spannend, wel minder gebakken lucht.",
-  "notice": "EA zegt dat kaartdetails na de database-update van 10 september kunnen veranderen. Check de actuele officiële rating en PlayStyles vóór je doet alsof je dit al wist.",
+  "methodology": "De Bibs Meta-Meter is een eigen basisprofielscore: 25% snelheid, 25% schieten, 20% passen, 20% dribbelen en 10% fysiek. Alleen Nederlandse basiskaarten boven 75 ALG met officiële basisstats tellen mee; geen prijs, coins of marktvoorspelling. PlayStyles tellen niet mee in de score en verschijnen alleen als EA ze officieel bij de rating publiceert. Minder spannend, wel minder gebakken lucht.",
+  "notice": "De huidige officiële EA-ratingpagina's publiceren voor deze twee kaarten geen PlayStyles. Zodra EA ze wel toont, verschijnen ze hier als aparte chips — tot die tijd geen verzonnen sterretjes.",
   "players": [
     {
       "slot": "starter",
@@ -22,7 +22,7 @@
       ],
       "caveats": [
         "70 SCH: voor een afmaker in de zestien is een aanvallender profiel logischer.",
-        "Deze meter negeert chemistry-links en PlayStyles; check die zelf vóór de triomfantelijke aankoop-post."
+        "Chemistry-links tellen niet mee in deze meter. PlayStyles verschijnen los erbij zodra EA ze publiceert; check die dan nog zelf."
       ],
       "stats": [
         {"label": "SNL", "value": 77},
@@ -31,6 +31,7 @@
         {"label": "DRI", "value": 84},
         {"label": "FYS", "value": 77}
       ],
+      "playstyles": [],
       "source": {
         "label": "EA SPORTS FC 27 Ratings · Frenkie de Jong",
         "url": "https://www.ea.com/nl/games/ea-sports-fc/ratings/player-ratings/frenkie-de-jong/228702"
@@ -53,7 +54,7 @@
       ],
       "caveats": [
         "34 VRD: stuur haar niet op een solomissie als verdedigende middenvelder.",
-        "Deze meter negeert prijs, chemistry-links en nog te bevestigen PlayStyles. Ja, bewust."
+        "Prijs en chemistry-links tellen niet mee in deze meter. PlayStyles verschijnen los erbij zodra EA ze publiceert. Ja, bewust."
       ],
       "stats": [
         {"label": "SNL", "value": 83},
@@ -62,9 +63,10 @@
         {"label": "DRI", "value": 86},
         {"label": "FYS", "value": 82}
       ],
+      "playstyles": [],
       "source": {
-        "label": "EA SPORTS FC 27 Nederland Ratings · Vivianne Miedema",
-        "url": "https://www.ea.com/nl/games/ea-sports-fc/ratings/nations-ratings/holland/34"
+        "label": "EA SPORTS FC 27 Ratings · Vivianne Miedema",
+        "url": "https://www.ea.com/nl/games/ea-sports-fc/ratings/player-ratings/vivianne-miedema/233746"
       }
     }
   ]

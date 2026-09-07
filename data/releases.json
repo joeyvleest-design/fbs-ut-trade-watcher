@@ -42,34 +42,47 @@
       "cards": []
     }
   ],
-  "dutch_gold_rule": "Oranje spotlight alleen voor Nederlandse kaarten met een geverifieerd Gold-basisprofiel of beter (minimaal 75 ALG), plus een bron voor de zichtbare stats. Een speciale kaart alleen omdat hij glimt telt niet automatisch mee.",
+  "sbc_of_week": {
+    "status": "awaiting_official_confirmation",
+    "window": "ZONDAGAVOND · WACHT OP EA",
+    "title": "Must-do SBC van de week",
+    "summary": "EA heeft nog geen bevestigde requirements, reward en eindtijd op het bord gezet. Zonder die drie gaan wij niet doen alsof je clubkas om een ‘must do’ schreeuwt.",
+    "why": [],
+    "risk": "Wacht op de officiële requirements en reward. Een lekkere card art is geen waardeberekening.",
+    "source": null
+  },
+  "dutch_gold_rule": "Oranje spotlight alleen voor Nederlandse kaarten met een geverifieerd Gold-basisprofiel of beter (minimaal 75 ALG), plus een bron voor de zichtbare stats. Een Meta Meter-speler wordt automatisch overgeslagen, zodat niemand twee keer de show steelt.",
+  "meta_watch_exclusions": [
+    "Frenkie de Jong",
+    "Vivianne Miedema"
+  ],
   "dutch_gold_watch": [
     {
-      "id": "nl-gold-reference-miedema",
+      "id": "nl-gold-reference-ryan-gravenberch",
       "status": "source_backed_base_profile",
-      "name": "Vivianne Miedema",
+      "name": "Ryan Gravenberch",
       "nation": "Nederland",
       "nation_code": "NL",
-      "position": "CAM",
+      "position": "CVM",
       "base_item_tier": "gold",
-      "base_rating": 87,
+      "base_rating": 85,
       "market_item_id": null,
       "card_type": "Gold Watch",
-      "meta_rating": 84,
-      "meta_label": "Elite spelmaker",
-      "meta_text": "86 SCH en 86 DRI maken haar een nare CAM om los te laten tussen de lijnen. Geen garantie dat je ineens kunt voetballen, wel een profiel waar de tegenstander wakker van ligt.",
+      "meta_rating": 86,
+      "meta_label": "Middenveld-slinger",
+      "meta_text": "79 SNL, 81 PAS, 83 DRI en 80 VRD/FYS: een CVM die de bal niet alleen afpakt, maar hem daarna ook nog volwassen naar voren brengt. Onbeschoft handig.",
       "meta_basis": "Bibs Meta-Meter op zichtbare basisstats; geen prijsadvies, geen promo-claim en geen verzonnen PlayStyles.",
       "stats": [
-        {"label": "SNL", "value": 83},
-        {"label": "SCH", "value": 86},
-        {"label": "PAS", "value": 80},
-        {"label": "DRI", "value": 86},
-        {"label": "FYS", "value": 82}
+        {"label": "SNL", "value": 79},
+        {"label": "SCH", "value": 76},
+        {"label": "PAS", "value": 81},
+        {"label": "DRI", "value": 83},
+        {"label": "FYS", "value": 80}
       ],
-      "release_note": "Gouden basiskaart-profiel ter referentie — geen claim dat zij deze week in TOTW of een promo zit.",
+      "release_note": "Gouden basiskaart-profiel ter referentie — geen claim dat hij deze week in TOTW of een promo zit.",
       "source": {
-        "label": "EA SPORTS FC 27 Nederland Ratings · Vivianne Miedema",
-        "url": "https://www.ea.com/nl/games/ea-sports-fc/ratings/nations-ratings/holland/34"
+        "label": "EA SPORTS FC 27 Ratings · Ryan Gravenberch",
+        "url": "https://www.ea.com/nl/games/ea-sports-fc/ratings/player-ratings/ryan-gravenberch/246104"
       }
     },
     {
@@ -101,31 +114,31 @@
       }
     },
     {
-      "id": "nl-gold-reference-frenkie-de-jong",
+      "id": "nl-gold-reference-jill-roord",
       "status": "source_backed_base_profile",
-      "name": "Frenkie de Jong",
+      "name": "Jill Roord",
       "nation": "Nederland",
       "nation_code": "NL",
       "position": "CM",
       "base_item_tier": "gold",
-      "base_rating": 86,
+      "base_rating": 85,
       "market_item_id": null,
       "card_type": "Gold Watch",
-      "meta_rating": 88,
-      "meta_label": "Press-ontsnappingsdienst",
-      "meta_text": "85 PAS en 84 DRI maken hem een rustige uitweg als de tegenstander als een dolle op je middenveld duikt. Geen bulldozer, wel een draaideur waar niemand doorheen komt.",
+      "meta_rating": 85,
+      "meta_label": "Box-to-box plot twist",
+      "meta_text": "83 SCH, 85 PAS en 84 DRI: op papier een CM, in de praktijk de groepschat die zowel de aanval als de nasleep regelt.",
       "meta_basis": "Bibs Meta-Meter op zichtbare basisstats; geen prijsadvies, geen promo-claim en geen verzonnen PlayStyles.",
       "stats": [
-        {"label": "SNL", "value": 77},
-        {"label": "SCH", "value": 70},
+        {"label": "SNL", "value": 75},
+        {"label": "SCH", "value": 83},
         {"label": "PAS", "value": 85},
         {"label": "DRI", "value": 84},
-        {"label": "FYS", "value": 77}
+        {"label": "FYS", "value": 74}
       ],
-      "release_note": "Gouden basiskaart-profiel ter referentie — geen claim dat hij deze week in TOTW of een promo zit.",
+      "release_note": "Gouden basiskaart-profiel ter referentie — geen claim dat zij deze week in TOTW of een promo zit.",
       "source": {
-        "label": "EA SPORTS FC 27 Ratings · Frenkie de Jong",
-        "url": "https://www.ea.com/nl/games/ea-sports-fc/ratings/player-ratings/frenkie-de-jong/228702"
+        "label": "EA SPORTS FC 27 Ratings · Jill Roord",
+        "url": "https://www.ea.com/nl/games/ea-sports-fc/ratings/player-ratings/jill-roord/240714"
       }
     },
     {
