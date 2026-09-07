@@ -42,9 +42,13 @@ jobs:
       - name: Build a public-only Pages artifact
         shell: bash
         run: |
+          site_root="."
+          if [ -f site/index.html ]; then
+            site_root="site"
+          fi
           mkdir -p _site
-          cp .nojekyll app.js discord.html discord.js favicon.svg index.html logo.svg news.html news.js styles.css _site/
-          cp -R data _site/data
+          cp "$site_root"/.nojekyll "$site_root"/app.js "$site_root"/discord.html "$site_root"/discord.js "$site_root"/favicon.svg "$site_root"/index.html "$site_root"/logo.svg "$site_root"/news.html "$site_root"/news.js "$site_root"/styles.css _site/
+          cp -R "$site_root"/data _site/data
 
       - uses: actions/configure-pages@v5
 
