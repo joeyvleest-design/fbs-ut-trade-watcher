@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="De private Discord-hub van de flikkerbibsjes UT Trade watcher.">
+    <meta name="theme-color" content="#8f101b">
+    <title>Discord · de flikkerbibsjes UT Trade watcher</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="shell">
+      <header class="topbar">
+        <a class="brand" href="./" aria-label="de flikkerbibsjes UT Trade watcher startpagina">
+          <img class="brand-logo" src="logo.svg" width="42" height="42" alt="">
+          <span class="brand-copy"><span>DE FLIKKERBIBSJES</span><strong>UT TRADE WATCHER</strong></span>
+        </a>
+        <div class="topbar-actions">
+          <a class="button button-secondary" href="./">Terug naar dashboard</a>
+          <a class="button button-discord" href="./#release-radar">Nieuws</a>
+        </div>
+      </header>
+
+      <section class="discord-hero" aria-labelledby="discord-title">
+        <div class="discord-hero-copy">
+          <div class="discord-hero-title">
+            <img class="discord-hero-logo" src="logo.svg" width="112" height="112" alt="Speels FBS-monogram met voetbal">
+            <div>
+              <p class="kicker">ALLEEN VOOR DE VIER VERDACHTEN</p>
+              <h1 id="discord-title">De chaos krijgt<br>een <em>kanaal.</em></h1>
+            </div>
+          </div>
+          <p class="discord-copy">Eén kleine, invite-only Discord waar hot takes, squadtherapie en dagelijkse marktsignalen netjes worden gecentraliseerd.</p>
+          <a class="button button-discord" href="#channels">Toon de bezemkast</a>
+        </div>
+        <aside class="join-panel" aria-live="polite">
+          <p class="panel-label">PRIVATE DISCORD</p>
+          <strong id="join-title">De deur staat nog op slot</strong>
+          <p id="join-detail">De digitale deur gaat eerst op slot. Daarna krijgen alleen jullie vier een sleutel.</p>
+          <a id="join-discord" class="button button-discord" href="#" target="_blank" rel="noopener" aria-disabled="true">Join private Discord</a>
+          <span id="join-status" class="join-status">Geen publieke invite geplaatst.</span>
+        </aside>
+      </section>
+
+      <section class="crew-section" aria-labelledby="discord-crew-title">
+        <div class="crew-heading">
+          <p class="kicker">DE BIBS SQUAD</p>
+          <h2 id="discord-crew-title">4 in de basis. 0 minuten stilte.</h2>
+        </div>
+        <ul class="crew-list" role="list">
+          <li class="crew-member"><span class="crew-avatar crew-avatar--spark" aria-hidden="true">✦</span><span><strong>Knalfuifje</strong><small>confetti CFO</small></span></li>
+          <li class="crew-member"><span class="crew-avatar" aria-hidden="true">UG</span><span><strong>Uncle Gerroe</strong><small>raad van toezicht</small></span></li>
+          <li class="crew-member"><span class="crew-avatar crew-avatar--wave" aria-hidden="true">≈</span><span><strong>Surimi stokje</strong><small>tactisch zeewier</small></span></li>
+          <li class="crew-member"><span class="crew-avatar crew-avatar--cup" aria-hidden="true">VB</span><span><strong>vleesbeker</strong><small>liquiditeitsminister</small></span></li>
+        </ul>
+      </section>
+
+      <section id="channels" class="section" aria-labelledby="channels-title">
+        <div class="section-head">
+          <div>
+            <p class="kicker">DRIE RUIMTES</p>
+            <h2 id="channels-title">Drie kamers, nul rust.</h2>
+          </div>
+          <p>Geen 84 berichten “wie kopen?” in je DMs: alles krijgt z’n eigen hoekje.</p>
+        </div>
+        <div class="channel-grid">
+          <article class="channel-card">
+            <div class="channel-icon" aria-hidden="true">#</div>
+            <h2># chat</h2>
+            <p>Hot takes, squads en meningen waar niemand om vroeg.</p>
+            <span class="chip">Iedereen mag typen</span>
+          </article>
+          <article class="channel-card">
+            <div class="channel-icon" aria-hidden="true">↗</div>
+            <h2># trading-tips</h2>
+            <p>Dagelijkse marktspionage. Alleen de bot praat hier, dus de tip verdrinkt niet in “W?”</p>
+            <span class="chip">Bot heeft de megafoon</span>
+          </article>
+          <article class="channel-card">
+            <div class="channel-icon" aria-hidden="true">◉</div>
+            <h2># chemistry-lab</h2>
+            <p>Drop <strong>/chem</strong> met een screenshot en laat een lokale bot je squad roast-proof maken.</p>
+            <span class="chip">Chemistry-ehbo</span>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="privacy-title">
+        <div class="section-head">
+          <div>
+            <p class="kicker">PRIVACY &amp; BETROUWBAARHEID</p>
+            <h2 id="privacy-title">Klein, afgeschermd, net iets te overtuigd.</h2>
+          </div>
+          <p>Geen tokens, webhooks of screenshots in de etalage. We zijn gek, niet roekeloos.</p>
+        </div>
+        <div class="privacy-grid">
+          <article class="privacy-card">
+            <h2>Zo blijft de club dicht</h2>
+            <ul>
+              <li>Alleen een tijdelijke sleutel voor jullie vier.</li>
+              <li>Na het joinen gaat die sleutel weer de shredder in.</li>
+              <li>Trading-tips zijn leesbaar, maar niet overschreeuwbaar.</li>
+              <li>De chem-bot onthoudt je screenshots niet. Gelukkig maar.</li>
+            </ul>
+          </article>
+          <article class="privacy-card">
+            <h2>Hoe de robot z’n mond houdt</h2>
+            <ol class="discord-steps">
+              <li>Een veilige Discord-webhook dumpt de dagelijkse marktdigest in <strong>#trading-tips</strong>.</li>
+              <li>De digest gebruikt alleen toegestane feeds; geen kelder-API’s of browsertrucs.</li>
+              <li>Een optionele bot op een eigen computer verwerkt <strong>/chem</strong>-screenshots lokaal via Ollama.</li>
+            </ol>
+          </article>
+        </div>
+      </section>
+
+      <footer>
+        <p>de flikkerbibsjes UT Trade watcher · Discord is invite-only, net als jullie betere takes.</p>
+        <p>Geen scraping · Geen verborgen endpoints · Geen garantie dat je coins zich gedragen</p>
+      </footer>
+    </main>
+    <script src="discord.js" defer></script>
+  </body>
+</html>

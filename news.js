@@ -1,0 +1,262 @@
+(() => {
+  "use strict";
+
+  const $ = (selector) => document.querySelector(selector);
+  const dateFormatter = new Intl.DateTimeFormat("nl-NL", { dateStyle: "medium", timeStyle: "short" });
+  const coinFormatter = new Intl.NumberFormat("nl-NL");
+  const localDashboard = new Set(["127.0.0.1", "localhost"]).has(location.hostname) && location.port === "8765";
+  const dataUrl = localDashboard ? "/public/data/releases.json" : "data/releases.json";
+  const standaloneNewsPage = document.body.dataset.page === "news";
+
+  function make(tag, className, text) {
+    const node = document.createElement(tag);
+    if (className) node.className = className;
+    if (text !== undefined && text !== null) node.textContent = text;
+    return node;
+  }
+
+  function safeLink(source, className = "release-source") {
+    if (!source?.url || !source?.label) return null;
+    try {
+      const parsed = new URL(source.url);
+      if (!/^https?:$/.test(parsed.protocol)) return null;
+      const link = make("a", className, source.label);
+      link.href = parsed.href;
+      link.target = "_blank";
+      link.rel = "noreferrer";
+      return link;
+    } catch (_) {
+      return null;
+    }
+  }
+
+  function empty(text) {
+    return make("div", "release-empty", text);
+  }
+
+  function initials(value) {
+    const parts = String(value || "UT").trim().split(/\s+/).filter(Boolean);
+    return (parts.length > 1 ? `${parts[0][0]}${parts.at(-1)[0]}` : (parts[0] || "UT").slice(0, 2)).toUpperCase();
+  }
+
+  function isDutchGold(card) {
+    return Boolean(card)
+      && ["NL", "NLD"].includes(String(card.nation_code || "").toUpperCase())
+      && String(card.base_item_tier || "").toLowerCase() === "gold"
+      && Number(card.base_rating) >= 75;
+  }
+
+  function stateLabel(status) {
+    return ({
+      confirmed: "BEVESTIGD",
+      awaiting_official_confirmation: "WACHT OP EA",
+      source_backed_base_profile: "GOLD WATCH",
+    })[status] || "OP DE RADAR";
+  }
+
+  function kindLabel(kind) {
+    return String(kind || "RELEASE").toUpperCase();
+  }
+
+  function marketItemFor(card, marketData) {
+    if (!marketData?.market_data_licensed || marketData.mode === "demo" || !Array.isArray(marketData.items)) return null;
+    if (!card.market_item_id) return null;
+    const candidates = marketData.items.filter((item) => String(item.id) === String(card.market_item_id));
+    return candidates.length === 1 ? candidates[0] : null;
+  }
+
+  function priceStatus(card, marketData) {
+    if (!marketData) return "Koppel een toegestane live prijsfeed voor een echte prijs.";
+    if (marketData.mode === "demo") return "Demo telt niet als actuele prijs.";
+    if (!marketData.market_data_licensed) return "Live prijsfeed is niet toegestaan of niet vers genoeg.";
+    if (!card.market_item_id) return "Exacte kaart-ID ontbreekt nog in de toegestane prijsfeed.";
+    return "Deze kaart zit nog niet in de toegestane prijsfeed.";
+  }
+
+  function renderCurrentPrice(card, marketData) {
+    const item = marketItemFor(card, marketData);
+    const price = make("div", "release-price");
+    price.append(make("span", "release-price__label", "ACTUELE PRIJS"));
+    if (item && Number.isFinite(Number(item.price))) {
+      price.classList.add("release-price--live");
+      price.append(make("strong", "", coinFormatter.format(Number(item.price))));
+      const generated = new Date(marketData.generated_at);
+      const updated = Number.isNaN(generated.getTime()) ? "zojuist uit de feed" : `bijgewerkt ${dateFormatter.format(generated)}`;
+      price.append(make("small", "", `${String(marketData.platform || "—").toUpperCase()} · ${updated}`));
+    } else {
+      price.append(make("strong", "", "—"), make("small", "", priceStatus(card, marketData)));
+    }
+    return price;
+  }
+
+  function renderSchedule(schedule) {
+    const container = $("#release-schedule");
+    container.replaceChildren();
+    for (const slot of schedule || []) {
+      const kind = kindLabel(slot.kind);
+      const card = make("article", `schedule-card schedule-card--${kind.toLowerCase()}`);
+      const mark = make("span", "schedule-mark", kind === "TOTW" ? "★" : "✦");
+      mark.setAttribute("aria-hidden", "true");
+      const copy = make("div", "schedule-copy");
+      copy.append(
+        make("p", "schedule-day", slot.weekday || "Deze week"),
+        make("h3", "", slot.label || kind),
+        make("p", "", slot.detail || "Wacht op een officiële bevestiging voordat je kaarten invult."),
+      );
+      card.append(mark, copy, make("span", "schedule-kind", kind));
+      container.append(card);
+    }
+    if (!container.children.length) container.append(empty("De releasekalender is even kwijt. Kom terug als de radar weer wakker is."));
+  }
+
+  function renderStats(stats) {
+    const list = make("dl", "release-card__stats");
+    for (const stat of stats || []) {
+      const value = Number(stat?.value);
+      if (!stat?.label || !Number.isFinite(value)) continue;
+      const item = make("div", "release-card__stat");
+      item.style.setProperty("--stat", String(Math.max(0, Math.min(100, value))));
+      item.append(make("dt", "", stat.label), make("dd", "", String(value)));
+      list.append(item);
+    }
+    return list;
+  }
+
+  function renderCard(card, options = {}) {
+    const dutch = options.dutch || isDutchGold(card);
+    const article = make("article", `release-card${dutch ? " release-card--dutch" : ""}`);
+    const visual = make("div", "release-card__visual");
+    visual.setAttribute("aria-hidden", "true");
+    visual.append(make("span", "release-card__halo"), make("span", "release-card__monogram", initials(card.name)));
+    const rating = make("div", "release-card__rating");
+    rating.append(make("strong", "", String(card.rating ?? card.base_rating ?? "—")), make("span", "", card.position || "—"));
+    visual.append(rating, make("span", "release-card__type", card.card_type || "KAART"));
+    if (dutch) {
+      const flag = make("span", "flag flag--nl");
+      flag.setAttribute("role", "img");
+      flag.setAttribute("aria-label", "Nederland");
+      visual.append(flag, make("span", "release-card__spotlight", "ORANJE GOUD"));
+    }
+
+    const content = make("div", "release-card__content");
+    content.append(make("p", "release-card__eyebrow", dutch ? "GOLD WATCH · NEDERLAND" : kindLabel(options.kind || card.card_type)));
+    content.append(make("h3", "", card.name || "Nog niet bevestigd"));
+    content.append(make("p", "release-card__role", card.meta_label || card.position || "Wacht op zichtbare stats"));
+
+    const stats = renderStats(card.stats);
+    if (stats.children.length) content.append(stats);
+
+    const meter = make("div", "meta-meter");
+    meter.append(make("span", "", "BIBS META-METER"), make("strong", "", card.meta_rating === null || card.meta_rating === undefined ? "—" : `${card.meta_rating}/100`));
+    content.append(meter, renderCurrentPrice(card, options.marketData));
+    content.append(make("p", "release-card__meta", card.meta_text || "Stats nog niet bevestigd. We gaan er niet op gokken."));
+    if (card.meta_basis) content.append(make("p", "release-card__basis", card.meta_basis));
+    if (card.release_note) content.append(make("p", "release-card__note", card.release_note));
+    const source = safeLink(card.source || options.source);
+    if (source) content.append(source);
+    article.append(visual, content);
+    return article;
+  }
+
+  function renderRelease(release, marketData) {
+    const lane = make("article", `release-lane release-lane--${String(release.kind || "release").toLowerCase()}`);
+    const head = make("header", "release-lane__head");
+    const copy = make("div", "");
+    copy.append(make("p", "kicker", release.window || "DEZE WEEK"), make("h3", "", release.title || kindLabel(release.kind)));
+    copy.append(make("p", "release-lane__intro", release.intro || "Wacht op officiële bevestiging."));
+    const state = make("span", "release-state", stateLabel(release.status));
+    head.append(copy, state);
+    lane.append(head);
+    const source = safeLink(release.source);
+    if (source) lane.append(source);
+
+    const grid = make("div", "release-card-grid");
+    const cards = Array.isArray(release.cards) ? release.cards : [];
+    if (cards.length) {
+      cards.forEach((card) => grid.append(renderCard(card, { kind: release.kind, source: release.source, marketData })));
+    } else {
+      grid.append(empty("De radar staart nog naar een gesloten pack. Kom terug zodra EA echt iets dropt."));
+    }
+    lane.append(grid);
+    return lane;
+  }
+
+  function renderReleaseBoard(releases, marketData) {
+    const board = $("#release-board");
+    board.replaceChildren();
+    if (!releases?.length) {
+      board.append(empty("Geen releaseblokken beschikbaar. Geen bron, geen bro-science."));
+      return;
+    }
+    releases.forEach((release) => board.append(renderRelease(release, marketData)));
+  }
+
+  function renderDutchGold(data, marketData) {
+    const grid = $("#dutch-gold-grid");
+    const rule = $("#dutch-gold-rule");
+    const seen = new Set();
+    const releaseCards = (data.releases || []).flatMap((release) => (release.cards || []).map((card) => ({ ...card, releaseSource: release.source, releaseKind: release.kind })));
+    const candidates = [...(data.dutch_gold_watch || []), ...releaseCards]
+      .filter(isDutchGold)
+      .filter((card) => {
+        const key = String(card.id || `${card.name}-${card.position}`);
+        if (seen.has(key)) return false;
+        seen.add(key);
+        return true;
+      });
+    grid.replaceChildren();
+    if (!candidates.length) {
+      grid.append(empty("Nog geen bevestigde Nederlandse Gold-kaart op het bord. We gaan er geen uit een pakje trekken."));
+    } else {
+      candidates.forEach((card) => grid.append(renderCard(card, { dutch: true, kind: card.releaseKind, source: card.releaseSource, marketData })));
+    }
+    rule.hidden = !data.dutch_gold_rule;
+    rule.replaceChildren();
+    if (data.dutch_gold_rule) {
+      rule.append(make("strong", "", "DE GOUDPASPOORT-REGEL"), make("p", "", data.dutch_gold_rule));
+    }
+  }
+
+  function render(data, marketData) {
+    const releases = Array.isArray(data.releases) ? data.releases : [];
+    const cardCount = releases.reduce((total, release) => total + (Array.isArray(release.cards) ? release.cards.length : 0), 0);
+    const confirmed = releases.some((release) => release.status === "confirmed");
+    if (standaloneNewsPage) document.title = `Nieuws & Releases · de flikkerbibsjes UT Trade watcher`;
+    const updated = new Date(data.updated_at);
+    $("#news-updated").textContent = Number.isNaN(updated.getTime()) ? "Bronstatus wordt bijgewerkt" : `Bijgewerkt ${dateFormatter.format(updated)}`;
+    $("#news-mode").textContent = data.mode === "planning" ? "PLANNER · WACHT OP EA" : "OFFICIËLE BRON GELADEN";
+    $("#news-status-title").textContent = confirmed ? `${cardCount} kaarten op het bord` : "De packdeur is nog dicht";
+    $("#news-status-detail").textContent = confirmed
+      ? "Elke kaart op dit bord heeft een bron. Nu mogen jullie pas moeilijk gaan doen."
+      : (data.notice || "We wachten op de officiële EA-fluit. Tot die tijd geen kaartfantasie.");
+    renderSchedule(data.schedule);
+    renderReleaseBoard(releases, marketData);
+    renderDutchGold(data, marketData);
+  }
+
+  async function getCurrentMarketData() {
+    try {
+      const response = await fetch(localDashboard ? "/api/dashboard" : "data/current.json", { cache: "no-store", headers: { Accept: "application/json" } });
+      return response.ok ? response.json() : null;
+    } catch (_) {
+      return null;
+    }
+  }
+
+  async function load() {
+    try {
+      const [response, marketData] = await Promise.all([
+        fetch(dataUrl, { cache: "no-store", headers: { Accept: "application/json" } }),
+        getCurrentMarketData(),
+      ]);
+      if (!response.ok) throw new Error(`Release-data niet beschikbaar (${response.status})`);
+      render(await response.json(), await marketData);
+    } catch (error) {
+      $("#news-status-title").textContent = "De nieuwsradar hapert";
+      $("#news-status-detail").textContent = error instanceof Error ? error.message : "Onbekende fout bij het laden van releases.";
+      $("#release-board").replaceChildren(empty("Geen release-data geladen. Ook de leukste chaos heeft een bron nodig."));
+    }
+  }
+
+  load();
+})();

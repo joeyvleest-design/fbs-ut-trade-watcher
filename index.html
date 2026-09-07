@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="de flikkerbibsjes UT Trade watcher: een transparante, dagelijkse UT-watchlist voor prijs- en event-signalen.">
+    <meta name="theme-color" content="#8f101b">
+    <title>de flikkerbibsjes UT Trade watcher</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body data-page="dashboard">
+    <main class="shell">
+      <header class="topbar">
+        <a class="brand" href="./" aria-label="de flikkerbibsjes UT Trade watcher startpagina">
+          <img class="brand-logo" src="logo.svg" width="42" height="42" alt="">
+          <span class="brand-copy"><span>DE FLIKKERBIBSJES</span><strong>UT TRADE WATCHER</strong></span>
+        </a>
+        <div class="topbar-actions">
+          <a class="button button-secondary" href="#release-radar">Nieuws</a>
+          <a class="button button-discord" href="discord.html">Discord</a>
+          <span id="mode-badge" class="badge">Laden…</span>
+          <button id="refresh-button" class="button button-secondary" type="button">Ververs</button>
+        </div>
+      </header>
+
+      <section class="hero" aria-labelledby="page-title">
+        <div class="hero-copy">
+          <p class="kicker">MARKTSIGNALEN · GEEN COIN-NECROMANTIE</p>
+          <h1 id="page-title">Zie de markt<br><em>vóór</em> je coins verdampen.</h1>
+          <p class="hero-text">Prijsbeweging, pack-chaos en groepschat-paniek, gefilterd tot een briefing waar zelfs jullie iets aan hebben.</p>
+          <div class="hero-actions">
+            <a class="button" href="#picks">Geef me de drama</a>
+            <span id="updated-at" class="updated-at">Data laden…</span>
+          </div>
+        </div>
+        <aside class="signal-panel" aria-label="Marktstatus">
+          <span class="pulse" aria-hidden="true"></span>
+          <p class="panel-label">PANIEKINDEX</p>
+          <strong id="status-title">De radar warmt op</strong>
+          <p id="status-detail">De data doet nog even alsof hij volwassen is.</p>
+          <div class="panel-rule"></div>
+          <span class="microcopy">Geen login · Geen bot die voor je gaat klikken</span>
+        </aside>
+      </section>
+
+      <section class="crew-section" aria-labelledby="crew-title">
+        <div class="crew-heading">
+          <p class="kicker">DE BIBS SQUAD</p>
+          <h2 id="crew-title">4 in de basis. 0 minuten stilte.</h2>
+        </div>
+        <ul class="crew-list" role="list">
+          <li class="crew-member"><span class="crew-avatar crew-avatar--spark" aria-hidden="true">✦</span><span><strong>Knalfuifje</strong><small>confetti CFO</small></span></li>
+          <li class="crew-member"><span class="crew-avatar" aria-hidden="true">UG</span><span><strong>Uncle Gerroe</strong><small>raad van toezicht</small></span></li>
+          <li class="crew-member"><span class="crew-avatar crew-avatar--wave" aria-hidden="true">≈</span><span><strong>Surimi stokje</strong><small>tactisch zeewier</small></span></li>
+          <li class="crew-member"><span class="crew-avatar crew-avatar--cup" aria-hidden="true">VB</span><span><strong>vleesbeker</strong><small>liquiditeitsminister</small></span></li>
+        </ul>
+      </section>
+
+      <section id="metrics" class="metrics" aria-label="Overzicht"></section>
+
+      <section id="picks" class="section" aria-labelledby="picks-title">
+        <div class="section-head">
+          <div>
+            <p class="kicker">COINS OP HET SCHAVOT</p>
+            <h2 id="picks-title">Koop, verkoop of doe alsof je het wist.</h2>
+          </div>
+          <p>Alleen echte, toegestane prijsdata krijgt een koopgrens. De rest is groepschat-fanfiction.</p>
+        </div>
+        <div id="picks-grid" class="pick-grid"></div>
+      </section>
+
+      <section class="section" aria-labelledby="watch-title">
+        <div class="section-head">
+          <div>
+            <p class="kicker">GERUCHTEN &amp; PACK-CHAOS</p>
+            <h2 id="watch-title">Wat staat er op het punt raar te doen?</h2>
+          </div>
+          <p>Een event is een aanwijzing, geen vrijbrief om je hele clubkas te yeeten.</p>
+        </div>
+        <div id="watch-grid" class="watch-grid"></div>
+      </section>
+
+      <section id="release-radar" class="section release-radar-section" aria-labelledby="release-radar-title">
+        <div class="section-head">
+          <div>
+            <p class="kicker">NIEUWS &amp; RELEASES</p>
+            <h2 id="release-radar-title">Woensdag TOTW. Vrijdag pack-chaos.</h2>
+          </div>
+          <p>De vaste kijkmomenten voor nieuwe kaarten, met een bron erbij of helemaal niets.</p>
+        </div>
+        <aside class="release-status" aria-live="polite">
+          <div>
+            <p class="panel-label">DEZE WEEK · <span id="news-mode">PLANNER · BRONNEN NODIG</span></p>
+            <strong id="news-status-title">De packdeur is nog dicht</strong>
+            <p id="news-status-detail">We wachten op de officiële EA-fluit. Tot die tijd geen kaartfantasie.</p>
+          </div>
+          <span id="news-updated" class="updated-at">Release-radar laden…</span>
+        </aside>
+        <div class="release-calendar" aria-labelledby="calendar-title">
+          <div class="section-head">
+            <div>
+              <p class="kicker">VASTE CHECKMOMENTEN</p>
+              <h3 id="calendar-title">Twee avonden, nul chill.</h3>
+            </div>
+            <p>Tijdstip en lineup blijven altijd onder voorbehoud van EA.</p>
+          </div>
+          <div id="release-schedule" class="release-schedule" aria-live="polite"></div>
+        </div>
+        <div class="section-head release-board-heading">
+          <div>
+            <p class="kicker">NIEUWE KAARTEN</p>
+            <h3 id="release-board-title">Het bord liegt niet. Wij ook niet.</h3>
+          </div>
+          <p>Een kaart krijgt pas een naam, rating en Meta-tekst zodra de officiële bron ernaast staat.</p>
+        </div>
+        <div id="release-board" class="release-board" aria-live="polite"></div>
+      </section>
+
+      <section id="meta-watch" class="section meta-watch-section" aria-labelledby="meta-watch-title">
+        <div class="section-head">
+          <div>
+            <p class="kicker">NEDERLAND · META WATCH</p>
+            <h2 id="meta-watch-title">Wie speelt lekker, los van wat-ie kost.</h2>
+          </div>
+          <p>Alleen Nederlanders boven 75 ALG, op rol en zichtbare basisstats. Geen coin-porno, geen “trust me bro”.</p>
+        </div>
+        <div id="meta-watch-grid" class="football-card-grid" aria-live="polite"></div>
+        <aside id="meta-watch-method" class="meta-method" hidden></aside>
+      </section>
+
+      <section id="dutch-gold" class="section dutch-gold-section" aria-labelledby="dutch-gold-title">
+        <div class="section-head">
+          <div>
+            <p class="kicker">ORANJE OP DE RADAR</p>
+            <h2 id="dutch-gold-title">Nederlandse Gold Watch.</h2>
+          </div>
+          <p>Alleen Gold-basisprofiel of beter. Een glimmende special zonder bewezen goudpaspoort mag eerst even buiten wachten.</p>
+        </div>
+        <div id="dutch-gold-grid" class="dutch-gold-grid" aria-live="polite"></div>
+        <aside id="dutch-gold-rule" class="release-rule" hidden></aside>
+      </section>
+
+      <section class="section" aria-labelledby="cards-title">
+        <div class="section-head">
+          <div>
+            <p class="kicker">KAARTEN ONDER TOEZICHT</p>
+            <h2 id="cards-title">Wie doet moeilijk?</h2>
+          </div>
+          <p>De grafiek onthoudt meer dan jullie groepschat: lokale of toegestane snapshots, geen spookdata.</p>
+        </div>
+        <div id="cards-grid" class="cards-grid"></div>
+      </section>
+
+      <section id="warnings-section" class="warnings" aria-labelledby="warnings-title" hidden>
+        <p class="kicker">REALITEITSCHECK</p>
+        <h2 id="warnings-title">Voor je al gaat juichen</h2>
+        <ul id="warnings-list"></ul>
+      </section>
+
+      <section class="how-it-works" aria-labelledby="method-title">
+        <div>
+          <p class="kicker">DE SAUS</p>
+          <h2 id="method-title">Geen toverspiegel.</h2>
+        </div>
+        <ol>
+          <li><span>01</span><p><strong>Meet</strong> prijs, 24u/7d-trend en liquiditeit. Geen kristallen bol.</p></li>
+          <li><span>02</span><p><strong>Check</strong> pack supply, SBC’s en officiële events. De chaos heeft context nodig.</p></li>
+          <li><span>03</span><p><strong>Reken</strong> tax, marge en risico. Eerst cijfers, dan bravoure.</p></li>
+        </ol>
+      </section>
+
+      <footer>
+        <p>de flikkerbibsjes UT Trade watcher gebruikt alleen toegestane APIs, RSS/Atom-feeds en officiële social APIs. Saai, maar we slapen beter.</p>
+        <p><a href="discord.html">Privé Discord</a> · Geen scraping · Geen verborgen endpoints · Geen garantie dat je ineens rijk bent</p>
+      </footer>
+    </main>
+    <script src="app.js" defer></script>
+    <script src="news.js" defer></script>
+  </body>
+</html>

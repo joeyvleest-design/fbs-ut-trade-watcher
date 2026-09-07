@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">FBS voetbalmonogram</title>
+  <desc id="desc">Een speels rood-wit FBS-monogram met een voetbal en feestelijke sterren.</desc>
+  <defs>
+    <linearGradient id="badge" x1="12" y1="8" x2="116" y2="122" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#f52c42"/>
+      <stop offset="1" stop-color="#8e1024"/>
+    </linearGradient>
+    <linearGradient id="ball" x1="48" y1="67" x2="82" y2="116" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#f7d9de"/>
+    </linearGradient>
+    <filter id="lift" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="3" stdDeviation="2.4" flood-color="#5d0d19" flood-opacity=".35"/>
+    </filter>
+  </defs>
+  <rect x="3" y="3" width="122" height="122" rx="35" fill="url(#badge)"/>
+  <rect x="5" y="5" width="118" height="118" rx="33" fill="none" stroke="#fff8f7" stroke-opacity=".72" stroke-width="2"/>
+  <path d="M16 83c22-7 74-7 96 0v25c-22 8-74 8-96 0Z" fill="#741225" fill-opacity=".35"/>
+  <path d="M18 76h92" fill="none" stroke="#fff8f7" stroke-opacity=".35" stroke-width="2" stroke-linecap="round"/>
+  <g fill="#fff8f7" font-family="Arial Black, Arial, sans-serif" font-size="43" font-style="italic" font-weight="900" letter-spacing="-4">
+    <text x="14" y="62">F</text>
+    <text x="44" y="62">B</text>
+    <text x="76" y="62">S</text>
+  </g>
+  <path d="M17 67c20 5 74 5 94 0" fill="none" stroke="#ffd27b" stroke-width="3" stroke-linecap="round"/>
+  <g filter="url(#lift)" transform="rotate(-8 64 95)">
+    <circle cx="64" cy="95" r="25" fill="url(#ball)" stroke="#741225" stroke-width="2.5"/>
+    <path d="m64 81 9 6-3 10H58l-3-10Z" fill="#c8102e" stroke="#741225" stroke-width="1.8" stroke-linejoin="round"/>
+    <path d="m55 87-10-6m28 6 10-6M58 97l-6 10m18-10 6 10M52 107l12 8 12-8" fill="none" stroke="#c8102e" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g fill="#ffd27b">
+    <path d="m103 79 2.1 5.8 5.9 2.2-5.9 2.1-2.1 5.9-2.2-5.9-5.8-2.1 5.8-2.2Z"/>
+    <path d="m22 90 1.5 4.2 4.2 1.5-4.2 1.5-1.5 4.2-1.5-4.2-4.2-1.5 4.2-1.5Z"/>
+    <circle cx="107" cy="30" r="3.5"/>
+  </g>
+  <path d="m22 35 8-7m-10 20 8 2m67-23-2 8" fill="none" stroke="#fff8f7" stroke-width="3.5" stroke-linecap="round"/>
+</svg>
