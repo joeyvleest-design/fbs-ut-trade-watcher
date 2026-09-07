@@ -1,0 +1,71 @@
+{
+  "mode": "verified",
+  "updated_at": "2026-09-07T12:00:00+00:00",
+  "title": "NL 75+ Meta Watch",
+  "methodology": "De Bibs Meta-Meter is een eigen basisprofielscore: 25% snelheid, 25% schieten, 20% passen, 20% dribbelen en 10% fysiek. Alleen Nederlandse basiskaarten boven 75 ALG met officiële basisstats tellen mee; geen prijs, coins, onzichtbare PlayStyles of marktvoorspelling. Minder spannend, wel minder gebakken lucht.",
+  "notice": "EA zegt dat kaartdetails na de database-update van 10 september kunnen veranderen. Check de actuele officiële rating en PlayStyles vóór je doet alsof je dit al wist.",
+  "players": [
+    {
+      "slot": "starter",
+      "label": "MIDDENVELD-META-PROFIEL",
+      "name": "Frenkie de Jong",
+      "nation": "Nederland",
+      "nation_code": "NL",
+      "position": "CM",
+      "rating": 86,
+      "meta_index": 78,
+      "role": "Press-ontsnappingsdienst · speelt zich uit de druk alsof de tegenstander een slechte groepsapp-melding is",
+      "meta_note": "86 ALG-basisitem; dit is een profielscore, geen prijsdoel, koopadvies of universele ‘beste middenvelder’-claim.",
+      "strengths": [
+        "85 PAS + 84 DRI: een rustige uitweg als de tegenstander met drie man op je middenveld springt.",
+        "77 SNL + 77 FYS: genoeg motor om het tempo bij te houden zonder meteen een bulldozerpak aan te trekken."
+      ],
+      "caveats": [
+        "70 SCH: voor een afmaker in de zestien is een aanvallender profiel logischer.",
+        "Deze meter negeert chemistry-links en PlayStyles; check die zelf vóór de triomfantelijke aankoop-post."
+      ],
+      "stats": [
+        {"label": "SNL", "value": 77},
+        {"label": "SCH", "value": 70},
+        {"label": "PAS", "value": 85},
+        {"label": "DRI", "value": 84},
+        {"label": "FYS", "value": 77}
+      ],
+      "source": {
+        "label": "EA SPORTS FC 27 Ratings · Frenkie de Jong",
+        "url": "https://www.ea.com/nl/games/ea-sports-fc/ratings/player-ratings/frenkie-de-jong/228702"
+      }
+    },
+    {
+      "slot": "elite",
+      "label": "ELITE META-PROFIEL",
+      "name": "Vivianne Miedema",
+      "nation": "Nederland",
+      "nation_code": "NL",
+      "position": "CAM",
+      "rating": 87,
+      "meta_index": 84,
+      "role": "Complete aanvallende CAM · speelt alsof het plan al op haar koelkast hing",
+      "meta_note": "Topslot op basis van profiel; geen prijsdoel of universele ‘beste speler’-claim. De groepschat mag het oneens zijn.",
+      "strengths": [
+        "86 SCH + 86 DRI: afwerken én draaien zonder een excuus-PDF erbij.",
+        "83 SNL en 82 FYS houden de aanvallende rol lekker direct en vervelend voor tegenstanders."
+      ],
+      "caveats": [
+        "34 VRD: stuur haar niet op een solomissie als verdedigende middenvelder.",
+        "Deze meter negeert prijs, chemistry-links en nog te bevestigen PlayStyles. Ja, bewust."
+      ],
+      "stats": [
+        {"label": "SNL", "value": 83},
+        {"label": "SCH", "value": 86},
+        {"label": "PAS", "value": 80},
+        {"label": "DRI", "value": 86},
+        {"label": "FYS", "value": 82}
+      ],
+      "source": {
+        "label": "EA SPORTS FC 27 Nederland Ratings · Vivianne Miedema",
+        "url": "https://www.ea.com/nl/games/ea-sports-fc/ratings/nations-ratings/holland/34"
+      }
+    }
+  ]
+}

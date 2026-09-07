@@ -1,0 +1,160 @@
+{
+  "mode": "planning",
+  "updated_at": "2026-09-07T12:00:00+00:00",
+  "timezone": "Europe/Amsterdam",
+  "title": "Bibs Release Radar",
+  "notice": "De vaste kijkmomenten komen uit jullie planning. Namen, ratings, zichtbare stats en kaarttypes komen pas op het bord na een officiële EA-bron. Geen post = geen kaartfantasie.",
+  "schedule": [
+    {
+      "id": "totw",
+      "kind": "TOTW",
+      "weekday": "Woensdagavond",
+      "label": "Team of the Week",
+      "detail": "De Wednesday Surprise Box: pas openmaken als EA de line-up echt heeft gepost."
+    },
+    {
+      "id": "promo",
+      "kind": "PROMO",
+      "weekday": "Vrijdagavond",
+      "label": "Nieuwe promo",
+      "detail": "Packkraan open, groepschat dicht bij de hand. De kaartlijst volgt alleen met een bron."
+    }
+  ],
+  "releases": [
+    {
+      "id": "totw-current",
+      "kind": "TOTW",
+      "status": "awaiting_official_confirmation",
+      "window": "Woensdagavond · wachten op EA",
+      "title": "TOTW: de Wednesday Surprise Box",
+      "intro": "De opstelling hangt nog achter de EA-gordijnen. Geen officiële post, dus ook geen verzonnen namen of ratings.",
+      "source": null,
+      "cards": []
+    },
+    {
+      "id": "promo-current",
+      "kind": "PROMO",
+      "status": "awaiting_official_confirmation",
+      "window": "Vrijdagavond · wachten op EA",
+      "title": "Vrijdag: packs aan, rust uit.",
+      "intro": "Promo-naam, kaartdesign en spelers komen pas hierheen zodra de officiële aankondiging binnen is.",
+      "source": null,
+      "cards": []
+    }
+  ],
+  "dutch_gold_rule": "Oranje spotlight alleen voor Nederlandse kaarten met een geverifieerd Gold-basisprofiel of beter (minimaal 75 ALG), plus een bron voor de zichtbare stats. Een speciale kaart alleen omdat hij glimt telt niet automatisch mee.",
+  "dutch_gold_watch": [
+    {
+      "id": "nl-gold-reference-miedema",
+      "status": "source_backed_base_profile",
+      "name": "Vivianne Miedema",
+      "nation": "Nederland",
+      "nation_code": "NL",
+      "position": "CAM",
+      "base_item_tier": "gold",
+      "base_rating": 87,
+      "market_item_id": null,
+      "card_type": "Gold Watch",
+      "meta_rating": 84,
+      "meta_label": "Elite spelmaker",
+      "meta_text": "86 SCH en 86 DRI maken haar een nare CAM om los te laten tussen de lijnen. Geen garantie dat je ineens kunt voetballen, wel een profiel waar de tegenstander wakker van ligt.",
+      "meta_basis": "Bibs Meta-Meter op zichtbare basisstats; geen prijsadvies, geen promo-claim en geen verzonnen PlayStyles.",
+      "stats": [
+        {"label": "SNL", "value": 83},
+        {"label": "SCH", "value": 86},
+        {"label": "PAS", "value": 80},
+        {"label": "DRI", "value": 86},
+        {"label": "FYS", "value": 82}
+      ],
+      "release_note": "Gouden basiskaart-profiel ter referentie — geen claim dat zij deze week in TOTW of een promo zit.",
+      "source": {
+        "label": "EA SPORTS FC 27 Nederland Ratings · Vivianne Miedema",
+        "url": "https://www.ea.com/nl/games/ea-sports-fc/ratings/nations-ratings/holland/34"
+      }
+    },
+    {
+      "id": "nl-gold-reference-virgil-van-dijk",
+      "status": "source_backed_base_profile",
+      "name": "Virgil van Dijk",
+      "nation": "Nederland",
+      "nation_code": "NL",
+      "position": "CB",
+      "base_item_tier": "gold",
+      "base_rating": 88,
+      "market_item_id": null,
+      "card_type": "Gold Watch",
+      "meta_rating": 91,
+      "meta_label": "Achterhoede-eindbaas",
+      "meta_text": "89 VRD en 85 FYS maken dit de kaart die de tegenstander eerst toestemming laat vragen. Met 70 SNL: laat hem vooral verdedigen en niet de 100-meterfinale lopen.",
+      "meta_basis": "Bibs Meta-Meter op zichtbare basisstats; geen prijsadvies, geen promo-claim en geen verzonnen PlayStyles.",
+      "stats": [
+        {"label": "SNL", "value": 70},
+        {"label": "SCH", "value": 60},
+        {"label": "PAS", "value": 72},
+        {"label": "DRI", "value": 70},
+        {"label": "FYS", "value": 85}
+      ],
+      "release_note": "Gouden basiskaart-profiel ter referentie — geen claim dat hij deze week in TOTW of een promo zit.",
+      "source": {
+        "label": "EA SPORTS FC 27 Ratings · Virgil van Dijk",
+        "url": "https://www.ea.com/nl/games/ea-sports-fc/ratings/player-ratings/virgil-van-dijk/203376"
+      }
+    },
+    {
+      "id": "nl-gold-reference-frenkie-de-jong",
+      "status": "source_backed_base_profile",
+      "name": "Frenkie de Jong",
+      "nation": "Nederland",
+      "nation_code": "NL",
+      "position": "CM",
+      "base_item_tier": "gold",
+      "base_rating": 86,
+      "market_item_id": null,
+      "card_type": "Gold Watch",
+      "meta_rating": 88,
+      "meta_label": "Press-ontsnappingsdienst",
+      "meta_text": "85 PAS en 84 DRI maken hem een rustige uitweg als de tegenstander als een dolle op je middenveld duikt. Geen bulldozer, wel een draaideur waar niemand doorheen komt.",
+      "meta_basis": "Bibs Meta-Meter op zichtbare basisstats; geen prijsadvies, geen promo-claim en geen verzonnen PlayStyles.",
+      "stats": [
+        {"label": "SNL", "value": 77},
+        {"label": "SCH", "value": 70},
+        {"label": "PAS", "value": 85},
+        {"label": "DRI", "value": 84},
+        {"label": "FYS", "value": 77}
+      ],
+      "release_note": "Gouden basiskaart-profiel ter referentie — geen claim dat hij deze week in TOTW of een promo zit.",
+      "source": {
+        "label": "EA SPORTS FC 27 Ratings · Frenkie de Jong",
+        "url": "https://www.ea.com/nl/games/ea-sports-fc/ratings/player-ratings/frenkie-de-jong/228702"
+      }
+    },
+    {
+      "id": "nl-gold-reference-denzel-dumfries",
+      "status": "source_backed_base_profile",
+      "name": "Denzel Dumfries",
+      "nation": "Nederland",
+      "nation_code": "NL",
+      "position": "RA",
+      "base_item_tier": "gold",
+      "base_rating": 83,
+      "market_item_id": null,
+      "card_type": "Gold Watch",
+      "meta_rating": 84,
+      "meta_label": "Rechterflank-bulldozer",
+      "meta_text": "82 SNL en 87 FYS zetten je rechterkant in de sportschool. Hij is niet hier om sierlijk te zweven; hij komt opdagen, loopt door en maakt het irritant.",
+      "meta_basis": "Bibs Meta-Meter op zichtbare basisstats; geen prijsadvies, geen promo-claim en geen verzonnen PlayStyles.",
+      "stats": [
+        {"label": "SNL", "value": 82},
+        {"label": "SCH", "value": 70},
+        {"label": "PAS", "value": 74},
+        {"label": "DRI", "value": 79},
+        {"label": "FYS", "value": 87}
+      ],
+      "release_note": "Gouden basiskaart-profiel ter referentie — geen claim dat hij deze week in TOTW of een promo zit.",
+      "source": {
+        "label": "EA SPORTS FC 27 Ratings · Denzel Dumfries",
+        "url": "https://www.ea.com/nl/games/ea-sports-fc/ratings/player-ratings/denzel-dumfries/233096"
+      }
+    }
+  ]
+}
