@@ -4,11 +4,13 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
-  # GitHub Actions uses UTC. The worker itself applies Europe/Amsterdam and
-  # skips the duplicate daylight-saving candidate.
+  # Separate UTC candidates preserve the intended run time even when Actions is
+  # delayed. The worker applies Amsterdam DST and skips the other candidate.
   schedule:
-    - cron: "0 6,7 * * *"
-    - cron: "1 17,18 * * 0,3,5"
+    - cron: "0 6 * * *"
+    - cron: "0 7 * * *"
+    - cron: "1 17 * * 0,3,5"
+    - cron: "1 18 * * 0,3,5"
 
 permissions:
   contents: read
@@ -29,17 +31,21 @@ jobs:
       - uses: actions/checkout@v6
 
       - name: Refresh from official EA Press RSS when due
+        id: refresh
         shell: bash
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          EVENT_NAME: ${{ github.event_name }}
+          SCHEDULE_CRON: ${{ github.event.schedule }}
         run: |
-          if [ "${{ github.event_name }}" = "schedule" ]; then
-            python3 scripts/refresh_official_rss.py --site-root . --scheduled --post-discord
+          if [ "$EVENT_NAME" = "schedule" ]; then
+            python3 scripts/refresh_official_rss.py --site-root . --preserve-published --allow-source-failure --scheduled --scheduled-cron "$SCHEDULE_CRON" --post-discord
           else
-            python3 scripts/refresh_official_rss.py --site-root . --post-discord
+            python3 scripts/refresh_official_rss.py --site-root . --preserve-published --allow-source-failure
           fi
 
       - name: Build a public-only Pages artifact
+        if: steps.refresh.outputs.deploy == 'true'
         shell: bash
         run: |
           site_root="."
@@ -48,13 +54,18 @@ jobs:
           fi
           mkdir -p _site
           cp "$site_root"/.nojekyll "$site_root"/app.js "$site_root"/discord.html "$site_root"/discord.js "$site_root"/favicon.svg "$site_root"/index.html "$site_root"/logo.svg "$site_root"/news.html "$site_root"/news.js "$site_root"/styles.css _site/
+          cp "$site_root"/refresh.js "$site_root"/card-art.js "$site_root"/dashboard.css "$site_root"/motion.js "$site_root"/discord-page.css _site/
+          cp -R "$site_root"/assets _site/assets
           cp -R "$site_root"/data _site/data
 
       - uses: actions/configure-pages@v5
+        if: steps.refresh.outputs.deploy == 'true'
 
       - uses: actions/upload-pages-artifact@v4
+        if: steps.refresh.outputs.deploy == 'true'
         with:
           path: _site
 
       - id: deployment
+        if: steps.refresh.outputs.deploy == 'true'
         uses: actions/deploy-pages@v4
