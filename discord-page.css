@@ -198,6 +198,7 @@ body[data-page="discord"] .connection-panel h2 { font-size: 1.12rem; letter-spac
   body[data-page="discord"] .section { margin-top: 45px; }
   body[data-page="discord"] .section-head { gap: 15px; }
   body[data-page="discord"] .section-head > p { max-width: 100%; }
+  .channel-open { min-height: 44px; padding-inline: 12px; }
   .connection-panel { padding: 20px; }
   .connection-states { grid-template-columns: 1fr; gap: 15px; margin-top: 18px; }
   .connection-states > div { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 0; border: 0; }
