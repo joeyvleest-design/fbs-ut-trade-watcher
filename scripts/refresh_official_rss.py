@@ -12,6 +12,8 @@ from __future__ import annotations
 import argparse
 from dataclasses import dataclass
 from datetime import datetime, timedelta, timezone
+from email.utils import parsedate_to_datetime
+import hashlib
 from html import unescape
 import json
 import os
@@ -20,9 +22,10 @@ import re
 import tempfile
 from typing import Callable
 from urllib.error import HTTPError, URLError
-from urllib.parse import urlsplit
+from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
 from urllib.request import Request, urlopen
 from xml.etree import ElementTree
+from uuid import uuid4
 from zoneinfo import ZoneInfo
 
 
@@ -39,6 +42,8 @@ class FeedEntry:
     title: str
     summary: str
     url: str
+    published_at: str | None = None
+    guid: str | None = None
 
 
 @dataclass(frozen=True)
@@ -46,6 +51,7 @@ class RefreshResult:
     due: bool
     kind: str | None
     marketwatch: dict[str, object] | None
+    delivery_id: str | None = None
 
 
 def _clean(value: str | None) -> str:
@@ -97,12 +103,30 @@ def parse_rss(raw: bytes, source_url: str) -> list[FeedEntry]:
         summary = _clean(node.findtext("description"))
         link = _clean(node.findtext("link")) or source_url
         if title:
-            entries.append(FeedEntry(title=title, summary=summary, url=link))
+            published_at = None
+            if published := _clean(node.findtext("pubDate")):
+                try:
+                    parsed = parsedate_to_datetime(published)
+                    if parsed.tzinfo:
+                        published_at = _utc_timestamp(parsed)
+                except (TypeError, ValueError, OverflowError):
+                    pass
+            entries.append(FeedEntry(title=title, summary=summary, url=link, published_at=published_at, guid=_clean(node.findtext("guid")) or None))
     return entries
 
 
 def relevant_entries(entries: list[FeedEntry]) -> list[FeedEntry]:
     return [entry for entry in entries if FC_PATTERN.search(f"{entry.title} {entry.summary}")][:3]
+
+
+def content_fingerprint(entries: list[FeedEntry]) -> str:
+    """Hash source content, never the current check date or display ordering."""
+    items = [
+        {"title": entry.title, "summary": entry.summary, "url": entry.url, "published_at": entry.published_at, "guid": entry.guid}
+        for entry in entries
+    ]
+    canonical = json.dumps(sorted(items, key=lambda item: (item["guid"] or item["url"], item["title"])), ensure_ascii=False, sort_keys=True)
+    return hashlib.sha256(canonical.encode("utf-8")).hexdigest()
 
 
 def scheduled_slot(now: datetime, cron: str | None = None) -> datetime | None:
@@ -175,7 +199,34 @@ def fetch_published_json(url: str) -> bytes:
     return raw
 
 
-def preserve_published_data(repository_root: Path, *, fetcher: Callable[[str], bytes] = fetch_published_json) -> list[str]:
+def _merge_delivery_history(target: dict[str, object], other: dict[str, object]) -> None:
+    """Preserve delivery history even when editorial source JSON is newer in git."""
+    previous = other.get("automation", {})
+    if not isinstance(previous, dict):
+        return
+    previous_seen = previous.get("discord_reserved_fingerprints", [])
+    previous_delivery = previous.get("discord_delivery")
+    if not previous_seen and not isinstance(previous_delivery, dict):
+        return
+    current = target.setdefault("automation", {})
+    if not isinstance(current, dict):
+        return
+    fingerprints = []
+    for values in (previous_seen, current.get("discord_reserved_fingerprints", [])):
+        if isinstance(values, list):
+            for value in values:
+                if isinstance(value, str) and value not in fingerprints:
+                    fingerprints.append(value)
+    current["discord_reserved_fingerprints"] = fingerprints[-64:]
+    deliveries = [value for value in (previous_delivery, current.get("discord_delivery")) if isinstance(value, dict)]
+    if deliveries:
+        def order(value: dict[str, object]) -> tuple[datetime, bool]:
+            at = _timestamp(value.get("confirmed_at")) or _timestamp(value.get("attempted_at")) or _timestamp(value.get("prepared_at"))
+            return at or datetime.min.replace(tzinfo=timezone.utc), value.get("status") == "confirmed"
+        current["discord_delivery"] = max(deliveries, key=order)
+
+
+def preserve_published_data(repository_root: Path, *, fetcher: Callable[[str], bytes] = fetch_published_json, read_status: dict[str, bool] | None = None) -> list[str]:
     """Carry newer, valid public Pages data into the next UI artifact unchanged.
 
     The deployed artifact is newer than git after a successful news run. Only the
@@ -185,6 +236,8 @@ def preserve_published_data(repository_root: Path, *, fetcher: Callable[[str], b
     restored = []
     data_root = _site_root(repository_root) / "data"
     for filename in ("marketwatch.json", "releases.json"):
+        if read_status is not None:
+            read_status[filename] = False
         try:
             payload = json.loads(fetcher(f"{PUBLISHED_SITE_URL}data/{filename}"))
             if not isinstance(payload, dict):
@@ -196,41 +249,57 @@ def preserve_published_data(repository_root: Path, *, fetcher: Callable[[str], b
             if not isinstance(payload.get("title"), str) or not all(isinstance(payload.get(key), list) for key in required_lists):
                 raise ValueError("Published snapshot is missing expected content")
             local = _read_json(data_root / filename)
+            original_local = json.dumps(local, sort_keys=True)
             local_at = _timestamp(local.get("updated_at"))
-            if local_at is None or published_at > local_at:
-                _write_json_atomically(data_root / filename, payload)
+            target = payload if local_at is None or published_at >= local_at else local
+            if filename == "marketwatch.json":
+                _merge_delivery_history(target, local if target is payload else payload)
+            if json.dumps(target, sort_keys=True) != original_local:
+                _write_json_atomically(data_root / filename, target)
                 restored.append(filename)
+            if read_status is not None:
+                read_status[filename] = True
         except (OSError, URLError, ValueError) as exc:
             print(f"Could not preserve public {filename}: {type(exc).__name__}; retaining the repository copy.")
     return restored
 
 
-def _marketwatch_payload(now: datetime, kind: str, source_url: str, entries: list[FeedEntry]) -> dict[str, object]:
+def _marketwatch_payload(now: datetime, kind: str, source_url: str, entries: list[FeedEntry], *, unchanged: bool = False) -> dict[str, object]:
     timestamp = _utc_timestamp(now)
     if entries:
         lead = entries[0]
         signals = [
-            f"Officiële EA-update gesignaleerd: {lead.title}",
+            f"Officiële EA-bron in beeld: {lead.title}",
             "Prijs- en historische data: geen toegestane live feed gekoppeld.",
             "Kaarten en SBC’s gaan pas live met bevestigde, gestructureerde details.",
         ]
         article = [
-            "De officiële EA Press RSS gaf een FC/UT-signaal. Dat is nieuws, geen koopcall: zonder toegestane prijsfeed krijgt niemand een verzonnen instap of verkoopprijs.",
+            "De officiële EA Press RSS bevat de onderstaande FC/UT-aankondiging. Het controletijdstip zegt wanneer wij de feed lazen, niet wanneer EA dit nieuws publiceerde.",
             (lead.summary or "EA heeft nog geen bruikbare korte samenvatting in de RSS meegegeven.")[:520],
         ]
-        sources = [{"label": f"EA Press RSS · {entry.title}", "url": entry.url} for entry in entries]
-        title = f"EA-fluitje: {lead.title}"
+        sources = [{"label": f"EA Press RSS · {entry.title}", "url": entry.url, "published_at": entry.published_at} for entry in entries]
+        title = f"EA in beeld: {lead.title}"
         summary = "De bron is officieel; de marktconclusie blijft bewust voorzichtig totdat prijs- of kaartdetails verifieerbaar zijn."
         status = "OFFICIËLE RSS"
         mode = "official_rss"
+        if lead.published_at:
+            article[0] += f" Publicatiedatum volgens EA: {lead.published_at}."
+        else:
+            article[0] += " EA gaf hiervoor geen verifieerbare publicatiedatum mee."
+        if unchanged:
+            title = "Bron opnieuw gecheckt, geen nieuwe FC-update"
+            summary = "De FC/UT-inhoud in de RSS is ongewijzigd sinds onze vorige controle. Het onderstaande is eerder aangetroffen nieuws."
+            article[0] = "De broninhoud is ongewijzigd. " + article[0]
+            status = "GEEN NIEUWE UPDATE"
+            mode = "official_rss_unchanged"
     else:
         signals = [
-            "Geen verse FC/UT-titel gevonden in de officiële EA Press RSS.",
+            "Geen FC/UT-titel gevonden in de huidige officiële EA Press RSS.",
             "Prijs- en historische data: geen toegestane live feed gekoppeld.",
             "Geen kaart-, SBC- of pack-call zonder een passende officiële bron.",
         ]
         article = [
-            "De redactie heeft de officiële EA Press RSS gecontroleerd. Daar stond geen nieuwe FC/UT-aankondiging tussen die we als bron voor een trade- of kaartverhaal kunnen gebruiken.",
+            "De redactie heeft de officiële EA Press RSS gecontroleerd. In deze feed stonden geen FC/UT-aankondigingen die we als bron voor een trade- of kaartverhaal kunnen gebruiken.",
             "Rustig aan dus: een lege bronlijst is geen reden om de clubkas op avontuur te sturen.",
         ]
         sources = [{"label": "EA Press Release RSS", "url": source_url}]
@@ -249,12 +318,14 @@ def _marketwatch_payload(now: datetime, kind: str, source_url: str, entries: lis
     return {
         "mode": mode,
         "updated_at": timestamp,
+        "checked_at": timestamp,
+        "source_published_at": entries[0].published_at if entries else None,
         "window": window,
         "status_label": status,
         "title": title,
         "summary": summary,
         "article": article,
-        "signals": signals,
+        "signals": signals + ["X niet gecontroleerd: geen toegestane API."],
         "sources": sources,
         "automation": {"run_kind": kind, "source": "EA Press Release RSS", "source_url": source_url},
     }
@@ -287,6 +358,7 @@ def refresh(
     rss_url: str = EA_PRESS_RSS,
     scheduled: bool = False,
     scheduled_cron: str | None = None,
+    prepare_discord: bool = False,
     fetcher: Callable[[str], bytes] = fetch_rss,
 ) -> RefreshResult:
     kind = scheduled_kind(now, scheduled_cron) if scheduled else "manual"
@@ -296,22 +368,45 @@ def refresh(
     data_root = site_root / "data"
     if not (data_root / "marketwatch.json").is_file() or not (data_root / "releases.json").is_file():
         raise FileNotFoundError("Expected public data/marketwatch.json and data/releases.json")
+    previous = _read_json(data_root / "marketwatch.json")
+    automation = previous.get("automation", {})
+    if not isinstance(automation, dict):
+        automation = {}
     slot = scheduled_slot(now, scheduled_cron) if scheduled else None
     if slot is not None:
-        previous = _read_json(data_root / "marketwatch.json")
-        automation = previous.get("automation", {})
-        previous_slot = _timestamp(automation.get("scheduled_for")) if isinstance(automation, dict) else None
+        previous_slot = _timestamp(automation.get("scheduled_for"))
         previous_check = _timestamp(previous.get("updated_at"))
         if any(value is not None and value >= slot for value in (previous_slot, previous_check)):
             return RefreshResult(due=False, kind=kind, marketwatch=None)
     entries = relevant_entries(parse_rss(fetcher(rss_url), rss_url))
-    marketwatch = _marketwatch_payload(now, kind, rss_url, entries)
+    fingerprint = content_fingerprint(entries)
+    marketwatch = _marketwatch_payload(now, kind, rss_url, entries, unchanged=automation.get("content_fingerprint") == fingerprint)
+    marketwatch["automation"]["content_fingerprint"] = fingerprint
+    # Delivery reservations travel in public JSON, independently of source/check
+    # timestamps. They contain no webhook or other credential. A reservation is
+    # deployed BEFORE sending; an interrupted run is never blindly retried.
+    seen = automation.get("discord_reserved_fingerprints", [])
+    seen = [value for value in seen if isinstance(value, str)] if isinstance(seen, list) else []
+    if isinstance(automation.get("discord_delivery"), dict):
+        marketwatch["automation"]["discord_delivery"] = automation["discord_delivery"]
+    delivery_id = None
+    if prepare_discord and entries and fingerprint not in seen:
+        delivery_id = str(uuid4())
+        marketwatch["automation"]["discord_delivery"] = {
+            "id": delivery_id,
+            "content_fingerprint": fingerprint,
+            "prepared_at": _utc_timestamp(now),
+            "status": "unknown",
+            "note": "Verzendintentie gereserveerd; ontvangst door Discord is nog niet bevestigd. Niet automatisch opnieuw verzenden.",
+        }
+        seen = (seen + [fingerprint])[-64:]
+    marketwatch["automation"]["discord_reserved_fingerprints"] = seen
     if slot is not None:
         marketwatch["automation"]["scheduled_for"] = _utc_timestamp(slot)
     _write_json_atomically(data_root / "marketwatch.json", marketwatch)
     if kind != "morning":
         _update_release_check(data_root / "releases.json", now, kind, entries)
-    return RefreshResult(due=True, kind=kind, marketwatch=marketwatch)
+    return RefreshResult(due=True, kind=kind, marketwatch=marketwatch, delivery_id=delivery_id)
 
 
 def discord_article(marketwatch: dict[str, object]) -> str:
@@ -326,21 +421,69 @@ def discord_article(marketwatch: dict[str, object]) -> str:
     ]
     for paragraph in list(marketwatch.get("article", []))[:2]:
         lines.append(clipped(paragraph, 450))
+    sources = []
     for source in list(marketwatch.get("sources", []))[:2]:
         if isinstance(source, dict) and source.get("url"):
-            lines.append(f"Bron: {source.get('label', 'EA Press RSS')} — {source['url']}")
-    lines.append("Geen garantie op winst; geen bron = geen coin-theater.")
-    return "\n\n".join(lines)[:2000]
+            candidate = f"Bron: {clipped(source.get('label', 'EA Press RSS'), 100)} — {source['url']}"
+            if len(candidate) <= 700:
+                sources.append(candidate)
+    if not sources:
+        sources.append(f"Bron: EA Press RSS — {EA_PRESS_RSS}")
+    footer = "\n\n".join(sources + ["Geen garantie op winst; geen bron = geen coin-theater."])
+    return clipped("\n\n".join(lines), 2000 - len(footer) - 2) + "\n\n" + footer
 
 
-def post_discord(webhook_url: str, article: str) -> None:
+def post_discord(webhook_url: str, article: str) -> str:
     parsed = urlsplit(webhook_url)
     if parsed.scheme != "https" or parsed.hostname not in {"discord.com", "discordapp.com", "canary.discord.com", "ptb.discord.com"} or not parsed.path.startswith("/api/webhooks/"):
         raise ValueError("DISCORD_WEBHOOK_URL must be an HTTPS Discord incoming-webhook URL")
     body = json.dumps({"content": article, "allowed_mentions": {"parse": []}}).encode("utf-8")
-    request = Request(webhook_url, data=body, headers={"Content-Type": "application/json", "User-Agent": "FBS-UT-Trade-Watcher/1.0"}, method="POST")
-    with urlopen(request, timeout=20):  # nosec B310 - explicit user-configured Discord webhook
-        pass
+    query = [(key, value) for key, value in parse_qsl(parsed.query) if key != "wait"] + [("wait", "true")]
+    confirmed_url = urlunsplit(parsed._replace(query=urlencode(query)))
+    request = Request(confirmed_url, data=body, headers={"Content-Type": "application/json", "User-Agent": "FBS-UT-Trade-Watcher/1.0"}, method="POST")
+    with urlopen(request, timeout=20) as response:  # nosec B310 - explicit user-configured Discord webhook
+        receipt = json.loads(response.read(1_000_000))
+    message_id = receipt.get("id") if isinstance(receipt, dict) else None
+    if not isinstance(message_id, str) or not message_id.isdigit():
+        raise ValueError("Discord returned no confirmed message receipt")
+    return message_id
+
+
+def deliver_discord(repository_root: Path, *, delivery_id: str, webhook_url: str | None, now: datetime, sender: Callable[[str, str], str] = post_discord) -> str:
+    """Consume the current run's already-deployed reservation exactly once locally.
+
+    Call only AFTER successful Pages deployment, using the delivery ID emitted by
+    that run's refresh. Future runs restore the reservation and do not queue the
+    same source fingerprint again. A crash can leave delivery unknown, which is
+    intentionally preferable to sending duplicates without an operator check.
+    """
+    path = _site_root(repository_root) / "data" / "marketwatch.json"
+    payload = _read_json(path)
+    automation = payload.get("automation", {})
+    delivery = automation.get("discord_delivery", {}) if isinstance(automation, dict) else {}
+    if not delivery_id or not isinstance(delivery, dict) or delivery.get("id") != delivery_id or delivery.get("content_fingerprint") != automation.get("content_fingerprint"):
+        raise ValueError("Discord delivery ID does not match this run's source-backed reservation")
+    if delivery.get("attempted_at") or delivery.get("status") != "unknown":
+        return "skipped"
+    if not webhook_url:
+        return "not_configured"
+    delivery["attempted_at"] = _utc_timestamp(now)
+    # Mark before the request, so a repeated local invocation cannot resend an
+    # unknown outcome. Only a valid returned message ID can mark it confirmed.
+    _write_json_atomically(path, payload)
+    try:
+        message_id = sender(webhook_url, discord_article(payload))
+        if not isinstance(message_id, str) or not message_id.isdigit():
+            raise ValueError("Discord returned no confirmed message receipt")
+        delivery.update(status="confirmed", message_id=message_id, confirmed_at=_utc_timestamp(now))
+        delivery["note"] = "Discord heeft ontvangst bevestigd met een bericht-ID."
+    except (OSError, URLError, ValueError) as exc:
+        # HTTP 4xx means rejection; network/5xx/invalid receipts can be ambiguous.
+        delivery["status"] = "failed" if isinstance(exc, HTTPError) and 400 <= exc.code < 500 else "unknown"
+        delivery["note"] = "Geen bevestigde ontvangst. Controleer het Discord-kanaal vóór een handmatige herpoging."
+        delivery["error_type"] = f"HTTP {exc.code}" if isinstance(exc, HTTPError) else type(exc).__name__
+    _write_json_atomically(path, payload)
+    return str(delivery["status"])
 
 
 def _arguments(argv: list[str] | None = None) -> argparse.Namespace:
@@ -351,7 +494,10 @@ def _arguments(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--scheduled-cron", help="Exact GitHub event schedule; resolves the intended slot even if the runner starts late.")
     parser.add_argument("--preserve-published", action="store_true", help="Restore newer public Pages briefing/release JSON before building an artifact.")
     parser.add_argument("--allow-source-failure", action="store_true", help="Let UI deployment continue with existing data when the RSS check fails.")
-    parser.add_argument("--post-discord", action="store_true", help="Post the source-backed article to DISCORD_WEBHOOK_URL after a due refresh.")
+    parser.add_argument("--prepare-discord", "--post-discord", dest="prepare_discord", action="store_true", help="Reserve one source-backed Discord article for post-deployment delivery when the webhook is configured; this never sends by itself.")
+    delivery_mode = parser.add_mutually_exclusive_group()
+    delivery_mode.add_argument("--deliver-discord", metavar="DELIVERY_ID", help="Deliver this run's reserved article only after successful Pages deployment.")
+    delivery_mode.add_argument("--test-discord", action="store_true", help="Send one explicitly labelled connection test after user authorization; no RSS or site data is changed.")
     parser.add_argument("--now", help="ISO timestamp for deterministic local testing.")
     return parser.parse_args(argv)
 
@@ -365,33 +511,52 @@ def _parse_now(value: str | None) -> datetime:
 
 def main(argv: list[str] | None = None) -> int:
     args = _arguments(argv)
-    def output(*, deploy: bool, refreshed: bool) -> None:
+    def output(*, deploy: bool, refreshed: bool, delivery_id: str | None = None) -> None:
         if path := os.getenv("GITHUB_OUTPUT"):
             with Path(path).open("a", encoding="utf-8") as handle:
                 handle.write(f"deploy={'true' if deploy else 'false'}\nrefreshed={'true' if refreshed else 'false'}\n")
+                if delivery_id:
+                    handle.write(f"discord_delivery_id={delivery_id}\n")
 
     try:
+        if args.test_discord:
+            webhook = os.getenv("DISCORD_WEBHOOK_URL", "").strip()
+            if not webhook:
+                raise ValueError("DISCORD_WEBHOOK_URL is not configured")
+            message_id = post_discord(webhook, "🧪 **FBS verbindingstest — geen tradeadvies**\n\nDe redactieverbinding met Discord is aangesloten.\n\nWebsite: " + PUBLISHED_SITE_URL + "\n\nDit is een eenmalige verbindingstest, geen Marketwatch of koop-/verkooptip.")
+            print(f"Discord connection test confirmed; message ID: {message_id}.")
+            return 0
+        if args.deliver_discord:
+            outcome = deliver_discord(args.site_root, delivery_id=args.deliver_discord, webhook_url=os.getenv("DISCORD_WEBHOOK_URL", "").strip() or None, now=_parse_now(args.now))
+            print(f"Discord delivery outcome: {outcome}. No automatic resend for an unknown outcome.")
+            return 0 if outcome in {"confirmed", "skipped", "not_configured"} else 1
+        published_status = {}
         if args.preserve_published:
-            restored = preserve_published_data(args.site_root)
+            restored = preserve_published_data(args.site_root, read_status=published_status)
             if restored:
                 print(f"Preserved newer published data: {', '.join(restored)} (original timestamps retained).")
-        result = refresh(args.site_root, now=_parse_now(args.now), rss_url=args.rss_url, scheduled=args.scheduled, scheduled_cron=args.scheduled_cron)
+            if not published_status.get("marketwatch.json"):
+                output(deploy=False, refreshed=False)
+                print("Public marketwatch/delivery state unavailable; deployment stopped to preserve the last briefing and avoid duplicate posts.")
+                return 1
+        prepare = args.prepare_discord and bool(os.getenv("DISCORD_WEBHOOK_URL", "").strip())
+        if prepare and not published_status.get("marketwatch.json"):
+            print("Discord not reserved: the last public delivery state could not be verified. No automatic retry or speculative send.")
+            prepare = False
+        result = refresh(args.site_root, now=_parse_now(args.now), rss_url=args.rss_url, scheduled=args.scheduled, scheduled_cron=args.scheduled_cron, prepare_discord=prepare)
         if not result.due:
             output(deploy=False, refreshed=False)
             print("FBS schedule is not due or its intended slot was already published; no deployment or Discord post.")
             return 0
-        output(deploy=True, refreshed=True)
-        if args.post_discord and (webhook := os.getenv("DISCORD_WEBHOOK_URL")):
-            assert result.marketwatch is not None
-            try:
-                post_discord(webhook, discord_article(result.marketwatch))
-            except (OSError, URLError, ValueError) as exc:
-                print(f"Discord post failed ({type(exc).__name__}); the verified website update can still deploy.")
+        output(deploy=True, refreshed=True, delivery_id=result.delivery_id)
         print(f"Refreshed {result.kind} Marketwatch from EA Press RSS.")
         return 0
     except (OSError, URLError, ValueError) as exc:
-        output(deploy=args.allow_source_failure and not args.scheduled, refreshed=False)
         reason = f"HTTP {exc.code}" if isinstance(exc, HTTPError) else type(exc).__name__
+        if args.test_discord or args.deliver_discord:
+            print(f"Discord operation failed ({reason}); no confirmed receipt.")
+            return 1
+        output(deploy=args.allow_source_failure and not args.scheduled, refreshed=False)
         print(f"Official RSS refresh failed ({reason}); existing content and source-check timestamps are retained.")
         return 0 if args.allow_source_failure and not args.scheduled else 1
 
