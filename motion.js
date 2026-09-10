@@ -10,7 +10,7 @@
   let paused = pausePreference === "paused" || reduced.matches;
   const motionAllowed = () => !paused && !reduced.matches;
   const dates = new Intl.DateTimeFormat("nl-NL", { dateStyle: "medium", timeStyle: "short", timeZone: "Europe/Amsterdam" });
-  const labels = { daily: "Trade van de dag", market: "Marktprijzen", marketwatch: "Marketwatch", meta: "Meta-vrouwen", releases: "Releases & Gold / Promo", legends: "Icons, Heroes & Hall of FUT" };
+  const labels = { daily: "Trade van de dag", market: "Marktprijzen", marketwatch: "Marketwatch", meta: "Meta-vrouwen", releases: "Releases & Gold / Promo", legends: "Icons, Heroes & Hall of FUT", radar: "Geruchten & Bronradar" };
   const make = (tag, className, text) => {
     const node = document.createElement(tag);
     node.className = className;
@@ -141,9 +141,10 @@
       if (kind === "meta" && state?.data && !state.error) description = state.stale ? "Basisprofielen · brondata ouder" : "Basisprofielen · referentiedata";
       if (kind === "marketwatch" && ["source_gated", "awaiting_allowed_data"].includes(state?.data?.mode) && !state.error) description = "Wacht op bruikbare bronnen";
       if (kind === "daily" && state?.data && !state.error) description = state.stale ? "Dagcheck is verouderd" : state.data.status === "candidate" ? "Kandidaat met prijsbewijs" : "Dagcheck klaar · geen koopcall";
+      if (kind === "radar" && state?.data && !state.error) description = state.stale ? "Broncheck is verouderd" : "Feed- en geruchtstatus per bron";
       item.append(make("h3", "", label), make("p", "", description || "Status onbekend"));
       const date = state?.sourceAt ? new Date(state.sourceAt) : null;
-      const time = make("time", "", date ? `${kind === "daily" ? "Selectiecheck" : "Brondata"}: ${dates.format(date)}` : "Geen brondatum beschikbaar");
+      const time = make("time", "", date ? `${kind === "daily" ? "Selectiecheck" : kind === "radar" ? "Feedcheck" : "Brondata"}: ${dates.format(date)}` : "Geen brondatum beschikbaar");
       if (date) time.dateTime = date.toISOString();
       item.append(time);
       return item;

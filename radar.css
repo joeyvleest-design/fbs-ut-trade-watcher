@@ -1,0 +1,57 @@
+/* Rumour & Bronradar: status is always expressed in words, not colour alone. */
+.rumour-radar .section-head { margin-bottom: 20px; }
+.radar-overview { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 22px; padding: 16px 20px; border: 1px solid #ead6da; border-left: 4px solid #cf1735; border-radius: 12px; background: #fff; }
+.radar-status { margin: 0; color: #9b1730; font-size: .63rem; line-height: 1.65; font-weight: 750; letter-spacing: .055em; }
+.radar-status[data-state="stale"] { color: #775426; }
+.radar-count { margin: 0; color: #64666e; font-size: .67rem; line-height: 1.6; }
+.radar-notice { max-width: 900px; margin: 12px 0 20px; color: #64666e; font-size: .75rem; line-height: 1.7; }
+.radar-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.radar-card { min-width: 0; padding: 25px; border: 1px solid #e6e6e8; border-radius: 15px; background: #fff; box-shadow: 0 3px 12px #191c2003; transition: border-color .2s, box-shadow .2s; }
+.radar-card:hover { border-color: #d5b6bd; box-shadow: 0 8px 24px #7e172009; }
+.radar-card-top { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 18px; }
+.radar-badge { display: inline-block; padding: 6px 9px; border-radius: 5px; background: #f0f1f5; color: #414966; font-size: .57rem; line-height: 1.5; letter-spacing: .035em; font-weight: 750; }
+.radar-card--confirmed_official .radar-badge { background: #cf1735; color: #fff; }
+.radar-card--rumour .radar-badge { background: #fff1d8; color: #75500e; border: 1px dashed #c19a56; }
+.radar-card--opinion .radar-badge { background: #f0edf5; color: #65496e; }
+.radar-archive-label { color: #74747c; font-size: .55rem; font-weight: 750; letter-spacing: .06em; }
+.radar-card h3 { margin: 0 0 12px; font-size: 1.18rem; line-height: 1.35; letter-spacing: -.025em; overflow-wrap: anywhere; }
+.radar-summary { color: #51545e; font-size: .79rem; line-height: 1.75; margin: 0 0 14px; }
+.radar-warning, .radar-expired { color: #76501c; font-size: .7rem; line-height: 1.65; margin: 10px 0; }
+.radar-impact { margin: 17px 0; padding: 14px 16px; border-left: 2px solid #d9bbc2; background: #faf6f7; border-radius: 0 7px 7px 0; }
+.radar-impact strong { color: #8e1b30; font-size: .68rem; }
+.radar-impact p { color: #58525a; font-size: .73rem; line-height: 1.65; margin: 7px 0 0; }
+.radar-dates, .radar-source-dates { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px 12px; margin: 20px 0 0; padding-top: 14px; border-top: 1px solid #eeeef0; }
+.radar-date { min-width: 0; }
+.radar-date dt { color: #70727b; font-size: .6rem; line-height: 1.5; margin-bottom: 5px; }
+.radar-date dd { margin: 0; color: #3c404a; font-size: .64rem; line-height: 1.6; overflow-wrap: anywhere; }
+.radar-card-links { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 14px; }
+.radar-link { display: inline-flex; align-items: center; min-height: 32px; padding: 5px 0; color: #9b1730; font-size: .68rem; line-height: 1.5; text-decoration-thickness: 1px; text-underline-offset: 4px; overflow-wrap: anywhere; }
+.radar-link:hover { color: #cf1735; }
+.rumour-radar a:focus-visible, .rumour-radar summary:focus-visible { outline: 3px solid #b71937; outline-offset: 5px; border-radius: 4px; }
+.radar-empty { grid-column: 1 / -1; margin: 0; padding: 25px; border: 1px dashed #d8d8dc; border-radius: 12px; color: #64666e; background: #fff; font-size: .79rem; line-height: 1.75; }
+.radar-archive, .radar-sources { margin-top: 17px; border: 1px solid #e4e4e7; border-radius: 12px; background: #fff; }
+.radar-archive > summary, .radar-sources > summary { display: flex; align-items: center; justify-content: space-between; gap: 15px; padding: 18px 20px; min-height: 50px; color: #34363e; font-size: .76rem; font-weight: 650; list-style: none; }
+.radar-archive > summary::after, .radar-sources > summary::after { content: "+"; color: #a2253c; font-size: 1.1rem; font-weight: 400; }
+.radar-archive[open] > summary::after, .radar-sources[open] > summary::after { content: "−"; }
+.radar-archive > summary small, .radar-sources > summary small { display: block; margin-top: 4px; color: #72737d; font-size: .63rem; font-weight: 400; }
+.radar-archive .radar-grid { padding: 0 18px 18px; }
+.radar-card--archived { background: #fafafa; border-color: #e8e8e8; box-shadow: none; }
+.radar-card--archived .radar-badge { opacity: .8; }
+.radar-source-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; padding: 0 18px 18px; }
+.radar-source { min-width: 0; padding: 18px; border: 1px solid #e9e9eb; border-radius: 9px; background: #fcfcfc; }
+.radar-source-top { display: flex; flex-wrap: wrap; gap: 8px 15px; align-items: center; justify-content: space-between; }
+.radar-source h4 { font-size: .85rem; letter-spacing: -.02em; margin: 0; }
+.radar-source-state { color: #505769; background: #f0f1f4; border-radius: 4px; padding: 5px 7px; font-size: .52rem; line-height: 1.5; font-weight: 750; letter-spacing: .03em; }
+.radar-source[data-state="unavailable"] .radar-source-state { color: #8c263a; background: #faedf0; }
+.radar-source[data-state="manual_only"] .radar-source-state { color: #765522; background: #f8f1e7; }
+.radar-source[data-state="disabled"] .radar-source-state { color: #65666f; background: #eeeeef; }
+.radar-source-detail, .radar-source-stale { color: #64666e; font-size: .7rem; line-height: 1.65; margin: 12px 0 0; }
+.radar-source-stale { color: #775426; }
+.radar-source-usage { color: #72717a; font-size: .64rem; line-height: 1.7; margin: 8px 0 0; border-left: 2px solid #ddd6d8; padding-left: 10px; }
+.radar-editorial-note { margin: 0; padding: 0 20px 18px; color: #64666e; font-size: .7rem; line-height: 1.7; }
+.radar-source-dates { grid-template-columns: 1fr 1fr; margin-top: 14px; }
+.radar-limit-note { margin: 14px 2px 0; color: #64666e; font-size: .68rem; line-height: 1.7; }
+@media (max-width: 800px) { .radar-grid, .radar-source-grid { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 440px) { .radar-card { padding: 20px; } .radar-dates { grid-template-columns: 1fr 1fr; } .radar-overview { padding: 15px; } .radar-card-links { gap: 4px 14px; } .radar-link { min-height: 44px; } .radar-source-grid, .radar-archive .radar-grid { padding: 0 10px 10px; } }
+@media (prefers-reduced-motion: reduce) { .radar-card { transition: none; } }
+body.motion-paused .radar-card { transition: none; }

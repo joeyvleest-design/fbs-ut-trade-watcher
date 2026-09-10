@@ -9,6 +9,7 @@
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="dashboard.css?v=daily-squad-1">
+    <link rel="stylesheet" href="radar.css?v=source-radar-1">
   </head>
   <body data-page="dashboard">
     <a class="skip-link" href="#club-dashboard">Direct naar het dashboard</a>
@@ -79,6 +80,7 @@
         <a href="#dutch-gold">Gold &amp; Promo <span aria-hidden="true">✦</span></a>
         <a href="#legends-watch">Legends</a>
         <a href="#marketwatch">Marketwatch</a>
+        <a href="#rumour-radar">Bronradar</a>
         <a href="#release-radar">Releases</a>
         <a href="#sbc-week">SBC van de week</a>
       </nav>
@@ -165,6 +167,27 @@
           <p>Een event is een aanwijzing, geen vrijbrief om je hele clubkas te yeeten.</p>
         </div>
         <div id="watch-grid" class="watch-grid"></div>
+      </section>
+
+      <section id="rumour-radar" class="section rumour-radar" aria-labelledby="rumour-radar-title">
+        <div class="section-head">
+          <div><p class="kicker">DE REDACTIE · FEITEN, GERUCHTEN &amp; GROTE MONDEN</p><h2 id="rumour-radar-title">Gerucht of goud?</h2></div>
+          <p>Een EA-bericht is iets anders dan “een maat van Gerroe zei…”. Hier krijgt elk verhaal z’n eigen label, bron en houdbaarheidsdatum.</p>
+        </div>
+        <div class="radar-overview"><p id="radar-status" class="radar-status" role="status">De laatste gepubliceerde radar ophalen…</p><p id="radar-count" class="radar-count"></p></div>
+        <p id="radar-notice" class="radar-notice">Geplande controles van toegestane bronnen; geen continue of volledige internetmonitor.</p>
+        <div id="radar-grid" class="radar-grid"><p class="radar-empty">De bronnen liggen op de redactietafel. Nog geen actueel signaal geladen.</p></div>
+        <details id="radar-archive" class="radar-archive" hidden>
+          <summary><span>Het prikbord van gisteren<small id="radar-archive-count">Archief · geen actuele signalen</small></span></summary>
+          <div id="radar-archive-grid" class="radar-grid"></div>
+        </details>
+        <details class="radar-sources">
+          <summary><span>Welke bronnen deden mee?<small id="radar-source-count">Bronstatus laden…</small></span></summary>
+          <p id="radar-editorial-note" class="radar-editorial-note">De hercontrolegrens is onze controletermijn, niet een deadline van EA.</p>
+          <div id="radar-sources-grid" class="radar-source-grid"></div>
+        </details>
+        <p class="radar-limit-note">X, FUTBIN en FUT.GG worden hier niet automatisch uitgelezen. Nieuws is geen actuele prijsfeed; een gerucht geeft geen koopgrens. De knop “Ververs alles” haalt de laatste publicatie op, niet het hele internet.</p>
+        <p class="radar-limit-note">Steam-gegevens worden aangeboden zoals geleverd (“as-is”), zonder garanties. FBS is niet verbonden aan Valve.</p>
       </section>
 
       <section id="release-radar" class="section release-radar-section" aria-labelledby="release-radar-title">
@@ -255,7 +278,8 @@
     <script src="card-art.js?v=daily-squad-1" defer></script>
     <script src="app.js?v=daily-squad-1" defer></script>
     <script src="watch.js?v=daily-squad-1" defer></script>
+    <script src="radar.js?v=source-radar-1" defer></script>
     <script src="news.js?v=daily-squad-1" defer></script>
-    <script src="motion.js?v=daily-squad-1" defer></script>
+    <script src="motion.js?v=source-radar-1" defer></script>
   </body>
 </html>
