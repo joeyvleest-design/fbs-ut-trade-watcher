@@ -9,7 +9,7 @@
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="dashboard.css">
-    <link rel="stylesheet" href="discord-page.css">
+    <link rel="stylesheet" href="discord-page.css?v=club-connect-1">
   </head>
   <body data-page="discord">
     <a class="skip-link" href="#discord-title">Direct naar de kleedkamer</a>
@@ -42,10 +42,11 @@
           <div class="membership-identity"><img class="discord-hero-logo" src="logo.svg" width="112" height="112" alt="Speels FBS-monogram met voetbal"><div><span>SEIZOEN 26 / 27</span><b>DE BIBS<br>SQUAD.</b></div></div>
           <div class="membership-seat"><span>VAK <b>FBS</b></span><span>RIJ <b>01</b></span><span>SELECTIE <b>04</b></span></div>
           <div class="membership-invite">
-            <strong id="join-title">De deur staat nog op slot</strong>
-            <p id="join-detail">De uitnodiging wordt hier beschikbaar zodra deze is gekoppeld.</p>
-            <a id="join-discord" class="button button-discord" target="_blank" rel="noopener" aria-disabled="true">Join private Discord <span aria-hidden="true">↗</span></a>
-            <span id="join-status" class="join-status">Geen publieke invite geplaatst.</span>
+            <strong id="join-title">De kleedkamer wordt verbonden</strong>
+            <p id="join-detail">De laatste verbindingsstatus wordt opgehaald.</p>
+            <a id="join-discord" class="button button-discord" target="_blank" rel="noopener noreferrer" aria-disabled="true">Open onze Discord <span aria-hidden="true">↗</span></a>
+            <a id="join-invite" class="membership-invite-link" target="_blank" rel="noopener noreferrer" hidden>Nog geen lid? Gebruik de uitnodiging ↗</a>
+            <span id="join-status" class="join-status">Uitnodigingen delen we binnen de groep.</span>
           </div>
         </aside>
       </section>
@@ -63,45 +64,65 @@
         </ul>
       </section>
 
+      <section class="connection-panel" aria-labelledby="connection-title">
+        <div class="connection-panel-heading"><h2 id="connection-title">De stand in de kleedkamer.</h2><button id="connection-refresh" type="button">Ververs verbinding <span aria-hidden="true">↻</span></button></div>
+        <dl class="connection-states">
+          <div><dt>Onze Discord</dt><dd id="server-connection" data-state="pending">Link nog niet gekoppeld</dd></div>
+          <div><dt>Automatische Marketwatch</dt><dd id="trading-connection" data-state="pending">Nog niet gekoppeld</dd></div>
+          <div><dt>Screenshotadvies</dt><dd id="chemistry-connection" data-state="pending">Bot nog niet actief</dd></div>
+        </dl>
+        <p id="connection-feedback" class="connection-feedback" role="status">Verbinding controleren…</p>
+      </section>
+
       <section id="channels" class="section" aria-labelledby="channels-title">
         <div class="section-head">
           <div>
-            <p class="kicker"><span class="section-number">01</span> DE BEOOGDE OPSTELLING</p>
+            <p class="kicker"><span class="section-number">01</span> JULLIE EIGEN HELFT</p>
             <h2 id="channels-title">Voor elke uitbarsting een kanaal.</h2>
           </div>
-          <p>Dit is het plan voor jullie Discord. Automatische posts en screenshotadvies wachten nog op hun koppeling.</p>
+          <p id="channels-detail">Hier krijgt elke discussie z’n eigen plek. Gekoppelde kanalen openen direct in Discord.</p>
         </div>
         <div class="channel-grid">
           <article class="channel-card">
             <div class="channel-card-top"><div class="channel-icon" aria-hidden="true">#</div><span>01 / DE CANTINE</span></div>
             <h3># chat</h3>
             <p>Squads, slechte grappen en een tactische analyse die verdacht veel op schelden lijkt.</p>
-            <div class="channel-card-bottom"><span class="channel-status">Voor de hele squad</span><span aria-hidden="true">↗</span></div>
+            <div class="channel-card-bottom"><span id="chat-status" class="channel-status channel-status--pending">Kanaallink volgt</span><a id="chat-link" class="channel-open" target="_blank" rel="noopener noreferrer" hidden>Open chat <span aria-hidden="true">↗</span></a></div>
           </article>
           <article class="channel-card">
             <div class="channel-card-top"><div class="channel-icon" aria-hidden="true">↗</div><span>02 / DE TRANSFERDESK</span></div>
             <h3># trading-tips</h3>
             <p>De Marketwatch, nieuwe releases en de reden achter een tip. Zodat “trust me bro” eindelijk concurrentie krijgt.</p>
-            <div class="channel-card-bottom"><span class="channel-status channel-status--pending">Koppeling volgt</span><span aria-hidden="true">↗</span></div>
+            <div class="channel-card-bottom"><span id="trading-status" class="channel-status channel-status--pending">Kanaallink volgt</span><a id="trading-link" class="channel-open" target="_blank" rel="noopener noreferrer" hidden>Open trading <span aria-hidden="true">↗</span></a></div>
           </article>
           <article class="channel-card">
             <div class="channel-card-top"><div class="channel-icon" aria-hidden="true">◉</div><span>03 / SQUADTHERAPIE</span></div>
             <h3># chemistry-lab</h3>
-            <p>Het plan: een screenshot erin, hulp met chemistry en een passende chem style eruit. Je opstelling verdient een second opinion.</p>
-            <div class="channel-card-bottom"><span class="channel-status channel-status--pending">Bot nog niet actief</span><span aria-hidden="true">↗</span></div>
+            <p id="chemistry-description">Bespreek je squad, chemistry en chem styles met de groep. Automatisch screenshotadvies komt erbij zodra de bot werkt.</p>
+            <div class="channel-card-bottom"><span id="chemistry-status" class="channel-status channel-status--pending">Kanaallink volgt</span><a id="chemistry-link" class="channel-open" target="_blank" rel="noopener noreferrer" hidden>Open chemistry <span aria-hidden="true">↗</span></a></div>
           </article>
         </div>
       </section>
 
+      <section class="locker-journal section" aria-labelledby="journal-title">
+        <div class="section-head"><div><p class="kicker"><span class="section-number">02</span> DE CLUBREDACTIE</p><h2 id="journal-title">De krant. Zonder de kroegpraat.</h2></div><p>Dit zijn de geplande bronchecks. Een artikel volgt als er iets bevestigd is; de actuele Discord-koppeling staat hierboven.</p></div>
+        <div class="journal-schedule">
+          <article><p class="journal-day">IEDERE OCHTEND</p><strong class="journal-time">08<span>:00</span></strong><h3>De Marketwatch</h3><p>Wat is veranderd, welke signalen tellen en wat blijft onzeker? Koffie erbij. Bronlinks eronder.</p></article>
+          <article><p class="journal-day">WOENSDAG &amp; VRIJDAG</p><strong class="journal-time">19<span>:01</span></strong><h3>Nieuwe kaarten in beeld</h3><p>TOTW en promo’s zodra officieel bevestigd. Nederlandse kaarten krijgen extra aandacht.</p></article>
+          <article><p class="journal-day">ZONDAGAVOND</p><strong class="journal-time">19<span>:01</span></strong><h3>Mini-release &amp; SBC-check</h3><p>De weekendaanvulling en een SBC-oordeel: wat krijg je ervoor, wat kost het als bekend, en waarom wel of niet?</p></article>
+        </div>
+        <div class="journal-note"><span>Alle tijden: Amsterdam · Checkmomenten, geen gegarandeerde publicatietijden.</span><a href="./#marketwatch">Lees de laatste briefing <span aria-hidden="true">↗</span></a></div>
+      </section>
+
       <section class="locker-house-rules section" aria-labelledby="privacy-title">
         <div class="locker-rule-intro">
-          <p class="kicker"><span class="section-number">02</span> DE HUISREGELS</p>
+          <p class="kicker"><span class="section-number">03</span> DE HUISREGELS</p>
           <h2 id="privacy-title">Grote mond.<br>Kleine club.</h2>
           <p>Voor de vier vaste verdachten. De lat ligt hoog. Het niveau bepalen jullie zelf.</p>
           <span class="locker-rule-stars" aria-hidden="true">✦ ✦ ✦</span>
         </div>
         <ol class="locker-rules">
-          <li><span aria-hidden="true">01</span><div><h3>De sleutel blijft bij de squad.</h3><p>De Discord is bedoeld als besloten club. Op deze pagina verschijnt alleen een uitnodiging als die is gekoppeld.</p></div></li>
+          <li><span aria-hidden="true">01</span><div><h3>De sleutel blijft bij de squad.</h3><p>Een kanaallink geeft geen toegang: daarvoor moet je al lid zijn. Een uitnodiging op deze openbare pagina kan wél door anderen worden gebruikt.</p></div></li>
           <li><span aria-hidden="true">02</span><div><h3>Een tip krijgt een verhaal.</h3><p>Koopdrift is geen onderbouwing. De Marketwatch vermeldt bronnen, beschikbare data en wat nog onzeker is.</p></div></li>
           <li><span aria-hidden="true">03</span><div><h3>Roast de opstelling. Help de manager.</h3><p>Een slechte squad is tijdelijk. Een screenshot in de groepschat is voor altijd voer voor discussie.</p></div></li>
         </ol>
@@ -113,6 +134,6 @@
         <a class="locker-back-link" href="./">Terug naar het dashboard <span aria-hidden="true">↗</span></a>
       </footer>
     </main>
-    <script src="discord.js" defer></script>
+    <script src="discord.js?v=club-connect-1" defer></script>
   </body>
 </html>

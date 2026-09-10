@@ -103,6 +103,39 @@ body[data-page="discord"] footer { align-items: center; padding: 32px 0; font-si
 .locker-footer-brand small { margin-left: 7px; color: var(--muted); font-size: .6rem; font-weight: 400; }
 .locker-back-link { text-decoration: none; font-size: .66rem; }
 .locker-back-link:hover { color: var(--lime); text-decoration: underline; text-underline-offset: 4px; }
+.membership-invite-link { display: inline-block; margin-top: 13px; color: #8f1730; font-size: .69rem; text-underline-offset: 4px; }
+.membership-invite-link:hover { color: #bd1839; }
+.connection-panel { margin-top: 30px; padding: 23px 26px; border: 1px solid var(--line); border-radius: 16px; background: #fff; }
+.connection-panel-heading { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
+body[data-page="discord"] .connection-panel h2 { font-size: 1.12rem; letter-spacing: -.035em; }
+#connection-refresh { display: inline-flex; align-items: center; gap: 8px; padding: 6px 0; border: 0; background: transparent; color: var(--muted); font-size: .64rem; font-weight: 600; cursor: pointer; }
+#connection-refresh > span { display: inline-block; font-size: 1rem; }
+#connection-refresh:hover { color: var(--lime); }
+#connection-refresh:disabled { opacity: .55; cursor: wait; }
+.connection-states { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; margin: 22px 0 0; }
+.connection-states > div { padding-left: 18px; border-left: 1px solid var(--line); }
+.connection-states > div:first-child { padding-left: 0; border-left: 0; }
+.connection-states dt { margin-bottom: 6px; color: #7f7c84; font-size: .61rem; }
+.connection-states dd { display: flex; align-items: center; gap: 7px; margin: 0; color: #726b6d; font-size: .71rem; font-weight: 650; }
+.connection-states dd::before { content: ""; flex-shrink: 0; width: 6px; height: 6px; border-radius: 50%; background: #bcb7b8; }
+.connection-states dd[data-state="configured"]::before { background: #bb8b3e; }
+.connection-states dd[data-state="verified"]::before { background: #43856b; }
+.connection-feedback { margin: 18px 0 0; color: #8b8589; font-size: .58rem; line-height: 1.6; }
+.channel-status--available { color: #607565; }.channel-status--available::before { background: #73917a; }
+.channel-open { display: inline-flex; align-items: center; gap: 6px; padding: 8px 10px; border: 1px solid #e7e4e5; border-radius: 7px; background: #faf9f8; color: #4c3c43; font-size: .62rem; font-weight: 700; text-decoration: none; transition: color .2s, background .2s, border-color .2s; }
+.channel-open:hover { color: #a71936; background: #fff0f3; border-color: #e8bac4; }
+.channel-open > span { font-size: .9rem; }
+.journal-schedule { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; border: 1px solid #e8e0d5; border-radius: 15px; background: #fffdf7; overflow: hidden; }
+.journal-schedule article { padding: 27px; border-left: 1px solid #e8e0d5; }
+.journal-schedule article:first-child { border-left: 0; }
+.journal-day { margin: 0 0 22px; color: #937651; font-size: .53rem; font-weight: 750; letter-spacing: .1em; }
+.journal-time { display: block; margin-bottom: 22px; color: #a37b42; font-size: 2.8rem; font-weight: 800; line-height: .95; letter-spacing: -.07em; }
+.journal-time span { color: #cbb894; }
+.journal-schedule h3 { margin: 0 0 10px; font-size: .95rem; }
+.journal-schedule article > p:last-child { margin: 0; color: #827666; font-size: .75rem; line-height: 1.75; }
+.journal-note { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 15px; padding: 16px 2px 0; color: #928b83; font-size: .61rem; line-height: 1.65; }
+.journal-note a { color: #956435; font-weight: 650; text-decoration: none; }
+.journal-note a:hover { text-decoration: underline; text-underline-offset: 4px; }
 @media (prefers-reduced-motion: no-preference) {
   .discord-hero-copy { animation: locker-enter .65s ease-out both; }
   body[data-page="discord"] .join-panel { animation: membership-enter .85s .12s cubic-bezier(.2,.7,.3,1) both; }
@@ -119,6 +152,8 @@ body[data-page="discord"] footer { align-items: center; padding: 32px 0; font-si
   body[data-page="discord"] .crew-section { grid-template-columns: 1fr; gap: 18px; }
   body[data-page="discord"] .crew-heading h2 br { display: none; }
   body[data-page="discord"] .channel-card { padding: 21px; }
+  .channel-card-bottom { flex-wrap: wrap; }
+  .journal-schedule article { padding: 23px; }
   .channel-card-top > span { font-size: .43rem; letter-spacing: .06em; }
   .locker-house-rules { gap: 40px; }
 }
@@ -133,6 +168,13 @@ body[data-page="discord"] footer { align-items: center; padding: 32px 0; font-si
   .channel-card-top { margin-bottom: 20px; }
   .channel-card-top > span { font-size: .55rem; }
   .locker-house-rules { grid-template-columns: 1fr; padding: 35px; gap: 30px; }
+  .connection-states { gap: 14px; }.connection-states dd { font-size: .66rem; }
+  .journal-schedule { grid-template-columns: 1fr; }
+  .journal-schedule article { display: grid; grid-template-columns: 90px 1fr; gap: 8px 25px; padding: 25px; border-left: 0; border-top: 1px solid #e8e0d5; }
+  .journal-schedule article:first-child { border-top: 0; }
+  .journal-day { grid-column: 1 / -1; margin-bottom: 10px; }
+  .journal-time { grid-row: 2 / 4; margin: 0; font-size: 2.55rem; }
+  .journal-schedule h3 { margin: 0; }.journal-schedule article > p:last-child { grid-column: 2; }
   .locker-rule-intro > p:not(.kicker) { max-width: 430px; }
   .locker-rule-stars { display: none; }
   body[data-page="discord"] footer { flex-wrap: wrap; justify-content: flex-start; gap: 20px; }
@@ -156,6 +198,13 @@ body[data-page="discord"] footer { align-items: center; padding: 32px 0; font-si
   body[data-page="discord"] .section { margin-top: 45px; }
   body[data-page="discord"] .section-head { gap: 15px; }
   body[data-page="discord"] .section-head > p { max-width: 100%; }
+  .connection-panel { padding: 20px; }
+  .connection-states { grid-template-columns: 1fr; gap: 15px; margin-top: 18px; }
+  .connection-states > div { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 0; border: 0; }
+  .connection-states dt { margin: 0; }.connection-states dd { max-width: 55%; font-size: .63rem; }
+  .connection-panel-heading { gap: 7px; }
+  .journal-schedule article { grid-template-columns: 75px 1fr; gap: 8px 18px; padding: 23px; }
+  .journal-time { font-size: 2.2rem; }.journal-schedule h3 { font-size: .85rem; }
   .locker-house-rules { padding: 28px 24px; }
   body[data-page="discord"] footer { align-items: flex-start; gap: 14px; }
   .locker-back-link { margin-left: 0; }
