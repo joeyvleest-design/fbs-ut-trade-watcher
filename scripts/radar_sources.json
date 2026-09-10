@@ -1,0 +1,57 @@
+{
+  "reviewed_at": "2026-09-10T09:08:00Z",
+  "scope": "Gratis bronverwijzingen en publishernieuws. Geen toestemming voor marktprijs-scraping of het spiegelen van artikelen. Feedvoorwaarden worden opnieuw beoordeeld vóór review_expires_at.",
+  "sources": [
+    {
+      "id": "steam-fc27", "name": "FC27 op Steam", "kind": "steam_news", "enabled": true,
+      "url": "https://api.steampowered.com/ISteamNews/GetNewsForApp/v2/?appid=4080220&count=20&maxlength=1&feeds=steam_community_announcements&format=json",
+      "hosts": ["api.steampowered.com"],
+      "article_hosts": ["steamstore-a.akamaihd.net", "steamcommunity.com", "store.steampowered.com"],
+      "app_id": 4080220, "publish_title": true, "default_status": "reported",
+      "permission_basis": "documented_public_api_personal_application",
+      "policy_url": "https://steamcommunity.com/dev/apiterms",
+      "documentation_url": "https://partner.steamgames.com/doc/webapi/ISteamNews",
+      "identity_url": "https://store.steampowered.com/app/4080220/",
+      "policy_reviewed_at": "2026-09-10T09:08:00Z", "review_expires_at": "2026-12-09T00:00:00Z",
+      "detail": "Publieke Steam-nieuws-API, uitsluitend aankondigingen voor EA SPORTS FC27. Geen API-key nodig voor deze methode. Geen artikelbody of transfermarktprijzen. Steam is niet aan FBS verbonden; gegevens zoals aangeboden."
+    },
+    {
+      "id": "pushsquare", "name": "Push Square", "kind": "rss", "enabled": true,
+      "url": "https://www.pushsquare.com/feeds/news", "hosts": ["www.pushsquare.com"], "article_hosts": ["www.pushsquare.com"],
+      "publish_title": false, "default_status": "reported", "permission_basis": "publisher_recommended_link_discovery",
+      "policy_url": "https://www.pushsquare.com/contact", "terms_url": "https://www.pushsquare.com/terms",
+      "policy_reviewed_at": "2026-09-10T09:08:00Z", "review_expires_at": "2026-12-09T00:00:00Z",
+      "detail": "Uitgever beveelt RSS aan om naar artikelen te linken. Alleen een eigen neutraal linklabel en de bron-URL; geen overgenomen kop, artikeltekst of afbeeldingen. Geen claim van algemene herpublicatielicentie."
+    },
+    {
+      "id": "purexbox", "name": "Pure Xbox", "kind": "rss", "enabled": true,
+      "url": "https://www.purexbox.com/feeds/news", "hosts": ["www.purexbox.com"], "article_hosts": ["www.purexbox.com"],
+      "publish_title": false, "default_status": "reported", "permission_basis": "publisher_recommended_link_discovery",
+      "policy_url": "https://www.purexbox.com/contact", "terms_url": "https://www.purexbox.com/terms",
+      "policy_reviewed_at": "2026-09-10T09:08:00Z", "review_expires_at": "2026-12-09T00:00:00Z",
+      "detail": "Uitgever beveelt RSS aan om naar artikelen te linken. Alleen een eigen neutraal linklabel en de bron-URL; geen overgenomen kop, artikeltekst of afbeeldingen. Geen claim van algemene herpublicatielicentie."
+    },
+    {
+      "id": "editorial", "name": "FBS brononderzoek", "kind": "manual", "enabled": false,
+      "url": "https://joeyvleest-design.github.io/fbs-ut-trade-watcher/#rumour-radar",
+      "detail": "Aanvullende redactionele check via de bestaande Codex-planning: EA-nieuws, toegankelijke berichtgeving en duidelijk gelabelde geruchten. Geen doorlopende scan; individuele controletijden staan bij de artikelen."
+    },
+    {
+      "id": "x", "name": "X / traders", "kind": "manual", "enabled": false,
+      "url": "https://x.com/",
+      "detail": "Geen geconfigureerde toegestane API: X wordt niet automatisch gescand. Nieuwsartikelen over een trader kunnen als secundaire bron worden gelezen; dat is geen rechtstreekse X-controle."
+    },
+    {
+      "id": "futgg", "name": "FUT.GG prijsdata", "kind": "manual", "enabled": false,
+      "url": "https://www.fut.gg/", "policy_url": "https://stormstrike.gg/terms",
+      "policy_reviewed_at": "2026-09-10T09:08:00Z",
+      "detail": "Automatische toegang beperkt door de voorwaarden. Geen prijs-scan geactiveerd; geen verborgen endpoints of omzeiling."
+    },
+    {
+      "id": "futbin", "name": "FUTBIN prijsdata", "kind": "manual", "enabled": false,
+      "url": "https://www.futbin.com/", "policy_url": "https://www.futbin.com/tos",
+      "policy_reviewed_at": "2026-09-10T09:08:00Z",
+      "detail": "Geen geautomatiseerde prijs-extractie geactiveerd. Een toepasselijke toestemming of uitzondering voor dit gebruik is niet vastgesteld; bronvermelding alleen activeert geen scanner."
+    }
+  ]
+}
