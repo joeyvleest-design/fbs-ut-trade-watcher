@@ -1,0 +1,49 @@
+{
+  "game": "EA SPORTS FC 27",
+  "publisher": "Electronic Arts",
+  "verification_method": "Each image URL was observed as a rendered img src in its official EA ratings page. Downloads returned HTTP 200 and image/webp; all six full cards were visually inspected.",
+  "assets": [
+    {
+      "slug": "frenkie-de-jong",
+      "local_path": "assets/cards/frenkie-de-jong.webp",
+      "image_url": "https://ratings-images-prod.pulse.ea.com/FC27/components/items/228702_nl-NL.webp",
+      "source_page": "https://www.ea.com/nl/games/ea-sports-fc/ratings/player-ratings/frenkie-de-jong/228702",
+      "verified_at": "2026-09-10T07:37:31Z"
+    },
+    {
+      "slug": "vivianne-miedema",
+      "local_path": "assets/cards/vivianne-miedema.webp",
+      "image_url": "https://ratings-images-prod.pulse.ea.com/FC27/components/items/233746_nl-NL.webp",
+      "source_page": "https://www.ea.com/nl/games/ea-sports-fc/ratings/player-ratings/vivianne-miedema/233746",
+      "verified_at": "2026-09-10T07:37:31Z"
+    },
+    {
+      "slug": "ryan-gravenberch",
+      "local_path": "assets/cards/ryan-gravenberch.webp",
+      "image_url": "https://ratings-images-prod.pulse.ea.com/FC27/components/items/246104_nl-NL.webp",
+      "source_page": "https://www.ea.com/nl/games/ea-sports-fc/ratings/player-ratings/ryan-gravenberch/246104",
+      "verified_at": "2026-09-10T07:37:31Z"
+    },
+    {
+      "slug": "virgil-van-dijk",
+      "local_path": "assets/cards/virgil-van-dijk.webp",
+      "image_url": "https://ratings-images-prod.pulse.ea.com/FC27/components/items/203376_nl-NL.webp",
+      "source_page": "https://www.ea.com/nl/games/ea-sports-fc/ratings/player-ratings/virgil-van-dijk/203376",
+      "verified_at": "2026-09-10T07:37:31Z"
+    },
+    {
+      "slug": "jill-roord",
+      "local_path": "assets/cards/jill-roord.webp",
+      "image_url": "https://ratings-images-prod.pulse.ea.com/FC27/components/items/240714_nl-NL.webp",
+      "source_page": "https://www.ea.com/nl/games/ea-sports-fc/ratings/player-ratings/jill-roord/240714",
+      "verified_at": "2026-09-10T07:37:31Z"
+    },
+    {
+      "slug": "denzel-dumfries",
+      "local_path": "assets/cards/denzel-dumfries.webp",
+      "image_url": "https://ratings-images-prod.pulse.ea.com/FC27/components/items/233096_nl-NL.webp",
+      "source_page": "https://www.ea.com/nl/games/ea-sports-fc/ratings/player-ratings/denzel-dumfries/233096",
+      "verified_at": "2026-09-10T07:37:31Z"
+    }
+  ]
+}
