@@ -226,6 +226,24 @@ def _merge_delivery_history(target: dict[str, object], other: dict[str, object])
         current["discord_delivery"] = max(deliveries, key=order)
 
 
+def _merge_dutch_watch(target: dict[str, object], other: dict[str, object]) -> None:
+    """Roster revisions and RSS checks have independent clocks.
+
+    An automatic RSS timestamp must not roll back a manually verified roster.
+    Older files have no section timestamp; an explicitly dated section wins.
+    Neither the source timestamp nor the overall release date is advanced here.
+    """
+    target_at = _timestamp(target.get("dutch_gold_checked_at"))
+    other_at = _timestamp(other.get("dutch_gold_checked_at"))
+    if other_at is None or (target_at is not None and target_at >= other_at):
+        return
+    if not isinstance(other.get("dutch_gold_watch"), list):
+        return
+    for key in ("dutch_gold_watch", "meta_watch_exclusions", "dutch_gold_rule", "dutch_gold_checked_at"):
+        if key in other:
+            target[key] = other[key]
+
+
 def preserve_published_data(repository_root: Path, *, fetcher: Callable[[str], bytes] = fetch_published_json, read_status: dict[str, bool] | None = None) -> list[str]:
     """Carry newer, valid public Pages data into the next UI artifact unchanged.
 
@@ -254,6 +272,8 @@ def preserve_published_data(repository_root: Path, *, fetcher: Callable[[str], b
             target = payload if local_at is None or published_at >= local_at else local
             if filename == "marketwatch.json":
                 _merge_delivery_history(target, local if target is payload else payload)
+            else:
+                _merge_dutch_watch(target, local if target is payload else payload)
             if json.dumps(target, sort_keys=True) != original_local:
                 _write_json_atomically(data_root / filename, target)
                 restored.append(filename)
@@ -511,6 +531,21 @@ def _parse_now(value: str | None) -> datetime:
 
 def main(argv: list[str] | None = None) -> int:
     args = _arguments(argv)
+    published_status: dict[str, bool] = {}
+    source_failed = False
+
+    def checked_fetch(url: str) -> bytes:
+        nonlocal source_failed
+        try:
+            raw = fetch_rss(url)
+            # Distinguish a failed external source from a local/configuration
+            # error. Only the former may permit a scheduled daily-only deploy.
+            parse_rss(raw, url)
+            return raw
+        except (OSError, URLError, ValueError):
+            source_failed = True
+            raise
+
     def output(*, deploy: bool, refreshed: bool, delivery_id: str | None = None) -> None:
         if path := os.getenv("GITHUB_OUTPUT"):
             with Path(path).open("a", encoding="utf-8") as handle:
@@ -530,7 +565,6 @@ def main(argv: list[str] | None = None) -> int:
             outcome = deliver_discord(args.site_root, delivery_id=args.deliver_discord, webhook_url=os.getenv("DISCORD_WEBHOOK_URL", "").strip() or None, now=_parse_now(args.now))
             print(f"Discord delivery outcome: {outcome}. No automatic resend for an unknown outcome.")
             return 0 if outcome in {"confirmed", "skipped", "not_configured"} else 1
-        published_status = {}
         if args.preserve_published:
             restored = preserve_published_data(args.site_root, read_status=published_status)
             if restored:
@@ -543,7 +577,7 @@ def main(argv: list[str] | None = None) -> int:
         if prepare and not published_status.get("marketwatch.json"):
             print("Discord not reserved: the last public delivery state could not be verified. No automatic retry or speculative send.")
             prepare = False
-        result = refresh(args.site_root, now=_parse_now(args.now), rss_url=args.rss_url, scheduled=args.scheduled, scheduled_cron=args.scheduled_cron, prepare_discord=prepare)
+        result = refresh(args.site_root, now=_parse_now(args.now), rss_url=args.rss_url, scheduled=args.scheduled, scheduled_cron=args.scheduled_cron, prepare_discord=prepare, fetcher=checked_fetch)
         if not result.due:
             output(deploy=False, refreshed=False)
             print("FBS schedule is not due or its intended slot was already published; no deployment or Discord post.")
@@ -556,9 +590,17 @@ def main(argv: list[str] | None = None) -> int:
         if args.test_discord or args.deliver_discord:
             print(f"Discord operation failed ({reason}); no confirmed receipt.")
             return 1
-        output(deploy=args.allow_source_failure and not args.scheduled, refreshed=False)
+        # A scheduled source failure can still publish the independently dated
+        # daily audit. The workflow runs daily_watch.py AFTER this step and
+        # BEFORE building Pages. Never advance old news dates or queue Discord.
+        # Source fetching only occurs for a due, not-already-published slot.
+        daily_only = args.scheduled and source_failed and published_status.get("marketwatch.json", False)
+        deploy = args.allow_source_failure and (not args.scheduled or daily_only)
+        output(deploy=deploy, refreshed=False)
         print(f"Official RSS refresh failed ({reason}); existing content and source-check timestamps are retained.")
-        return 0 if args.allow_source_failure and not args.scheduled else 1
+        if daily_only and deploy:
+            print("Public briefing/delivery state was safely preserved. The daily data audit may be published; no new news or Discord delivery is claimed.")
+        return 0 if deploy else 1
 
 
 if __name__ == "__main__":
