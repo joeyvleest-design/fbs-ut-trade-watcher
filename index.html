@@ -8,7 +8,7 @@
     <title>de flikkerbibsjes UT Trade watcher</title>
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="dashboard.css?v=daily-squad-1">
   </head>
   <body data-page="dashboard">
     <a class="skip-link" href="#club-dashboard">Direct naar het dashboard</a>
@@ -24,6 +24,11 @@
           <a class="button button-discord" href="discord.html">De kleedkamer <span aria-hidden="true">↗</span></a>
         </div>
       </header>
+
+      <section id="trade-of-day" class="daily-trade section" aria-labelledby="daily-trade-title">
+        <div class="daily-trade-heading"><p class="kicker">DE TRANSFERDESK · ELKE DAG EEN NIEUWE AFWEGING</p><h2 id="daily-trade-title">Trade van de dag.</h2><p>Het beste plan voor je coins. Soms is dat: handen thuis, Knalfuifje.</p></div>
+        <div id="daily-trade-card" aria-live="polite"><p>De transferdesk haalt de laatste dagcheck op…</p></div>
+      </section>
 
       <section class="hero" aria-labelledby="page-title">
         <div class="hero-copy">
@@ -68,9 +73,11 @@
       </section>
 
       <nav class="section-nav" aria-label="Dashboardonderdelen">
-        <a class="is-active" href="#club-dashboard" aria-current="location">Overzicht</a>
+        <a class="is-active" href="#trade-of-day" aria-current="location">Dagtrade</a>
+        <a href="#club-dashboard">Overzicht</a>
         <a href="#meta-watch">Meta Meter</a>
-        <a href="#dutch-gold">Gold Watch <span aria-hidden="true">✦</span></a>
+        <a href="#dutch-gold">Gold &amp; Promo <span aria-hidden="true">✦</span></a>
+        <a href="#legends-watch">Legends</a>
         <a href="#marketwatch">Marketwatch</a>
         <a href="#release-radar">Releases</a>
         <a href="#sbc-week">SBC van de week</a>
@@ -103,8 +110,8 @@
 
       <section id="meta-watch" class="section meta-watch-section" aria-labelledby="meta-watch-title">
         <div class="section-head">
-          <div><p class="kicker"><span class="section-number">01</span> NEDERLAND · 75+ ALG</p><h2 id="meta-watch-title">Meer meta. Minder excuses.</h2></div>
-          <p>De Meta Meter. Nederlandse spelers beoordeeld op hun basisstats. Jullie nieuwe reden om de controller de schuld te geven.</p>
+          <div><p class="kicker"><span class="section-number">01</span> TWEE NEDERLANDSE META-VROUWEN · 75+ ALG</p><h2 id="meta-watch-title">Zij spelen. Jullie leggen uit.</h2></div>
+          <p>Twee vrouwen met een scoutingsrapport. Vier mannen met een mening. Eindelijk is de kwaliteit eerlijk verdeeld.</p>
         </div>
         <div id="meta-watch-grid" class="football-card-grid" aria-live="polite"></div>
         <details class="method-disclosure"><summary>Hoe werkt de Meta Meter? <span aria-hidden="true">+</span></summary><aside id="meta-watch-method" class="meta-method" hidden></aside></details>
@@ -112,13 +119,19 @@
 
       <section id="dutch-gold" class="section dutch-gold-section" aria-labelledby="dutch-gold-title">
         <div class="section-head">
-          <div><p class="kicker"><span class="section-number">02</span> ORANJE BOVEN. GOUD ERONDER.</p><h2 id="dutch-gold-title">Nederlandse Gold Watch.</h2></div>
-          <p>Andere namen, dezelfde ongezonde ambitie. Gold-basiskaarten vanaf 75 ALG, met een eigen scoutingsrapport.</p>
+          <div><p class="kicker"><span class="section-number">02</span> 8 MANNEN · 4 LINIES · 2 OPTIES</p><h2 id="dutch-gold-title">Nederlandse Gold &amp; Promo Watch.</h2></div>
+          <p>Twee keuzes per linie. Bevestigde promo’s krijgen voorrang; Gold vanaf 75 ALG houdt de bank warm. Geen dubbele namen uit de Meta Meter.</p>
         </div>
-        <div class="gold-toolbar"><p><span class="gold-star" aria-hidden="true">✦</span> <span id="gold-count">De scouts zijn onderweg…</span></p><div class="filter-group" role="group" aria-label="Filter Gold Watch op positie"><button type="button" class="filter-button is-active" data-position="all" aria-pressed="true">Alle spelers</button><button type="button" class="filter-button" data-position="defence" aria-pressed="false">Verdediging</button><button type="button" class="filter-button" data-position="midfield" aria-pressed="false">Middenveld</button><button type="button" class="filter-button" data-position="attack" aria-pressed="false">Aanval</button></div></div>
+        <div class="gold-toolbar"><p><span class="gold-star" aria-hidden="true">✦</span> <span id="gold-count">De scouts zijn onderweg…</span></p><div class="filter-group" role="group" aria-label="Filter Gold en Promo Watch op linie"><button type="button" class="filter-button is-active" data-position="all" aria-pressed="true">Alle spelers</button><button type="button" class="filter-button" data-position="goalkeeper" aria-pressed="false">Keepers</button><button type="button" class="filter-button" data-position="defense" aria-pressed="false">Verdediging</button><button type="button" class="filter-button" data-position="midfield" aria-pressed="false">Middenveld</button><button type="button" class="filter-button" data-position="attack" aria-pressed="false">Aanval</button></div></div>
         <div id="dutch-gold-grid" class="dutch-gold-grid" aria-live="polite"></div>
         <p id="gold-filter-empty" class="empty" hidden>Geen spelers op deze positie in de huidige Gold Watch. De scout is nog niet klaar met z’n broodje.</p>
         <details class="method-disclosure"><summary>De goudpaspoort-regel <span aria-hidden="true">+</span></summary><aside id="dutch-gold-rule" class="release-rule" hidden></aside></details>
+      </section>
+
+      <section id="legends-watch" class="section legends-section" aria-labelledby="legends-title">
+        <div class="section-head"><div><p class="kicker">ICON · HERO · HALL OF FUT</p><h2 id="legends-title">Oude helden. Nieuwe schade.</h2></div><p>Legendarische namen, zonder nostalgietoeslag op de Meta Meter. Bevestigde spelers lichten op; definitieve stats en prijzen alleen met bewijs.</p></div>
+        <p id="legends-notice" class="legend-notice"></p>
+        <div id="legends-grid" class="legends-grid" aria-live="polite"></div>
       </section>
 
       <section id="marketwatch" class="section marketwatch-section" aria-labelledby="marketwatch-title">
@@ -238,10 +251,11 @@
       </footer>
     </main>
     <noscript><p class="shell">Schakel JavaScript in om de spelerskaarten en gepubliceerde updates te bekijken.</p></noscript>
-    <script src="refresh.js" defer></script>
-    <script src="card-art.js" defer></script>
-    <script src="app.js" defer></script>
-    <script src="news.js" defer></script>
-    <script src="motion.js" defer></script>
+    <script src="refresh.js?v=daily-squad-1" defer></script>
+    <script src="card-art.js?v=daily-squad-1" defer></script>
+    <script src="app.js?v=daily-squad-1" defer></script>
+    <script src="watch.js?v=daily-squad-1" defer></script>
+    <script src="news.js?v=daily-squad-1" defer></script>
+    <script src="motion.js?v=daily-squad-1" defer></script>
   </body>
 </html>

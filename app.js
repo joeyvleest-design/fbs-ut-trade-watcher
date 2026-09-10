@@ -173,6 +173,9 @@
     const monogram = make("span", "football-card__monogram", initials(player.name)); monogram.setAttribute("aria-hidden", "true");
     identity.append(monogram, make("p", "football-card__eyebrow", player.label || "META WATCH"), make("h3", "", player.name || "Nog geen spelerverhaal"), make("p", "football-card__role", player.role || "Wacht op bronbevestiging"));
     card.append(identity);
+    if (player.confirmed === true && safeLink(player.source?.url, "bron")) {
+      card.append(make("span", "confirmed-badge meta-confirmed", "✓ EA BEVESTIGD · GOLD"));
+    }
     const officialArt = window.FBSCardArt?.create(player, { baseProfile: true });
     if (officialArt) { card.classList.add("has-official-art"); card.append(officialArt); }
     const stats = make("dl", "football-card__stats");
@@ -213,6 +216,8 @@
     const reportIcon = make("span", "", "+"); reportIcon.setAttribute("aria-hidden", "true");
     reportTitle.append(reportIcon);
     report.append(reportTitle, notes, make("p", "football-card__meta-note", player.meta_note || "Meta-only · geen prijsgoochelwerk"));
+    if (player.meta_weights) report.append(make("p", "football-card__meta-note", `Rolgewichten: ${Object.entries(player.meta_weights).map(([label, weight]) => `${label} ${weight}%`).join(" · ")}`));
+    if (!playstyles.length && player.playstyles_note) report.append(make("p", "football-card__meta-note", player.playstyles_note));
     card.append(report);
     if (player.source?.url) {
       const source = safeLink(player.source.url, player.source.label || "Officiële bron", "meta-source");
@@ -225,19 +230,27 @@
     const rating = Number(player?.rating);
     return String(player?.nation_code || "").trim().toUpperCase() === "NL"
       && Number.isFinite(rating)
-      && rating > 75;
+      && rating > 75
+      && player.gender === "female"
+      && player.confirmed === true;
   }
 
   function renderMetaWatch(data, state = {}) {
     const grid = $("#meta-watch-grid");
     const method = $("#meta-watch-method");
     grid.replaceChildren(); method.replaceChildren(); method.hidden = true;
-    const players = Array.isArray(data?.players) ? data.players.filter(isEligibleDutchMetaPlayer) : [];
+    const names = new Set();
+    const players = Array.isArray(data?.players) ? data.players.filter(isEligibleDutchMetaPlayer).filter((player) => {
+      const name = String(player.name).trim().toLocaleLowerCase("nl-NL");
+      if (names.has(name)) return false;
+      names.add(name); return true;
+    }).slice(0, 2) : [];
     if (players.length === 0) {
       grid.append(empty("Geen Nederlandse 75+ kaart met genoeg bronbewijs. Dan houden we de kleedkamer lekker leeg."));
       return;
     }
     grid.replaceChildren(...players.map(renderMetaCard));
+    if (players.length < 2) grid.append(empty("De tweede Nederlandse meta-vrouw wacht nog op bronbevestiging."));
     if (state.error || state.stale) {
       method.hidden = false;
       method.append(make("p", "data-note", state.error ? "Profielen konden niet worden vernieuwd. Je ziet de eerder geladen basisprofielen." : "Deze basisprofielen zijn ouder dan een week; controleer de bron voor wijzigingen."));

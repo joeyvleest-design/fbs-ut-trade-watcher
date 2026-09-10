@@ -9,6 +9,10 @@
     ["virgil-van-dijk", "203376", 88],
     ["jill-roord", "240714", 85],
     ["denzel-dumfries", "233096", 83],
+    ["bart-verbruggen", "258498", 81],
+    ["mark-flekken", "211738", 77],
+    ["donyell-malen", "231447", 83],
+    ["brian-brobbey", "251810", 78],
   ];
   window.FBSCardArt = Object.freeze({
     create(player, { baseProfile = false } = {}) {
@@ -22,7 +26,7 @@
       image.src = `assets/cards/${match[0]}.webp`;
       image.alt = `Officiële EA SPORTS FC 27 Gold-kaart: ${player.name}, ${match[2]} ALG`;
       image.width = 440;
-      image.height = 580;
+      image.height = 548;
       image.loading = "lazy";
       image.decoding = "async";
       image.addEventListener("error", () => {

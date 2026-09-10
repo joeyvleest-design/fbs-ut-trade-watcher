@@ -8,11 +8,13 @@
   let lastRefresh = 0;
 
   function describe(kind, data, error = null, now = Date.now()) {
-    const rawDate = data?.generated_at || data?.updated_at;
+    const rawDate = kind === "daily" ? data?.checked_at : data?.generated_at || data?.updated_at;
     const timestamp = rawDate ? new Date(rawDate).getTime() : NaN;
     const sourceAt = Number.isFinite(timestamp) && timestamp <= now + 5 * 60 * 1000 ? new Date(timestamp).toISOString() : null;
     const ageMs = sourceAt ? Math.max(0, now - timestamp) : null;
-    const stale = Boolean(error) || ageMs === null || ageMs > (maxAge[kind] || maxAge.marketwatch);
+    const dailyExpired = kind === "daily" && data?.date !== new Intl.DateTimeFormat("en-CA", { timeZone: "Europe/Amsterdam", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date(now));
+    const limit = kind === "daily" && data?.status === "candidate" ? maxAge.market : (maxAge[kind] || maxAge.marketwatch);
+    const stale = Boolean(error) || dailyExpired || ageMs === null || ageMs > limit;
     let status = !data ? "unavailable" : error ? "unavailable" : stale ? "stale" : "current";
     if (data && !error && kind === "market" && data.mode === "demo") status = "demo";
     else if (data && !error && kind === "market" && data.market_data_licensed !== true) status = "unlicensed";

@@ -10,7 +10,7 @@
   let paused = pausePreference === "paused" || reduced.matches;
   const motionAllowed = () => !paused && !reduced.matches;
   const dates = new Intl.DateTimeFormat("nl-NL", { dateStyle: "medium", timeStyle: "short", timeZone: "Europe/Amsterdam" });
-  const labels = { market: "Marktprijzen", marketwatch: "Marketwatch", meta: "Meta Meter", releases: "Releases & Gold Watch" };
+  const labels = { daily: "Trade van de dag", market: "Marktprijzen", marketwatch: "Marketwatch", meta: "Meta-vrouwen", releases: "Releases & Gold / Promo", legends: "Icons, Heroes & Hall of FUT" };
   const make = (tag, className, text) => {
     const node = document.createElement(tag);
     node.className = className;
@@ -100,12 +100,10 @@
   window.addEventListener("resize", updateNavigation, { passive: true });
 
   function filterGold(animate = false) {
-    const roles = { defence: ["GK", "DM", "CB", "LB", "RB", "LWB", "RWB", "CV", "LV", "RV", "RA", "LA"], midfield: ["CDM", "CM", "CAM", "LM", "RM", "CVM"], attack: ["ST", "CF", "LW", "RW", "SP", "LS", "RS"] };
     const cards = [...document.querySelectorAll("#dutch-gold-grid .release-card")];
     let visible = 0;
     cards.forEach((card) => {
-      const position = String(card.dataset.position || "").toUpperCase();
-      card.hidden = selectedPosition !== "all" && !roles[selectedPosition]?.includes(position);
+      card.hidden = selectedPosition !== "all" && selectedPosition !== card.dataset.line;
       if (!card.hidden) {
         visible += 1;
         if (animate && motionAllowed()) {
@@ -113,6 +111,7 @@
         }
       }
     });
+    document.querySelectorAll("#dutch-gold-grid .watch-line").forEach((group) => { group.hidden = selectedPosition !== "all" && selectedPosition !== group.dataset.line; });
     if ($("#gold-count")) $("#gold-count").textContent = `${visible} ${visible === 1 ? "speler" : "spelers"} op de radar`;
     if ($("#gold-filter-empty")) $("#gold-filter-empty").hidden = visible > 0 || !cards.length;
     document.querySelectorAll(".filter-button").forEach((button) => {
@@ -141,9 +140,10 @@
       if (kind === "releases" && state?.data?.mode === "planning" && !state.error) description = "Planner · wacht op bevestiging";
       if (kind === "meta" && state?.data && !state.error) description = state.stale ? "Basisprofielen · brondata ouder" : "Basisprofielen · referentiedata";
       if (kind === "marketwatch" && ["source_gated", "awaiting_allowed_data"].includes(state?.data?.mode) && !state.error) description = "Wacht op bruikbare bronnen";
+      if (kind === "daily" && state?.data && !state.error) description = state.stale ? "Dagcheck is verouderd" : state.data.status === "candidate" ? "Kandidaat met prijsbewijs" : "Dagcheck klaar · geen koopcall";
       item.append(make("h3", "", label), make("p", "", description || "Status onbekend"));
       const date = state?.sourceAt ? new Date(state.sourceAt) : null;
-      const time = make("time", "", date ? `Brondata: ${dates.format(date)}` : "Geen brondatum beschikbaar");
+      const time = make("time", "", date ? `${kind === "daily" ? "Selectiecheck" : "Brondata"}: ${dates.format(date)}` : "Geen brondatum beschikbaar");
       if (date) time.dateTime = date.toISOString();
       item.append(time);
       return item;
@@ -152,7 +152,7 @@
     const states = [...sourceStates.values()];
     const errors = states.filter((state) => state.error).length;
     const old = states.filter((state) => state.stale && state.kind !== "market").length;
-    $("#update-summary").textContent = errors ? `${errors} ${errors === 1 ? "onderdeel" : "onderdelen"} tijdelijk niet bereikbaar` : old ? "Oudere brondata · bekijk de laatste publicaties" : states.length === 4 ? "Alle onderdelen geladen · bekijk de brondata" : "Bronstatus laden…";
+    $("#update-summary").textContent = errors ? `${errors} ${errors === 1 ? "onderdeel" : "onderdelen"} tijdelijk niet bereikbaar` : old ? "Oudere brondata · bekijk de laatste publicaties" : states.length === Object.keys(labels).length ? "Alle onderdelen geladen · bekijk de brondata" : "Bronstatus laden…";
   }
 
   const amsterdamParts = new Intl.DateTimeFormat("en-GB", { timeZone: "Europe/Amsterdam", year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", hourCycle: "h23" });

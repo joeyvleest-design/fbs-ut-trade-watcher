@@ -313,3 +313,29 @@ html:has(body.motion-paused) { scroll-behavior: auto; }
   body[data-page="dashboard"] .dutch-gold-grid { grid-template-columns: 1fr; }.filter-button { padding: 7px 9px; font-size: .57rem; }
   .updates-grid { grid-template-columns: 1fr; }.updates-details summary > span:last-child { font-size: 0; }.updates-details summary b { font-size: 16px; }
 }
+
+/* The daily transfer desk and a balanced Dutch squad. */
+body[data-page="dashboard"] .daily-trade { margin: 5px 0 28px; display: grid; grid-template-columns: .75fr 1.25fr; gap: 35px; padding: 30px 34px; border: 1px solid #efc5ca; border-radius: 20px; background: linear-gradient(110deg, #fff 0%, #fff 55%, #fff0f1 100%); box-shadow: 0 8px 30px #84162606; }
+.daily-trade-heading { border-right: 1px solid #ebd5d8; padding-right: 26px; }
+.daily-trade-heading .kicker { color: #a71c31; font-size: .58rem; }.daily-trade-heading h2 { font-size: clamp(1.8rem, 3vw, 2.7rem); letter-spacing: -.055em; }.daily-trade-heading > p:last-child { font-size: .8rem; line-height: 1.7; color: #776a6e; }
+.daily-topline { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-bottom: 14px; font-size: .59rem; color: #79676b; }
+.daily-state { background: #9f1730; color: #fff; border-radius: 5px; padding: 6px 8px; font-weight: 800; letter-spacing: .06em; }
+#daily-trade-card h3 { font-size: 1.3rem; line-height: 1.25; letter-spacing: -.03em; }.daily-summary, #daily-trade-card > p { font-size: .79rem; color: #695e62; line-height: 1.7; }
+.daily-method { border-top: 1px solid #ebd5d8; margin-top: 17px; padding-top: 14px; }.daily-method summary { cursor: pointer; font-weight: 700; font-size: .7rem; padding: 5px 0; }.daily-method p { font-size: .73rem; line-height: 1.75; color: #6c6064; }
+.daily-prices { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 12px; }.daily-prices small,.daily-prices strong { display: block; }.daily-prices small { font-size: .62rem; }.daily-prices strong { font-size: .92rem; margin-top: 6px; }
+.confirmed-badge { display: inline-flex; align-items: center; width: fit-content; gap: 5px; background: #e8f3ec; border: 1px solid #bddbc7; color: #2b6444; padding: 5px 8px; font-size: .52rem; font-weight: 800; letter-spacing: .055em; border-radius: 5px; margin-bottom: 10px; }
+.meta-confirmed { margin: 14px 26px 0; position: relative; z-index: 1; }
+body[data-page="dashboard"] #dutch-gold-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 30px 24px; }
+.watch-line { min-width: 0; }.watch-line-heading { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 12px; border-bottom: 2px solid #b82036; padding-bottom: 12px; }.watch-line-heading h3 { font-size: 1.05rem; }.watch-line-heading span { font-size: .6rem; color: #7e7073; }.watch-line-cards { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 13px; align-items: start; }
+.watch-line[hidden], .release-card[hidden] { display: none !important; }
+.filter-button { min-height: 44px; }.filter-group { flex-wrap: wrap; }
+.legend-notice { font-size: .78rem; color: #7e6b62; border-left: 3px solid #bd9b53; padding: 8px 16px; line-height: 1.7; }
+.legends-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 20px; margin-top: 24px; align-items: start; }
+.legend-card { min-width: 0; position: relative; overflow: hidden; border: 1px solid #e2dccf; border-radius: 15px; padding: 25px; background: linear-gradient(145deg,#fffcf3,#fff 68%); }
+.legend-card--confirmed { border-top: 3px solid #bba16a; }.legend-card > .kicker { font-size: .55rem; color: #8b7547; letter-spacing: .16em; }.legend-card h3 { font-size: 1.45rem; letter-spacing: -.035em; margin: 8px 0; }.legend-emblem { position: absolute; right: 15px; top: 5px; font-size: 75px; color: #bda5741a; pointer-events: none; }
+.legend-role { color: #83796a; font-size: .67rem; }.legend-numbers { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; border-top: 1px solid #e8e1d4; padding-top: 15px; margin: 18px 0; }.legend-numbers small,.legend-numbers strong { display: block; }.legend-numbers small { font-size: .57rem; letter-spacing: .13em; color: #8c806c; }.legend-numbers strong { font-size: .85rem; margin-top: 5px; }
+.legend-meta, .legend-card > p { font-size: .74rem; line-height: 1.7; color: #685f54; }.legend-scope { font-size: .65rem !important; color: #8d8070 !important; }.legend-preview { background: #f6f1e4; border-radius: 8px; padding: 12px; margin: 15px 0; }.legend-preview summary { cursor: pointer; font-size: .71rem; font-weight: 700; }.legend-preview p { font-size: .7rem; line-height: 1.7; }.legend-preview small { display: block; font-size: .64rem; line-height: 1.7; }.legend-checked { display: block; color: #8d8275; margin-top: 10px; font-size: .59rem; }
+.legend-card .release-price { margin-top: 16px; }.legend-card .release-price strong { font-size: .88rem; }.legend-pending { border-style: dashed; background: #f8f7f4; }
+@media(max-width:1100px) { body[data-page="dashboard"] #dutch-gold-grid { grid-template-columns: 1fr; }.legends-grid { grid-template-columns: repeat(2,minmax(0,1fr)); } }
+@media(max-width:760px) { body[data-page="dashboard"] .daily-trade { grid-template-columns: 1fr; gap: 18px; padding: 23px; margin-top: 0; }.daily-trade-heading { border-right: 0; border-bottom: 1px solid #ebd5d8; padding: 0 0 14px; }.daily-trade-heading > p:last-child { margin-bottom: 0; }.daily-topline { font-size: .55rem; }.legends-grid { grid-template-columns: 1fr; }.legend-card { padding: 23px; }.watch-line-heading span { font-size: .57rem; } }
+@media(max-width:420px) { .watch-line-cards { grid-template-columns: 1fr; }.daily-prices { grid-template-columns: 1fr; } }

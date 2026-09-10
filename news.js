@@ -159,6 +159,7 @@
     const dutch = options.dutch || isDutchGold(card);
     const article = make("article", `release-card${dutch ? " release-card--dutch" : ""}`);
     article.dataset.position = card.position || "";
+    article.dataset.line = card.line || "";
     const visual = make("div", "release-card__visual");
     visual.setAttribute("aria-hidden", "true");
     visual.append(make("span", "release-card__halo"), make("span", "release-card__monogram", initials(card.name)));
@@ -179,7 +180,8 @@
     }
 
     const content = make("div", "release-card__content");
-    content.append(make("p", "release-card__eyebrow", dutch ? "GOLD WATCH · NEDERLAND" : kindLabel(options.kind || card.card_type)));
+    content.append(make("p", "release-card__eyebrow", dutch ? `${window.FBSWatch?.isPromo(card) ? "PROMO" : "GOLD"} WATCH · NEDERLAND` : kindLabel(options.kind || card.card_type)));
+    if (card.confirmed === true && safeLink(card.source || options.source)) content.append(make("span", "confirmed-badge", `✓ EA BEVESTIGD · ${window.FBSWatch?.isPromo(card) ? "PROMO" : "GOLD"}`));
     content.append(make("h3", "", card.name || "Nog niet bevestigd"));
     content.append(make("p", "release-card__role", card.meta_label || card.position || "Wacht op zichtbare stats"));
 
@@ -195,6 +197,7 @@
     reportTitle.append(reportIcon);
     report.append(reportTitle, make("p", "release-card__meta", card.meta_text || "Stats nog niet bevestigd. We gaan er niet op gokken."));
     if (card.meta_basis) report.append(make("p", "release-card__basis", card.meta_basis));
+    if (card.meta_weights) report.append(make("p", "release-card__basis", `Rolgewichten: ${Object.entries(card.meta_weights).map(([label, weight]) => `${label} ${weight}%`).join(" · ")}`));
     if (card.release_note) report.append(make("p", "release-card__note", card.release_note));
     content.append(report);
     const source = safeLink(card.source || options.source);
@@ -239,28 +242,25 @@
   function renderDutchGold(data, marketData, metaData) {
     const grid = $("#dutch-gold-grid");
     const rule = $("#dutch-gold-rule");
-    const seen = new Set();
     const metaNames = metaPlayerNames(data, metaData);
-    const releaseCards = (data.releases || []).flatMap((release) => (release.cards || []).map((card) => ({ ...card, releaseSource: release.source, releaseKind: release.kind })));
-    const candidates = [...(data.dutch_gold_watch || []), ...releaseCards]
-      .filter(isDutchGold)
-      .filter((card) => !metaNames.has(normalizedPlayerName(card.name)))
-      .filter((card) => {
-        const key = String(card.id || `${card.name}-${card.position}`);
-        if (seen.has(key)) return false;
-        seen.add(key);
-        return true;
-      });
+    const releaseCards = (data.releases || []).filter((release) => release.status === "confirmed").flatMap((release) => (release.cards || []).map((card) => ({ ...card, confirmed: card.confirmed === true || card.status === "confirmed", releaseSource: release.source, releaseKind: release.kind })));
+    const roster = window.FBSWatch.selectRoster([...(data.dutch_gold_watch || []), ...releaseCards], [...metaNames]);
     grid.replaceChildren();
-    if (!candidates.length) {
-      grid.append(empty("Nog geen bevestigde Nederlandse Gold-kaart op het bord. We gaan er geen uit een pakje trekken."));
-    } else {
-      candidates.forEach((card) => grid.append(renderCard(card, { dutch: true, kind: card.releaseKind, source: card.releaseSource, marketData })));
+    for (const line of window.FBSWatch.lines) {
+      const group = make("section", "watch-line"); group.dataset.line = line;
+      const heading = make("header", "watch-line-heading");
+      heading.append(make("h3", "", window.FBSWatch.names[line]), make("span", "", `${roster[line].length}/2 bevestigde opties`));
+      const cards = make("div", "watch-line-cards");
+      roster[line].forEach((card) => cards.append(renderCard(card, { dutch: true, kind: card.releaseKind, source: card.releaseSource, marketData })));
+      for (let index = roster[line].length; index < 2; index += 1) cards.append(empty("Optie wacht op een bevestigde Nederlandse mannenkaart vanaf 75 ALG."));
+      group.append(heading, cards); grid.append(group);
     }
     rule.hidden = !data.dutch_gold_rule;
     rule.replaceChildren();
     if (data.dutch_gold_rule) {
       rule.append(make("strong", "", "DE GOUDPASPOORT-REGEL"), make("p", "", data.dutch_gold_rule));
+      const checked = new Date(data.dutch_gold_checked_at || NaN);
+      if (!Number.isNaN(checked.getTime())) rule.append(make("p", "", `Gold-profielen gecontroleerd ${dateFormatter.format(checked)}`));
     }
   }
 
