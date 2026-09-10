@@ -1,0 +1,71 @@
+{
+  "game": "FC27",
+  "updated_at": "2026-09-10T09:07:52Z",
+  "notice": "De artikelen zijn afzonderlijk redactioneel gecontroleerd. Verwijzingen naar traders komen uit de genoemde nieuwsartikelen; X is niet rechtstreeks gecontroleerd. Als alleen de publicatiedag bekend is, tonen we geen tijd. De hercontrolegrens is onze eigen deadline, niet die van EA; daarna gaat een bericht naar het archief totdat het opnieuw is nagekeken.",
+  "items": [
+    {
+      "id": "fc27-icons-rumour-20260907",
+      "title": "Icons in de geruchtenmolen: hogere ondergrens?",
+      "summary": "Athlon beschrijft een lek van FUT Police en NickRTFM-commentaar over hogere Icon-ratings en aangepaste PlayStyles. De artikelbron noemt dit onbevestigd; wij hebben geen officiële bevestiging vastgesteld.",
+      "status": "rumour",
+      "source": {
+        "label": "Athlon Sports · secundaire rapportage",
+        "url": "https://athlonsports.com/sports-video-games/ea-fc-27-icon-changes-leak"
+      },
+      "published_at": "2026-09-07T12:18:00Z",
+      "published_precision": "minute",
+      "checked_at": "2026-09-10T09:07:52Z",
+      "expires_at": "2026-09-12T09:07:52Z",
+      "impact": "Duiding: relevant om latere officiële Icon-profielen te vergelijken. Gelekte ratings en PlayStyles komen niet in onze bevestigde kaarten of Meta-Meter; dit is geen reden om coins uit te geven.",
+      "original_source_url": null
+    },
+    {
+      "id": "fc27-dfg-dutch-candidates-rumour-20260904",
+      "title": "Malen en Aké genoemd als mogelijke promokandidaten",
+      "summary": "Khel Now noemt Malen en Aké in gelekte Destined for Glory-koppels, toegeschreven aan connFUT. Het artikel zegt dat de definitieve selectie nog niet vaststaat; een kandidaat is geen bevestigde promokaart.",
+      "status": "rumour",
+      "source": {
+        "label": "Khel Now · secundaire rapportage",
+        "url": "https://khelnow.com/gaming/ea-fc-27-destined-for-glory-team-1-candidates-leaked-date-voting-202608"
+      },
+      "published_at": "2026-09-04T00:00:00Z",
+      "published_precision": "date",
+      "checked_at": "2026-09-10T09:07:52Z",
+      "expires_at": "2026-09-12T09:07:52Z",
+      "impact": "Duiding: twee Nederlandse namen om bij de officiële release opnieuw te controleren. Geen promo-artwork, aangepaste stats, in/out-of-packs-status of aankoopadvies op basis van dit gerucht.",
+      "original_source_url": null
+    },
+    {
+      "id": "fc27-liga-mx-partners-official-20260902",
+      "title": "EA bevestigt de terugkeer van Liga MX",
+      "summary": "EA bevestigt alle achttien Liga MX-clubs en de terugkeer van de officiële Lazio-licentie in FC27. Het bericht bevat geen specifieke Ultimate Team-promoselectie of kaartprijzen.",
+      "status": "confirmed_official",
+      "source": {
+        "label": "Electronic Arts · officieel persbericht",
+        "url": "https://news.ea.com/press-releases/press-releases-details/2026/EA-SPORTS-FC-27-Brings-Fans-Closer-to-The-Worlds-Game-With-New-Partners-Leagues-and-Stadiums/default.aspx"
+      },
+      "published_at": "2026-09-02T00:00:00Z",
+      "published_precision": "date",
+      "checked_at": "2026-09-10T09:07:52Z",
+      "expires_at": "2026-09-16T00:00:00Z",
+      "impact": "Duiding: nieuwe club- en competitiecontext voor het bouwen van teams. Controleer afzonderlijke UT-items en chemistry-links wanneer ze beschikbaar zijn; meer licenties bewijst geen koersstijging.",
+      "original_source_url": null
+    },
+    {
+      "id": "fc27-final-whistle-carryover-official-20260828",
+      "title": "Final Whistle-beloningen zijn geen startdagbudget",
+      "summary": "EA zegt dat verdiende Final Whistle-carryoverbeloningen vanaf 23 oktober naar FC27 komen. Hiervoor zijn hetzelfde EA-account en dezelfde platformfamilie nodig; claimen moet binnen een maand.",
+      "status": "confirmed_official",
+      "source": {
+        "label": "EA SPORTS · officiële Pre-Season-notities",
+        "url": "https://www.ea.com/games/ea-sports-fc/fc-26/news/fc-26-pre-season"
+      },
+      "published_at": "2026-08-28T00:00:00Z",
+      "published_precision": "date",
+      "checked_at": "2026-09-10T09:07:52Z",
+      "expires_at": "2026-09-11T00:00:00Z",
+      "impact": "Duiding: reken deze specifieke beloningen niet als beschikbare FC27-startcoins. Dit betreft FC26-opdrachten met FC27-beloningen, geen nieuwe FC27-promokaarten; actuele opdrachtbeschikbaarheid is hier niet bevestigd.",
+      "original_source_url": null
+    }
+  ]
+}
