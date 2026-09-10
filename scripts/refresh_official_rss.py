@@ -11,7 +11,7 @@ from __future__ import annotations
 
 import argparse
 from dataclasses import dataclass
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from html import unescape
 import json
 import os
@@ -19,7 +19,7 @@ from pathlib import Path
 import re
 import tempfile
 from typing import Callable
-from urllib.error import URLError
+from urllib.error import HTTPError, URLError
 from urllib.parse import urlsplit
 from urllib.request import Request, urlopen
 from xml.etree import ElementTree
@@ -27,6 +27,7 @@ from zoneinfo import ZoneInfo
 
 
 EA_PRESS_RSS = "https://news.ea.com/rss/pressrelease.aspx"
+PUBLISHED_SITE_URL = "https://joeyvleest-design.github.io/fbs-ut-trade-watcher/"
 AMSTERDAM = ZoneInfo("Europe/Amsterdam")
 FC_PATTERN = re.compile(r"\b(?:ea\s+sports\s+fc|football\s+ultimate\s+team|ultimate\s+team|\bfut\b|fc\s*2[5-9])\b", re.IGNORECASE)
 TAG_PATTERN = re.compile(r"<[^>]+>")
@@ -88,6 +89,8 @@ def parse_rss(raw: bytes, source_url: str) -> list[FeedEntry]:
         root = ElementTree.fromstring(raw)
     except ElementTree.ParseError as exc:
         raise ValueError("EA Press RSS returned invalid XML") from exc
+    if root.tag != "rss" or root.find("channel") is None:
+        raise ValueError("EA Press RSS did not return an RSS channel")
     entries: list[FeedEntry] = []
     for node in root.findall(".//item"):
         title = _clean(node.findtext("title"))
@@ -102,13 +105,48 @@ def relevant_entries(entries: list[FeedEntry]) -> list[FeedEntry]:
     return [entry for entry in entries if FC_PATTERN.search(f"{entry.title} {entry.summary}")][:3]
 
 
-def scheduled_kind(now: datetime) -> str | None:
-    """Return a local Europe/Amsterdam run window, tolerant of Actions delays."""
+def scheduled_slot(now: datetime, cron: str | None = None) -> datetime | None:
+    """Resolve the intended UTC slot, rather than the delayed runner start time.
+
+    Separate winter/summer cron entries let Actions tell us which candidate fired.
+    Only the candidate that was actually 08:00 or 19:01 in Amsterdam is accepted.
+    The legacy local worker can still use its bounded wall-clock window.
+    """
+    now = now.astimezone(timezone.utc)
+    if cron is not None:
+        candidates = {
+            "0 6 * * *": (6, 0, None),
+            "0 7 * * *": (7, 0, None),
+            "1 17 * * 0,3,5": (17, 1, {2, 4, 6}),
+            "1 18 * * 0,3,5": (18, 1, {2, 4, 6}),
+        }
+        if cron not in candidates:
+            raise ValueError("Unrecognised FBS schedule expression")
+        hour, minute, weekdays = candidates[cron]
+        slot = now.replace(hour=hour, minute=minute, second=0, microsecond=0)
+        if slot > now:
+            slot -= timedelta(days=1)
+        if weekdays is not None and slot.weekday() not in weekdays:
+            return None
+        local = slot.astimezone(AMSTERDAM)
+        expected_hour = 8 if weekdays is None else 19
+        return slot if local.hour == expected_hour else None
+
     local = now.astimezone(AMSTERDAM)
     if local.hour == 8 and local.minute <= 30:
-        return "morning"
-    if local.hour != 19 or local.minute > 30:
+        return local.replace(minute=0, second=0, microsecond=0).astimezone(timezone.utc)
+    if local.hour == 19 and 1 <= local.minute <= 30 and local.weekday() in {2, 4, 6}:
+        return local.replace(minute=1, second=0, microsecond=0).astimezone(timezone.utc)
+    return None
+
+
+def scheduled_kind(now: datetime, cron: str | None = None) -> str | None:
+    slot = scheduled_slot(now, cron)
+    if slot is None:
         return None
+    local = slot.astimezone(AMSTERDAM)
+    if local.hour == 8:
+        return "morning"
     if local.weekday() == 2:
         return "totw"
     if local.weekday() == 4:
@@ -116,6 +154,55 @@ def scheduled_kind(now: datetime) -> str | None:
     if local.weekday() == 6:
         return "weekend_sbc"
     return None
+
+
+def _timestamp(value: object) -> datetime | None:
+    if not isinstance(value, str):
+        return None
+    try:
+        parsed = datetime.fromisoformat(value.replace("Z", "+00:00"))
+        return parsed.astimezone(timezone.utc) if parsed.tzinfo else None
+    except ValueError:
+        return None
+
+
+def fetch_published_json(url: str) -> bytes:
+    request = Request(url, headers={"Accept": "application/json", "Cache-Control": "no-cache", "User-Agent": "FBS-UT-Trade-Watcher/1.0"})
+    with urlopen(request, timeout=20) as response:
+        raw = response.read(2_000_001)
+    if len(raw) > 2_000_000:
+        raise ValueError("Published JSON exceeds the snapshot size limit")
+    return raw
+
+
+def preserve_published_data(repository_root: Path, *, fetcher: Callable[[str], bytes] = fetch_published_json) -> list[str]:
+    """Carry newer, valid public Pages data into the next UI artifact unchanged.
+
+    The deployed artifact is newer than git after a successful news run. Only the
+    two existing public JSON URLs are read; failures never change local content.
+    Restoring these bytes does not count as a new source check.
+    """
+    restored = []
+    data_root = _site_root(repository_root) / "data"
+    for filename in ("marketwatch.json", "releases.json"):
+        try:
+            payload = json.loads(fetcher(f"{PUBLISHED_SITE_URL}data/{filename}"))
+            if not isinstance(payload, dict):
+                raise ValueError("Published snapshot must be a JSON object")
+            published_at = _timestamp(payload.get("updated_at"))
+            if published_at is None:
+                raise ValueError("Published snapshot has no valid update timestamp")
+            required_lists = ("article", "signals", "sources") if filename == "marketwatch.json" else ("releases", "dutch_gold_watch")
+            if not isinstance(payload.get("title"), str) or not all(isinstance(payload.get(key), list) for key in required_lists):
+                raise ValueError("Published snapshot is missing expected content")
+            local = _read_json(data_root / filename)
+            local_at = _timestamp(local.get("updated_at"))
+            if local_at is None or published_at > local_at:
+                _write_json_atomically(data_root / filename, payload)
+                restored.append(filename)
+        except (OSError, URLError, ValueError) as exc:
+            print(f"Could not preserve public {filename}: {type(exc).__name__}; retaining the repository copy.")
+    return restored
 
 
 def _marketwatch_payload(now: datetime, kind: str, source_url: str, entries: list[FeedEntry]) -> dict[str, object]:
@@ -199,17 +286,28 @@ def refresh(
     now: datetime,
     rss_url: str = EA_PRESS_RSS,
     scheduled: bool = False,
+    scheduled_cron: str | None = None,
     fetcher: Callable[[str], bytes] = fetch_rss,
 ) -> RefreshResult:
-    kind = scheduled_kind(now) if scheduled else "manual"
+    kind = scheduled_kind(now, scheduled_cron) if scheduled else "manual"
     if kind is None:
         return RefreshResult(due=False, kind=None, marketwatch=None)
     site_root = _site_root(repository_root)
     data_root = site_root / "data"
     if not (data_root / "marketwatch.json").is_file() or not (data_root / "releases.json").is_file():
         raise FileNotFoundError("Expected public data/marketwatch.json and data/releases.json")
+    slot = scheduled_slot(now, scheduled_cron) if scheduled else None
+    if slot is not None:
+        previous = _read_json(data_root / "marketwatch.json")
+        automation = previous.get("automation", {})
+        previous_slot = _timestamp(automation.get("scheduled_for")) if isinstance(automation, dict) else None
+        previous_check = _timestamp(previous.get("updated_at"))
+        if any(value is not None and value >= slot for value in (previous_slot, previous_check)):
+            return RefreshResult(due=False, kind=kind, marketwatch=None)
     entries = relevant_entries(parse_rss(fetcher(rss_url), rss_url))
     marketwatch = _marketwatch_payload(now, kind, rss_url, entries)
+    if slot is not None:
+        marketwatch["automation"]["scheduled_for"] = _utc_timestamp(slot)
     _write_json_atomically(data_root / "marketwatch.json", marketwatch)
     if kind != "morning":
         _update_release_check(data_root / "releases.json", now, kind, entries)
@@ -250,6 +348,9 @@ def _arguments(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--site-root", type=Path, default=Path.cwd(), help="Static site root or repository root containing site/.")
     parser.add_argument("--rss-url", default=EA_PRESS_RSS)
     parser.add_argument("--scheduled", action="store_true", help="Run only in a due Europe/Amsterdam schedule window.")
+    parser.add_argument("--scheduled-cron", help="Exact GitHub event schedule; resolves the intended slot even if the runner starts late.")
+    parser.add_argument("--preserve-published", action="store_true", help="Restore newer public Pages briefing/release JSON before building an artifact.")
+    parser.add_argument("--allow-source-failure", action="store_true", help="Let UI deployment continue with existing data when the RSS check fails.")
     parser.add_argument("--post-discord", action="store_true", help="Post the source-backed article to DISCORD_WEBHOOK_URL after a due refresh.")
     parser.add_argument("--now", help="ISO timestamp for deterministic local testing.")
     return parser.parse_args(argv)
@@ -264,19 +365,35 @@ def _parse_now(value: str | None) -> datetime:
 
 def main(argv: list[str] | None = None) -> int:
     args = _arguments(argv)
+    def output(*, deploy: bool, refreshed: bool) -> None:
+        if path := os.getenv("GITHUB_OUTPUT"):
+            with Path(path).open("a", encoding="utf-8") as handle:
+                handle.write(f"deploy={'true' if deploy else 'false'}\nrefreshed={'true' if refreshed else 'false'}\n")
+
     try:
-        result = refresh(args.site_root, now=_parse_now(args.now), rss_url=args.rss_url, scheduled=args.scheduled)
+        if args.preserve_published:
+            restored = preserve_published_data(args.site_root)
+            if restored:
+                print(f"Preserved newer published data: {', '.join(restored)} (original timestamps retained).")
+        result = refresh(args.site_root, now=_parse_now(args.now), rss_url=args.rss_url, scheduled=args.scheduled, scheduled_cron=args.scheduled_cron)
         if not result.due:
-            print("No FBS schedule window is due in Europe/Amsterdam; retaining the published briefing.")
+            output(deploy=False, refreshed=False)
+            print("FBS schedule is not due or its intended slot was already published; no deployment or Discord post.")
             return 0
+        output(deploy=True, refreshed=True)
         if args.post_discord and (webhook := os.getenv("DISCORD_WEBHOOK_URL")):
             assert result.marketwatch is not None
-            post_discord(webhook, discord_article(result.marketwatch))
+            try:
+                post_discord(webhook, discord_article(result.marketwatch))
+            except (OSError, URLError, ValueError) as exc:
+                print(f"Discord post failed ({type(exc).__name__}); the verified website update can still deploy.")
         print(f"Refreshed {result.kind} Marketwatch from EA Press RSS.")
         return 0
     except (OSError, URLError, ValueError) as exc:
-        print(f"Official RSS refresh failed; keeping the last published briefing: {exc}")
-        return 1
+        output(deploy=args.allow_source_failure and not args.scheduled, refreshed=False)
+        reason = f"HTTP {exc.code}" if isinstance(exc, HTTPError) else type(exc).__name__
+        print(f"Official RSS refresh failed ({reason}); existing content and source-check timestamps are retained.")
+        return 0 if args.allow_source_failure and not args.scheduled else 1
 
 
 if __name__ == "__main__":
