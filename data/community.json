@@ -1,5 +1,13 @@
 {
+  "discord_server_url": "https://discord.com/channels/1546496687021883444",
   "discord_invite_url": null,
-  "invite_status": "setup-pending",
-  "member_limit": 4
+  "invite_status": "closed",
+  "member_limit": 4,
+  "channels": {
+    "chat": { "url": "https://discord.com/channels/1546496687021883444/1546496688091566210", "status": "available" },
+    "trading": { "url": "https://discord.com/channels/1546496687021883444/1547521076207030383", "status": "available" },
+    "chemistry": { "url": "https://discord.com/channels/1546496687021883444/1547521225553739786", "status": "available" }
+  },
+  "automation_status": "verified",
+  "chemistry_status": "pending"
 }
