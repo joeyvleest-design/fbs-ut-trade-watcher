@@ -1,72 +1,211 @@
 {
   "mode": "verified",
-  "updated_at": "2026-09-07T12:00:00+00:00",
-  "title": "NL 75+ Meta Watch",
-  "methodology": "De Bibs Meta-Meter is een eigen basisprofielscore: 25% snelheid, 25% schieten, 20% passen, 20% dribbelen en 10% fysiek. Alleen Nederlandse basiskaarten boven 75 ALG met officiële basisstats tellen mee; geen prijs, coins of marktvoorspelling. PlayStyles tellen niet mee in de score en verschijnen alleen als EA ze officieel bij de rating publiceert. Minder spannend, wel minder gebakken lucht.",
-  "notice": "De huidige officiële EA-ratingpagina's publiceren voor deze twee kaarten geen PlayStyles. Zodra EA ze wel toont, verschijnen ze hier als aparte chips — tot die tijd geen verzonnen sterretjes.",
+  "updated_at": "2026-09-10T08:51:57Z",
+  "title": "Nederlandse vrouwen · Meta-Meter",
+  "methodology": "De Bibs Meta-Meter is een eigen rolgewogen basisprofielscore uit zes officiële FC 27-kaartstats: som(stat × gewicht) / 100, afgerond op hele punten. Elk profiel toont zijn eigen gewichten (samen 100%). Alleen bronbevestigde Nederlandse Gold-basiskaarten boven 75 ALG. Dit geeft geen prijsadvies en is geen EA-meta-rating of gameplaytest; prijs, chemistry, lichaamsbouw en PlayStyles tellen niet mee. Vergelijk profielen binnen dezelfde rol, niet blind tussen rollen.",
+  "methodology_version": "role-weighted-base-v1",
+  "meta_role_weights": {
+    "goalkeeper": {
+      "DUI": 25,
+      "BEH": 15,
+      "TRP": 10,
+      "REF": 25,
+      "SNL": 5,
+      "POS": 20
+    },
+    "defense": {
+      "SNL": 20,
+      "SCH": 0,
+      "PAS": 10,
+      "DRI": 10,
+      "VRD": 35,
+      "FYS": 25
+    },
+    "midfield": {
+      "SNL": 15,
+      "SCH": 10,
+      "PAS": 25,
+      "DRI": 20,
+      "VRD": 15,
+      "FYS": 15
+    },
+    "attack": {
+      "SNL": 25,
+      "SCH": 30,
+      "PAS": 10,
+      "DRI": 25,
+      "VRD": 0,
+      "FYS": 10
+    },
+    "attacking_midfield": {
+      "SNL": 15,
+      "SCH": 25,
+      "PAS": 20,
+      "DRI": 25,
+      "VRD": 0,
+      "FYS": 15
+    }
+  },
+  "notice": "Twee Nederlandse vrouwen apart van de acht mannen in Gold/Promo Watch. De broncontrole bevestigt basiskaartgegevens, niet actuele prijzen of promodeelname. Geen verifieerbare PlayStyle-naam in de geraadpleegde profieltekst? Dan voegen we geen label toe; een leeg veld betekent niet ‘geen PlayStyles’.",
   "players": [
     {
-      "slot": "starter",
-      "label": "MIDDENVELD-META-PROFIEL",
-      "name": "Frenkie de Jong",
-      "nation": "Nederland",
-      "nation_code": "NL",
-      "position": "CM",
-      "rating": 86,
-      "meta_index": 78,
-      "role": "Press-ontsnappingsdienst · speelt zich uit de druk alsof de tegenstander een slechte groepsapp-melding is",
-      "meta_note": "86 ALG-basisitem; dit is een profielscore, geen prijsdoel, koopadvies of universele ‘beste middenvelder’-claim.",
-      "strengths": [
-        "85 PAS + 84 DRI: een rustige uitweg als de tegenstander met drie man op je middenveld springt.",
-        "77 SNL + 77 FYS: genoeg motor om het tempo bij te houden zonder meteen een bulldozerpak aan te trekken."
-      ],
-      "caveats": [
-        "70 SCH: voor een afmaker in de zestien is een aanvallender profiel logischer.",
-        "Chemistry-links tellen niet mee in deze meter. PlayStyles verschijnen los erbij zodra EA ze publiceert; check die dan nog zelf."
-      ],
-      "stats": [
-        {"label": "SNL", "value": 77},
-        {"label": "SCH", "value": 70},
-        {"label": "PAS", "value": 85},
-        {"label": "DRI", "value": 84},
-        {"label": "FYS", "value": 77}
-      ],
-      "playstyles": [],
-      "source": {
-        "label": "EA SPORTS FC 27 Ratings · Frenkie de Jong",
-        "url": "https://www.ea.com/nl/games/ea-sports-fc/ratings/player-ratings/frenkie-de-jong/228702"
-      }
-    },
-    {
+      "id": "nl-women-meta-vivianne-miedema",
       "slot": "elite",
-      "label": "ELITE META-PROFIEL",
+      "label": "AANVALLENDE MIDDENVELDER",
       "name": "Vivianne Miedema",
       "nation": "Nederland",
       "nation_code": "NL",
+      "gender": "female",
+      "gender_evidence": {
+        "basis": "official_competition_context",
+        "competition": "Barclays WSL",
+        "competition_category": "women",
+        "source_url": "https://www.ea.com/nl/games/ea-sports-fc/ratings/player-ratings/vivianne-miedema/233746",
+        "verified_at": "2026-09-10T08:51:57Z"
+      },
+      "line": "midfield",
       "position": "CAM",
+      "club": "Manchester City",
+      "competition": "Barclays WSL",
+      "status": "source_backed_base_profile",
+      "confirmed": true,
+      "confirmed_at": "2026-09-10T08:51:57Z",
+      "base_item_tier": "gold",
       "rating": 87,
+      "market_item_id": null,
       "meta_index": 84,
-      "role": "Complete aanvallende CAM · speelt alsof het plan al op haar koelkast hing",
-      "meta_note": "Topslot op basis van profiel; geen prijsdoel of universele ‘beste speler’-claim. De groepschat mag het oneens zijn.",
+      "meta_role": "attacking_midfield",
+      "meta_weights": {
+        "SNL": 15,
+        "SCH": 25,
+        "PAS": 20,
+        "DRI": 25,
+        "VRD": 0,
+        "FYS": 15
+      },
+      "role": "Aanvallende CAM · draait, schiet en laat de verdediging een evaluatiegesprek aanvragen",
+      "meta_note": "Eigen rolgewogen basisprofielscore, afgerond op hele punten: som(stat × gewicht) / 100. Geen EA-meta-rating, gameplaytest, prijsadvies of promo-claim. PlayStyles, lichaamsbouw en chemistry tellen niet mee; scores tussen verschillende rollen zijn niet rechtstreeks vergelijkbaar.",
       "strengths": [
-        "86 SCH + 86 DRI: afwerken én draaien zonder een excuus-PDF erbij.",
-        "83 SNL en 82 FYS houden de aanvallende rol lekker direct en vervelend voor tegenstanders."
+        "86 SCH + 86 DRI: de zwaarst wegende aanvallende kanten van dit CAM-profiel.",
+        "83 SNL en 82 FYS ondersteunen de directe rol; 80 PAS houdt de aansluiting met het middenveld."
       ],
       "caveats": [
-        "34 VRD: stuur haar niet op een solomissie als verdedigende middenvelder.",
-        "Prijs en chemistry-links tellen niet mee in deze meter. PlayStyles verschijnen los erbij zodra EA ze publiceert. Ja, bewust."
+        "34 VRD telt niet mee in deze aanvallende rolscore, maar is wél relevant als je haar defensieve taken geeft.",
+        "73 balans op de officiële detailpagina: 86 DRI vertelt niet het hele verhaal. Chemistry, lichaamsbouw en PlayStyles zitten niet in de score."
       ],
       "stats": [
-        {"label": "SNL", "value": 83},
-        {"label": "SCH", "value": 86},
-        {"label": "PAS", "value": 80},
-        {"label": "DRI", "value": 86},
-        {"label": "FYS", "value": 82}
+        {
+          "label": "SNL",
+          "value": 83
+        },
+        {
+          "label": "SCH",
+          "value": 86
+        },
+        {
+          "label": "PAS",
+          "value": 80
+        },
+        {
+          "label": "DRI",
+          "value": 86
+        },
+        {
+          "label": "VRD",
+          "value": 34
+        },
+        {
+          "label": "FYS",
+          "value": 82
+        }
       ],
       "playstyles": [],
+      "playstyles_status": "unverified",
+      "playstyles_note": "De geraadpleegde officiële profieltekst gaf geen verifieerbare PlayStyle-namen. Een lege lijst betekent onbekend, niet dat de kaart geen PlayStyles heeft.",
       "source": {
         "label": "EA SPORTS FC 27 Ratings · Vivianne Miedema",
-        "url": "https://www.ea.com/nl/games/ea-sports-fc/ratings/player-ratings/vivianne-miedema/233746"
+        "url": "https://www.ea.com/nl/games/ea-sports-fc/ratings/player-ratings/vivianne-miedema/233746",
+        "verified_at": "2026-09-10T08:51:57Z"
+      }
+    },
+    {
+      "id": "nl-women-meta-jill-roord",
+      "slot": "starter",
+      "label": "CENTRALE MIDDENVELDER",
+      "name": "Jill Roord",
+      "nation": "Nederland",
+      "nation_code": "NL",
+      "gender": "female",
+      "gender_evidence": {
+        "basis": "official_competition_context",
+        "competition": "Nederland Vrouwen Liga",
+        "competition_category": "women",
+        "source_url": "https://www.ea.com/nl/games/ea-sports-fc/ratings/player-ratings/jill-roord/240714",
+        "verified_at": "2026-09-10T08:51:57Z"
+      },
+      "line": "midfield",
+      "position": "CM",
+      "club": "FC Twente",
+      "competition": "Nederland Vrouwen Liga",
+      "status": "source_backed_base_profile",
+      "confirmed": true,
+      "confirmed_at": "2026-09-10T08:51:57Z",
+      "base_item_tier": "gold",
+      "rating": 85,
+      "market_item_id": null,
+      "meta_index": 78,
+      "meta_role": "midfield",
+      "meta_weights": {
+        "SNL": 15,
+        "SCH": 10,
+        "PAS": 25,
+        "DRI": 20,
+        "VRD": 15,
+        "FYS": 15
+      },
+      "role": "Voetballende CM · deelt passes uit alsof de rest van de groep eindelijk heeft betaald",
+      "meta_note": "Eigen rolgewogen basisprofielscore, afgerond op hele punten: som(stat × gewicht) / 100. Geen EA-meta-rating, gameplaytest, prijsadvies of promo-claim. PlayStyles, lichaamsbouw en chemistry tellen niet mee; scores tussen verschillende rollen zijn niet rechtstreeks vergelijkbaar.",
+      "strengths": [
+        "85 PAS + 84 DRI passen bij een centrale rol die het spel verbindt.",
+        "83 SCH geeft een aanvallende extra optie vanuit het middenveld. Geen garantie op wereldgoals, wel een bruikbaar basisgetal."
+      ],
+      "caveats": [
+        "65 VRD en 74 FYS drukken de complete middenveldscore: zet haar niet op basis van deze meter alleen als balafpakker neer.",
+        "75 SNL: een ander profiel kan geschikter zijn wanneer snelheid je doorslaggevende eis is. Chemistry, lichaamsbouw en PlayStyles tellen niet mee."
+      ],
+      "stats": [
+        {
+          "label": "SNL",
+          "value": 75
+        },
+        {
+          "label": "SCH",
+          "value": 83
+        },
+        {
+          "label": "PAS",
+          "value": 85
+        },
+        {
+          "label": "DRI",
+          "value": 84
+        },
+        {
+          "label": "VRD",
+          "value": 65
+        },
+        {
+          "label": "FYS",
+          "value": 74
+        }
+      ],
+      "playstyles": [],
+      "playstyles_status": "unverified",
+      "playstyles_note": "De geraadpleegde officiële profieltekst gaf geen verifieerbare PlayStyle-namen. Een lege lijst betekent onbekend, niet dat de kaart geen PlayStyles heeft.",
+      "source": {
+        "label": "EA SPORTS FC 27 Ratings · Jill Roord",
+        "url": "https://www.ea.com/nl/games/ea-sports-fc/ratings/player-ratings/jill-roord/240714",
+        "verified_at": "2026-09-10T08:51:57Z"
       }
     }
   ]

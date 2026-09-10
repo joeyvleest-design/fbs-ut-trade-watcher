@@ -51,38 +51,157 @@
     "risk": "Wacht op de officiële requirements en reward. Een lekkere card art is geen waardeberekening.",
     "source": null
   },
-  "dutch_gold_rule": "Oranje spotlight alleen voor Nederlandse kaarten met een geverifieerd Gold-basisprofiel of beter (minimaal 75 ALG), plus een bron voor de zichtbare stats. Een Meta Meter-speler wordt automatisch overgeslagen, zodat niemand twee keer de show steelt.",
+  "dutch_gold_rule": "Acht bronbevestigde Nederlandse mannen: precies twee keepers, twee verdedigers, twee middenvelders en twee aanvallers. Minimaal Gold (75 ALG); een promo verschijnt alleen met een bron voor die exacte versie. De huidige selectie bestaat uit officiële FC 27 Gold-basisprofielen, niet uit bevestigde weekreleases. De twee vrouwen staan apart in de Meta-Meter; geen dubbele spelers.",
+  "dutch_gold_checked_at": "2026-09-10T08:51:57Z",
   "meta_watch_exclusions": [
-    "Frenkie de Jong",
-    "Vivianne Miedema"
+    "Vivianne Miedema",
+    "Jill Roord"
   ],
   "dutch_gold_watch": [
     {
-      "id": "nl-gold-reference-ryan-gravenberch",
+      "id": "nl-gold-reference-bart-verbruggen",
       "status": "source_backed_base_profile",
-      "name": "Ryan Gravenberch",
+      "name": "Bart Verbruggen",
       "nation": "Nederland",
       "nation_code": "NL",
-      "position": "CVM",
+      "gender": "male",
+      "gender_evidence": {
+        "basis": "official_competition_context",
+        "competition": "Premier League",
+        "competition_category": "men",
+        "source_url": "https://www.ea.com/nl/games/ea-sports-fc/ratings/player-ratings/bart-verbruggen/258498",
+        "verified_at": "2026-09-10T08:51:57Z"
+      },
+      "line": "goalkeeper",
+      "position": "KP",
+      "club": "Brighton",
+      "competition": "Premier League",
+      "confirmed": true,
+      "confirmed_at": "2026-09-10T08:51:57Z",
       "base_item_tier": "gold",
-      "base_rating": 85,
+      "base_rating": 81,
       "market_item_id": null,
       "card_type": "Gold Watch",
-      "meta_rating": 86,
-      "meta_label": "Middenveld-slinger",
-      "meta_text": "79 SNL, 81 PAS, 83 DRI en 80 VRD/FYS: een CVM die de bal niet alleen afpakt, maar hem daarna ook nog volwassen naar voren brengt. Onbeschoft handig.",
-      "meta_basis": "Bibs Meta-Meter op zichtbare basisstats; geen prijsadvies, geen promo-claim en geen verzonnen PlayStyles.",
+      "meta_rating": 79,
+      "meta_role": "goalkeeper",
+      "meta_weights": {
+        "DUI": 25,
+        "BEH": 15,
+        "TRP": 10,
+        "REF": 25,
+        "SNL": 5,
+        "POS": 20
+      },
+      "meta_label": "Reflexen op standje groepschat",
+      "meta_text": "84 REF en 81 POS geven zijn keepersprofiel gewicht. 77 BEH is de kleinere component; 50 SNL maakt hem niet ineens een linksbuiten met handschoenen.",
+      "meta_basis": "Eigen rolgewogen basisprofielscore, afgerond op hele punten: som(stat × gewicht) / 100. Geen EA-meta-rating, gameplaytest, prijsadvies of promo-claim. PlayStyles, lichaamsbouw en chemistry tellen niet mee; scores tussen verschillende rollen zijn niet rechtstreeks vergelijkbaar.",
       "stats": [
-        {"label": "SNL", "value": 79},
-        {"label": "SCH", "value": 76},
-        {"label": "PAS", "value": 81},
-        {"label": "DRI", "value": 83},
-        {"label": "FYS", "value": 80}
+        {
+          "label": "DUI",
+          "value": 80
+        },
+        {
+          "label": "BEH",
+          "value": 77
+        },
+        {
+          "label": "TRP",
+          "value": 81
+        },
+        {
+          "label": "REF",
+          "value": 84
+        },
+        {
+          "label": "SNL",
+          "value": 50
+        },
+        {
+          "label": "POS",
+          "value": 81
+        }
       ],
-      "release_note": "Gouden basiskaart-profiel ter referentie — geen claim dat hij deze week in TOTW of een promo zit.",
+      "playstyles": [],
+      "playstyles_status": "unverified",
+      "playstyles_note": "De geraadpleegde officiële profieltekst gaf geen verifieerbare PlayStyle-namen. Een lege lijst betekent onbekend, niet dat de kaart geen PlayStyles heeft.",
+      "release_note": "Officieel FC 27 Gold-basisprofiel ter referentie. Geen bevestiging van actuele verkrijgbaarheid, marktprijs, TOTW- of promodeelname.",
       "source": {
-        "label": "EA SPORTS FC 27 Ratings · Ryan Gravenberch",
-        "url": "https://www.ea.com/nl/games/ea-sports-fc/ratings/player-ratings/ryan-gravenberch/246104"
+        "label": "EA SPORTS FC 27 Ratings · Bart Verbruggen",
+        "url": "https://www.ea.com/nl/games/ea-sports-fc/ratings/player-ratings/bart-verbruggen/258498",
+        "verified_at": "2026-09-10T08:51:57Z"
+      }
+    },
+    {
+      "id": "nl-gold-reference-mark-flekken",
+      "status": "source_backed_base_profile",
+      "name": "Mark Flekken",
+      "nation": "Nederland",
+      "nation_code": "NL",
+      "gender": "male",
+      "gender_evidence": {
+        "basis": "official_competition_context",
+        "competition": "Bundesliga",
+        "competition_category": "men",
+        "source_url": "https://www.ea.com/nl/games/ea-sports-fc/ratings/player-ratings/mark-flekken/211738",
+        "verified_at": "2026-09-10T08:51:57Z"
+      },
+      "line": "goalkeeper",
+      "position": "KP",
+      "club": "Leverkusen",
+      "competition": "Bundesliga",
+      "confirmed": true,
+      "confirmed_at": "2026-09-10T08:51:57Z",
+      "base_item_tier": "gold",
+      "base_rating": 77,
+      "market_item_id": null,
+      "card_type": "Gold Watch",
+      "meta_rating": 75,
+      "meta_role": "goalkeeper",
+      "meta_weights": {
+        "DUI": 25,
+        "BEH": 15,
+        "TRP": 10,
+        "REF": 25,
+        "SNL": 5,
+        "POS": 20
+      },
+      "meta_label": "Opbouw uit de achtertuin",
+      "meta_text": "81 TRP springt eruit binnen dit keepersprofiel. Met 77 REF en 32 SNL past een rustige rol beter bij de cijfers dan kamikaze-uitstapjes naar de middenlijn.",
+      "meta_basis": "Eigen rolgewogen basisprofielscore, afgerond op hele punten: som(stat × gewicht) / 100. Geen EA-meta-rating, gameplaytest, prijsadvies of promo-claim. PlayStyles, lichaamsbouw en chemistry tellen niet mee; scores tussen verschillende rollen zijn niet rechtstreeks vergelijkbaar.",
+      "stats": [
+        {
+          "label": "DUI",
+          "value": 78
+        },
+        {
+          "label": "BEH",
+          "value": 75
+        },
+        {
+          "label": "TRP",
+          "value": 81
+        },
+        {
+          "label": "REF",
+          "value": 77
+        },
+        {
+          "label": "SNL",
+          "value": 32
+        },
+        {
+          "label": "POS",
+          "value": 76
+        }
+      ],
+      "playstyles": [],
+      "playstyles_status": "unverified",
+      "playstyles_note": "De geraadpleegde officiële profieltekst gaf geen verifieerbare PlayStyle-namen. Een lege lijst betekent onbekend, niet dat de kaart geen PlayStyles heeft.",
+      "release_note": "Officieel FC 27 Gold-basisprofiel ter referentie. Geen bevestiging van actuele verkrijgbaarheid, marktprijs, TOTW- of promodeelname.",
+      "source": {
+        "label": "EA SPORTS FC 27 Ratings · Mark Flekken",
+        "url": "https://www.ea.com/nl/games/ea-sports-fc/ratings/player-ratings/mark-flekken/211738",
+        "verified_at": "2026-09-10T08:51:57Z"
       }
     },
     {
@@ -91,54 +210,71 @@
       "name": "Virgil van Dijk",
       "nation": "Nederland",
       "nation_code": "NL",
+      "gender": "male",
+      "gender_evidence": {
+        "basis": "official_competition_context",
+        "competition": "Premier League",
+        "competition_category": "men",
+        "source_url": "https://www.ea.com/nl/games/ea-sports-fc/ratings/player-ratings/virgil-van-dijk/203376",
+        "verified_at": "2026-09-10T08:51:57Z"
+      },
+      "line": "defense",
       "position": "CB",
+      "club": "Liverpool",
+      "competition": "Premier League",
+      "confirmed": true,
+      "confirmed_at": "2026-09-10T08:51:57Z",
       "base_item_tier": "gold",
       "base_rating": 88,
       "market_item_id": null,
       "card_type": "Gold Watch",
-      "meta_rating": 91,
-      "meta_label": "Achterhoede-eindbaas",
-      "meta_text": "89 VRD en 85 FYS maken dit de kaart die de tegenstander eerst toestemming laat vragen. Met 70 SNL: laat hem vooral verdedigen en niet de 100-meterfinale lopen.",
-      "meta_basis": "Bibs Meta-Meter op zichtbare basisstats; geen prijsadvies, geen promo-claim en geen verzonnen PlayStyles.",
+      "meta_rating": 81,
+      "meta_role": "defense",
+      "meta_weights": {
+        "SNL": 20,
+        "SCH": 0,
+        "PAS": 10,
+        "DRI": 10,
+        "VRD": 35,
+        "FYS": 25
+      },
+      "meta_label": "Achterhoede met deurbeleid",
+      "meta_text": "89 VRD en 85 FYS dragen deze verdedigingsscore. 70 SNL vraagt wel aandacht bij ruimte achter de laatste lijn. De portier is groot, niet teleportabel.",
+      "meta_basis": "Eigen rolgewogen basisprofielscore, afgerond op hele punten: som(stat × gewicht) / 100. Geen EA-meta-rating, gameplaytest, prijsadvies of promo-claim. PlayStyles, lichaamsbouw en chemistry tellen niet mee; scores tussen verschillende rollen zijn niet rechtstreeks vergelijkbaar.",
       "stats": [
-        {"label": "SNL", "value": 70},
-        {"label": "SCH", "value": 60},
-        {"label": "PAS", "value": 72},
-        {"label": "DRI", "value": 70},
-        {"label": "FYS", "value": 85}
+        {
+          "label": "SNL",
+          "value": 70
+        },
+        {
+          "label": "SCH",
+          "value": 60
+        },
+        {
+          "label": "PAS",
+          "value": 72
+        },
+        {
+          "label": "DRI",
+          "value": 70
+        },
+        {
+          "label": "VRD",
+          "value": 89
+        },
+        {
+          "label": "FYS",
+          "value": 85
+        }
       ],
-      "release_note": "Gouden basiskaart-profiel ter referentie — geen claim dat hij deze week in TOTW of een promo zit.",
+      "playstyles": [],
+      "playstyles_status": "unverified",
+      "playstyles_note": "De geraadpleegde officiële profieltekst gaf geen verifieerbare PlayStyle-namen. Een lege lijst betekent onbekend, niet dat de kaart geen PlayStyles heeft.",
+      "release_note": "Officieel FC 27 Gold-basisprofiel ter referentie. Geen bevestiging van actuele verkrijgbaarheid, marktprijs, TOTW- of promodeelname.",
       "source": {
         "label": "EA SPORTS FC 27 Ratings · Virgil van Dijk",
-        "url": "https://www.ea.com/nl/games/ea-sports-fc/ratings/player-ratings/virgil-van-dijk/203376"
-      }
-    },
-    {
-      "id": "nl-gold-reference-jill-roord",
-      "status": "source_backed_base_profile",
-      "name": "Jill Roord",
-      "nation": "Nederland",
-      "nation_code": "NL",
-      "position": "CM",
-      "base_item_tier": "gold",
-      "base_rating": 85,
-      "market_item_id": null,
-      "card_type": "Gold Watch",
-      "meta_rating": 85,
-      "meta_label": "Box-to-box plot twist",
-      "meta_text": "83 SCH, 85 PAS en 84 DRI: op papier een CM, in de praktijk de groepschat die zowel de aanval als de nasleep regelt.",
-      "meta_basis": "Bibs Meta-Meter op zichtbare basisstats; geen prijsadvies, geen promo-claim en geen verzonnen PlayStyles.",
-      "stats": [
-        {"label": "SNL", "value": 75},
-        {"label": "SCH", "value": 83},
-        {"label": "PAS", "value": 85},
-        {"label": "DRI", "value": 84},
-        {"label": "FYS", "value": 74}
-      ],
-      "release_note": "Gouden basiskaart-profiel ter referentie — geen claim dat zij deze week in TOTW of een promo zit.",
-      "source": {
-        "label": "EA SPORTS FC 27 Ratings · Jill Roord",
-        "url": "https://www.ea.com/nl/games/ea-sports-fc/ratings/player-ratings/jill-roord/240714"
+        "url": "https://www.ea.com/nl/games/ea-sports-fc/ratings/player-ratings/virgil-van-dijk/203376",
+        "verified_at": "2026-09-10T08:51:57Z"
       }
     },
     {
@@ -147,26 +283,363 @@
       "name": "Denzel Dumfries",
       "nation": "Nederland",
       "nation_code": "NL",
+      "gender": "male",
+      "gender_evidence": {
+        "basis": "official_competition_context",
+        "competition": "LALIGA EA SPORTS",
+        "competition_category": "men",
+        "source_url": "https://www.ea.com/nl/games/ea-sports-fc/ratings/player-ratings/denzel-dumfries/233096",
+        "verified_at": "2026-09-10T08:51:57Z"
+      },
+      "line": "defense",
       "position": "RA",
+      "club": "Real Madrid",
+      "competition": "LALIGA EA SPORTS",
+      "confirmed": true,
+      "confirmed_at": "2026-09-10T08:51:57Z",
       "base_item_tier": "gold",
       "base_rating": 83,
       "market_item_id": null,
       "card_type": "Gold Watch",
-      "meta_rating": 84,
+      "meta_rating": 81,
+      "meta_role": "defense",
+      "meta_weights": {
+        "SNL": 20,
+        "SCH": 0,
+        "PAS": 10,
+        "DRI": 10,
+        "VRD": 35,
+        "FYS": 25
+      },
       "meta_label": "Rechterflank-bulldozer",
-      "meta_text": "82 SNL en 87 FYS zetten je rechterkant in de sportschool. Hij is niet hier om sierlijk te zweven; hij komt opdagen, loopt door en maakt het irritant.",
-      "meta_basis": "Bibs Meta-Meter op zichtbare basisstats; geen prijsadvies, geen promo-claim en geen verzonnen PlayStyles.",
+      "meta_text": "82 SNL en 87 FYS maken dit op papier een stevige flankoptie. Met 78 VRD en 74 PAS blijft het profiel duidelijker krachtig dan verfijnd. Sportschoolabonnement inbegrepen, finesse niet.",
+      "meta_basis": "Eigen rolgewogen basisprofielscore, afgerond op hele punten: som(stat × gewicht) / 100. Geen EA-meta-rating, gameplaytest, prijsadvies of promo-claim. PlayStyles, lichaamsbouw en chemistry tellen niet mee; scores tussen verschillende rollen zijn niet rechtstreeks vergelijkbaar.",
       "stats": [
-        {"label": "SNL", "value": 82},
-        {"label": "SCH", "value": 70},
-        {"label": "PAS", "value": 74},
-        {"label": "DRI", "value": 79},
-        {"label": "FYS", "value": 87}
+        {
+          "label": "SNL",
+          "value": 82
+        },
+        {
+          "label": "SCH",
+          "value": 70
+        },
+        {
+          "label": "PAS",
+          "value": 74
+        },
+        {
+          "label": "DRI",
+          "value": 79
+        },
+        {
+          "label": "VRD",
+          "value": 78
+        },
+        {
+          "label": "FYS",
+          "value": 87
+        }
       ],
-      "release_note": "Gouden basiskaart-profiel ter referentie — geen claim dat hij deze week in TOTW of een promo zit.",
+      "playstyles": [],
+      "playstyles_status": "unverified",
+      "playstyles_note": "De geraadpleegde officiële profieltekst gaf geen verifieerbare PlayStyle-namen. Een lege lijst betekent onbekend, niet dat de kaart geen PlayStyles heeft.",
+      "release_note": "Officieel FC 27 Gold-basisprofiel ter referentie. Geen bevestiging van actuele verkrijgbaarheid, marktprijs, TOTW- of promodeelname.",
       "source": {
         "label": "EA SPORTS FC 27 Ratings · Denzel Dumfries",
-        "url": "https://www.ea.com/nl/games/ea-sports-fc/ratings/player-ratings/denzel-dumfries/233096"
+        "url": "https://www.ea.com/nl/games/ea-sports-fc/ratings/player-ratings/denzel-dumfries/233096",
+        "verified_at": "2026-09-10T08:51:57Z"
+      }
+    },
+    {
+      "id": "nl-gold-reference-frenkie-de-jong",
+      "status": "source_backed_base_profile",
+      "name": "Frenkie de Jong",
+      "nation": "Nederland",
+      "nation_code": "NL",
+      "gender": "male",
+      "gender_evidence": {
+        "basis": "official_competition_context",
+        "competition": "LALIGA EA SPORTS",
+        "competition_category": "men",
+        "source_url": "https://www.ea.com/nl/games/ea-sports-fc/ratings/player-ratings/frenkie-de-jong/228702",
+        "verified_at": "2026-09-10T08:51:57Z"
+      },
+      "line": "midfield",
+      "position": "CM",
+      "club": "FC Barcelona",
+      "competition": "LALIGA EA SPORTS",
+      "confirmed": true,
+      "confirmed_at": "2026-09-10T08:51:57Z",
+      "base_item_tier": "gold",
+      "base_rating": 86,
+      "market_item_id": null,
+      "card_type": "Gold Watch",
+      "meta_rating": 80,
+      "meta_role": "midfield",
+      "meta_weights": {
+        "SNL": 15,
+        "SCH": 10,
+        "PAS": 25,
+        "DRI": 20,
+        "VRD": 15,
+        "FYS": 15
+      },
+      "meta_label": "Uit de druk, in de groepsapp",
+      "meta_text": "85 PAS en 84 DRI wegen zwaar voor zijn middenveldrol. 77 VRD/FYS houdt het profiel in balans; met 70 SCH is de laatste tik liever voor iemand anders.",
+      "meta_basis": "Eigen rolgewogen basisprofielscore, afgerond op hele punten: som(stat × gewicht) / 100. Geen EA-meta-rating, gameplaytest, prijsadvies of promo-claim. PlayStyles, lichaamsbouw en chemistry tellen niet mee; scores tussen verschillende rollen zijn niet rechtstreeks vergelijkbaar.",
+      "stats": [
+        {
+          "label": "SNL",
+          "value": 77
+        },
+        {
+          "label": "SCH",
+          "value": 70
+        },
+        {
+          "label": "PAS",
+          "value": 85
+        },
+        {
+          "label": "DRI",
+          "value": 84
+        },
+        {
+          "label": "VRD",
+          "value": 77
+        },
+        {
+          "label": "FYS",
+          "value": 77
+        }
+      ],
+      "playstyles": [],
+      "playstyles_status": "unverified",
+      "playstyles_note": "De geraadpleegde officiële profieltekst gaf geen verifieerbare PlayStyle-namen. Een lege lijst betekent onbekend, niet dat de kaart geen PlayStyles heeft.",
+      "release_note": "Officieel FC 27 Gold-basisprofiel ter referentie. Geen bevestiging van actuele verkrijgbaarheid, marktprijs, TOTW- of promodeelname.",
+      "source": {
+        "label": "EA SPORTS FC 27 Ratings · Frenkie de Jong",
+        "url": "https://www.ea.com/nl/games/ea-sports-fc/ratings/player-ratings/frenkie-de-jong/228702",
+        "verified_at": "2026-09-10T08:51:57Z"
+      }
+    },
+    {
+      "id": "nl-gold-reference-ryan-gravenberch",
+      "status": "source_backed_base_profile",
+      "name": "Ryan Gravenberch",
+      "nation": "Nederland",
+      "nation_code": "NL",
+      "gender": "male",
+      "gender_evidence": {
+        "basis": "official_competition_context",
+        "competition": "Premier League",
+        "competition_category": "men",
+        "source_url": "https://www.ea.com/nl/games/ea-sports-fc/ratings/player-ratings/ryan-gravenberch/246104",
+        "verified_at": "2026-09-10T08:51:57Z"
+      },
+      "line": "midfield",
+      "position": "CVM",
+      "club": "Liverpool",
+      "competition": "Premier League",
+      "confirmed": true,
+      "confirmed_at": "2026-09-10T08:51:57Z",
+      "base_item_tier": "gold",
+      "base_rating": 85,
+      "market_item_id": null,
+      "card_type": "Gold Watch",
+      "meta_rating": 80,
+      "meta_role": "midfield",
+      "meta_weights": {
+        "SNL": 15,
+        "SCH": 10,
+        "PAS": 25,
+        "DRI": 20,
+        "VRD": 15,
+        "FYS": 15
+      },
+      "meta_label": "Middenveld zonder gatenkaas",
+      "meta_text": "83 DRI, 81 PAS en 80 VRD/FYS vormen een breed basisprofiel. Geen individuele 90 op de voorkant, wel zes cijfers die samen geen groepsproject met één werker lijken.",
+      "meta_basis": "Eigen rolgewogen basisprofielscore, afgerond op hele punten: som(stat × gewicht) / 100. Geen EA-meta-rating, gameplaytest, prijsadvies of promo-claim. PlayStyles, lichaamsbouw en chemistry tellen niet mee; scores tussen verschillende rollen zijn niet rechtstreeks vergelijkbaar.",
+      "stats": [
+        {
+          "label": "SNL",
+          "value": 79
+        },
+        {
+          "label": "SCH",
+          "value": 76
+        },
+        {
+          "label": "PAS",
+          "value": 81
+        },
+        {
+          "label": "DRI",
+          "value": 83
+        },
+        {
+          "label": "VRD",
+          "value": 80
+        },
+        {
+          "label": "FYS",
+          "value": 80
+        }
+      ],
+      "playstyles": [],
+      "playstyles_status": "unverified",
+      "playstyles_note": "De geraadpleegde officiële profieltekst gaf geen verifieerbare PlayStyle-namen. Een lege lijst betekent onbekend, niet dat de kaart geen PlayStyles heeft.",
+      "release_note": "Officieel FC 27 Gold-basisprofiel ter referentie. Geen bevestiging van actuele verkrijgbaarheid, marktprijs, TOTW- of promodeelname.",
+      "source": {
+        "label": "EA SPORTS FC 27 Ratings · Ryan Gravenberch",
+        "url": "https://www.ea.com/nl/games/ea-sports-fc/ratings/player-ratings/ryan-gravenberch/246104",
+        "verified_at": "2026-09-10T08:51:57Z"
+      }
+    },
+    {
+      "id": "nl-gold-reference-donyell-malen",
+      "status": "source_backed_base_profile",
+      "name": "Donyell Malen",
+      "nation": "Nederland",
+      "nation_code": "NL",
+      "gender": "male",
+      "gender_evidence": {
+        "basis": "official_competition_context",
+        "competition": "Serie A Enilive",
+        "competition_category": "men",
+        "source_url": "https://www.ea.com/nl/games/ea-sports-fc/ratings/player-ratings/donyell-malen/231447",
+        "verified_at": "2026-09-10T08:51:57Z"
+      },
+      "line": "attack",
+      "position": "SP",
+      "club": "AS Roma",
+      "competition": "Serie A Enilive",
+      "confirmed": true,
+      "confirmed_at": "2026-09-10T08:51:57Z",
+      "base_item_tier": "gold",
+      "base_rating": 83,
+      "market_item_id": null,
+      "card_type": "Gold Watch",
+      "meta_rating": 82,
+      "meta_role": "attack",
+      "meta_weights": {
+        "SNL": 25,
+        "SCH": 30,
+        "PAS": 10,
+        "DRI": 25,
+        "VRD": 0,
+        "FYS": 10
+      },
+      "meta_label": "Diepte met bijwerkingen",
+      "meta_text": "86 SNL, 83 SCH en 85 DRI krijgen veel gewicht in deze spitsmeter. 68 FYS is de afweging: op papier eerder bewegen en afmaken dan worstelen met de hele achterhoede.",
+      "meta_basis": "Eigen rolgewogen basisprofielscore, afgerond op hele punten: som(stat × gewicht) / 100. Geen EA-meta-rating, gameplaytest, prijsadvies of promo-claim. PlayStyles, lichaamsbouw en chemistry tellen niet mee; scores tussen verschillende rollen zijn niet rechtstreeks vergelijkbaar.",
+      "stats": [
+        {
+          "label": "SNL",
+          "value": 86
+        },
+        {
+          "label": "SCH",
+          "value": 83
+        },
+        {
+          "label": "PAS",
+          "value": 73
+        },
+        {
+          "label": "DRI",
+          "value": 85
+        },
+        {
+          "label": "VRD",
+          "value": 38
+        },
+        {
+          "label": "FYS",
+          "value": 68
+        }
+      ],
+      "playstyles": [],
+      "playstyles_status": "unverified",
+      "playstyles_note": "De geraadpleegde officiële profieltekst gaf geen verifieerbare PlayStyle-namen. Een lege lijst betekent onbekend, niet dat de kaart geen PlayStyles heeft.",
+      "release_note": "Officieel FC 27 Gold-basisprofiel ter referentie. Geen bevestiging van actuele verkrijgbaarheid, marktprijs, TOTW- of promodeelname.",
+      "source": {
+        "label": "EA SPORTS FC 27 Ratings · Donyell Malen",
+        "url": "https://www.ea.com/nl/games/ea-sports-fc/ratings/player-ratings/donyell-malen/231447",
+        "verified_at": "2026-09-10T08:51:57Z"
+      }
+    },
+    {
+      "id": "nl-gold-reference-brian-brobbey",
+      "status": "source_backed_base_profile",
+      "name": "Brian Brobbey",
+      "nation": "Nederland",
+      "nation_code": "NL",
+      "gender": "male",
+      "gender_evidence": {
+        "basis": "official_competition_context",
+        "competition": "Premier League",
+        "competition_category": "men",
+        "source_url": "https://www.ea.com/nl/games/ea-sports-fc/ratings/player-ratings/brian-brobbey/251810",
+        "verified_at": "2026-09-10T08:51:57Z"
+      },
+      "line": "attack",
+      "position": "SP",
+      "club": "Sunderland",
+      "competition": "Premier League",
+      "confirmed": true,
+      "confirmed_at": "2026-09-10T08:51:57Z",
+      "base_item_tier": "gold",
+      "base_rating": 78,
+      "market_item_id": null,
+      "card_type": "Gold Watch",
+      "meta_rating": 76,
+      "meta_role": "attack",
+      "meta_weights": {
+        "SNL": 25,
+        "SCH": 30,
+        "PAS": 10,
+        "DRI": 25,
+        "VRD": 0,
+        "FYS": 10
+      },
+      "meta_label": "Bumperkleven in de zestien",
+      "meta_text": "83 SNL en 85 FYS geven een directe spitsbasis. 75 SCH en 61 PAS houden de verwachting nuchter: geen complete spelmaker, wel een profiel met schouders.",
+      "meta_basis": "Eigen rolgewogen basisprofielscore, afgerond op hele punten: som(stat × gewicht) / 100. Geen EA-meta-rating, gameplaytest, prijsadvies of promo-claim. PlayStyles, lichaamsbouw en chemistry tellen niet mee; scores tussen verschillende rollen zijn niet rechtstreeks vergelijkbaar.",
+      "stats": [
+        {
+          "label": "SNL",
+          "value": 83
+        },
+        {
+          "label": "SCH",
+          "value": 75
+        },
+        {
+          "label": "PAS",
+          "value": 61
+        },
+        {
+          "label": "DRI",
+          "value": 73
+        },
+        {
+          "label": "VRD",
+          "value": 30
+        },
+        {
+          "label": "FYS",
+          "value": 85
+        }
+      ],
+      "playstyles": [],
+      "playstyles_status": "unverified",
+      "playstyles_note": "De geraadpleegde officiële profieltekst gaf geen verifieerbare PlayStyle-namen. Een lege lijst betekent onbekend, niet dat de kaart geen PlayStyles heeft.",
+      "release_note": "Officieel FC 27 Gold-basisprofiel ter referentie. Geen bevestiging van actuele verkrijgbaarheid, marktprijs, TOTW- of promodeelname.",
+      "source": {
+        "label": "EA SPORTS FC 27 Ratings · Brian Brobbey",
+        "url": "https://www.ea.com/nl/games/ea-sports-fc/ratings/player-ratings/brian-brobbey/251810",
+        "verified_at": "2026-09-10T08:51:57Z"
       }
     }
   ]

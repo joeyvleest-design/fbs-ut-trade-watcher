@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "date": "2026-09-10",
+  "checked_at": "2026-09-10T08:55:37.274853Z",
+  "timezone": "Europe/Amsterdam",
+  "platform": "ps",
+  "currency": "coins",
+  "status": "no_trade",
+  "title": "Vandaag geen onderbouwde trade",
+  "summary": "De redactie heeft de beschikbare data gecontroleerd. Zonder verse, toegestane PlayStation-prijzen en historie blijft de clubkas vandaag dicht.",
+  "article": [
+    "De redactie heeft de beschikbare data gecontroleerd. Zonder verse, toegestane PlayStation-prijzen en historie blijft de clubkas vandaag dicht.",
+    "De beschikbare marktdata staat op demo; voorbeeldcoins zijn geen actuele prijzen.",
+    "Dit is een dagelijkse bestandscontrole van de dekking, zes kaartstats en complete rolgewichten, geen nieuwe bronbevestiging van ratings, stats of kaartreleases."
+  ],
+  "trade": null,
+  "risk": "Geen garantie op winst. Een dagelijkse bestandscontrole is geen live prijsfeed of bevestiging van nieuw nieuws.",
+  "reasons": [
+    "De beschikbare marktdata staat op demo; voorbeeldcoins zijn geen actuele prijzen."
+  ],
+  "data_quality": {
+    "eligible_count": 0,
+    "rejected_count": 3,
+    "input_count": 3,
+    "reasons": [
+      "De beschikbare marktdata staat op demo; voorbeeldcoins zijn geen actuele prijzen."
+    ],
+    "rejection_counts": {
+      "demo": 3
+    },
+    "input_mode": "demo",
+    "input_generated_at": "2026-09-07T12:42:37.944820+00:00",
+    "note": "input_generated_at is de oorspronkelijke exportdatum, niet een controle van de prijsbron."
+  },
+  "coverage": {
+    "roster_checked_at": "2026-09-10T08:55:37.274853Z",
+    "source_verified_at": "2026-09-10T08:51:57Z",
+    "source_oldest_verified_at": "2026-09-10T08:51:57Z",
+    "men_by_line": {
+      "goalkeeper": 2,
+      "defense": 2,
+      "midfield": 2,
+      "attack": 2
+    },
+    "women_count": 2,
+    "complete": true,
+    "issues": [],
+    "note": "Dit is een dagelijkse bestandscontrole van de dekking, zes kaartstats en complete rolgewichten, geen nieuwe bronbevestiging van ratings, stats of kaartreleases."
+  },
+  "news_context": {
+    "source_published_at": null,
+    "last_successful_check_at": null,
+    "note": "Bestaande brondata ongewijzigd overgenomen; dit rapport haalt geen nieuw nieuws op."
+  },
+  "tax": {
+    "rate": 0.05,
+    "status": "assumption_pending_fc27_confirmation",
+    "source_url": "https://forums.ea.com/discussions/fc-25-technical-issues-en/missing-coins-from-sold-player/12124884",
+    "note": "5% als expliciete rekenaanname; oudere EA-community-uitleg voor FC25, geen nieuwe officiële FC27-bevestiging."
+  },
+  "assumptions": [
+    "Verkoopbelasting voorlopig 5%; netto-opbrengst conservatief naar beneden afgerond.",
+    "Maximaal zes uur oude prijs en volume; historiecontrole maximaal 24 uur oud.",
+    "Minimaal vier historische punten in zeven dagen over minstens 24 uur en 50 waargenomen trades per 24 uur.",
+    "Verkoopreferentie is de lagere mediaan van de waargenomen historie; geen voorspelde prijsstijging.",
+    "Kandidaten hebben minimaal 300 coins en 5% scenario-ROI, en scenario-opbrengst ten minste gelijk aan historisch neerwaarts risico.",
+    "Rangschikking op scenario-ROI, daarna nettomarge; vertrouwen is datakwaliteit, geen winstkans."
+  ]
+}

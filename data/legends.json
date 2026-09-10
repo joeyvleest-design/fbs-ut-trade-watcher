@@ -1,0 +1,152 @@
+{
+  "game": "FC27",
+  "status": "official_names_confirmed_stats_pending",
+  "updated_at": "2026-09-10T08:43:30Z",
+  "check_at": "2026-09-10T08:43:30Z",
+  "title": "Legendes op de radar",
+  "notice": "Elia en Gullit zijn officieel voor FC27 aangekondigd. Naam- en kaarttypebevestiging staan los van finale ratings. De apart gelabelde FUTWIZ-previews zijn voorlopig; een gecontroleerde PS-prijs is nog niet beschikbaar.",
+  "meta_methodology": "De officiële-statline Meta-Meter blijft leeg zolang die stats niet zijn geverifieerd. Een apart gelabelde voorlopige profielscore gebruikt alleen de getoonde FUTWIZ-face stats: 25% SNL, 25% SCH, 20% PAS, 20% DRI en 10% FYS, afgerond op hele punten. PlayStyles, prijs, chemistry en gameplaytests tellen niet mee; dit is geen gameplayranglijst.",
+  "price_notice": "Bij de prijscontrole van 10 september 2026 toonden de geopende FC27-pagina’s van FUTWIZ voor Elia en Gullit geen prijs- of verkoopgeschiedenis. De prijsvelden blijven leeg; ontbrekende data is niet hetzelfde als 0 coins.",
+  "families": [
+    {
+      "card_type": "Icon",
+      "status": "confirmed",
+      "confirmed_at": "2026-08-24",
+      "detail": "EA bevestigt nieuwe en terugkerende FC27 ICONs, waaronder Ruud Gullit. De individuele kaartvariant en statline vragen aparte bronbevestiging.",
+      "source": {"label": "EA SPORTS · FC27 ICON-aankondiging · 24 augustus 2026", "url": "https://ea-sports.prezly.com/ea-sports-fc-icones-les-nouvelles-legendes-du-football-rejoignent-ea-sports-fc-27"}
+    },
+    {
+      "card_type": "Hero",
+      "status": "category_confirmed_players_pending",
+      "confirmed_at": "2026-08-02",
+      "detail": "Heroes staan in de officiële FC27 FUT Deep Dive. Deze controle vond nog geen directe officiële bevestiging van een specifieke Nederlandse Hero-kaart met FC27-stats; daarom staat hier nog geen spelersselectie.",
+      "source": {"label": "EA SPORTS FC27 · FUT Deep Dive · 2 augustus 2026", "url": "https://www.ea.com/games/ea-sports-fc/fc-27/news/pitch-notes-fc27-fut-deep-dive"}
+    },
+    {
+      "card_type": "Hall of FUT",
+      "status": "confirmed",
+      "confirmed_at": "2026-07-23",
+      "detail": "Hall of FUT is een nieuw kaarttype in FC27. De vijf namen hieronder zijn de officieel aangekondigde eerste lichting; dit is geen claim dat de volledige latere selectie hiermee compleet is.",
+      "source": {"label": "EA SPORTS FC27 · Hall of FUT · 23 juli 2026", "url": "https://www.ea.com/nl/games/ea-sports-fc/fc-27/news/fc-27-hall-of-fut"}
+    }
+  ],
+  "cards": [
+    {
+      "id": "fc27-hall-of-fut-eljero-elia",
+      "name": "Eljero Elia", "nation": "Nederland", "nation_code": "NL", "gender": "male", "line": "attack", "position": null,
+      "rating": null, "card_type": "Hall of FUT", "confirmed": true, "confirmed_at": "2026-07-23",
+      "confirmation_scope": "Naam en Hall of FUT-deelname; nog geen officieel geverifieerde statline in deze dataset.",
+      "stats": [], "meta_rating": null,
+      "meta_text": "Oranje cultheld bevestigd. Een score voor zijn FC27-kaart volgt zodra de exacte statline officieel is geverifieerd.",
+      "source": {"label": "EA SPORTS FC27 · Elia in de Hall of FUT · 23 juli 2026", "url": "https://www.ea.com/nl/games/ea-sports-fc/fc-27/news/fc-27-hall-of-fut"},
+      "preview": {
+        "status": "third_party_preview", "label": "FUTWIZ-preview · voorlopig", "checked_at": "2026-09-10T08:43:30Z", "rating": 84, "position": "LW",
+        "stats": [{"label": "SNL", "value": 91}, {"label": "SCH", "value": 74}, {"label": "PAS", "value": 77}, {"label": "DRI", "value": 87}, {"label": "VRD", "value": 34}, {"label": "FYS", "value": 68}],
+        "meta_rating": 81,
+        "meta_text": "Voorlopige profielscore: 91 SNL en 87 DRI geven de preview een duidelijke vleugelfocus. Met 74 SCH is het afmaken minder uitgesproken. Nog niet in FC27-gameplay getest.",
+        "disclaimer": "Alleen de zichtbare FUTWIZ-preview; geen bevestigde EA-rating. Detailstats en kaart-ID’s op die pagina zijn nog placeholders. PlayStyles niet overgenomen.",
+        "source": {"label": "FUTWIZ · Eljero Elia · FC27 Hall of FUT-preview", "url": "https://www.futwiz.com/fc27/player/eljero-elia/20724"}
+      },
+      "price": null,
+      "price_reason": "FUTWIZ toont voor Elia’s FC27 Hall of FUT-item geen prijsdata, consoleveilingen of consoleverkopen. Geen verifieerbare PS-prijs gevonden.",
+      "price_check": {"checked_at": "2026-09-10T08:43:30Z", "platform": "PS", "result": "no_console_price_data", "source": {"label": "FUTWIZ · Eljero Elia · FC27 Hall of FUT", "url": "https://www.futwiz.com/fc27/player/eljero-elia/20724"}}
+    },
+    {
+      "id": "fc27-icon-ruud-gullit-announcement",
+      "name": "Ruud Gullit", "nation": "Nederland", "nation_code": "NL", "gender": "male", "line": "midfield", "position": null,
+      "rating": null, "card_type": "Icon", "confirmed": true, "confirmed_at": "2026-08-24",
+      "confirmation_scope": "Terugkerende ICON en deelname aan de aangekondigde pre-orderpool; geen bevestiging van een verhandelbare basisvariant.",
+      "stats": [], "meta_rating": null,
+      "meta_text": "Gullit staat officieel op het FC27-bord. Eerst de juiste kaartvariant en stats; daarna pas de Meta-Meter.",
+      "source": {"label": "EA SPORTS · Ruud Gullit keert terug als ICON · 24 augustus 2026", "url": "https://ea-sports.prezly.com/ea-sports-fc-icones-les-nouvelles-legendes-du-football-rejoignent-ea-sports-fc-27"},
+      "preview": {
+        "status": "third_party_preview", "label": "FUTWIZ-preview · voorlopig", "checked_at": "2026-09-10T08:43:30Z", "rating": 86, "position": "CAM",
+        "stats": [{"label": "SNL", "value": 80}, {"label": "SCH", "value": 82}, {"label": "PAS", "value": 82}, {"label": "DRI", "value": 81}, {"label": "VRD", "value": 80}, {"label": "FYS", "value": 86}],
+        "meta_rating": 82,
+        "meta_text": "Voorlopige profielscore: de getoonde face stats zijn breed verdeeld, met 86 FYS als hoogste waarde. Deze preview is geen beoordeling van een verhandelbare basis-Icon.",
+        "disclaimer": "FUTWIZ noemt deze variant Debut Icon, EA spreekt van een International ICON-pre-orderitem. De variantkoppeling en officiële statline zijn nog niet onafhankelijk geverifieerd.",
+        "source": {"label": "FUTWIZ · Ruud Gullit · FC27 Debut Icon-preview", "url": "https://www.futwiz.com/fc27/player/ruud-gullit/20701"}
+      },
+      "price": null,
+      "price_reason": "EA omschrijft het aangekondigde pre-orderitem als niet-verhandelbaar. De geopende FUTWIZ FC27-preview heeft bovendien geen prijs- of consoleverkoopdata. Geen basis-Iconprijs overgenomen.",
+      "price_check": {"checked_at": "2026-09-10T08:43:30Z", "platform": "PS", "result": "no_console_price_data_variant_not_trade_confirmed", "source": {"label": "FUTWIZ · Ruud Gullit · FC27 Debut Icon-preview", "url": "https://www.futwiz.com/fc27/player/ruud-gullit/20701"}}
+    },
+    {
+      "id": "fc27-icon-raphael-varane-announcement",
+      "name": "Raphaël Varane", "nation": "Frankrijk", "nation_code": "FR", "gender": "male", "line": "defense", "position": null,
+      "rating": null, "card_type": "Icon", "confirmed": true, "confirmed_at": "2026-08-24",
+      "confirmation_scope": "Nieuwe FC27 ICON; exacte kaartvariant en statline nog niet geverifieerd.",
+      "stats": [], "meta_rating": null,
+      "meta_text": "Nieuwe ICON bevestigd. Zonder geverifieerde snelheid, verdedigingsstats en PlayStyles volgt nog geen gameplay-score.",
+      "source": {"label": "EA SPORTS FC27 · Officiële ICON-hub · gecontroleerd 10 september 2026", "url": "https://www.ea.com/games/ea-sports-fc/fc-27/fc-27-icons-hub"},
+      "price": null,
+      "price_reason": "Geen controleerbare FC27 PS-prijs voor een exact geïdentificeerde verhandelbare variant in deze controle."
+    },
+    {
+      "id": "fc27-icon-christine-sinclair-announcement",
+      "name": "Christine Sinclair", "nation": "Canada", "nation_code": "CA", "gender": "female", "line": "attack", "position": null,
+      "rating": null, "card_type": "Icon", "confirmed": true, "confirmed_at": "2026-08-24",
+      "confirmation_scope": "Nieuwe FC27 ICON; exacte kaartvariant en statline nog niet geverifieerd.",
+      "stats": [], "meta_rating": null,
+      "meta_text": "Sinclair sluit officieel aan bij de ICONs. De Meta-Meter wacht op haar bevestigde FC27-kaartstats.",
+      "source": {"label": "EA SPORTS FC27 · Officiële ICON-hub · gecontroleerd 10 september 2026", "url": "https://www.ea.com/games/ea-sports-fc/fc-27/fc-27-icons-hub"},
+      "price": null,
+      "price_reason": "Geen controleerbare FC27 PS-prijs voor een exact geïdentificeerde verhandelbare variant in deze controle."
+    },
+    {
+      "id": "fc27-hall-of-fut-adebayo-akinfenwa",
+      "name": "Adebayo Akinfenwa", "nation": "Engeland", "nation_code": "GB-ENG", "gender": "male", "line": "attack", "position": null,
+      "rating": null, "card_type": "Hall of FUT", "confirmed": true, "confirmed_at": "2026-07-23",
+      "confirmation_scope": "Naam en Hall of FUT-deelname; statline nog niet officieel geverifieerd in deze dataset.",
+      "stats": [], "meta_rating": null,
+      "meta_text": "De cultheld is aangekondigd. Zijn historische kracht zegt nog niet wat de nieuwe kaart precies kan.",
+      "source": {"label": "EA SPORTS FC27 · Hall of FUT · 23 juli 2026", "url": "https://www.ea.com/nl/games/ea-sports-fc/fc-27/news/fc-27-hall-of-fut"},
+      "price": null, "price_reason": "Geen exact geverifieerde, verhandelbare FC27 PS-kaart met een actuele prijs gevonden in deze controle."
+    },
+    {
+      "id": "fc27-hall-of-fut-marouane-fellaini",
+      "name": "Marouane Fellaini", "nation": "België", "nation_code": "BE", "gender": "male", "line": "midfield", "position": null,
+      "rating": null, "card_type": "Hall of FUT", "confirmed": true, "confirmed_at": "2026-07-23",
+      "confirmation_scope": "Naam en Hall of FUT-deelname; statline nog niet officieel geverifieerd in deze dataset.",
+      "stats": [], "meta_rating": null,
+      "meta_text": "De afro is bevestigd. De rest van de beoordeling wacht op officiële FC27-kaartstats.",
+      "source": {"label": "EA SPORTS FC27 · Hall of FUT · 23 juli 2026", "url": "https://www.ea.com/nl/games/ea-sports-fc/fc-27/news/fc-27-hall-of-fut"},
+      "price": null, "price_reason": "Geen exact geverifieerde, verhandelbare FC27 PS-kaart met een actuele prijs gevonden in deze controle."
+    },
+    {
+      "id": "fc27-hall-of-fut-loic-remy",
+      "name": "Loïc Rémy", "nation": "Frankrijk", "nation_code": "FR", "gender": "male", "line": "attack", "position": null,
+      "rating": null, "card_type": "Hall of FUT", "confirmed": true, "confirmed_at": "2026-07-23",
+      "confirmation_scope": "Naam en Hall of FUT-deelname; statline nog niet officieel geverifieerd in deze dataset.",
+      "stats": [], "meta_rating": null,
+      "meta_text": "Terug op de radar als cultheld. Oude FUT-herinneringen vormen geen score voor zijn nieuwe kaart.",
+      "source": {"label": "EA SPORTS FC27 · Hall of FUT · 23 juli 2026", "url": "https://www.ea.com/nl/games/ea-sports-fc/fc-27/news/fc-27-hall-of-fut"},
+      "price": null, "price_reason": "Geen exact geverifieerde, verhandelbare FC27 PS-kaart met een actuele prijs gevonden in deze controle."
+    },
+    {
+      "id": "fc27-hall-of-fut-giovani-dos-santos",
+      "name": "Giovani dos Santos", "nation": "Mexico", "nation_code": "MX", "gender": "male", "line": "attack", "position": null,
+      "rating": null, "card_type": "Hall of FUT", "confirmed": true, "confirmed_at": "2026-07-23",
+      "confirmation_scope": "Naam en Hall of FUT-deelname; statline nog niet officieel geverifieerd in deze dataset.",
+      "stats": [], "meta_rating": null,
+      "meta_text": "Officieel aangekondigd voor Hall of FUT. Een Meta-Meter volgt met geverifieerde FC27-stats.",
+      "source": {"label": "EA SPORTS FC27 · Hall of FUT · 23 juli 2026", "url": "https://www.ea.com/nl/games/ea-sports-fc/fc-27/news/fc-27-hall-of-fut"},
+      "price": null, "price_reason": "Geen exact geverifieerde, verhandelbare FC27 PS-kaart met een actuele prijs gevonden in deze controle."
+    }
+  ],
+  "research": {
+    "scope": "Eenmalige controle van normale openbare pagina’s en officiële EA-aankondigingen; geen achtergrondscan of verborgen prijsendpoint.",
+    "edition_note": "EA bevestigt 18 september 2026 als begin van early access en 25 september als wereldwijde release. Aankondigingen en kaartpreviews op 10 september zijn geen bewijs van een actieve PS-transfermarkt.",
+    "edition_source": {"label": "EA · FC27 release-aankondiging · 23 juli 2026", "url": "https://news.ea.com/press-releases/press-releases-details/2026/Kylian-Mbapp-and-Jude-Bellingham-Welcome-You-to-EA-SPORTS-FC-27-Launching-Worldwide-on-September-25/default.aspx"},
+    "ratings_scope": "EA’s gewone FC27-ratingtabel bevat alleen Gold-, Silver- en Bronze-basisitems en sluit onder meer ICONs en Heroes uit.",
+    "ratings_source": {"label": "EA SPORTS FC27 · Scope van de ratingtabel · gecontroleerd 10 september 2026", "url": "https://www.ea.com/games/ea-sports-fc/ratings"},
+    "unverified_preview_observations": [
+      {"name": "Eljero Elia", "card_type": "Hall of FUT", "page_game": "FC27", "displayed_rating": 84, "displayed_position": "LW", "displayed_face_stats": {"PAC": 91, "SHO": 74, "PAS": 77, "DRI": 87, "DEF": 34, "PHY": 68}, "not_promoted_reason": "FUTWIZ toont deze face stats, maar alle gedetailleerde stats en kaart-ID’s staan op 0. Geen onafhankelijke verificatie van de officiële EA-statline uitgevoerd. Niet gebruikt voor de Meta-Meter.", "source": {"label": "FUTWIZ · FC27 Elia-preview", "url": "https://www.futwiz.com/fc27/player/eljero-elia/20724"}},
+      {"name": "Ruud Gullit", "card_type": "Debut Icon-preview", "page_game": "FC27", "displayed_rating": 86, "displayed_position": "CAM", "displayed_face_stats": {"PAC": 80, "SHO": 82, "PAS": 82, "DRI": 81, "DEF": 80, "PHY": 86}, "not_promoted_reason": "FUTWIZ noemt Debut Icon; EA noemt het pre-orderitem International ICON. De exacte variantkoppeling en officiële statline zijn niet geverifieerd. Geen basis-Iconwaarden overgenomen.", "source": {"label": "FUTWIZ · FC27 Gullit-preview", "url": "https://www.futwiz.com/fc27/player/ruud-gullit/20701"}}
+    ],
+    "additional_checks": [
+      {"source": {"label": "FUT.GG · Hall of FUT", "url": "https://www.fut.gg/hall-of-fut/"}, "result": "De gids toont Elia 84 LW en de eerste vijf namen; geen verifieerbare PS-prijzen in de gelezen gids."},
+      {"source": {"label": "FUTBIN · Players", "url": "https://www.futbin.com/players"}, "result": "Normale pagina-opening leverde geen leesbare inhoud op. Geen prijs afgeleid en geen alternatieve endpoint gebruikt."}
+    ]
+  }
+}
