@@ -4,6 +4,12 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+    inputs:
+      test_discord:
+        description: "Send one labelled Discord connection test (no market advice or data refresh)"
+        required: false
+        default: false
+        type: boolean
   # Separate UTC candidates preserve the intended run time even when Actions is
   # delayed. The worker applies Amsterdam DST and skips the other candidate.
   schedule:
@@ -32,6 +38,7 @@ jobs:
 
       - name: Refresh from official EA Press RSS when due
         id: refresh
+        if: ${{ !inputs.test_discord }}
         shell: bash
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
@@ -39,7 +46,7 @@ jobs:
           SCHEDULE_CRON: ${{ github.event.schedule }}
         run: |
           if [ "$EVENT_NAME" = "schedule" ]; then
-            python3 scripts/refresh_official_rss.py --site-root . --preserve-published --allow-source-failure --scheduled --scheduled-cron "$SCHEDULE_CRON" --post-discord
+            python3 scripts/refresh_official_rss.py --site-root . --preserve-published --allow-source-failure --scheduled --scheduled-cron "$SCHEDULE_CRON" --prepare-discord
           else
             python3 scripts/refresh_official_rss.py --site-root . --preserve-published --allow-source-failure
           fi
@@ -69,3 +76,24 @@ jobs:
       - id: deployment
         if: steps.refresh.outputs.deploy == 'true'
         uses: actions/deploy-pages@v4
+
+      - name: Send the prepared article only after publication
+        if: steps.deployment.outcome == 'success' && steps.refresh.outputs.discord_delivery_id != ''
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          DELIVERY_ID: ${{ steps.refresh.outputs.discord_delivery_id }}
+        run: python3 scripts/refresh_official_rss.py --site-root _site --deliver-discord "$DELIVERY_ID"
+
+      - name: Keep the Discord delivery receipt
+        if: always() && steps.refresh.outputs.discord_delivery_id != ''
+        uses: actions/upload-artifact@v4
+        with:
+          name: discord-delivery-receipt-${{ github.run_id }}-${{ github.run_attempt }}
+          path: _site/data/marketwatch.json
+          retention-days: 14
+
+      - name: Send one explicitly requested Discord connection test
+        if: github.event_name == 'workflow_dispatch' && inputs.test_discord
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        run: python3 scripts/refresh_official_rss.py --test-discord
