@@ -1,7 +1,7 @@
 {
   "game": "EA SPORTS FC 27",
   "publisher": "Electronic Arts",
-  "verification_method": "Each image URL was observed as a rendered img src in its official EA ratings page. Downloads returned HTTP 200 and image/webp; all six full cards were visually inspected.",
+  "verification_method": "Image URLs were observed on the rendered official EA FC 27 ratings pages (img src or browser page-asset inventory). The ten local full-card images were visually inspected. New goalkeeper values were transcribed from the official card face because the page's generic aggregate-stat labels do not use goalkeeper labels. Artwork verification timestamps are separate from profile-data verification timestamps.",
   "assets": [
     {
       "slug": "frenkie-de-jong",
@@ -44,6 +44,34 @@
       "image_url": "https://ratings-images-prod.pulse.ea.com/FC27/components/items/233096_nl-NL.webp",
       "source_page": "https://www.ea.com/nl/games/ea-sports-fc/ratings/player-ratings/denzel-dumfries/233096",
       "verified_at": "2026-09-10T07:37:31Z"
+    },
+    {
+      "slug": "bart-verbruggen",
+      "local_path": "assets/cards/bart-verbruggen.webp",
+      "image_url": "https://ratings-images-prod.pulse.ea.com/FC27/components/items/258498_nl-NL.webp",
+      "source_page": "https://www.ea.com/nl/games/ea-sports-fc/ratings/player-ratings/bart-verbruggen/258498",
+      "verified_at": "2026-09-10T08:51:57Z"
+    },
+    {
+      "slug": "mark-flekken",
+      "local_path": "assets/cards/mark-flekken.webp",
+      "image_url": "https://ratings-images-prod.pulse.ea.com/FC27/components/items/211738_nl-NL.webp",
+      "source_page": "https://www.ea.com/nl/games/ea-sports-fc/ratings/player-ratings/mark-flekken/211738",
+      "verified_at": "2026-09-10T08:51:57Z"
+    },
+    {
+      "slug": "donyell-malen",
+      "local_path": "assets/cards/donyell-malen.webp",
+      "image_url": "https://ratings-images-prod.pulse.ea.com/FC27/components/items/231447_nl-NL.webp",
+      "source_page": "https://www.ea.com/nl/games/ea-sports-fc/ratings/player-ratings/donyell-malen/231447",
+      "verified_at": "2026-09-10T08:51:57Z"
+    },
+    {
+      "slug": "brian-brobbey",
+      "local_path": "assets/cards/brian-brobbey.webp",
+      "image_url": "https://ratings-images-prod.pulse.ea.com/FC27/components/items/251810_nl-NL.webp",
+      "source_page": "https://www.ea.com/nl/games/ea-sports-fc/ratings/player-ratings/brian-brobbey/251810",
+      "verified_at": "2026-09-10T08:51:57Z"
     }
   ]
 }
