@@ -57,13 +57,13 @@
     return (parts.length > 1 ? `${parts[0][0]}${parts.at(-1)[0]}` : (parts[0] || "UT").slice(0, 2)).toUpperCase();
   }
 
-  function renderMetrics(data) {
+  function renderMetrics(data, state) {
     const metrics = $("#metrics");
     metrics.replaceChildren();
     const values = [
-      [String(data.summary?.items ?? 0), "prijsitems"],
-      [String(data.summary?.signals ?? 0), "nieuws-/X-signalen"],
-      [String(data.summary?.recommendations ?? 0), "actieve picks"],
+      [String(data.summary?.items ?? 0), state.isDemo ? "demo prijsitems" : "prijsitems"],
+      [String(data.summary?.signals ?? 0), state.isDemo ? "voorbeeldsignalen" : "bronsignalen"],
+      [String(state.isDemo || state.canAnalyse ? data.summary?.recommendations ?? 0 : 0), state.isDemo ? "voorbeeldpicks" : "actieve picks"],
       [String(data.platform || "—").toUpperCase(), "marktplatform"],
     ];
     values.forEach(([value, label]) => {
@@ -73,14 +73,14 @@
     });
   }
 
-  function renderPick(rec) {
+  function renderPick(rec, state) {
     const isBuy = rec.action === "BUY";
     const card = make("article", `pick${isBuy ? "" : " sell"}`);
     const top = make("div", "pick-top");
     const heading = make("div");
-    heading.append(make("p", "kicker", isBuy ? "MOGELIJKE INSTAP" : "UITSTAP / NIET VASTKLAMPEN"));
+    heading.append(make("p", "kicker", state.isDemo ? "VOORBEELD · GEEN ECHTE TRADE" : !state.canAnalyse ? "OUD SIGNAAL · GEEN ACTUELE CALL" : isBuy ? "MOGELIJKE INSTAP" : "UITSTAP / NIET VASTKLAMPEN"));
     heading.append(make("h3", "", rec.item?.label || "Onbekende kaart"));
-    top.append(heading, make("span", `action${isBuy ? "" : " sell"}`, isBuy ? "KOPEN" : "VERKOPEN"));
+    top.append(heading, make("span", `action${isBuy ? "" : " sell"}`, state.isDemo ? "DEMO" : !state.canAnalyse ? "ARCHIEF" : isBuy ? "KOPEN" : "VERKOPEN"));
     card.append(top);
     const prices = make("div", "price-row");
     if (isBuy) {
@@ -103,8 +103,9 @@
     return card;
   }
 
-  function renderWatch(watch) {
+  function renderWatch(watch, state) {
     const card = make("article", "watch");
+    if (state.isDemo) card.append(make("p", "kicker", "VOORBEELDSIGNAAL"));
     card.append(make("h3", "", watch.title), make("p", "", watch.detail));
     card.append(make("span", `confidence ${watch.confidence || "low"}`, `Signaalsterkte: ${confidence(watch.confidence)}`));
     addEvidence(card, watch.evidence);
@@ -132,18 +133,18 @@
     section.append(svg); return section;
   }
 
-  function renderCard(item) {
+  function renderCard(item, state) {
     const rec = item.recommendation;
     const card = make("article", `card scout-card${rec ? " recommended" : ""}${rec?.action === "SELL" ? " sell" : ""}`);
     const visual = make("div", "scout-visual"); visual.setAttribute("aria-hidden", "true");
     visual.append(make("span", "scout-orbit"), make("span", "scout-silhouette"), make("span", "scout-initials", initials(item.name)));
     const badge = make("div", "scout-rating"); badge.append(make("strong", "", item.rating === null || item.rating === undefined ? "—" : String(item.rating)), make("span", "", "RATING"));
     visual.append(badge);
-    const signal = rec ? make("span", `action scout-action${rec.action === "SELL" ? " sell" : ""}`, rec.action === "SELL" ? "VERKOPEN" : "KOPEN") : null;
+    const signal = rec ? make("span", `action scout-action${rec.action === "SELL" ? " sell" : ""}`, state.isDemo ? "DEMO" : !state.canAnalyse ? "ARCHIEF" : rec.action === "SELL" ? "VERKOPEN" : "KOPEN") : null;
     if (signal) visual.append(signal);
     const content = make("div", "scout-content");
     const title = make("div", "scout-title"); title.append(make("h3", "", item.label || item.name), make("span", "card-label", item.version || "MARKTKAART"));
-    content.append(title, make("div", "current-price", coins(item.price)), make("span", "card-label", "laatste gemeten prijs"));
+    content.append(title, make("div", "current-price", coins(item.price)), make("span", "card-label", state.isDemo ? "voorbeeldprijs · geen marktdata" : !state.canAnalyse ? "oud meetpunt · niet actueel" : "laatste gemeten prijs"));
     const changes = make("div", "changes");
     [["24 uur", item.change_24h], ["7 dagen", item.change_7d]].forEach(([label, value]) => {
       const change = make("div", "change"); change.append(make("span", "", label), make("strong", trendClass(value), percentage(value))); changes.append(change);
@@ -161,6 +162,7 @@
   function renderMetaCard(player) {
     const variant = player.slot === "elite" ? "elite" : "starter";
     const card = make("article", `football-card football-card--${variant}`);
+    card.dataset.position = player.position || "";
     card.append(make("span", "football-card__shine"));
     const head = make("header", "football-card__head");
     const rating = make("div", "football-card__rating");
@@ -171,6 +173,8 @@
     const monogram = make("span", "football-card__monogram", initials(player.name)); monogram.setAttribute("aria-hidden", "true");
     identity.append(monogram, make("p", "football-card__eyebrow", player.label || "META WATCH"), make("h3", "", player.name || "Nog geen spelerverhaal"), make("p", "football-card__role", player.role || "Wacht op bronbevestiging"));
     card.append(identity);
+    const officialArt = window.FBSCardArt?.create(player, { baseProfile: true });
+    if (officialArt) { card.classList.add("has-official-art"); card.append(officialArt); }
     const stats = make("dl", "football-card__stats");
     (player.stats || []).forEach((stat) => {
       const statValue = Number(stat.value);
@@ -204,7 +208,12 @@
       notes.append(make("p", "football-card__note-title football-card__note-title--risk", "Waar hij/zij kan prikken"));
       const caveats = make("ul", "football-card__list football-card__list--risk"); player.caveats.forEach((reason) => caveats.append(make("li", "", reason))); notes.append(caveats);
     }
-    card.append(notes, make("p", "football-card__meta-note", player.meta_note || "Meta-only · geen prijsgoochelwerk"));
+    const report = make("details", "player-details");
+    const reportTitle = make("summary", "", "Scoutingsrapport ");
+    const reportIcon = make("span", "", "+"); reportIcon.setAttribute("aria-hidden", "true");
+    reportTitle.append(reportIcon);
+    report.append(reportTitle, notes, make("p", "football-card__meta-note", player.meta_note || "Meta-only · geen prijsgoochelwerk"));
+    card.append(report);
     if (player.source?.url) {
       const source = safeLink(player.source.url, player.source.label || "Officiële bron", "meta-source");
       if (source) card.append(source);
@@ -219,7 +228,7 @@
       && rating > 75;
   }
 
-  function renderMetaWatch(data) {
+  function renderMetaWatch(data, state = {}) {
     const grid = $("#meta-watch-grid");
     const method = $("#meta-watch-method");
     grid.replaceChildren(); method.replaceChildren(); method.hidden = true;
@@ -229,6 +238,10 @@
       return;
     }
     grid.replaceChildren(...players.map(renderMetaCard));
+    if (state.error || state.stale) {
+      method.hidden = false;
+      method.append(make("p", "data-note", state.error ? "Profielen konden niet worden vernieuwd. Je ziet de eerder geladen basisprofielen." : "Deze basisprofielen zijn ouder dan een week; controleer de bron voor wijzigingen."));
+    }
     if (data.methodology || data.notice) {
       method.hidden = false;
       const label = make("p", "kicker", data.mode === "verified" ? "HOE WE DE META-METER BOUWEN" : "META-METER WACHT OP BEWIJS");
@@ -242,22 +255,23 @@
     }
   }
 
-  function renderMarketwatch(data) {
+  function renderMarketwatch(data, state = {}) {
     const container = $("#marketwatch-card");
     if (!container) return;
     container.replaceChildren();
     if (!data) {
-      container.append(empty("De ochtendbriefing is nog onderweg. Geen bron = geen marktdrama."));
+      container.append(empty(state.error ? "De ochtendbriefing is tijdelijk niet bereikbaar" : "De ochtendbriefing is nog onderweg. Geen bron = geen marktdrama."));
       return;
     }
     const article = make("article", "marketwatch-article");
     const head = make("header", "marketwatch-article__head");
-    const status = make("span", "marketwatch-status", data.status_label || "BRONNEN NODIG");
+    const status = make("span", "marketwatch-status", state.error ? "UPDATE ONBEREIKBAAR" : state.stale ? "OUDERE BRIEFING" : data.status_label || "BRONNEN NODIG");
     const copy = make("div", "");
     copy.append(make("p", "kicker", data.window || "DAGELIJKSE MARKETWATCH"), make("h3", "", data.title || "Marketwatch wacht op bronnen"));
     if (data.summary) copy.append(make("p", "marketwatch-article__summary", data.summary));
     head.append(copy, status);
     article.append(head);
+    if (state.error || state.stale) article.append(make("p", "data-note", state.error ? "De laatste controle mislukte. De eerder geladen briefing blijft leesbaar." : "Deze briefing is ouder dan 36 uur. Er is nog geen recentere publicatie geladen."));
     const body = Array.isArray(data.article) ? data.article : [];
     if (body.length) {
       const prose = make("div", "marketwatch-article__prose");
@@ -287,66 +301,36 @@
     container.append(article);
   }
 
-  function render(data) {
+  function render(data, resourceState) {
+    if (!data) {
+      $("#mode-badge").textContent = "Data niet bereikbaar";
+      $("#mode-badge").className = "badge unavailable";
+      $("#status-title").textContent = "De radar kan even niet laden";
+      $("#status-detail").textContent = "Probeer straks opnieuw. Er is in dit bezoek nog geen marktdata geladen.";
+      $("#updated-at").textContent = "Nog geen gegevens geladen";
+      ["#picks-grid", "#watch-grid", "#cards-grid"].forEach((selector) => $(selector).replaceChildren(empty("Gegevens tijdelijk niet bereikbaar.")));
+      return;
+    }
     const isDemo = data.mode === "demo";
+    const state = { isDemo, canAnalyse: !isDemo && data.market_data_licensed === true && !resourceState.stale && !resourceState.error };
     document.title = `de flikkerbibsjes UT Trade watcher · ${(data.platform || "").toUpperCase()}`;
-    const badge = $("#mode-badge"); badge.textContent = isDemo ? "Demo · speelgeld" : "Live snapshot"; badge.className = `badge ${isDemo ? "demo" : "live"}`;
+    const badge = $("#mode-badge");
+    badge.textContent = resourceState.error ? "Update onbereikbaar" : isDemo ? "Demo · speelgeld" : data.market_data_licensed !== true ? "Prijsfeed ontbreekt" : resourceState.stale ? "Oudere snapshot" : "Recente snapshot";
+    badge.className = `badge ${resourceState.error ? "unavailable" : isDemo ? "demo" : state.canAnalyse ? "live" : "stale"}`;
     const generated = validDate(data.generated_at);
     $("#updated-at").textContent = generated ? `Bijgewerkt ${timeFormatter.format(generated)}` : "Tijdstip onbekend";
-    $("#status-title").textContent = data.market_data_licensed ? "Prijsanalyse aan" : "Watch-modus: handen op de coins";
-    $("#status-detail").textContent = data.market_data_licensed ? "Actuele data, tax en risico vormen samen een signaal — geen glazen bol." : "Geen toegestane live prijsfeed, dus ook geen verzonnen koopprijzen.";
-    renderMetrics(data);
-    const pickGrid = $("#picks-grid"); pickGrid.replaceChildren(...(data.recommendations || []).map(renderPick)); if (!data.recommendations?.length) pickGrid.append(empty("Vandaag geen stevige pick. Wij verzinnen liever niets dan jullie coins te laten verdwalen."));
-    const watchGrid = $("#watch-grid"); watchGrid.replaceChildren(...(data.watches || []).map(renderWatch)); if (!data.watches?.length) watchGrid.append(empty("Radar stil. Ofwel de markt slaapt, ofwel hij doet alsof."));
-    const cardGrid = $("#cards-grid"); cardGrid.replaceChildren(...(data.items || []).map(renderCard)); if (!data.items?.length) cardGrid.append(empty("Nog geen prijskaarten. Geen bron, geen cowboyverhaal."));
+    $("#status-title").textContent = resourceState.error ? "Laatste update niet bereikbaar" : isDemo ? "Demo op het veld. Echte coins op de bank." : state.canAnalyse ? "Prijsanalyse aan" : "Watch-modus: handen op de coins";
+    $("#status-detail").textContent = resourceState.error ? "Eerder geladen gegevens blijven zichtbaar. Controleer de datum; deze prijzen en signalen zijn niet actueel bevestigd." : isDemo ? "Deze prijzen, grafieken en picks zijn voorbeelden. Er is geen actuele prijsfeed aangesloten." : state.canAnalyse ? "Brondata, tax en risico vormen samen een signaal — geen glazen bol." : data.market_data_licensed !== true ? "Geen toegestane live prijsfeed, dus ook geen verzonnen koopprijzen." : "De snapshot is ouder dan één uur of heeft geen geldige datum. Eerdere signalen staan als archief op de radar.";
+    renderMetrics(data, state);
+    const recommendations = isDemo || data.market_data_licensed === true ? data.recommendations || [] : [];
+    const items = isDemo || data.market_data_licensed === true ? data.items || [] : [];
+    const pickGrid = $("#picks-grid"); pickGrid.replaceChildren(...recommendations.map((item) => renderPick(item, state))); if (!recommendations.length) pickGrid.append(empty("Vandaag geen stevige pick. Wij verzinnen liever niets dan jullie coins te laten verdwalen."));
+    const watchGrid = $("#watch-grid"); watchGrid.replaceChildren(...(data.watches || []).map((item) => renderWatch(item, state))); if (!data.watches?.length) watchGrid.append(empty("Radar stil. Ofwel de markt slaapt, ofwel hij doet alsof."));
+    const cardGrid = $("#cards-grid"); cardGrid.replaceChildren(...items.map((item) => renderCard(item, state))); if (!items.length) cardGrid.append(empty("Nog geen prijskaarten. Geen bron, geen cowboyverhaal."));
     const warnings = $("#warnings-list"); warnings.replaceChildren(...(data.warnings || []).map((warning) => make("li", "", warning))); $("#warnings-section").hidden = !(data.warnings?.length);
   }
 
-  async function getData(cacheBust = false) {
-    const response = await fetch(`data/current.json${cacheBust ? `?t=${Date.now()}` : ""}`, { cache: "no-store", headers: { Accept: "application/json" } });
-    if (!response.ok) throw new Error(`Snapshot niet beschikbaar (${response.status})`);
-    return response.json();
-  }
-
-  async function getMetaData(cacheBust = false) {
-    const response = await fetch(`data/meta-watch.json${cacheBust ? `?t=${Date.now()}` : ""}`, { cache: "no-store", headers: { Accept: "application/json" } });
-    if (!response.ok) throw new Error(`Meta Watch niet beschikbaar (${response.status})`);
-    return response.json();
-  }
-
-  async function getMarketwatchData(cacheBust = false) {
-    const response = await fetch(`data/marketwatch.json${cacheBust ? `?t=${Date.now()}` : ""}`, { cache: "no-store", headers: { Accept: "application/json" } });
-    if (!response.ok) throw new Error(`Marketwatch niet beschikbaar (${response.status})`);
-    return response.json();
-  }
-
-  async function load(fresh = false) {
-    const button = $("#refresh-button");
-    if (fresh) { button.disabled = true; button.textContent = "Even graven…"; }
-    const [metaResult, marketwatchResult, dataResult] = await Promise.allSettled([getMetaData(fresh), getMarketwatchData(fresh), getData(fresh)]);
-    const meta = metaResult.status === "fulfilled" ? metaResult.value : null;
-    const marketwatch = marketwatchResult.status === "fulfilled" ? marketwatchResult.value : {
-      mode: "unavailable",
-      status_label: "RADAR OFFLINE",
-      title: "De ochtendbriefing is tijdelijk niet bereikbaar",
-      summary: "De site kreeg geen bruikbare Marketwatch binnen. We houden de vorige marktstand niet stiekem voor vers en verzinnen geen update.",
-      article: ["De volgende geplande controle probeert het opnieuw. De rest van de site blijft beschikbaar, maar zonder verifieerbare bron verschijnt er geen koop- of verkoopcall."],
-      signals: ["Geen verse briefing gepubliceerd.", "Controleer de bronstatus voordat je op een oud marktsignaal handelt."],
-      sources: [],
-    };
-    try {
-      if (dataResult.status === "rejected") throw dataResult.reason;
-      render(dataResult.value);
-    }
-    catch (error) {
-      try { render(await fetch("data/demo.json", { cache: "no-store" }).then((response) => response.json())); }
-      catch (_) {
-        $("#status-title").textContent = "Radar uitgevallen";
-        $("#status-detail").textContent = error instanceof Error ? error.message : "Onbekende fout bij het laden van data.";
-      }
-    } finally { renderMetaWatch(meta); renderMarketwatch(marketwatch); button.disabled = false; button.textContent = "Ververs"; }
-  }
-
-  $("#refresh-button").addEventListener("click", () => load(true));
-  load();
+  window.FBSRefresh.register("market", { url: "data/current.json", render, validate: (data) => typeof data.mode === "string" && Array.isArray(data.items) });
+  window.FBSRefresh.register("meta", { url: "data/meta-watch.json", render: renderMetaWatch, validate: (data) => Array.isArray(data.players) });
+  window.FBSRefresh.register("marketwatch", { url: "data/marketwatch.json", render: renderMarketwatch, validate: (data) => typeof data.title === "string" });
 })();

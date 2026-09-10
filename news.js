@@ -2,7 +2,7 @@
   "use strict";
 
   const $ = (selector) => document.querySelector(selector);
-  const dateFormatter = new Intl.DateTimeFormat("nl-NL", { dateStyle: "medium", timeStyle: "short" });
+  const dateFormatter = new Intl.DateTimeFormat("nl-NL", { dateStyle: "medium", timeStyle: "short", timeZone: "Europe/Amsterdam" });
   const coinFormatter = new Intl.NumberFormat("nl-NL");
   const localDashboard = new Set(["127.0.0.1", "localhost"]).has(location.hostname) && location.port === "8765";
   const dataUrl = localDashboard ? "/public/data/releases.json" : "data/releases.json";
@@ -90,6 +90,8 @@
 
   function marketItemFor(card, marketData) {
     if (!marketData?.market_data_licensed || marketData.mode === "demo" || !Array.isArray(marketData.items)) return null;
+    const state = window.FBSRefresh.get("market");
+    if (state.stale || state.error) return null;
     if (!card.market_item_id) return null;
     const candidates = marketData.items.filter((item) => String(item.id) === String(card.market_item_id));
     return candidates.length === 1 ? candidates[0] : null;
@@ -98,6 +100,7 @@
   function priceStatus(card, marketData) {
     if (!marketData) return "Koppel een toegestane live prijsfeed voor een echte prijs.";
     if (marketData.mode === "demo") return "Demo telt niet als actuele prijs.";
+    if (window.FBSRefresh.get("market").stale) return "De prijsdata is verouderd of niet bereikbaar. Wacht op een nieuwe snapshot.";
     if (!marketData.market_data_licensed) return "Live prijsfeed is niet toegestaan of niet vers genoeg.";
     if (!card.market_item_id) return "Exacte kaart-ID ontbreekt nog in de toegestane prijsfeed.";
     return "Deze kaart zit nog niet in de toegestane prijsfeed.";
@@ -107,7 +110,7 @@
     const item = marketItemFor(card, marketData);
     const price = make("div", "release-price");
     price.append(make("span", "release-price__label", "ACTUELE PRIJS"));
-    if (item && Number.isFinite(Number(item.price))) {
+    if (item && item.price !== null && item.price !== "" && Number.isFinite(Number(item.price))) {
       price.classList.add("release-price--live");
       price.append(make("strong", "", coinFormatter.format(Number(item.price))));
       const generated = new Date(marketData.generated_at);
@@ -155,6 +158,7 @@
   function renderCard(card, options = {}) {
     const dutch = options.dutch || isDutchGold(card);
     const article = make("article", `release-card${dutch ? " release-card--dutch" : ""}`);
+    article.dataset.position = card.position || "";
     const visual = make("div", "release-card__visual");
     visual.setAttribute("aria-hidden", "true");
     visual.append(make("span", "release-card__halo"), make("span", "release-card__monogram", initials(card.name)));
@@ -166,6 +170,12 @@
       flag.setAttribute("role", "img");
       flag.setAttribute("aria-label", "Nederland");
       visual.append(flag, make("span", "release-card__spotlight", "ORANJE GOUD"));
+    }
+    const officialArt = window.FBSCardArt?.create(card, { baseProfile: card.card_type === "Gold Watch" });
+    if (officialArt) {
+      article.classList.add("has-official-art");
+      visual.removeAttribute("aria-hidden");
+      visual.append(officialArt);
     }
 
     const content = make("div", "release-card__content");
@@ -179,9 +189,14 @@
     const meter = make("div", "meta-meter");
     meter.append(make("span", "", "BIBS META-METER"), make("strong", "", card.meta_rating === null || card.meta_rating === undefined ? "—" : `${card.meta_rating}/100`));
     content.append(meter, renderCurrentPrice(card, options.marketData));
-    content.append(make("p", "release-card__meta", card.meta_text || "Stats nog niet bevestigd. We gaan er niet op gokken."));
-    if (card.meta_basis) content.append(make("p", "release-card__basis", card.meta_basis));
-    if (card.release_note) content.append(make("p", "release-card__note", card.release_note));
+    const report = make("details", "player-details");
+    const reportTitle = make("summary", "", "Scoutingsrapport ");
+    const reportIcon = make("span", "", "+"); reportIcon.setAttribute("aria-hidden", "true");
+    reportTitle.append(reportIcon);
+    report.append(reportTitle, make("p", "release-card__meta", card.meta_text || "Stats nog niet bevestigd. We gaan er niet op gokken."));
+    if (card.meta_basis) report.append(make("p", "release-card__basis", card.meta_basis));
+    if (card.release_note) report.append(make("p", "release-card__note", card.release_note));
+    content.append(report);
     const source = safeLink(card.source || options.source);
     if (source) content.append(source);
     article.append(visual, content);
@@ -274,16 +289,27 @@
     container.append(card);
   }
 
-  function render(data, marketData, metaData) {
+  function render(data, state) {
+    const marketData = window.FBSRefresh.get("market").data;
+    const metaData = window.FBSRefresh.get("meta").data;
+    if (!data) {
+      $("#news-mode").textContent = "UPDATE ONBEREIKBAAR";
+      $("#news-status-title").textContent = "De nieuwsradar hapert";
+      $("#news-status-detail").textContent = "Er is in dit bezoek nog geen release-data geladen. Probeer straks opnieuw.";
+      $("#news-updated").textContent = "Nog geen gegevens geladen";
+      $("#release-board").replaceChildren(empty("Geen release-data geladen. Ook de leukste chaos heeft een bron nodig."));
+      $("#dutch-gold-grid").replaceChildren(empty("Gold Watch is tijdelijk niet bereikbaar."));
+      return;
+    }
     const releases = Array.isArray(data.releases) ? data.releases : [];
     const cardCount = releases.reduce((total, release) => total + (Array.isArray(release.cards) ? release.cards.length : 0), 0);
     const confirmed = releases.some((release) => release.status === "confirmed");
     if (standaloneNewsPage) document.title = `Nieuws & Releases · de flikkerbibsjes UT Trade watcher`;
-    const updated = new Date(data.updated_at);
+    const updated = new Date(data.updated_at || NaN);
     $("#news-updated").textContent = Number.isNaN(updated.getTime()) ? "Bronstatus wordt bijgewerkt" : `Bijgewerkt ${dateFormatter.format(updated)}`;
-    $("#news-mode").textContent = data.mode === "planning" ? "PLANNER · WACHT OP EA" : "OFFICIËLE BRON GELADEN";
+    $("#news-mode").textContent = state.error ? "UPDATE ONBEREIKBAAR" : state.stale ? "OUDERE BRONDATA" : data.mode === "planning" ? "PLANNER · WACHT OP EA" : "OFFICIËLE BRON GELADEN";
     $("#news-status-title").textContent = confirmed ? `${cardCount} kaarten op het bord` : "De packdeur is nog dicht";
-    $("#news-status-detail").textContent = confirmed
+    $("#news-status-detail").textContent = state.error ? "De laatste controle mislukte. Eerder geladen kaartprofielen en releases blijven leesbaar; de brondatum staat erbij." : state.stale ? "Deze publicatie is ouder dan 36 uur. De kaartprofielen blijven ter referentie staan; nieuwe releases zijn nog niet bevestigd." : confirmed
       ? "Elke kaart op dit bord heeft een bron. Nu mogen jullie pas moeilijk gaan doen."
       : (data.notice || "We wachten op de officiële EA-fluit. Tot die tijd geen kaartfantasie.");
     renderSchedule(data.schedule);
@@ -292,39 +318,22 @@
     renderDutchGold(data, marketData, metaData);
   }
 
-  async function getCurrentMarketData() {
-    try {
-      const response = await fetch(localDashboard ? "/api/dashboard" : "data/current.json", { cache: "no-store", headers: { Accept: "application/json" } });
-      return response.ok ? response.json() : null;
-    } catch (_) {
-      return null;
-    }
+  let renderedSignature = null;
+  function renderLatest(data, state) {
+    const market = window.FBSRefresh.get("market");
+    const meta = window.FBSRefresh.get("meta");
+    const signature = JSON.stringify([data, state.error, state.stale, market.data, market.error, market.stale, meta.data]);
+    if (signature === renderedSignature) return;
+    render(data, state);
+    renderedSignature = signature;
   }
 
-  async function getMetaWatchData() {
-    try {
-      const response = await fetch(metaDataUrl, { cache: "no-store", headers: { Accept: "application/json" } });
-      return response.ok ? response.json() : null;
-    } catch (_) {
-      return null;
-    }
-  }
-
-  async function load() {
-    try {
-      const [response, marketData, metaData] = await Promise.all([
-        fetch(dataUrl, { cache: "no-store", headers: { Accept: "application/json" } }),
-        getCurrentMarketData(),
-        getMetaWatchData(),
-      ]);
-      if (!response.ok) throw new Error(`Release-data niet beschikbaar (${response.status})`);
-      render(await response.json(), await marketData, await metaData);
-    } catch (error) {
-      $("#news-status-title").textContent = "De nieuwsradar hapert";
-      $("#news-status-detail").textContent = error instanceof Error ? error.message : "Onbekende fout bij het laden van releases.";
-      $("#release-board").replaceChildren(empty("Geen release-data geladen. Ook de leukste chaos heeft een bron nodig."));
-    }
-  }
-
-  load();
+  if (!window.FBSRefresh.has("market")) window.FBSRefresh.register("market", { url: localDashboard ? "/api/dashboard" : "data/current.json", validate: (data) => Array.isArray(data.items) });
+  if (!window.FBSRefresh.has("meta")) window.FBSRefresh.register("meta", { url: metaDataUrl, validate: (data) => Array.isArray(data.players) });
+  window.FBSRefresh.register("releases", { url: dataUrl, render: renderLatest, validate: (data) => Array.isArray(data.releases) && Array.isArray(data.dutch_gold_watch) });
+  document.addEventListener("fbs:data", (event) => {
+    if (!["market", "meta"].includes(event.detail.kind)) return;
+    const latest = window.FBSRefresh.get("releases");
+    if (latest.data) renderLatest(latest.data, latest);
+  });
 })();

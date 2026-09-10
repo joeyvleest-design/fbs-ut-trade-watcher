@@ -8,8 +8,10 @@
     <title>de flikkerbibsjes UT Trade watcher</title>
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="dashboard.css">
   </head>
   <body data-page="dashboard">
+    <a class="skip-link" href="#club-dashboard">Direct naar het dashboard</a>
     <main class="shell">
       <header class="topbar">
         <a class="brand" href="./" aria-label="de flikkerbibsjes UT Trade watcher startpagina">
@@ -17,37 +19,45 @@
           <span class="brand-copy"><span>DE FLIKKERBIBSJES</span><strong>UT TRADE WATCHER</strong></span>
         </a>
         <div class="topbar-actions">
-          <a class="button button-secondary" href="#release-radar">Nieuws</a>
-          <a class="button button-discord" href="discord.html">Discord</a>
+          <span class="club-edition">EST. 2026 <span aria-hidden="true">/</span> FC 27</span>
           <span id="mode-badge" class="badge">Laden…</span>
-          <button id="refresh-button" class="button button-secondary" type="button">Ververs</button>
+          <a class="button button-discord" href="discord.html">De kleedkamer <span aria-hidden="true">↗</span></a>
         </div>
       </header>
 
       <section class="hero" aria-labelledby="page-title">
         <div class="hero-copy">
-          <p class="kicker">MARKTSIGNALEN · GEEN COIN-NECROMANTIE</p>
-          <h1 id="page-title">Zie de markt<br><em>vóór</em> je coins verdampen.</h1>
-          <p class="hero-text">Prijsbeweging, pack-chaos en groepschat-paniek, gefilterd tot een briefing waar zelfs jullie iets aan hebben.</p>
+          <p class="kicker hero-kicker"><span aria-hidden="true">✦</span> VOOR DE CLUB. VOOR DE COINS.</p>
+          <h1 id="page-title">Grote praat.<br>Slimme <em>transfers.</em></h1>
+          <p class="hero-text">Jullie dagelijkse dosis markt, meta en pack-chaos. Voor vier managers met grootheidswaanzin en één gezamenlijke hersencel.</p>
           <div class="hero-actions">
-            <a class="button" href="#picks">Geef me de drama</a>
-            <span id="updated-at" class="updated-at">Data laden…</span>
+            <a class="button hero-primary" href="#meta-watch">Scout de spelers <span aria-hidden="true">↗</span></a>
+            <a class="hero-link" href="#marketwatch">Lees de Marketwatch <span aria-hidden="true">→</span></a>
           </div>
+          <p class="hero-footnote">ROOD-WIT IN HET HART. DE MARKT IN HET VIZIER.</p>
         </div>
-        <aside class="signal-panel" aria-label="Marktstatus">
-          <span class="pulse" aria-hidden="true"></span>
-          <p class="panel-label">PANIEKINDEX</p>
-          <strong id="status-title">De radar warmt op</strong>
-          <p id="status-detail">De data doet nog even alsof hij volwassen is.</p>
-          <div class="panel-rule"></div>
-          <span class="microcopy">Geen login · Geen bot die voor je gaat klikken</span>
-        </aside>
+        <div class="hero-art" aria-hidden="true">
+          <div class="pitch-lines"><i></i><b></b></div>
+          <span class="hero-coordinate">52°22′ N · CLUB FBS</span>
+          <div class="card-deck">
+            <div class="collectible collectible-back"><span>UT</span><b>27</b></div>
+            <div class="collectible collectible-middle"><span>CLUB LEGENDS</span><b>✦</b></div>
+            <div class="collectible collectible-front">
+              <div class="collectible-top"><span>04<small>MANAGERS</small></span><span>★ ★ ★</span></div>
+              <img src="logo.svg" alt="" width="156" height="156">
+              <strong>DE BIBS SQUAD</strong><span class="collectible-sub">GEEN WISSELS. WEL MENINGEN.</span>
+              <div class="collectible-bottom"><span>ROOD</span><span>WIT</span><span>GOUD</span></div>
+            </div>
+          </div>
+          <div class="floating-ticket"><span class="ticket-icon">↗</span><div><small>SCOUTING DEPARTMENT</small><strong>Oog voor goud.</strong></div><span>✦</span></div>
+          <span class="hero-art-caption">FBS ULTIMATE TEAM · CLUB EDITION</span>
+        </div>
       </section>
 
       <section class="crew-section" aria-labelledby="crew-title">
         <div class="crew-heading">
           <p class="kicker">DE BIBS SQUAD</p>
-          <h2 id="crew-title">4 in de basis. 0 minuten stilte.</h2>
+          <h2 id="crew-title">4 man. Nul chill.</h2>
         </div>
         <ul class="crew-list" role="list">
           <li class="crew-member"><span class="crew-avatar crew-avatar--spark" aria-hidden="true">✦</span><span><strong>Knalfuifje</strong><small>confetti CFO</small></span></li>
@@ -57,13 +67,65 @@
         </ul>
       </section>
 
-      <section id="metrics" class="metrics" aria-label="Overzicht"></section>
+      <nav class="section-nav" aria-label="Dashboardonderdelen">
+        <a class="is-active" href="#club-dashboard" aria-current="location">Overzicht</a>
+        <a href="#meta-watch">Meta Meter</a>
+        <a href="#dutch-gold">Gold Watch <span aria-hidden="true">✦</span></a>
+        <a href="#marketwatch">Marketwatch</a>
+        <a href="#release-radar">Releases</a>
+        <a href="#sbc-week">SBC van de week</a>
+      </nav>
+
+      <section id="club-dashboard" class="section update-hub" aria-labelledby="dashboard-title">
+        <div class="section-head">
+          <div><p class="kicker">HET CLUBHUIS</p><h2 id="dashboard-title">Even bijpraten.</h2></div>
+          <div class="refresh-controls"><span id="refresh-feedback" role="status">Automatisch elke 5 min.</span><button id="refresh-button" class="button button-secondary" type="button">Ververs alles</button></div>
+        </div>
+        <div class="update-overview">
+          <aside class="status-card" aria-label="Marktstatus">
+            <p class="panel-label"><span class="pulse" aria-hidden="true"></span> STAND VAN ZAKEN</p>
+            <h3 id="status-title">De radar warmt op</h3>
+            <p id="status-detail">De laatste gepubliceerde gegevens worden opgehaald.</p>
+            <span id="updated-at" class="updated-at">Data laden…</span>
+          </aside>
+          <aside class="next-check-card" aria-label="Volgende geplande broncheck">
+            <span class="next-check-icon" aria-hidden="true">◷</span>
+            <div><p class="kicker">VOLGENDE GEPLANDE CHECK</p><h3 id="next-check">Marketwatch</h3><p id="next-check-time">Dagelijks rond 08:00 · Amsterdam</p><small>Publicatie volgt zodra er bevestigde informatie is.</small></div>
+          </aside>
+        </div>
+        <section id="metrics" class="metrics" aria-label="Overzicht"></section>
+        <details class="updates-details">
+          <summary><span><span class="status-dot" aria-hidden="true"></span> <span id="update-summary">Bronstatus laden…</span></span><span>Bekijk updates <b aria-hidden="true">+</b></span></summary>
+          <div id="updates-grid" class="updates-grid"></div>
+          <p class="updates-explanation">Verversen haalt de laatste publicatie op. Nieuws en prijsgegevens kunnen ouder zijn; hieronder zie je de brondata per onderdeel.</p>
+        </details>
+      </section>
+
+      <section id="meta-watch" class="section meta-watch-section" aria-labelledby="meta-watch-title">
+        <div class="section-head">
+          <div><p class="kicker"><span class="section-number">01</span> NEDERLAND · 75+ ALG</p><h2 id="meta-watch-title">Meer meta. Minder excuses.</h2></div>
+          <p>De Meta Meter. Nederlandse spelers beoordeeld op hun basisstats. Jullie nieuwe reden om de controller de schuld te geven.</p>
+        </div>
+        <div id="meta-watch-grid" class="football-card-grid" aria-live="polite"></div>
+        <details class="method-disclosure"><summary>Hoe werkt de Meta Meter? <span aria-hidden="true">+</span></summary><aside id="meta-watch-method" class="meta-method" hidden></aside></details>
+      </section>
+
+      <section id="dutch-gold" class="section dutch-gold-section" aria-labelledby="dutch-gold-title">
+        <div class="section-head">
+          <div><p class="kicker"><span class="section-number">02</span> ORANJE BOVEN. GOUD ERONDER.</p><h2 id="dutch-gold-title">Nederlandse Gold Watch.</h2></div>
+          <p>Andere namen, dezelfde ongezonde ambitie. Gold-basiskaarten vanaf 75 ALG, met een eigen scoutingsrapport.</p>
+        </div>
+        <div class="gold-toolbar"><p><span class="gold-star" aria-hidden="true">✦</span> <span id="gold-count">De scouts zijn onderweg…</span></p><div class="filter-group" role="group" aria-label="Filter Gold Watch op positie"><button type="button" class="filter-button is-active" data-position="all" aria-pressed="true">Alle spelers</button><button type="button" class="filter-button" data-position="defence" aria-pressed="false">Verdediging</button><button type="button" class="filter-button" data-position="midfield" aria-pressed="false">Middenveld</button><button type="button" class="filter-button" data-position="attack" aria-pressed="false">Aanval</button></div></div>
+        <div id="dutch-gold-grid" class="dutch-gold-grid" aria-live="polite"></div>
+        <p id="gold-filter-empty" class="empty" hidden>Geen spelers op deze positie in de huidige Gold Watch. De scout is nog niet klaar met z’n broodje.</p>
+        <details class="method-disclosure"><summary>De goudpaspoort-regel <span aria-hidden="true">+</span></summary><aside id="dutch-gold-rule" class="release-rule" hidden></aside></details>
+      </section>
 
       <section id="marketwatch" class="section marketwatch-section" aria-labelledby="marketwatch-title">
         <div class="section-head">
           <div>
-            <p class="kicker">DAGELIJKSE EDITIE · MARKETWATCH</p>
-            <h2 id="marketwatch-title">De ochtendkrant voor je coins wakker zijn.</h2>
+            <p class="kicker"><span class="section-number">03</span> DE DAGELIJKSE MARKETWATCH</p>
+            <h2 id="marketwatch-title">Koffie. Koersen. Grote verhalen.</h2>
           </div>
           <p>Een journalistieke briefing met bronnen, onzekerheid en nul verzonnen marktprijzen.</p>
         </div>
@@ -74,7 +136,7 @@
         <div class="section-head">
           <div>
             <p class="kicker">COINS OP HET SCHAVOT</p>
-            <h2 id="picks-title">Koop, verkoop of doe alsof je het wist.</h2>
+            <h2 id="picks-title">Op het transferlijstje.</h2>
           </div>
           <p>Alleen echte, toegestane prijsdata krijgt een koopgrens. De rest is groepschat-fanfiction.</p>
         </div>
@@ -95,7 +157,7 @@
       <section id="release-radar" class="section release-radar-section" aria-labelledby="release-radar-title">
         <div class="section-head">
           <div>
-            <p class="kicker">NIEUWS &amp; RELEASES</p>
+            <p class="kicker"><span class="section-number">04</span> NIEUWS &amp; RELEASES</p>
             <h2 id="release-radar-title">Woensdag TOTW. Vrijdag pack-chaos.</h2>
           </div>
           <p>De vaste kijkmomenten voor nieuwe kaarten, met een bron erbij of helemaal niets.</p>
@@ -131,36 +193,12 @@
       <section id="sbc-week" class="section sbc-week-section" aria-labelledby="sbc-week-title">
         <div class="section-head">
           <div>
-            <p class="kicker">ZONDAGAVOND · SBC WATCH</p>
+            <p class="kicker"><span class="section-number">05</span> ZONDAGAVOND · SBC WATCH</p>
             <h2 id="sbc-week-title">Must-do SBC van de week?</h2>
           </div>
           <p>Alleen een ‘must do’ als EA de requirements en reward officieel heeft neergezet.</p>
         </div>
         <div id="sbc-week-card" class="sbc-week-card" aria-live="polite"></div>
-      </section>
-
-      <section id="meta-watch" class="section meta-watch-section" aria-labelledby="meta-watch-title">
-        <div class="section-head">
-          <div>
-            <p class="kicker">NEDERLAND · META WATCH</p>
-            <h2 id="meta-watch-title">Wie speelt lekker, los van wat-ie kost.</h2>
-          </div>
-          <p>Alleen Nederlanders boven 75 ALG, op rol en zichtbare basisstats. Geen coin-porno, geen “trust me bro”.</p>
-        </div>
-        <div id="meta-watch-grid" class="football-card-grid" aria-live="polite"></div>
-        <aside id="meta-watch-method" class="meta-method" hidden></aside>
-      </section>
-
-      <section id="dutch-gold" class="section dutch-gold-section" aria-labelledby="dutch-gold-title">
-        <div class="section-head">
-          <div>
-            <p class="kicker">ORANJE OP DE RADAR</p>
-            <h2 id="dutch-gold-title">Nederlandse Gold Watch.</h2>
-          </div>
-          <p>Alleen Gold-basisprofiel of beter. Een glimmende special zonder bewezen goudpaspoort mag eerst even buiten wachten.</p>
-        </div>
-        <div id="dutch-gold-grid" class="dutch-gold-grid" aria-live="polite"></div>
-        <aside id="dutch-gold-rule" class="release-rule" hidden></aside>
       </section>
 
       <section class="section" aria-labelledby="cards-title">
@@ -192,12 +230,18 @@
         </ol>
       </section>
 
+      <aside class="club-banner"><div><p class="kicker">DE DERDE HELFT</p><h2>Analyse klaar?<br>Nu de onzin nog.</h2><p>Knalfuifje, Uncle Gerroe, Surimi stokje en vleesbeker.<br>De echte nabespreking is in de kleedkamer.</p></div><a href="discord.html" class="button">Naar de Discord <span aria-hidden="true">↗</span></a></aside>
       <footer>
-        <p>de flikkerbibsjes UT Trade watcher gebruikt alleen toegestane APIs, RSS/Atom-feeds en officiële social APIs. Saai, maar we slapen beter.</p>
-        <p><a href="discord.html">Privé Discord</a> · Geen scraping · Geen verborgen endpoints · Geen garantie dat je ineens rijk bent</p>
+        <a href="./" class="footer-brand"><img src="logo.svg" width="32" height="32" alt="FBS"><span>UT TRADE WATCHER<br><small>Een kleine club. Een veel te grote mond.</small></span></a>
+        <p>Eigen analyses, bronlinks en duidelijk gemarkeerde demo’s.<br>Geen garantie op winst. Wel op een nabespreking.</p>
+        <button type="button" id="motion-toggle" class="motion-toggle" aria-pressed="false">Animaties pauzeren</button>
       </footer>
     </main>
+    <noscript><p class="shell">Schakel JavaScript in om de spelerskaarten en gepubliceerde updates te bekijken.</p></noscript>
+    <script src="refresh.js" defer></script>
+    <script src="card-art.js" defer></script>
     <script src="app.js" defer></script>
     <script src="news.js" defer></script>
+    <script src="motion.js" defer></script>
   </body>
 </html>

@@ -4,12 +4,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="De private Discord-hub van de flikkerbibsjes UT Trade watcher.">
-    <meta name="theme-color" content="#8f101b">
-    <title>Discord · de flikkerbibsjes UT Trade watcher</title>
+    <meta name="theme-color" content="#cf1735">
+    <title>De kleedkamer · FBS UT Trade Watcher</title>
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="discord-page.css">
   </head>
-  <body>
+  <body data-page="discord">
+    <a class="skip-link" href="#discord-title">Direct naar de kleedkamer</a>
     <main class="shell">
       <header class="topbar">
         <a class="brand" href="./" aria-label="de flikkerbibsjes UT Trade watcher startpagina">
@@ -17,36 +20,40 @@
           <span class="brand-copy"><span>DE FLIKKERBIBSJES</span><strong>UT TRADE WATCHER</strong></span>
         </a>
         <div class="topbar-actions">
-          <a class="button button-secondary" href="./">Terug naar dashboard</a>
-          <a class="button button-discord" href="./#release-radar">Nieuws</a>
+          <span class="club-edition">CLUB FBS <span aria-hidden="true">/</span> DE KLEEDKAMER</span>
+          <a class="button button-secondary" href="./"><span aria-hidden="true">↖</span> Naar het dashboard</a>
         </div>
       </header>
 
       <section class="discord-hero" aria-labelledby="discord-title">
+        <div class="locker-pitch" aria-hidden="true"><span></span></div>
         <div class="discord-hero-copy">
-          <div class="discord-hero-title">
-            <img class="discord-hero-logo" src="logo.svg" width="112" height="112" alt="Speels FBS-monogram met voetbal">
-            <div>
-              <p class="kicker">ALLEEN VOOR DE VIER VERDACHTEN</p>
-              <h1 id="discord-title">De chaos krijgt<br>een <em>kanaal.</em></h1>
-            </div>
+          <p class="kicker"><span aria-hidden="true">✦</span> BUITEN HET VELD. BINNEN DE CLUB.</p>
+          <h1 id="discord-title">De kleedkamer.<br><em>Nul filter.</em></h1>
+          <p class="discord-copy">Vier managers. Eén gezamenlijke hersencel. De plek voor jullie hot takes, squadtherapie en transfers die achteraf altijd briljant waren.</p>
+          <div class="locker-actions">
+            <a class="button locker-primary" href="#channels">Bekijk de opstelling <span aria-hidden="true">↓</span></a>
+            <a class="locker-text-link" href="./#marketwatch">Eerst de markt lezen <span aria-hidden="true">↗</span></a>
           </div>
-          <p class="discord-copy">Eén kleine, invite-only Discord waar hot takes, squadtherapie en dagelijkse marktsignalen netjes worden gecentraliseerd.</p>
-          <a class="button button-discord" href="#channels">Toon de bezemkast</a>
+          <p class="locker-footnote">ROOD-WIT. GROTE PRAAT. VIER VASTE BASISPLAATSEN.</p>
         </div>
         <aside class="join-panel" aria-live="polite">
-          <p class="panel-label">PRIVATE DISCORD</p>
-          <strong id="join-title">De deur staat nog op slot</strong>
-          <p id="join-detail">De digitale deur gaat eerst op slot. Daarna krijgen alleen jullie vier een sleutel.</p>
-          <a id="join-discord" class="button button-discord" href="#" target="_blank" rel="noopener" aria-disabled="true">Join private Discord</a>
-          <span id="join-status" class="join-status">Geen publieke invite geplaatst.</span>
+          <div class="membership-top"><p class="panel-label">FBS MEMBERS CLUB</p><span aria-hidden="true">✦ ✦ ✦</span></div>
+          <div class="membership-identity"><img class="discord-hero-logo" src="logo.svg" width="112" height="112" alt="Speels FBS-monogram met voetbal"><div><span>SEIZOEN 26 / 27</span><b>DE BIBS<br>SQUAD.</b></div></div>
+          <div class="membership-seat"><span>VAK <b>FBS</b></span><span>RIJ <b>01</b></span><span>SELECTIE <b>04</b></span></div>
+          <div class="membership-invite">
+            <strong id="join-title">De deur staat nog op slot</strong>
+            <p id="join-detail">De uitnodiging wordt hier beschikbaar zodra deze is gekoppeld.</p>
+            <a id="join-discord" class="button button-discord" target="_blank" rel="noopener" aria-disabled="true">Join private Discord <span aria-hidden="true">↗</span></a>
+            <span id="join-status" class="join-status">Geen publieke invite geplaatst.</span>
+          </div>
         </aside>
       </section>
 
       <section class="crew-section" aria-labelledby="discord-crew-title">
         <div class="crew-heading">
           <p class="kicker">DE BIBS SQUAD</p>
-          <h2 id="discord-crew-title">4 in de basis. 0 minuten stilte.</h2>
+          <h2 id="discord-crew-title">Geen wissels.<br>Wel meningen.</h2>
         </div>
         <ul class="crew-list" role="list">
           <li class="crew-member"><span class="crew-avatar crew-avatar--spark" aria-hidden="true">✦</span><span><strong>Knalfuifje</strong><small>confetti CFO</small></span></li>
@@ -59,65 +66,51 @@
       <section id="channels" class="section" aria-labelledby="channels-title">
         <div class="section-head">
           <div>
-            <p class="kicker">DRIE RUIMTES</p>
-            <h2 id="channels-title">Drie kamers, nul rust.</h2>
+            <p class="kicker"><span class="section-number">01</span> DE BEOOGDE OPSTELLING</p>
+            <h2 id="channels-title">Voor elke uitbarsting een kanaal.</h2>
           </div>
-          <p>Geen 84 berichten “wie kopen?” in je DMs: alles krijgt z’n eigen hoekje.</p>
+          <p>Dit is het plan voor jullie Discord. Automatische posts en screenshotadvies wachten nog op hun koppeling.</p>
         </div>
         <div class="channel-grid">
           <article class="channel-card">
-            <div class="channel-icon" aria-hidden="true">#</div>
-            <h2># chat</h2>
-            <p>Hot takes, squads en meningen waar niemand om vroeg.</p>
-            <span class="chip">Iedereen mag typen</span>
+            <div class="channel-card-top"><div class="channel-icon" aria-hidden="true">#</div><span>01 / DE CANTINE</span></div>
+            <h3># chat</h3>
+            <p>Squads, slechte grappen en een tactische analyse die verdacht veel op schelden lijkt.</p>
+            <div class="channel-card-bottom"><span class="channel-status">Voor de hele squad</span><span aria-hidden="true">↗</span></div>
           </article>
           <article class="channel-card">
-            <div class="channel-icon" aria-hidden="true">↗</div>
-            <h2># trading-tips</h2>
-            <p>Dagelijkse marktspionage. Alleen de bot praat hier, dus de tip verdrinkt niet in “W?”</p>
-            <span class="chip">Bot heeft de megafoon</span>
+            <div class="channel-card-top"><div class="channel-icon" aria-hidden="true">↗</div><span>02 / DE TRANSFERDESK</span></div>
+            <h3># trading-tips</h3>
+            <p>De Marketwatch, nieuwe releases en de reden achter een tip. Zodat “trust me bro” eindelijk concurrentie krijgt.</p>
+            <div class="channel-card-bottom"><span class="channel-status channel-status--pending">Koppeling volgt</span><span aria-hidden="true">↗</span></div>
           </article>
           <article class="channel-card">
-            <div class="channel-icon" aria-hidden="true">◉</div>
-            <h2># chemistry-lab</h2>
-            <p>Drop <strong>/chem</strong> met een screenshot en laat een lokale bot je squad roast-proof maken.</p>
-            <span class="chip">Chemistry-ehbo</span>
+            <div class="channel-card-top"><div class="channel-icon" aria-hidden="true">◉</div><span>03 / SQUADTHERAPIE</span></div>
+            <h3># chemistry-lab</h3>
+            <p>Het plan: een screenshot erin, hulp met chemistry en een passende chem style eruit. Je opstelling verdient een second opinion.</p>
+            <div class="channel-card-bottom"><span class="channel-status channel-status--pending">Bot nog niet actief</span><span aria-hidden="true">↗</span></div>
           </article>
         </div>
       </section>
 
-      <section class="section" aria-labelledby="privacy-title">
-        <div class="section-head">
-          <div>
-            <p class="kicker">PRIVACY &amp; BETROUWBAARHEID</p>
-            <h2 id="privacy-title">Klein, afgeschermd, net iets te overtuigd.</h2>
-          </div>
-          <p>Geen tokens, webhooks of screenshots in de etalage. We zijn gek, niet roekeloos.</p>
+      <section class="locker-house-rules section" aria-labelledby="privacy-title">
+        <div class="locker-rule-intro">
+          <p class="kicker"><span class="section-number">02</span> DE HUISREGELS</p>
+          <h2 id="privacy-title">Grote mond.<br>Kleine club.</h2>
+          <p>Voor de vier vaste verdachten. De lat ligt hoog. Het niveau bepalen jullie zelf.</p>
+          <span class="locker-rule-stars" aria-hidden="true">✦ ✦ ✦</span>
         </div>
-        <div class="privacy-grid">
-          <article class="privacy-card">
-            <h2>Zo blijft de club dicht</h2>
-            <ul>
-              <li>Alleen een tijdelijke sleutel voor jullie vier.</li>
-              <li>Na het joinen gaat die sleutel weer de shredder in.</li>
-              <li>Trading-tips zijn leesbaar, maar niet overschreeuwbaar.</li>
-              <li>De chem-bot onthoudt je screenshots niet. Gelukkig maar.</li>
-            </ul>
-          </article>
-          <article class="privacy-card">
-            <h2>Hoe de robot z’n mond houdt</h2>
-            <ol class="discord-steps">
-              <li>Een veilige Discord-webhook dumpt de dagelijkse marktdigest in <strong>#trading-tips</strong>.</li>
-              <li>De digest gebruikt alleen toegestane feeds; geen kelder-API’s of browsertrucs.</li>
-              <li>Een optionele bot op een eigen computer verwerkt <strong>/chem</strong>-screenshots lokaal via Ollama.</li>
-            </ol>
-          </article>
-        </div>
+        <ol class="locker-rules">
+          <li><span aria-hidden="true">01</span><div><h3>De sleutel blijft bij de squad.</h3><p>De Discord is bedoeld als besloten club. Op deze pagina verschijnt alleen een uitnodiging als die is gekoppeld.</p></div></li>
+          <li><span aria-hidden="true">02</span><div><h3>Een tip krijgt een verhaal.</h3><p>Koopdrift is geen onderbouwing. De Marketwatch vermeldt bronnen, beschikbare data en wat nog onzeker is.</p></div></li>
+          <li><span aria-hidden="true">03</span><div><h3>Roast de opstelling. Help de manager.</h3><p>Een slechte squad is tijdelijk. Een screenshot in de groepschat is voor altijd voer voor discussie.</p></div></li>
+        </ol>
       </section>
 
       <footer>
-        <p>de flikkerbibsjes UT Trade watcher · Discord is invite-only, net als jullie betere takes.</p>
-        <p>Geen scraping · Geen verborgen endpoints · Geen garantie dat je coins zich gedragen</p>
+        <a class="locker-footer-brand" href="./"><img src="logo.svg" width="30" height="30" alt=""><span>FBS <small>UT Trade Watcher</small></span></a>
+        <a class="locker-back-link" href="./#release-radar">Nieuwe releases <span aria-hidden="true">↗</span></a>
+        <a class="locker-back-link" href="./">Terug naar het dashboard <span aria-hidden="true">↗</span></a>
       </footer>
     </main>
     <script src="discord.js" defer></script>
