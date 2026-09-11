@@ -37,6 +37,12 @@
       "detail": "Aanvullende redactionele check via de bestaande Codex-planning: EA-nieuws, toegankelijke berichtgeving en duidelijk gelabelde geruchten. Geen doorlopende scan; individuele controletijden staan bij de artikelen."
     },
     {
+      "id": "moddingway-editorial", "name": "ModdingWay · redactionele bron", "kind": "manual", "enabled": false,
+      "url": "https://www.moddingway.com/fut/news/10170/fc-27-heroes-stats-revealed",
+      "policy_url": "https://www.moddingway.com/page/terms", "policy_reviewed_at": "2026-09-11T06:33:36Z",
+      "detail": "Incidenteel gelezen openbare pagina; alleen een korte eigen samenvatting en bronlink. Geen automatische collector, gekopieerde kaartafbeeldingen of statdatabase. De voorwaarden beperken onder meer auteursrechtinbreuk en overmatige belasting; deze check is geen algemene scraping- of herpublicatielicentie."
+    },
+    {
       "id": "x", "name": "X / traders", "kind": "manual", "enabled": false,
       "url": "https://x.com/",
       "detail": "Geen geconfigureerde toegestane API: X wordt niet automatisch gescand. Nieuwsartikelen over een trader kunnen als secundaire bron worden gelezen; dat is geen rechtstreekse X-controle."
