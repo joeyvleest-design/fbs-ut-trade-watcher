@@ -1,8 +1,42 @@
 {
   "game": "FC27",
-  "checked_at": "2026-09-10T09:28:55.867822Z",
-  "updated_at": "2026-09-10T09:28:55.867822Z",
+  "checked_at": "2026-09-11T06:35:10.439833Z",
+  "updated_at": "2026-09-11T06:35:10.439833Z",
   "items": [
+    {
+      "id": "fc27-kluivert-hero-rumour-20260910",
+      "title": "Kluivert als Hero? Eerst bewijs, dan borstklopperij",
+      "summary": "ModdingWay toont gelekte Hero-profielen, waaronder Kluivert. Een controleerbare oorspronkelijke EA-bevestiging ontbreekt in het artikel. Dit blijft een gerucht; naam, rating en PlayStyles zijn hiermee niet officieel bevestigd.",
+      "status": "rumour",
+      "published_at": "2026-09-10T00:00:00Z",
+      "published_precision": "date",
+      "checked_at": "2026-09-11T06:33:36Z",
+      "expires_at": "2026-09-12T06:33:36Z",
+      "source": {
+        "url": "https://www.moddingway.com/fut/news/10170/fc-27-heroes-stats-revealed",
+        "label": "ModdingWay · secundaire rapportage"
+      },
+      "original_source_url": null,
+      "impact": "Duiding: een Nederlandse legend om bij EA opnieuw te controleren. Geen gelekte stats in de Meta Meter en geen koopgrens. Uncle Gerroe mag alvast enthousiast kijken; de clubkas blijft nog even buiten beeld.",
+      "source_id": "editorial"
+    },
+    {
+      "id": "fc27-soundtrack-official-20260910",
+      "title": "120 tracks, nul koopcalls",
+      "summary": "EA heeft de FC27-soundtrack gepubliceerd: 120 nummers uit 36 landen. Het bericht kondigt geen nieuwe Ultimate Team-kaarten aan en bevat geen marktprijzen.",
+      "status": "confirmed_official",
+      "published_at": "2026-09-10T00:00:00Z",
+      "published_precision": "date",
+      "checked_at": "2026-09-11T06:33:36Z",
+      "expires_at": "2026-09-12T06:33:36Z",
+      "source": {
+        "url": "https://www.ea.com/nl/games/ea-sports-fc/fc-27/news/fc-27-soundtrack",
+        "label": "EA SPORTS · officiële FC27-soundtrack"
+      },
+      "original_source_url": null,
+      "impact": "Duiding: nieuws voor de kleedkamer, geen bewijs van veranderende pack supply of kaartwaarde. De playlist heeft meer tracks dan onze groepschat onderbouwde meningen.",
+      "source_id": "editorial"
+    },
     {
       "id": "fc27-icons-rumour-20260907",
       "title": "Icons in de geruchtenmolen: hogere ondergrens?",
@@ -50,7 +84,7 @@
         "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1842846814443654"
       },
       "published_at": "2026-09-03T15:02:09Z",
-      "checked_at": "2026-09-10T09:28:55.867822Z",
+      "checked_at": "2026-09-11T06:35:10.439833Z",
       "expires_at": "2026-09-06T15:02:09Z",
       "impact": "Signaal om verder te onderzoeken. Geen bevestigde kaart, prijsverwachting of koopcall.",
       "original_source_url": null
@@ -71,23 +105,6 @@
       "original_source_url": null,
       "impact": "Duiding: nieuwe club- en competitiecontext voor het bouwen van teams. Controleer afzonderlijke UT-items en chemistry-links wanneer ze beschikbaar zijn; meer licenties bewijst geen koersstijging.",
       "source_id": "editorial"
-    },
-    {
-      "id": "fc27-final-whistle-carryover-official-20260828",
-      "title": "Final Whistle-beloningen zijn geen startdagbudget",
-      "summary": "EA zegt dat verdiende Final Whistle-carryoverbeloningen vanaf 23 oktober naar FC27 komen. Hiervoor zijn hetzelfde EA-account en dezelfde platformfamilie nodig; claimen moet binnen een maand.",
-      "status": "confirmed_official",
-      "published_at": "2026-08-28T00:00:00Z",
-      "published_precision": "date",
-      "checked_at": "2026-09-10T09:07:52Z",
-      "expires_at": "2026-09-11T00:00:00Z",
-      "source": {
-        "url": "https://www.ea.com/games/ea-sports-fc/fc-26/news/fc-26-pre-season",
-        "label": "EA SPORTS · officiële Pre-Season-notities"
-      },
-      "original_source_url": null,
-      "impact": "Duiding: reken deze specifieke beloningen niet als beschikbare FC27-startcoins. Dit betreft FC26-opdrachten met FC27-beloningen, geen nieuwe FC27-promokaarten; actuele opdrachtbeschikbaarheid is hier niet bevestigd.",
-      "source_id": "editorial"
     }
   ],
   "sources": [
@@ -98,8 +115,8 @@
       "url": "https://api.steampowered.com/ISteamNews/GetNewsForApp/v2/?appid=4080220&count=20&maxlength=1&feeds=steam_community_announcements&format=json",
       "policy_url": "https://steamcommunity.com/dev/apiterms",
       "policy_reviewed_at": "2026-09-10T09:08:00Z",
-      "checked_at": "2026-09-10T09:28:55.867822Z",
-      "last_success_at": "2026-09-10T09:28:55.867822Z",
+      "checked_at": "2026-09-11T06:35:10.439833Z",
+      "last_success_at": "2026-09-11T06:35:10.439833Z",
       "matched_items": 3,
       "usage_note": "Publieke Steam-nieuws-API, uitsluitend aankondigingen voor EA SPORTS FC27. Geen API-key nodig voor deze methode. Geen artikelbody of transfermarktprijzen. Steam is niet aan FBS verbonden; gegevens zoals aangeboden.",
       "status": "ok",
@@ -113,8 +130,8 @@
       "policy_url": "https://www.pushsquare.com/contact",
       "terms_url": "https://www.pushsquare.com/terms",
       "policy_reviewed_at": "2026-09-10T09:08:00Z",
-      "checked_at": "2026-09-10T09:28:55.867822Z",
-      "last_success_at": "2026-09-10T09:28:55.867822Z",
+      "checked_at": "2026-09-11T06:35:10.439833Z",
+      "last_success_at": "2026-09-11T06:35:10.439833Z",
       "matched_items": 0,
       "usage_note": "Uitgever beveelt RSS aan om naar artikelen te linken. Alleen een eigen neutraal linklabel en de bron-URL; geen overgenomen kop, artikeltekst of afbeeldingen. Geen claim van algemene herpublicatielicentie.",
       "status": "ok",
@@ -128,8 +145,8 @@
       "policy_url": "https://www.purexbox.com/contact",
       "terms_url": "https://www.purexbox.com/terms",
       "policy_reviewed_at": "2026-09-10T09:08:00Z",
-      "checked_at": "2026-09-10T09:28:55.867822Z",
-      "last_success_at": "2026-09-10T09:28:55.867822Z",
+      "checked_at": "2026-09-11T06:35:10.439833Z",
+      "last_success_at": "2026-09-11T06:35:10.439833Z",
       "matched_items": 0,
       "usage_note": "Uitgever beveelt RSS aan om naar artikelen te linken. Alleen een eigen neutraal linklabel en de bron-URL; geen overgenomen kop, artikeltekst of afbeeldingen. Geen claim van algemene herpublicatielicentie.",
       "status": "ok",
@@ -146,6 +163,20 @@
       "usage_note": "Aanvullende redactionele check via de bestaande Codex-planning: EA-nieuws, toegankelijke berichtgeving en duidelijk gelabelde geruchten. Geen doorlopende scan; individuele controletijden staan bij de artikelen.",
       "status": "manual_only",
       "detail": "Aanvullende redactionele check via de bestaande Codex-planning: EA-nieuws, toegankelijke berichtgeving en duidelijk gelabelde geruchten. Geen doorlopende scan; individuele controletijden staan bij de artikelen."
+    },
+    {
+      "id": "moddingway-editorial",
+      "name": "ModdingWay · redactionele bron",
+      "kind": "manual",
+      "url": "https://www.moddingway.com/fut/news/10170/fc-27-heroes-stats-revealed",
+      "policy_url": "https://www.moddingway.com/page/terms",
+      "policy_reviewed_at": "2026-09-11T06:33:36Z",
+      "checked_at": null,
+      "last_success_at": null,
+      "matched_items": 0,
+      "usage_note": "Incidenteel gelezen openbare pagina; alleen een korte eigen samenvatting en bronlink. Geen automatische collector, gekopieerde kaartafbeeldingen of statdatabase. De voorwaarden beperken onder meer auteursrechtinbreuk en overmatige belasting; deze check is geen algemene scraping- of herpublicatielicentie.",
+      "status": "manual_only",
+      "detail": "Incidenteel gelezen openbare pagina; alleen een korte eigen samenvatting en bronlink. Geen automatische collector, gekopieerde kaartafbeeldingen of statdatabase. De voorwaarden beperken onder meer auteursrechtinbreuk en overmatige belasting; deze check is geen algemene scraping- of herpublicatielicentie."
     },
     {
       "id": "x",
@@ -188,7 +219,7 @@
       "detail": "Geen geautomatiseerde prijs-extractie geactiveerd. Een toepasselijke toestemming of uitzondering voor dit gebruik is niet vastgesteld; bronvermelding alleen activeert geen scanner."
     }
   ],
-  "editorial_checked_at": "2026-09-10T09:07:52Z",
+  "editorial_checked_at": "2026-09-11T06:33:36Z",
   "editorial_notice": "De artikelen zijn afzonderlijk redactioneel gecontroleerd. Verwijzingen naar traders komen uit de genoemde nieuwsartikelen; X is niet rechtstreeks gecontroleerd. Als alleen de publicatiedag bekend is, tonen we geen tijd. De hercontrolegrens is onze eigen deadline, niet die van EA; daarna gaat een bericht naar het archief totdat het opnieuw is nagekeken.",
   "notice": "Dagelijks en op de vaste release-avonden: gepubliceerde feeds plus apart gecontroleerde nieuws- en geruchtbronnen. Geen 24/7 marktscan. Geruchten zijn geen feiten; na hun termijn gaan berichten naar het archief. Steam-gegevens worden aangeboden zoals beschikbaar, zonder garantie op volledigheid, juistheid of beschikbaarheid. FBS is niet verbonden aan of goedgekeurd door Valve/Steam.",
   "method": "Feeds worden op FC27 of algemeen EA SPORTS FC-nieuws gefilterd; een onbekende editie wordt niet als FC27 bevestigd. Derdepartijberichtgeving blijft onbevestigd; meerdere sites die dezelfde leaker napraten tellen niet als onafhankelijke bevestiging. Geruchten veranderen geen kaartstatus of koopgrens."

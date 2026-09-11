@@ -1,8 +1,40 @@
 {
   "game": "FC27",
-  "updated_at": "2026-09-10T09:07:52Z",
+  "updated_at": "2026-09-11T06:33:36Z",
   "notice": "De artikelen zijn afzonderlijk redactioneel gecontroleerd. Verwijzingen naar traders komen uit de genoemde nieuwsartikelen; X is niet rechtstreeks gecontroleerd. Als alleen de publicatiedag bekend is, tonen we geen tijd. De hercontrolegrens is onze eigen deadline, niet die van EA; daarna gaat een bericht naar het archief totdat het opnieuw is nagekeken.",
   "items": [
+    {
+      "id": "fc27-kluivert-hero-rumour-20260910",
+      "title": "Kluivert als Hero? Eerst bewijs, dan borstklopperij",
+      "summary": "ModdingWay toont gelekte Hero-profielen, waaronder Kluivert. Een controleerbare oorspronkelijke EA-bevestiging ontbreekt in het artikel. Dit blijft een gerucht; naam, rating en PlayStyles zijn hiermee niet officieel bevestigd.",
+      "status": "rumour",
+      "source": {
+        "label": "ModdingWay · secundaire rapportage",
+        "url": "https://www.moddingway.com/fut/news/10170/fc-27-heroes-stats-revealed"
+      },
+      "published_at": "2026-09-10T00:00:00Z",
+      "published_precision": "date",
+      "checked_at": "2026-09-11T06:33:36Z",
+      "expires_at": "2026-09-12T06:33:36Z",
+      "impact": "Duiding: een Nederlandse legend om bij EA opnieuw te controleren. Geen gelekte stats in de Meta Meter en geen koopgrens. Uncle Gerroe mag alvast enthousiast kijken; de clubkas blijft nog even buiten beeld.",
+      "original_source_url": null
+    },
+    {
+      "id": "fc27-soundtrack-official-20260910",
+      "title": "120 tracks, nul koopcalls",
+      "summary": "EA heeft de FC27-soundtrack gepubliceerd: 120 nummers uit 36 landen. Het bericht kondigt geen nieuwe Ultimate Team-kaarten aan en bevat geen marktprijzen.",
+      "status": "confirmed_official",
+      "source": {
+        "label": "EA SPORTS · officiële FC27-soundtrack",
+        "url": "https://www.ea.com/nl/games/ea-sports-fc/fc-27/news/fc-27-soundtrack"
+      },
+      "published_at": "2026-09-10T00:00:00Z",
+      "published_precision": "date",
+      "checked_at": "2026-09-11T06:33:36Z",
+      "expires_at": "2026-09-12T06:33:36Z",
+      "impact": "Duiding: nieuws voor de kleedkamer, geen bewijs van veranderende pack supply of kaartwaarde. De playlist heeft meer tracks dan onze groepschat onderbouwde meningen.",
+      "original_source_url": null
+    },
     {
       "id": "fc27-icons-rumour-20260907",
       "title": "Icons in de geruchtenmolen: hogere ondergrens?",
