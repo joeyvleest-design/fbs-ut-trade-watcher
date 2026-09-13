@@ -1,8 +1,24 @@
 {
   "game": "FC27",
-  "updated_at": "2026-09-11T06:33:36Z",
+  "updated_at": "2026-09-13T20:53:14Z",
   "notice": "De artikelen zijn afzonderlijk redactioneel gecontroleerd. Verwijzingen naar traders komen uit de genoemde nieuwsartikelen; X is niet rechtstreeks gecontroleerd. Als alleen de publicatiedag bekend is, tonen we geen tijd. De hercontrolegrens is onze eigen deadline, niet die van EA; daarna gaat een bericht naar het archief totdat het opnieuw is nagekeken.",
   "items": [
+    {
+      "id": "fc27-summerville-season-pass-rumour-20260911",
+      "title": "Summerville op de seizoenspas? Eerst EA, dan de polonaise",
+      "summary": "ModdingWay noemt Summerville bij gelekte Ones to Watch voor Season Pass 1. Het artikel schrijft de selectie toe aan leakers, zonder controleerbare oorspronkelijke bevestiging. Ondanks het woord 'official' bij de getoonde stats behandelen wij dit uitsluitend als gerucht.",
+      "status": "rumour",
+      "source": {
+        "label": "ModdingWay · secundaire rapportage",
+        "url": "https://www.moddingway.com/fut/news/10179/season-1-pass-ones-to-watch"
+      },
+      "published_at": "2026-09-11T00:00:00Z",
+      "published_precision": "date",
+      "checked_at": "2026-09-13T20:53:14Z",
+      "expires_at": "2026-09-14T20:53:14Z",
+      "impact": "Scenario: als EA deze route bevestigt, kan een verdiende kaart een alternatief zijn voor een aankoop. Beschikbaarheid, gratis of premium, verhandelbaarheid en upgrades zijn hier niet bevestigd. Geen prijsdoel of Gold Watch-vervanging. De clubkas heeft nog geen toestemming van vleesbeker.",
+      "original_source_url": null
+    },
     {
       "id": "fc27-kluivert-hero-rumour-20260910",
       "title": "Kluivert als Hero? Eerst bewijs, dan borstklopperij",
