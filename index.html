@@ -9,7 +9,7 @@
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="dashboard.css?v=daily-squad-1">
-    <link rel="stylesheet" href="radar.css?v=source-radar-1">
+    <link rel="stylesheet" href="radar.css?v=bibs-briefing-1">
   </head>
   <body data-page="dashboard">
     <a class="skip-link" href="#club-dashboard">Direct naar het dashboard</a>
@@ -26,9 +26,24 @@
         </div>
       </header>
 
+      <aside class="bibs-welcome" aria-labelledby="bibs-welcome-title">
+        <span class="bibs-welcome-mark" aria-hidden="true">✦</span>
+        <div><p id="bibs-welcome-label" class="kicker">DE WEKELIJKSE KLEEDKAMERPRAAT</p><h2 id="bibs-welcome-title">Welkom terug, bibsies.</h2><p id="bibs-welcome-copy">Vier managers, één kleedkamer en meer praatjes dan prijzen. Schuif aan.</p></div>
+        <span class="bibs-welcome-note">Elke maandag andere praat.<br>Zelfde bibsies.</span>
+      </aside>
+
       <section id="trade-of-day" class="daily-trade section" aria-labelledby="daily-trade-title">
         <div class="daily-trade-heading"><p class="kicker">DE TRANSFERDESK · ELKE DAG EEN NIEUWE AFWEGING</p><h2 id="daily-trade-title">Trade van de dag.</h2><p>Het beste plan voor je coins. Soms is dat: handen thuis, Knalfuifje.</p></div>
         <div id="daily-trade-card" aria-live="polite"><p>De transferdesk haalt de laatste dagcheck op…</p></div>
+      </section>
+
+      <section id="today-briefing" class="section today-briefing" aria-labelledby="today-briefing-title">
+        <div class="section-head"><div><p class="kicker">EERST BIJPRATEN. DAN DE GROTE MOND.</p><h2 id="today-briefing-title">Vandaag op het clubbord.</h2></div><a class="briefing-more" href="#rumour-radar">Alle nieuws &amp; geruchten <span aria-hidden="true">↗</span></a></div>
+        <p id="briefing-status" class="briefing-status" role="status">De laatste gepubliceerde nieuwscheck wordt opgehaald…</p>
+        <div class="briefing-columns">
+          <div><h3 class="briefing-column-title">Het laatste nieuws</h3><div id="briefing-news" class="briefing-news"><p class="radar-empty">De redactie haalt de berichten op.</p></div></div>
+          <aside class="briefing-watch" aria-labelledby="briefing-watch-title"><p class="kicker">MAXIMAAL DRIE DINGEN OM TE VOLGEN</p><h3 id="briefing-watch-title">Onze korte watchlist.</h3><p class="briefing-watch-intro">Onderzoekspunten uit actuele berichten. Nog geen spelersadvies of koopcalls.</p><ol id="briefing-watchlist" class="briefing-watchlist"><li>We wachten op controleerbare berichten.</li></ol><p class="briefing-watch-note">Een bruikbare actuele prijsbron ontbreekt nog. Nieuws alleen is geen trade.</p></aside>
+        </div>
       </section>
 
       <section class="hero" aria-labelledby="page-title">
@@ -75,12 +90,13 @@
 
       <nav class="section-nav" aria-label="Dashboardonderdelen">
         <a class="is-active" href="#trade-of-day" aria-current="location">Dagtrade</a>
+        <a href="#today-briefing">Vandaag</a>
         <a href="#club-dashboard">Overzicht</a>
         <a href="#meta-watch">Meta Meter</a>
         <a href="#dutch-gold">Gold &amp; Promo <span aria-hidden="true">✦</span></a>
         <a href="#legends-watch">Legends</a>
         <a href="#marketwatch">Marketwatch</a>
-        <a href="#rumour-radar">Bronradar</a>
+        <a href="#rumour-radar">Nieuws &amp; geruchten</a>
         <a href="#release-radar">Releases</a>
         <a href="#sbc-week">SBC van de week</a>
       </nav>
@@ -276,9 +292,9 @@
     <noscript><p class="shell">Schakel JavaScript in om de spelerskaarten en gepubliceerde updates te bekijken.</p></noscript>
     <script src="refresh.js?v=daily-squad-1" defer></script>
     <script src="card-art.js?v=daily-squad-1" defer></script>
-    <script src="app.js?v=daily-squad-1" defer></script>
+    <script src="app.js?v=bibs-briefing-1" defer></script>
     <script src="watch.js?v=daily-squad-1" defer></script>
-    <script src="radar.js?v=source-radar-1" defer></script>
+    <script src="radar.js?v=bibs-briefing-1" defer></script>
     <script src="news.js?v=daily-squad-1" defer></script>
     <script src="motion.js?v=source-radar-1" defer></script>
   </body>

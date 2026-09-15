@@ -278,12 +278,19 @@
     }
     const article = make("article", "marketwatch-article");
     const head = make("header", "marketwatch-article__head");
-    const status = make("span", "marketwatch-status", state.error ? "UPDATE ONBEREIKBAAR" : state.stale ? "OUDERE BRIEFING" : data.status_label || "BRONNEN NODIG");
+    const unchangedFeed = data.mode === "official_rss_unchanged";
+    const status = make("span", "marketwatch-status", state.error ? "UPDATE ONBEREIKBAAR" : state.stale ? "OUDERE BRIEFING" : unchangedFeed ? "EA PRESS RSS · ONGEWIJZIGD" : data.status_label || "BRONNEN NODIG");
     const copy = make("div", "");
-    copy.append(make("p", "kicker", data.window || "DAGELIJKSE MARKETWATCH"), make("h3", "", data.title || "Marketwatch wacht op bronnen"));
+    copy.append(make("p", "kicker", data.window || "DAGELIJKSE MARKETWATCH"), make("h3", "", unchangedFeed ? "Geen nieuwe inhoud in de EA Press RSS" : data.title || "Marketwatch wacht op bronnen"));
     if (data.summary) copy.append(make("p", "marketwatch-article__summary", data.summary));
     head.append(copy, status);
     article.append(head);
+    if (unchangedFeed) {
+      const scope = make("p", "data-note", "Dit geldt alleen voor deze feed, niet voor al het FC-nieuws. ");
+      const radarLink = make("a", "briefing-more", "Bekijk Nieuws & geruchten →");
+      radarLink.href = "#rumour-radar";
+      scope.append(radarLink); article.append(scope);
+    }
     if (state.error || state.stale) article.append(make("p", "data-note", state.error ? "De laatste controle mislukte. De eerder geladen briefing blijft leesbaar." : "Deze briefing is ouder dan 36 uur. Er is nog geen recentere publicatie geladen."));
     const body = Array.isArray(data.article) ? data.article : [];
     if (body.length) {

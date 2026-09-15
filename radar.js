@@ -13,6 +13,44 @@
   const maximumAge = 36 * 60 * 60 * 1000;
   let expiryTimer = null;
 
+  // Prepared club copy, not generated news. Stable for an Amsterdam calendar
+  // week; refreshed through the existing dashboard events, without an API.
+  const welcomeMessages = [
+    ["De kleedkamer is weer open.", "Schoenen uit, praatjes aan. De bibsies zijn terug. Wie roept dat hij rustig gaat opbouwen, mag dat eerst even onder ede verklaren."],
+    ["Nieuwe week. Dezelfde clowns.", "Welkom terug, bibsies. Grootse plannen, twijfelachtige opstellingen en de klassieke uitspraak: ik had hem eigenlijk gisteren moeten verkopen."],
+    ["Knalfuifje aan de knoppen.", "Knalfuifje heeft een plan. Dat hadden we vorige keer ook. Pak een stoel en geniet van de persconferentie achteraf."],
+    ["Uncle Gerroe opent de bestuursvergadering.", "Agenda: voetbal, coins en waarom het uiteraard aan de verbinding lag. De rondvraag duurt tot iemand toegeeft dat die sliding nergens op sloeg."],
+    ["Surimi stokje. Zoute nabeschouwing.", "De analyses zijn pittig, de tackles twijfelachtig en Surimi stokje serveert alles met een snufje zout. Bij deze club worden zelfs de excuses nabesproken."],
+    ["vleesbeker is weer wedstrijdklaar.", "Shirt strak, mond groot, wisselbeleid onverklaarbaar. De bibsies verzamelen zich voor een week waarin zelfs de reservekeeper een mening over de trainer heeft."],
+    ["Welkom bij FC Grootspraak.", "Vóór de aftrap zijn we tactische genieën. Na afloop bespreken we het gras, de scheidsrechter en werkelijk alles behalve onze eigen beslissingen."],
+    ["Vier managers. Eén gedeelde hersencel.", "Knalfuifje, Uncle Gerroe, Surimi stokje en vleesbeker melden zich weer. De hersencel rouleert; excuses voor eventuele vertraging tijdens de overdracht."],
+    ["Bibsies, poets die denkbeeldige prijzenkast.", "We spelen voor de eer, zeggen we. Tot iemand één wedstrijd wint en drie werkdagen lang niet meer normaal kan doen."],
+    ["De VAR bekijkt de groepschat.", "Na uitvoerig onderzoek: vier overtredingen op het gezonde verstand. De wedstrijd gaat gewoon door. Niemand kon de juiste knop vinden."],
+    ["Nieuwe tactiek: iemand anders de schuld.", "De opstelling is rond. De smoesjes ook. Welkom terug bij de bibsies, waar zelfs een gelijke stand om een crisisoverleg vraagt."],
+    ["De derde helft begint hier.", "Koffie klaar, ego opgepompt. Vandaag bewijzen we weer dat een uitgebreide analyse en een verstandige beslissing twee totaal verschillende hobby’s zijn."],
+  ];
+  const clubDayFormat = new Intl.DateTimeFormat("en-CA", { timeZone: "Europe/Amsterdam", year: "numeric", month: "2-digit", day: "2-digit" });
+  function renderWelcome() {
+    const title = document.querySelector("#bibs-welcome-title");
+    const copy = document.querySelector("#bibs-welcome-copy");
+    const label = document.querySelector("#bibs-welcome-label");
+    if (!title || !copy || !label) return;
+    const now = new Date();
+    const parts = Object.fromEntries(clubDayFormat.formatToParts(now).filter((part) => part.type !== "literal").map((part) => [part.type, part.value]));
+    const localDay = Date.UTC(Number(parts.year), Number(parts.month) - 1, Number(parts.day));
+    const monday = localDay - ((new Date(localDay).getUTCDay() + 6) % 7) * 86400000;
+    const week = Math.floor((monday - Date.UTC(2026, 8, 14)) / 604800000);
+    const prelaunch = now.getTime() < Date.parse("2026-09-16T17:00:00Z");
+    const key = prelaunch ? "prelaunch" : String(week);
+    if (title.dataset.welcomeWeek === key) return;
+    title.dataset.welcomeWeek = key;
+    const message = prelaunch
+      ? ["Welkom bibsies, het gaat bijna beginnen.", "De clubnaam is geregeld, het verstand ligt op de bank. Trek je wedstrijdonderbroek aan: straks mogen onze coins weer een eigen leven leiden."]
+      : welcomeMessages[((week % welcomeMessages.length) + welcomeMessages.length) % welcomeMessages.length];
+    title.textContent = message[0]; copy.textContent = message[1];
+    label.textContent = prelaunch ? "DE BIBSIES VERZAMELEN · BIJNA AFTRAP" : "DE WEKELIJKSE KLEEDKAMERPRAAT · VANAF " + dayFormat.format(new Date(monday));
+  }
+
   const make = (tag, className, text) => {
     const node = document.createElement(tag);
     node.className = className || "";
@@ -122,6 +160,59 @@
     return article;
   }
 
+  // These are research questions, never automatically promoted to trade calls.
+  const watchTopics = [
+    { id: "prices", matches: /\b(web app|companion|marktprijs|marktprijzen)\b/i, title: "De eerste marktmetingen", detail: "Vergelijk dezelfde kaart op hetzelfde platform, met een meetmoment erbij. Eén losse prijs is nog geen trend." },
+    { id: "selection", matches: /\b(totw|promo|promokaart|destined for glory)\b/i, title: "Wie haalt de selectie?", detail: "Eerst de officiële selectie en exacte kaartversie controleren. Een voorspelling krijgt hier geen koopknop." },
+    { id: "rewards", matches: /\b(seizoenspas|season pass|premium pas|premium pass|sbc|sbcs|objectives?)\b/i, title: "Verdienen of kopen?", detail: "Onderzoek de route via SBC, objective of pas. Vergelijk pas daarna de kosten, speelduur en verhandelbaarheid met een aankoop." },
+  ];
+  function renderBriefing(data, result) {
+    const news = document.querySelector("#briefing-news");
+    const watch = document.querySelector("#briefing-watchlist");
+    const status = document.querySelector("#briefing-status");
+    if (!news || !watch) return;
+    news.replaceChildren(); watch.replaceChildren();
+    // Prioritize a verified official source, preserving publication order within
+    // each group. Use exactly the same freshness rules as the full news radar.
+    const current = [...result.recent].sort((a, b) => Number(itemStatus(b.item) === "confirmed_official") - Number(itemStatus(a.item) === "confirmed_official"));
+    for (const { item } of current.slice(0, 2)) {
+      const kind = itemStatus(item), badge = statuses[kind];
+      const card = make("article", "briefing-story radar-card--" + kind);
+      card.dataset.status = kind;
+      card.append(make("span", "radar-badge", badge.icon + " " + badge.label), make("h4", "", item.title));
+      if (typeof item.summary === "string") card.append(make("p", "briefing-story-summary", item.summary));
+      if (kind !== "confirmed_official") card.append(make("p", "briefing-caution", kind === "opinion" ? "Voorspelling of mening, geen EA-bevestiging." : "Niet officieel bevestigd. Geen koopsein."));
+      const dates = make("dl", "briefing-dates");
+      dates.append(dateLine("Gepubliceerd", item.published_at, "Niet vastgelegd", item.published_precision), dateLine("Broncheck", item.checked_at));
+      card.append(dates);
+      const source = sourceLink(item.source?.url, item.source?.label || "Lees de bron");
+      if (source) card.append(source);
+      const original = sourceLink(item.original_source_url, "Oorspronkelijke bron ↗");
+      if (original && original.href !== source?.href) card.append(original);
+      news.append(card);
+    }
+    let topics = 0;
+    for (const topic of watchTopics) {
+      const record = current.find(({ item }) => topic.matches.test(item.title + " " + (item.summary || "")));
+      if (!record) continue;
+      const row = make("li", "briefing-watch-item");
+      row.dataset.topic = topic.id;
+      row.append(make("span", "briefing-follow", "VOLGEN · GEEN KOOPCALL"), make("h4", "", topic.title), make("p", "", topic.detail));
+      const kind = itemStatus(record.item);
+      row.append(make("small", "briefing-topic-basis", "Aanleiding: " + statuses[kind].label.toLocaleLowerCase("nl-NL")));
+      const source = sourceLink(record.item.source?.url, record.item.title);
+      if (source) row.append(source);
+      watch.append(row); topics++;
+    }
+    if (!news.children.length) news.append(make("p", "radar-empty", "Nog geen recente, controleerbare berichten. Eerdere verhalen blijven in het nieuwsarchief; we noemen ze niet opnieuw actueel."));
+    if (!topics) watch.append(make("li", "briefing-watch-empty", "Geen actuele onderzoekspunten uit de gecontroleerde berichten. De clubkas hoeft niet uit verveling open."));
+    if (status) {
+      const checked = timestamp(data?.checked_at);
+      status.textContent = (result.collectionStale ? "Geen actuele nieuwscheck beschikbaar" : "Laatste gepubliceerde nieuwscheck") + (checked ? " · " + dateFormat.format(checked) + " · Amsterdam" : "") + ". Nieuw opgehaald is niet hetzelfde als nieuw gepubliceerd.";
+      status.dataset.state = result.collectionStale ? "stale" : "current";
+    }
+  }
+
   function renderSources(sources, stale) {
     const grid = document.querySelector("#radar-sources-grid");
     if (!grid) return;
@@ -158,10 +249,12 @@
 
   function render(data, state = {}) {
     clearTimeout(expiryTimer);
+    renderWelcome();
     const grid = document.querySelector("#radar-grid");
     if (!grid) return;
     const now = Date.now();
     const result = classify(data, state, now);
+    renderBriefing(data, result);
     const recent = result.recent.slice(0, 12), archived = result.archive.slice(0, 12 - recent.length);
     grid.replaceChildren(...recent.map(renderItem));
     if (!recent.length) grid.append(make("p", "radar-empty", state.error ? "Nieuwe radar niet bereikbaar. Bewaarde berichten staan hieronder als archief; er is geen nieuw actueel signaal." : "Geen recente, controleerbare berichten. De geruchtenmolen mag even op de bank."));
@@ -188,6 +281,11 @@
     if (Number.isFinite(result.nextDeadline)) expiryTimer = setTimeout(() => render(data, state), Math.min(2147483647, Math.max(1, result.nextDeadline - now + 1)));
   }
 
+  renderWelcome();
+  // Existing refresh notifications also fire for unchanged payloads. This
+  // changes the weekly greeting within the regular refresh cycle, not the news.
+  document.addEventListener?.("fbs:data", renderWelcome);
+  document.addEventListener?.("visibilitychange", renderWelcome);
   window.FBSRefresh.register("radar", {
     url: "data/news-radar.json", render,
     validate: (data) => data.game === "FC27" && Array.isArray(data.items) && Array.isArray(data.sources),
