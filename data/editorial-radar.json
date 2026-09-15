@@ -1,8 +1,40 @@
 {
   "game": "FC27",
-  "updated_at": "2026-09-13T20:53:14Z",
-  "notice": "De artikelen zijn afzonderlijk redactioneel gecontroleerd. Verwijzingen naar traders komen uit de genoemde nieuwsartikelen; X is niet rechtstreeks gecontroleerd. Als alleen de publicatiedag bekend is, tonen we geen tijd. De hercontrolegrens is onze eigen deadline, niet die van EA; daarna gaat een bericht naar het archief totdat het opnieuw is nagekeken.",
+  "updated_at": "2026-09-15T06:35:31Z",
+  "notice": "Dagupdate 15 september: nieuw op de radar staat EA's launch-update van 14 september, met daarnaast een afzonderlijk gelabelde TOTW-voorspelling. Elia's officiële Hall of FUT-statline is visueel gecontroleerd en verwerkt bij de Legends. De openbare nieuwsfeeds, EA-nieuwspagina's en geselecteerde ModdingWay-artikelen zijn nagekeken; dit is geen volledige internetmonitor. X is niet rechtstreeks gecontroleerd en actuele PS-prijzen ontbreken. Oudere berichten blijven in het archief met hun oorspronkelijke controletijd. Bronpublicatiedag en onze hercontroletermijn zijn verschillende dingen.",
   "items": [
+    {
+      "id": "fc27-launch-update-official-20260914",
+      "title": "EA geeft het startschot: agenda open, clubkas nog dicht",
+      "summary": "EA bevestigt de Web App voor 16 september om 19:00 Nederlandse tijd; de Companion-update volgt een dag later op hetzelfde tijdstip. Season 1 met Ones to Watch loopt van 17 september tot 22 oktober, via de pas, SBC's en objectives. Destined for Glory start op 25 september. Basis-Icons beginnen op 88 ALG. Icons krijgen +1 landbijdrage, Heroes +1 competitie; Hall of FUT volgt de Hero-chemie.",
+      "status": "confirmed_official",
+      "source": {
+        "label": "EA SPORTS · officiële Launch Update",
+        "url": "https://www.ea.com/games/ea-sports-fc/fc-27/news/pitch-notes-fc27-launch-update"
+      },
+      "published_at": "2026-09-14T00:00:00Z",
+      "published_precision": "date",
+      "checked_at": "2026-09-15T06:34:32Z",
+      "expires_at": "2026-09-16T06:34:32Z",
+      "impact": "Onze duiding: herbereken legend-links en vergelijk verdiende kaarten met aankopen zodra echte prijzen bestaan. Een lanceringsagenda bewijst geen koerswinst. De getoonde reguliere en premium pas bevatten geen Summerville; het oude lek is geen bevestigde pasbeloning. Knalfuifje mag de agenda trekken, niet alvast de clubkas.",
+      "original_source_url": null
+    },
+    {
+      "id": "fc27-totw1-dutch-prediction-20260915",
+      "title": "Mijnans en Brugts op het TOTW-prikbord",
+      "summary": "ModdingWay noemt Mijnans en Brugts in zijn eigen TOTW 1-voorspelling. Dit is een kandidatenlijst van de uitgever, geen EA-selectie en geen bevestigde kaartrelease. We nemen geen voorspelde ratings, stats of PlayStyles over.",
+      "status": "opinion",
+      "source": {
+        "label": "ModdingWay · eigen TOTW-voorspelling",
+        "url": "https://www.moddingway.com/fut/totw/10180/fc-27-totw-1-predictions-tracker-monday-players-update"
+      },
+      "published_at": "2026-09-15T00:00:00Z",
+      "published_precision": "date",
+      "checked_at": "2026-09-15T06:35:31Z",
+      "expires_at": "2026-09-16T06:35:31Z",
+      "impact": "Doorlopende tracker: de pagina toont nu 15 september; deze Nederlandse kandidaten waren al eerder genoemd. Nieuw op ons bord betekent niet nieuw bevestigd. Eerst de officiële TOTW afwachten; geen koopgrens of wijziging van de Gold Watch. Surimi stokje heeft een mening, EA heeft de opstelling.",
+      "original_source_url": null
+    },
     {
       "id": "fc27-summerville-season-pass-rumour-20260911",
       "title": "Summerville op de seizoenspas? Eerst EA, dan de polonaise",

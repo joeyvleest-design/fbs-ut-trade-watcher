@@ -1,11 +1,11 @@
 {
   "game": "FC27",
-  "status": "official_names_confirmed_stats_pending",
-  "updated_at": "2026-09-10T08:43:30Z",
-  "check_at": "2026-09-10T08:43:30Z",
+  "status": "official_names_confirmed_partial_stats_verified",
+  "updated_at": "2026-09-15T06:34:32Z",
+  "check_at": "2026-09-15T06:34:32Z",
   "title": "Legendes op de radar",
-  "notice": "Elia en Gullit zijn officieel voor FC27 aangekondigd. Naam- en kaarttypebevestiging staan los van finale ratings. De apart gelabelde FUTWIZ-previews zijn voorlopig; een gecontroleerde PS-prijs is nog niet beschikbaar.",
-  "meta_methodology": "De officiële-statline Meta-Meter blijft leeg zolang die stats niet zijn geverifieerd. Een apart gelabelde voorlopige profielscore gebruikt alleen de getoonde FUTWIZ-face stats: 25% SNL, 25% SCH, 20% PAS, 20% DRI en 10% FYS, afgerond op hele punten. PlayStyles, prijs, chemistry en gameplaytests tellen niet mee; dit is geen gameplayranglijst.",
+  "notice": "Elia’s rating, positie en zes kaartstats zijn nu officieel geverifieerd. De andere legendes zijn ongewijzigd; Gullits FUTWIZ-preview blijft voorlopig. De Meta-score is onze eigen profielberekening, geen EA-score. Er is geen nieuwe prijscontrole uitgevoerd.",
+  "meta_methodology": "De eigen profielscore gebruikt 25% SNL, 25% SCH, 20% PAS, 20% DRI, 0% VRD en 10% FYS, afgerond op hele punten. Elia gebruikt officieel geverifieerde kaartstats; Gullits apart gelabelde preview gebruikt FUTWIZ-stats. PlayStyles, prijs, chemistry en gameplaytests tellen niet mee; dit is geen gameplayranglijst.",
   "price_notice": "Bij de prijscontrole van 10 september 2026 toonden de geopende FC27-pagina’s van FUTWIZ voor Elia en Gullit geen prijs- of verkoopgeschiedenis. De prijsvelden blijven leeg; ontbrekende data is niet hetzelfde als 0 coins.",
   "families": [
     {
@@ -26,29 +26,31 @@
       "card_type": "Hall of FUT",
       "status": "confirmed",
       "confirmed_at": "2026-07-23",
-      "detail": "Hall of FUT is een nieuw kaarttype in FC27. De vijf namen hieronder zijn de officieel aangekondigde eerste lichting; dit is geen claim dat de volledige latere selectie hiermee compleet is.",
-      "source": {"label": "EA SPORTS FC27 · Hall of FUT · 23 juli 2026", "url": "https://www.ea.com/nl/games/ea-sports-fc/fc-27/news/fc-27-hall-of-fut"}
+      "detail": "Basiskaarten komen via de Token Store; latere campagneversies via packs. Hall of FUT gebruikt Hero-chemie. De selectie hieronder is niet volledig.",
+      "source": {"label": "EA SPORTS FC27 · Launch Update · 14 september 2026", "url": "https://www.ea.com/games/ea-sports-fc/fc-27/news/pitch-notes-fc27-launch-update"}
     }
   ],
   "cards": [
     {
       "id": "fc27-hall-of-fut-eljero-elia",
-      "name": "Eljero Elia", "nation": "Nederland", "nation_code": "NL", "gender": "male", "line": "attack", "position": null,
-      "rating": null, "card_type": "Hall of FUT", "confirmed": true, "confirmed_at": "2026-07-23",
-      "confirmation_scope": "Naam en Hall of FUT-deelname; nog geen officieel geverifieerde statline in deze dataset.",
-      "stats": [], "meta_rating": null,
-      "meta_text": "Oranje cultheld bevestigd. Een score voor zijn FC27-kaart volgt zodra de exacte statline officieel is geverifieerd.",
-      "source": {"label": "EA SPORTS FC27 · Elia in de Hall of FUT · 23 juli 2026", "url": "https://www.ea.com/nl/games/ea-sports-fc/fc-27/news/fc-27-hall-of-fut"},
-      "preview": {
-        "status": "third_party_preview", "label": "FUTWIZ-preview · voorlopig", "checked_at": "2026-09-10T08:43:30Z", "rating": 84, "position": "LW",
-        "stats": [{"label": "SNL", "value": 91}, {"label": "SCH", "value": 74}, {"label": "PAS", "value": 77}, {"label": "DRI", "value": 87}, {"label": "VRD", "value": 34}, {"label": "FYS", "value": 68}],
-        "meta_rating": 81,
-        "meta_text": "Voorlopige profielscore: 91 SNL en 87 DRI geven de preview een duidelijke vleugelfocus. Met 74 SCH is het afmaken minder uitgesproken. Nog niet in FC27-gameplay getest.",
-        "disclaimer": "Alleen de zichtbare FUTWIZ-preview; geen bevestigde EA-rating. Detailstats en kaart-ID’s op die pagina zijn nog placeholders. PlayStyles niet overgenomen.",
-        "source": {"label": "FUTWIZ · Eljero Elia · FC27 Hall of FUT-preview", "url": "https://www.futwiz.com/fc27/player/eljero-elia/20724"}
+      "name": "Eljero Elia", "nation": "Nederland", "nation_code": "NL", "gender": "male", "line": "attack", "position": "LW",
+      "rating": 84, "card_type": "Hall of FUT", "confirmed": true, "confirmed_at": "2026-07-23",
+      "confirmation_scope": "Hall of FUT-kaart: rating, positie en zes kaartstats officieel geverifieerd. PlayStyles niet vastgesteld.",
+      "stats_status": "official_verified",
+      "stats_confirmed_at": "2026-09-14",
+      "stats_checked_at": "2026-09-15T06:34:32Z",
+      "stats_source": {"label": "EA SPORTS FC27 · Launch Update · 14 september 2026", "url": "https://www.ea.com/games/ea-sports-fc/fc-27/news/pitch-notes-fc27-launch-update"},
+      "stats_evidence": {
+        "url": "https://drop-assets.ea.com/images/48k1apnb9UFURHNSoL3iux/b51460537b1fa7b45fad3cebd3aea617/New-Hall-of-FUT.jpg",
+        "published_at": "2026-09-14", "published_precision": "date", "checked_at": "2026-09-15T06:34:32Z", "method": "public_image_visual"
       },
+      "stats": [{"label": "SNL", "value": 91}, {"label": "SCH", "value": 74}, {"label": "PAS", "value": 77}, {"label": "DRI", "value": 87}, {"label": "VRD", "value": 34}, {"label": "FYS", "value": 68}],
+      "meta_rating": 81,
+      "meta_method": {"kind": "own_winger_profile", "weights": {"SNL": 0.25, "SCH": 0.25, "PAS": 0.20, "DRI": 0.20, "VRD": 0, "FYS": 0.10}, "rounding": "nearest_integer", "input_status": "official_verified", "excluded": ["playstyles", "price", "chemistry", "gameplay_tests"]},
+      "meta_text": "Eigen vleugelscore: snelheid en dribbelen dragen het profiel; schieten is minder uitgesproken. Geen gameplaytest of EA-Meta-rating.",
+      "source": {"label": "EA SPORTS FC27 · Elia-kaart in Launch Update · 14 september 2026", "url": "https://www.ea.com/games/ea-sports-fc/fc-27/news/pitch-notes-fc27-launch-update"},
       "price": null,
-      "price_reason": "FUTWIZ toont voor Elia’s FC27 Hall of FUT-item geen prijsdata, consoleveilingen of consoleverkopen. Geen verifieerbare PS-prijs gevonden.",
+      "price_reason": "Bij de controle op 10 september 2026 bood de FUTWIZ-pagina geen verifieerbare PS-prijs. Sindsdien geen nieuwe prijscontrole uitgevoerd; dit is geen actuele prijsmeting.",
       "price_check": {"checked_at": "2026-09-10T08:43:30Z", "platform": "PS", "result": "no_console_price_data", "source": {"label": "FUTWIZ · Eljero Elia · FC27 Hall of FUT", "url": "https://www.futwiz.com/fc27/player/eljero-elia/20724"}}
     },
     {
@@ -140,8 +142,20 @@
     "edition_source": {"label": "EA · FC27 release-aankondiging · 23 juli 2026", "url": "https://news.ea.com/press-releases/press-releases-details/2026/Kylian-Mbapp-and-Jude-Bellingham-Welcome-You-to-EA-SPORTS-FC-27-Launching-Worldwide-on-September-25/default.aspx"},
     "ratings_scope": "EA’s gewone FC27-ratingtabel bevat alleen Gold-, Silver- en Bronze-basisitems en sluit onder meer ICONs en Heroes uit.",
     "ratings_source": {"label": "EA SPORTS FC27 · Scope van de ratingtabel · gecontroleerd 10 september 2026", "url": "https://www.ea.com/games/ea-sports-fc/ratings"},
+    "archived_previews": [
+      {
+        "card_id": "fc27-hall-of-fut-eljero-elia", "archived_at": "2026-09-15T06:34:32Z", "reason": "Historische preview van 10 september; vervangen door zelfstandig visueel geverifieerde officiële kaartstats. Onderstaande oude kwalificaties beschrijven alleen die eerdere controle.",
+        "preview": {
+          "status": "third_party_preview", "label": "FUTWIZ-preview · voorlopig", "checked_at": "2026-09-10T08:43:30Z", "rating": 84, "position": "LW",
+          "stats": [{"label": "SNL", "value": 91}, {"label": "SCH", "value": 74}, {"label": "PAS", "value": 77}, {"label": "DRI", "value": 87}, {"label": "VRD", "value": 34}, {"label": "FYS", "value": 68}],
+          "meta_rating": 81,
+          "meta_text": "Voorlopige profielscore: 91 SNL en 87 DRI geven de preview een duidelijke vleugelfocus. Met 74 SCH is het afmaken minder uitgesproken. Nog niet in FC27-gameplay getest.",
+          "disclaimer": "Alleen de zichtbare FUTWIZ-preview; geen bevestigde EA-rating. Detailstats en kaart-ID’s op die pagina zijn nog placeholders. PlayStyles niet overgenomen.",
+          "source": {"label": "FUTWIZ · Eljero Elia · FC27 Hall of FUT-preview", "url": "https://www.futwiz.com/fc27/player/eljero-elia/20724"}
+        }
+      }
+    ],
     "unverified_preview_observations": [
-      {"name": "Eljero Elia", "card_type": "Hall of FUT", "page_game": "FC27", "displayed_rating": 84, "displayed_position": "LW", "displayed_face_stats": {"PAC": 91, "SHO": 74, "PAS": 77, "DRI": 87, "DEF": 34, "PHY": 68}, "not_promoted_reason": "FUTWIZ toont deze face stats, maar alle gedetailleerde stats en kaart-ID’s staan op 0. Geen onafhankelijke verificatie van de officiële EA-statline uitgevoerd. Niet gebruikt voor de Meta-Meter.", "source": {"label": "FUTWIZ · FC27 Elia-preview", "url": "https://www.futwiz.com/fc27/player/eljero-elia/20724"}},
       {"name": "Ruud Gullit", "card_type": "Debut Icon-preview", "page_game": "FC27", "displayed_rating": 86, "displayed_position": "CAM", "displayed_face_stats": {"PAC": 80, "SHO": 82, "PAS": 82, "DRI": 81, "DEF": 80, "PHY": 86}, "not_promoted_reason": "FUTWIZ noemt Debut Icon; EA noemt het pre-orderitem International ICON. De exacte variantkoppeling en officiële statline zijn niet geverifieerd. Geen basis-Iconwaarden overgenomen.", "source": {"label": "FUTWIZ · FC27 Gullit-preview", "url": "https://www.futwiz.com/fc27/player/ruud-gullit/20701"}}
     ],
     "additional_checks": [
