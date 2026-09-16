@@ -1,0 +1,54 @@
+{
+  "checked_at": "2026-09-16T10:50:57Z",
+  "description": "Unmodified official EA FC 27 base-card images, observed on public player-rating pages and exported from the browser's loaded page assets. These are not evolved card designs or claims of ownership.",
+  "copyright": "EA SPORTS / Electronic Arts and respective rights holders. No independent asset licence is claimed.",
+  "images": [
+    {
+      "file": "mats-deijl-72.webp",
+      "player": "Mats Deijl",
+      "base_item_id": 262790,
+      "base_overall": 72,
+      "source_page": "https://www.ea.com/nl/games/ea-sports-fc/ratings/player-ratings/mats-deijl/262790",
+      "source_image": "https://ratings-images-prod.pulse.ea.com/FC27/components/items/262790_nl-NL.webp",
+      "verified_visually": true
+    },
+    {
+      "file": "guus-til-78.webp",
+      "player": "Guus Til",
+      "base_item_id": 235663,
+      "base_overall": 78,
+      "source_page": "https://www.ea.com/nl/games/ea-sports-fc/ratings/player-ratings/guus-til/235663",
+      "source_image": "https://ratings-images-prod.pulse.ea.com/FC27/components/items/235663_nl-NL.webp",
+      "verified_visually": true
+    },
+    {
+      "file": "sami-ouaissa-74.webp",
+      "player": "Sami Ouaissa",
+      "base_item_id": 70725,
+      "base_overall": 74,
+      "base_position": "RM",
+      "source_page": "https://www.ea.com/nl/games/ea-sports-fc/ratings/player-ratings/sami-ouaissa/70725",
+      "source_image": "https://ratings-images-prod.pulse.ea.com/FC27/components/items/70725_nl-NL.webp",
+      "verified_visually": true,
+      "caveat": "The source image shows a PSV badge while the EA page biography says N.E.C. Nijmegen. The official asset is kept unmodified; it must not be used to independently confirm club affiliation. It is the RM 70725 base version, not the separate RW 50402373 item."
+    },
+    {
+      "file": "milan-van-ewijk-75.webp",
+      "player": "Milan van Ewijk",
+      "base_item_id": 251626,
+      "base_overall": 75,
+      "source_page": "https://www.ea.com/nl/games/ea-sports-fc/ratings/player-ratings/milan-van-ewijk/251626",
+      "source_image": "https://ratings-images-prod.pulse.ea.com/FC27/components/items/251626_nl-NL.webp",
+      "verified_visually": true
+    },
+    {
+      "file": "justin-kluivert-79.webp",
+      "player": "Justin Kluivert",
+      "base_item_id": 236920,
+      "base_overall": 79,
+      "source_page": "https://www.ea.com/nl/games/ea-sports-fc/ratings/player-ratings/justin-kluivert/236920",
+      "source_image": "https://ratings-images-prod.pulse.ea.com/FC27/components/items/236920_nl-NL.webp",
+      "verified_visually": true
+    }
+  ]
+}
