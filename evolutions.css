@@ -1,0 +1,95 @@
+.evo-section { scroll-margin-top: 110px; }
+.evo-controls { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; }
+.evo-tab { display: flex; align-items: center; gap: 10px; min-height: 62px; padding: 13px 15px; background: #fff; color: var(--ink); border: 1px solid var(--line); border-radius: 12px; text-align: left; font: inherit; font-size: 13px; font-weight: 750; cursor: pointer; transition: background .2s, border-color .2s, transform .2s; }
+.evo-tab:hover { border-color: #cf1735; transform: translateY(-2px); }
+.evo-tab[aria-pressed="true"] { color: #fff; background: #ae1630; border-color: #ae1630; }
+.evo-tab-number { font-size: 10px; opacity: .7; letter-spacing: .05em; }
+.evo-section :is(button, a, summary):focus-visible { outline: 3px solid #a6142e; outline-offset: 4px; }
+.evo-status { margin: 14px 0; color: var(--muted); font-size: 11px; line-height: 1.7; }
+.evo-status[data-state="error"], .evo-status[data-state="stale"] { color: #925716; }
+.evo-panel { background: #fff; border: 1px solid var(--line); border-radius: 20px; overflow: hidden; }
+.evo-route-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(190px, .48fr); align-items: center; gap: 40px; padding: 28px 32px; border-bottom: 1px solid var(--line); }
+.evo-route-head h3 { margin: 5px 0 10px; font-size: clamp(22px, 2.2vw, 29px); letter-spacing: -.045em; line-height: 1.15; }
+.evo-summary { max-width: 650px; margin: 0; color: var(--muted); font-size: 13px; line-height: 1.65; }
+.evo-facts { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; font-size: 12px; line-height: 1.55; }
+.evo-facts small { font-size: 10px; color: var(--muted); }
+.evo-cost { display: inline-flex; background: #f7e9ec; color: #95152b; border-radius: 5px; padding: 4px 8px; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; }
+.evo-favorite { display: grid; grid-template-columns: minmax(230px, .66fr) minmax(0, 1.34fr); min-width: 0; animation: evo-arrive .3s ease-out both; }
+.evo-card-figure { display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 14px; margin: 0; padding: 24px 28px; position: relative; background: radial-gradient(ellipse at 50% 65%, #eadac7 0, #f8f5f0 45%, #faf9f7 75%); border-right: 1px solid var(--line); }
+.evo-podium { color: #95152b; font-size: 10px; letter-spacing: .14em; font-weight: 800; }
+.evo-card-image { display: block; width: min(100%, 238px); height: auto; max-height: 300px; object-fit: contain; filter: drop-shadow(0 16px 13px #251a1420); transition: transform .3s ease; }
+.evo-card-image[hidden] { display: none; }
+.evo-card-figure:hover .evo-card-image { transform: translateY(-5px) rotate(-1deg); }
+.evo-card-figure figcaption { max-width: 220px; text-align: center; font-size: 10px; color: #69605b; line-height: 1.6; }
+.evo-report { align-self: center; min-width: 0; padding: 32px 40px; }
+.evo-player-name { margin: 8px 0 9px; font-size: clamp(30px, 3.4vw, 46px); letter-spacing: -.055em; line-height: 1.1; }
+.evo-upgrade { margin: 0; font-size: 17px; font-weight: 800; color: #a5142e; }
+.evo-option { display: inline-block; margin: 12px 0 0; font-size: 12px; font-weight: 750; padding: 5px 9px; border: 1px solid #e4b3bc; border-radius: 5px; }
+.evo-why { font-size: 14px; line-height: 1.65; margin: 16px 0 20px; }
+.evo-stat-label { font-size: 10px; color: var(--muted); margin: 0 0 9px; }
+.evo-stats { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); margin: 0; gap: 5px; }
+.evo-stat { display: flex; flex-direction: column-reverse; text-align: center; background: #f7f7f6; border-radius: 6px; padding: 10px 3px; gap: 3px; }
+.evo-stat dt { font-size: 9px; color: var(--muted); }
+.evo-stat dd { margin: 0; font-size: 21px; font-weight: 800; letter-spacing: -.03em; font-variant-numeric: tabular-nums; }
+.evo-caution { font-size: 12px; color: var(--muted); line-height: 1.6; margin: 14px 0; }
+.evo-source { color: #91182a; font-size: 11px; text-decoration: underline; text-underline-offset: 3px; }
+.evo-bench { border-top: 1px solid var(--line); padding: 26px 32px 10px; }
+.evo-bench-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 8px; }
+.evo-bench-head h4 { font-size: 18px; letter-spacing: -.025em; margin: 0; }
+.evo-bench-head p { color: var(--muted); font-size: 11px; margin: 0; }
+.evo-alternatives { padding: 0; margin: 0; list-style: none; }
+.evo-alternative { display: grid; grid-template-columns: 30px minmax(0, 1fr); gap: 14px; padding: 19px 0; border-bottom: 1px solid var(--line); }
+.evo-alternative:last-child { border-bottom: 0; }
+.evo-rank { font-size: 15px; font-weight: 800; color: #b2a4a6; padding-top: 2px; }
+.evo-alternative-top { display: flex; align-items: center; justify-content: space-between; gap: 15px; }
+.evo-alternative-top h5 { font-size: 16px; margin: 0; letter-spacing: -.02em; }
+.evo-alternative-rating { white-space: nowrap; font-size: 12px; font-weight: 750; color: #96172e; font-variant-numeric: tabular-nums; }
+.evo-alternative-why { font-size: 12px; color: #575960; line-height: 1.6; margin: 6px 0; }
+.evo-alternative-upgrade { font-size: 10px; color: #6d5b5f; margin: 5px 0; }
+.evo-player-details summary { cursor: pointer; font-size: 11px; color: #91182a; padding: 5px 0; width: fit-content; }
+.evo-stats--compact { max-width: 470px; margin-top: 12px; }
+.evo-stats--compact .evo-stat dd { font-size: 18px; }
+.evo-rules { background: #fafafa; border-top: 1px solid var(--line); padding: 0 32px; }
+.evo-rules > summary { padding: 20px 0; cursor: pointer; font-size: 12px; font-weight: 700; }
+.evo-rules-content { padding-bottom: 24px; font-size: 12px; line-height: 1.8; color: var(--muted); }
+.evo-rules-content ul { padding-left: 19px; margin-top: 0; }
+.evo-loading { padding: 28px; font-size: 14px; color: var(--muted); }
+.evo-image-fallback { font-size: 12px; line-height: 1.6; text-align: center; }
+.evo-art-note { max-width: 255px; text-align: center; color: #796653; font-size: 9px; line-height: 1.6; }
+@keyframes evo-arrive { from { opacity: .4; transform: translateY(7px); } to { opacity: 1; transform: none; } }
+@media (max-width: 900px) {
+  .evo-controls { gap: 5px; }
+  .evo-tab { padding: 12px 8px; gap: 5px; font-size: 11px; }
+  .evo-route-head { gap: 22px; padding: 24px; }
+  .evo-report { padding: 28px 24px; }
+  .evo-bench-head { display: block; }
+  .evo-bench-head p { margin-top: 8px; }
+}
+@media (max-width: 600px) {
+  .evo-controls { display: flex; overflow-x: auto; padding: 3px 2px 8px; scroll-snap-type: x proximity; }
+  .evo-tab { flex: 0 0 auto; min-height: 49px; padding: 12px 15px; font-size: 12px; scroll-snap-align: start; }
+  .evo-status { font-size: 10px; }
+  .evo-route-head { grid-template-columns: 1fr; gap: 16px; padding: 23px 20px; }
+  .evo-facts { gap: 5px; }
+  .evo-favorite { grid-template-columns: 1fr; }
+  .evo-card-figure { padding: 20px; gap: 10px; border-right: 0; border-bottom: 1px solid var(--line); }
+  .evo-card-image { width: 182px; }
+  .evo-card-figure figcaption { max-width: none; }
+  .evo-report { padding: 25px 20px; }
+  .evo-player-name { font-size: 34px; }
+  .evo-stats { gap: 4px; }
+  .evo-stat dt { font-size: 8px; }
+  .evo-stat dd { font-size: 19px; }
+  .evo-bench { padding: 23px 20px 8px; }
+  .evo-alternative { grid-template-columns: 23px minmax(0, 1fr); gap: 8px; }
+  .evo-alternative-top { align-items: flex-start; flex-direction: column; gap: 5px; }
+  .evo-rules { padding: 0 20px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .evo-favorite { animation: none; }
+  .evo-tab, .evo-card-image { transition: none; }
+  .evo-tab:hover, .evo-card-figure:hover .evo-card-image { transform: none; }
+}
+.motion-paused .evo-favorite { animation: none; }
+.motion-paused .evo-tab, .motion-paused .evo-card-image { transition: none; }
+.motion-paused .evo-tab:hover, .motion-paused .evo-card-figure:hover .evo-card-image { transform: none; }

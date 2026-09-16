@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="dashboard.css?v=daily-squad-1">
     <link rel="stylesheet" href="radar.css?v=bibs-briefing-1">
+    <link rel="stylesheet" href="evolutions.css?v=evo-lab-1">
   </head>
   <body data-page="dashboard">
     <a class="skip-link" href="#club-dashboard">Direct naar het dashboard</a>
@@ -94,6 +95,7 @@
         <a href="#club-dashboard">Overzicht</a>
         <a href="#meta-watch">Meta Meter</a>
         <a href="#dutch-gold">Gold &amp; Promo <span aria-hidden="true">✦</span></a>
+        <a href="#evo-lab">EVO-keuzehoek</a>
         <a href="#legends-watch">Legends</a>
         <a href="#marketwatch">Marketwatch</a>
         <a href="#rumour-radar">Nieuws &amp; geruchten</a>
@@ -144,6 +146,14 @@
         <div id="dutch-gold-grid" class="dutch-gold-grid" aria-live="polite"></div>
         <p id="gold-filter-empty" class="empty" hidden>Geen spelers op deze positie in de huidige Gold Watch. De scout is nog niet klaar met z’n broodje.</p>
         <details class="method-disclosure"><summary>De goudpaspoort-regel <span aria-hidden="true">+</span></summary><aside id="dutch-gold-rule" class="release-rule" hidden></aside></details>
+      </section>
+
+      <section id="evo-lab" class="section evo-section" aria-labelledby="evo-title">
+        <div class="section-head"><div><p class="kicker">ORANJE PROJECTJES · FC 27</p><h2 id="evo-title">Van bankzitter naar bibsheld.</h2></div><p>Vijf EVO’s. Vijf Nederlandse opties per route. Eén favoriet op het podium; vier anderen mogen solliciteren.</p></div>
+        <div id="evo-controls" class="evo-controls" role="group" aria-label="Kies een EVO"></div>
+        <p id="evo-status" class="evo-status" role="status">De EVO-scout haalt zijn shortlist op…</p>
+        <div id="evo-panel" class="evo-panel" aria-label="Geselecteerde EVO"><p class="evo-loading">Even de trainingshesjes zoeken. De vijf routes worden geladen.</p></div>
+        <noscript><p>Schakel JavaScript in voor de vijf EVO-shortlists, kaartvoorbeelden en bronlinks.</p></noscript>
       </section>
 
       <section id="legends-watch" class="section legends-section" aria-labelledby="legends-title">
@@ -290,12 +300,13 @@
       </footer>
     </main>
     <noscript><p class="shell">Schakel JavaScript in om de spelerskaarten en gepubliceerde updates te bekijken.</p></noscript>
-    <script src="refresh.js?v=daily-squad-1" defer></script>
+    <script src="refresh.js?v=evo-lab-1" defer></script>
     <script src="card-art.js?v=daily-squad-1" defer></script>
     <script src="app.js?v=bibs-briefing-1" defer></script>
     <script src="watch.js?v=daily-squad-1" defer></script>
     <script src="radar.js?v=bibs-briefing-1" defer></script>
     <script src="news.js?v=daily-squad-1" defer></script>
-    <script src="motion.js?v=source-radar-1" defer></script>
+    <script src="evolutions.js?v=evo-lab-1" defer></script>
+    <script src="motion.js?v=evo-lab-1" defer></script>
   </body>
 </html>
