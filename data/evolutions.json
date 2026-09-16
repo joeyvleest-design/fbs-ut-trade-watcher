@@ -1,0 +1,666 @@
+{
+  "game": "FC27",
+  "updated_at": "2026-09-16T10:49:59Z",
+  "verified_at": "2026-09-16T10:49:59Z",
+  "review_after": "2026-09-18T00:00:00Z",
+  "notice": "Op 16 september gecontroleerd in de openbare FUT.GG-database, niet in-game getest. Dit is onze shortlist op kaartprofiel, geen bewezen gameplayranglijst. Controleer de exacte kaart en EVO-voorwaarden in-game vóór je vastzet. De EVO is gratis; de basiskaart kan coins kosten.",
+  "evos": [
+    {
+      "id": "intro",
+      "title": "Intro to Evolutions",
+      "short_title": "Starter-upgrade",
+      "tagline": "Van bankvulling naar basisbibs.",
+      "cost": "Gratis EVO",
+      "effort": "7 wedstrijden · elke modus · geen zeges nodig",
+      "uses": 1,
+      "rounds": 1,
+      "summary": "Onze keuze: Mats Deijl. Een echte statsprong voor een Nederlandse rechtsback. De vijf kaarten hieronder tonen alleen deze EVO, zonder extra ketens.",
+      "requirements": [
+        "Maximaal 75 OVR",
+        "RB als positie",
+        "Maximaal 2 posities",
+        "CB als positie uitgesloten",
+        "Maximaal 80 tempo",
+        "Maximaal 7 PlayStyles"
+      ],
+      "caution": "Kies één speler. Een kaart met óók CB valt af. De weergegeven eindstats zijn databaseberekeningen, geen geteste gameplay.",
+      "source_url": "https://www.fut.gg/evolutions/2491-intro-to-evolutions/",
+      "players": [
+        {
+          "id": "mats-deijl",
+          "name": "Mats Deijl",
+          "nation_code": "NL",
+          "gender": "male",
+          "position": "RB",
+          "base_rating": 72,
+          "rating": 79,
+          "stats": {
+            "PAC": 80,
+            "SHO": 58,
+            "PAS": 74,
+            "DRI": 79,
+            "DEF": 75,
+            "PHY": 76
+          },
+          "why": "De compleetste keuze: 79 dribbelen en 76 fysiek. Kan eindelijk meer dan alleen boos naar de rechtsbuiten kijken.",
+          "caution": "Slechts 2★ skills; geen aanvaller vermomd als back.",
+          "upgrade": "72 → 79 · RB Wingback+",
+          "option": null,
+          "source_url": "https://www.fut.gg/players/262790-mats-deijl/27-262790/"
+        },
+        {
+          "id": "ki-jana-hoever",
+          "name": "Ki-Jana Hoever",
+          "nation_code": "NL",
+          "gender": "male",
+          "position": "RB",
+          "base_rating": 71,
+          "rating": 79,
+          "stats": {
+            "PAC": 80,
+            "SHO": 55,
+            "PAS": 74,
+            "DRI": 79,
+            "DEF": 75,
+            "PHY": 70
+          },
+          "why": "Goede aanvallende back met 74 passen en 79 dribbelen. Netjes meevoetballen zonder een powerpoint vooraf.",
+          "caution": "70 fysiek is minder stevig dan Deijl; gebruik de exacte 71-basiskaart.",
+          "upgrade": "71 → 79 · RB Wingback+",
+          "option": null,
+          "source_url": "https://www.fut.gg/players/246763-ki-jana-hoever/27-246763/"
+        },
+        {
+          "id": "daliyah-de-klonia",
+          "name": "Daliyah de Klonia",
+          "nation_code": "NL",
+          "gender": "female",
+          "position": "RB",
+          "base_rating": 73,
+          "rating": 79,
+          "stats": {
+            "PAC": 80,
+            "SHO": 45,
+            "PAS": 71,
+            "DRI": 78,
+            "DEF": 76,
+            "PHY": 71
+          },
+          "why": "Met 76 verdedigen de sterkste totale defensiescore van deze vijf. De rechtsflank vraagt geen spreekbeurt over mannenvoetbal.",
+          "caution": "2★ skills en 2★ zwakke voet beperken de opbouw onder druk.",
+          "upgrade": "73 → 79 · RB Wingback+",
+          "option": null,
+          "source_url": "https://www.fut.gg/players/277813-daliyah-de-klonia/27-277813/"
+        },
+        {
+          "id": "ilias-bronkhorst",
+          "name": "Ilias Bronkhorst",
+          "nation_code": "NL",
+          "gender": "male",
+          "position": "RB",
+          "base_rating": 67,
+          "rating": 79,
+          "stats": {
+            "PAC": 81,
+            "SHO": 51,
+            "PAS": 70,
+            "DRI": 78,
+            "DEF": 75,
+            "PHY": 71
+          },
+          "why": "81 tempo en een enorme sprong vanaf zilver. Hard werken loont; zelfs zonder functioneringsgesprek.",
+          "caution": "70 passing: hou de opbouw simpel.",
+          "upgrade": "67 → 79 · RB Wingback+",
+          "option": null,
+          "source_url": "https://www.fut.gg/players/263259-ilias-bronkhorst/27-263259/"
+        },
+        {
+          "id": "essien-bassey",
+          "name": "Essien Bassey",
+          "nation_code": "NL",
+          "gender": "male",
+          "position": "RB",
+          "base_rating": 62,
+          "rating": 79,
+          "stats": {
+            "PAC": 80,
+            "SHO": 41,
+            "PAS": 71,
+            "DRI": 77,
+            "DEF": 75,
+            "PHY": 73
+          },
+          "why": "Leuk bronzen project met 73 fysiek: iets meer body voor wie de zijlijn als boksring beschouwt.",
+          "caution": "Lager uitgangsniveau; de 79-rating maakt niet elk onverhoogd detail elite.",
+          "upgrade": "62 → 79 · RB Wingback+",
+          "option": null,
+          "source_url": "https://www.fut.gg/players/88087-essien-bassey/27-88087/"
+        }
+      ]
+    },
+    {
+      "id": "repeatable",
+      "title": "Intro to Repeatable Evolutions",
+      "short_title": "Twee rondjes extra",
+      "tagline": "Eén spits twee keer door de wasstraat.",
+      "cost": "Gratis EVO",
+      "effort": "3 wedstrijden per ronde · 6 voor de getoonde dubbele upgrade",
+      "uses": 2,
+      "rounds": 2,
+      "summary": "Guus Til is onze allround keuze. De kaartstats hieronder zijn na twee rondes op dezelfde speler; je kunt de twee beschikbare toepassingen ook over twee spelers verdelen.",
+      "requirements": [
+        "Maximaal 79 OVR bij insturen",
+        "ST als positie",
+        "Maximaal 81 tempo",
+        "Squad Battles minimaal Semi-Pro, of Rush/Rivals/Champions/Live Events"
+      ],
+      "caution": "Twee toepassingen totaal: één speler tweemaal óf twee spelers eenmaal. Na één ronde heb je niet de hieronder getoonde eindkaart. Tempo, skills en zwakke voet krijgen geen boost.",
+      "source_url": "https://www.fut.gg/evolutions/2492-intro-to-repeatable-evolutions/",
+      "players": [
+        {
+          "id": "guus-til",
+          "name": "Guus Til",
+          "nation_code": "NL",
+          "gender": "male",
+          "position": "CAM",
+          "base_rating": 78,
+          "rating": 80,
+          "stats": {
+            "PAC": 79,
+            "SHO": 78,
+            "PAS": 75,
+            "DRI": 78,
+            "DEF": 65,
+            "PHY": 76
+          },
+          "why": "De meest complete uitkomst: 79 tempo, 78 schieten en 78 dribbelen. Niet sexy, wel iemand die de koffie én de tweede bal regelt.",
+          "caution": "Blijft 3★/3★. Zijn ST-nevenpositie maakt hem geschikt.",
+          "upgrade": "78 → 79 → 80 · 2 rondes",
+          "option": null,
+          "source_url": "https://www.fut.gg/players/235663-guus-til/27-235663/"
+        },
+        {
+          "id": "katja-snoeijs",
+          "name": "Katja Snoeijs",
+          "nation_code": "NL",
+          "gender": "female",
+          "position": "ST",
+          "base_rating": 78,
+          "rating": 80,
+          "stats": {
+            "PAC": 81,
+            "SHO": 79,
+            "PAS": 71,
+            "DRI": 79,
+            "DEF": 43,
+            "PHY": 67
+          },
+          "why": "81 tempo met 79 schieten en dribbelen. De spits scoort; de boys mogen daarna uitleggen waarom dat aan de controller lag.",
+          "caution": "67 fysiek en 3★/3★; geen beukende aanspeelpuntspits.",
+          "upgrade": "78 → 79 → 80 · 2 rondes",
+          "option": null,
+          "source_url": "https://www.fut.gg/players/244059-katja-snoeijs/27-244059/"
+        },
+        {
+          "id": "tijjani-noslin",
+          "name": "Tijjani Noslin",
+          "nation_code": "NL",
+          "gender": "male",
+          "position": "ST",
+          "base_rating": 74,
+          "rating": 76,
+          "stats": {
+            "PAC": 75,
+            "SHO": 75,
+            "PAS": 71,
+            "DRI": 79,
+            "DEF": 43,
+            "PHY": 60
+          },
+          "why": "4★ skills en 4★ zwakke voet maken hem flexibel. Meer voetbal in kleine ruimtes dan de rating doet vermoeden.",
+          "caution": "60 fysiek en 75 tempo blijven grenzen; geen complete metamorfose.",
+          "upgrade": "74 → 75 → 76 · 2 rondes",
+          "option": null,
+          "source_url": "https://www.fut.gg/players/264257-tijjani-noslin/27-264257/"
+        },
+        {
+          "id": "joshua-zirkzee",
+          "name": "Joshua Zirkzee",
+          "nation_code": "NL",
+          "gender": "male",
+          "position": "ST",
+          "base_rating": 77,
+          "rating": 79,
+          "stats": {
+            "PAC": 67,
+            "SHO": 77,
+            "PAS": 75,
+            "DRI": 81,
+            "DEF": 42,
+            "PHY": 75
+          },
+          "why": "81 dribbelen en 75 passen passen bij een meevoetballende spits. Kapstok met voetbalschoenen.",
+          "caution": "67 tempo blijft 67: geef hem geen vacature als dieptesprinter.",
+          "upgrade": "77 → 78 → 79 · 2 rondes",
+          "option": null,
+          "source_url": "https://www.fut.gg/players/250961-joshua-zirkzee/27-250961/"
+        },
+        {
+          "id": "vincent-janssen",
+          "name": "Vincent Janssen",
+          "nation_code": "NL",
+          "gender": "male",
+          "position": "ST",
+          "base_rating": 76,
+          "rating": 78,
+          "stats": {
+            "PAC": 67,
+            "SHO": 76,
+            "PAS": 73,
+            "DRI": 76,
+            "DEF": 48,
+            "PHY": 89
+          },
+          "why": "89 fysiek en 4★ zwakke voet: de bal afschermen alsof iemand zijn bitterballen wil stelen.",
+          "caution": "67 tempo blijft laag. Alleen prioriteit als je met een aanspeelpunt speelt.",
+          "upgrade": "76 → 77 → 78 · 2 rondes",
+          "option": null,
+          "source_url": "https://www.fut.gg/players/226537-vincent-janssen/27-226537/"
+        }
+      ]
+    },
+    {
+      "id": "delivery",
+      "title": "Repeat Delivery",
+      "short_title": "Vleugel in training",
+      "tagline": "Vier trainingen. Geen zweet op jouw bank.",
+      "cost": "Gratis EVO",
+      "effort": "4 trainingsfases van 6 uur · 24 uur totaal · geen wedstrijden",
+      "uses": 2,
+      "rounds": 1,
+      "summary": "Sami Ouaissa is onze creatieve vleugelkeuze. De cijfers tonen één volledige Repeat Delivery op de basiskaart, zonder Pathway. Kies maximaal twee van deze spelers: de getoonde 78-kaarten passen niet nogmaals in de max-74-eis.",
+      "requirements": [
+        "Maximaal 74 OVR",
+        "LM of RM als positie",
+        "LB en RB als positie uitgesloten",
+        "Maximaal 83 tempo",
+        "Maximaal 7 PlayStyles"
+      ],
+      "caution": "De training verloopt in vier fases; 24 uur is de opgetelde trainingstijd. Schieten en verdedigen krijgen geen boost. Verwacht dus geen afmaakmachine doordat de kaart goud wordt.",
+      "source_url": "https://www.fut.gg/evolutions/2489-repeat-delivery/",
+      "players": [
+        {
+          "id": "sami-ouaissa",
+          "name": "Sami Ouaissa",
+          "nation_code": "NL",
+          "gender": "male",
+          "position": "RM",
+          "base_rating": 74,
+          "rating": 78,
+          "stats": {
+            "PAC": 83,
+            "SHO": 66,
+            "PAS": 77,
+            "DRI": 77,
+            "DEF": 40,
+            "PHY": 68
+          },
+          "why": "83 tempo met 77 passing en dribbelen: een creatieve rechterflank die ook eens een bal kan afgeven.",
+          "caution": "66 schieten blijft 66. De bron toont ook een optionele Pathway; die is hier niet meegerekend.",
+          "upgrade": "74 → 78 · 1 trainingstraject",
+          "option": null,
+          "source_url": "https://www.fut.gg/players/70725-sami-ouaissa/evolutions/?id=70725_2489;2488:2"
+        },
+        {
+          "id": "daan-rots",
+          "name": "Daan Rots",
+          "nation_code": "NL",
+          "gender": "male",
+          "position": "RW",
+          "base_rating": 73,
+          "rating": 78,
+          "stats": {
+            "PAC": 81,
+            "SHO": 69,
+            "PAS": 77,
+            "DRI": 76,
+            "DEF": 40,
+            "PHY": 64
+          },
+          "why": "Netjes uitgebalanceerde vleugeloptie met 77 passing. Een voorzet die het strafschopgebied haalt: pure luxe.",
+          "caution": "64 fysiek en 69 schieten blijven bescheiden. Extra Pathway uit de bron niet meegerekend.",
+          "upgrade": "73 → 78 · 1 trainingstraject",
+          "option": null,
+          "source_url": "https://www.fut.gg/players/259563-daan-rots/evolutions/?id=259563_2489;2488:1"
+        },
+        {
+          "id": "million-manhoef",
+          "name": "Million Manhoef",
+          "nation_code": "NL",
+          "gender": "male",
+          "position": "RM",
+          "base_rating": 71,
+          "rating": 78,
+          "stats": {
+            "PAC": 82,
+            "SHO": 67,
+            "PAS": 76,
+            "DRI": 75,
+            "DEF": 56,
+            "PHY": 71
+          },
+          "why": "82 tempo en 71 fysiek: meer body voor de flank. Hij heet Million, maar dat is geen koopbudgetadvies.",
+          "caution": "67 schieten blijft laag; de naam geeft geen rendementsgarantie.",
+          "upgrade": "71 → 78 · 1 trainingstraject",
+          "option": null,
+          "source_url": "https://www.fut.gg/players/258093-million-manhoef/evolutions/?id=258093_2489"
+        },
+        {
+          "id": "lotte-keukelaar",
+          "name": "Lotte Keukelaar",
+          "nation_code": "NL",
+          "gender": "female",
+          "position": "LW",
+          "base_rating": 74,
+          "rating": 78,
+          "stats": {
+            "PAC": 82,
+            "SHO": 68,
+            "PAS": 76,
+            "DRI": 77,
+            "DEF": 35,
+            "PHY": 65
+          },
+          "why": "82 tempo en 77 dribbelen: een vlotte vleugeloptie. De mannen mogen gewoon de analyse achteraf verzorgen.",
+          "caution": "68 schieten en 65 fysiek: meer combinaties dan krachtwerk. Extra Pathway niet meegerekend.",
+          "upgrade": "74 → 78 · 1 trainingstraject",
+          "option": null,
+          "source_url": "https://www.fut.gg/players/277952-lotte-keukelaar/evolutions/?id=277952_2489;2488:1"
+        },
+        {
+          "id": "myron-van-brederode",
+          "name": "Myron van Brederode",
+          "nation_code": "NL",
+          "gender": "male",
+          "position": "LM",
+          "base_rating": 73,
+          "rating": 78,
+          "stats": {
+            "PAC": 80,
+            "SHO": 64,
+            "PAS": 75,
+            "DRI": 79,
+            "DEF": 32,
+            "PHY": 50
+          },
+          "why": "79 dribbelen maakt hem een fijne baldrager. Meer draaien en combineren, minder blind beuken.",
+          "caution": "50 fysiek en 64 schieten blijven zwak. Extra Pathway uit de bron niet meegerekend.",
+          "upgrade": "73 → 78 · 1 trainingstraject",
+          "option": null,
+          "source_url": "https://www.fut.gg/players/269159-myron-van-brederode/evolutions/?id=269159_2489;2488:1"
+        }
+      ]
+    },
+    {
+      "id": "camp",
+      "title": "Intro to Training Camp EVOs",
+      "short_title": "Fullback in een uur",
+      "tagline": "Een rol erbij. Geen turbo cadeau.",
+      "cost": "Gratis EVO",
+      "effort": "1 uur training · geen wedstrijden",
+      "uses": 1,
+      "rounds": 1,
+      "summary": "Milan van Ewijk is onze snelle eerste keuze. Deze EVO voegt uitsluitend RB Fullback+ toe. Alle ratings en kaartstats hieronder blijven exact hetzelfde.",
+      "requirements": [
+        "Maximaal 80 OVR",
+        "RB als positie",
+        "1 uur training"
+      ],
+      "caution": "Geen stats- of OVR-boost. De rol Fullback+ werkt op RB; een CB-nevenpositie krijgt hiermee geen extra rol. Zinvol als je die rol daadwerkelijk gebruikt.",
+      "source_url": "https://www.fut.gg/evolutions/2490-intro-to-training-camp-evos/",
+      "players": [
+        {
+          "id": "milan-van-ewijk",
+          "name": "Milan van Ewijk",
+          "nation_code": "NL",
+          "gender": "male",
+          "position": "RB",
+          "base_rating": 75,
+          "rating": 75,
+          "stats": {
+            "PAC": 92,
+            "SHO": 58,
+            "PAS": 67,
+            "DRI": 73,
+            "DEF": 68,
+            "PHY": 72
+          },
+          "why": "92 tempo zat er al op; Fullback+ maakt hem interessant als snelle rechtsback. De sprintknop krijgt eindelijk een collega.",
+          "caution": "68 verdedigen blijft 68. Deze EVO maakt hem niet sterker of sneller.",
+          "upgrade": "RB Fullback+ · geen statboost",
+          "option": null,
+          "source_url": "https://www.fut.gg/players/251626-milan-van-ewijk/evolutions/?id=251626_2490"
+        },
+        {
+          "id": "lynn-wilms",
+          "name": "Lynn Wilms",
+          "nation_code": "NL",
+          "gender": "female",
+          "position": "RB",
+          "base_rating": 80,
+          "rating": 80,
+          "stats": {
+            "PAC": 79,
+            "SHO": 66,
+            "PAS": 81,
+            "DRI": 74,
+            "DEF": 77,
+            "PHY": 77
+          },
+          "why": "81 passing met 77 verdedigen en fysiek: de meest verzorgde opbouwoptie. Kan de bal afgeven zonder eerst drie keer te sprinten.",
+          "caution": "Geen tempo-upgrade; alleen kiezen als je haar op RB met deze rol gebruikt.",
+          "upgrade": "RB Fullback+ · geen statboost",
+          "option": null,
+          "source_url": "https://www.fut.gg/players/253417-lynn-wilms/evolutions/?id=253417_2490"
+        },
+        {
+          "id": "bart-van-rooij",
+          "name": "Bart van Rooij",
+          "nation_code": "NL",
+          "gender": "male",
+          "position": "RB",
+          "base_rating": 76,
+          "rating": 76,
+          "stats": {
+            "PAC": 87,
+            "SHO": 51,
+            "PAS": 68,
+            "DRI": 71,
+            "DEF": 69,
+            "PHY": 77
+          },
+          "why": "87 tempo en 77 fysiek: een sterke mix om de flank dicht te lopen.",
+          "caution": "69 verdedigen blijft een beperking. Fullback+ is geen gratis defensieve statsboost.",
+          "upgrade": "RB Fullback+ · geen statboost",
+          "option": null,
+          "source_url": "https://www.fut.gg/players/262311-bart-van-rooij/evolutions/?id=262311_2490"
+        },
+        {
+          "id": "jordan-teze",
+          "name": "Jordan Teze",
+          "nation_code": "NL",
+          "gender": "male",
+          "position": "RB",
+          "base_rating": 78,
+          "rating": 78,
+          "stats": {
+            "PAC": 76,
+            "SHO": 55,
+            "PAS": 71,
+            "DRI": 73,
+            "DEF": 76,
+            "PHY": 78
+          },
+          "why": "Met 76 verdedigen en 78 fysiek een stevigere optie. Minder raket, meer slagboom.",
+          "caution": "76 tempo blijft 76. De toegevoegde rol is voor RB, niet voor centraal achterin.",
+          "upgrade": "RB Fullback+ · geen statboost",
+          "option": null,
+          "source_url": "https://www.fut.gg/players/245211-jordan-teze/evolutions/?id=245211_2490"
+        },
+        {
+          "id": "denso-kasius",
+          "name": "Denso Kasius",
+          "nation_code": "NL",
+          "gender": "male",
+          "position": "RB",
+          "base_rating": 73,
+          "rating": 73,
+          "stats": {
+            "PAC": 90,
+            "SHO": 58,
+            "PAS": 68,
+            "DRI": 71,
+            "DEF": 65,
+            "PHY": 73
+          },
+          "why": "90 tempo: nuttig als snelle back in je startersploeg. Eerst terugrennen, daarna pas stoer doen in Discord.",
+          "caution": "65 verdedigen blijft laag; snelle benen zijn geen positioneel inzicht.",
+          "upgrade": "RB Fullback+ · geen statboost",
+          "option": null,
+          "source_url": "https://www.fut.gg/players/267446-denso-kasius/evolutions/?id=267446_2490"
+        }
+      ]
+    },
+    {
+      "id": "pathway",
+      "title": "Intro to Pathway Evolutions",
+      "short_title": "Kies je PlayStyle",
+      "tagline": "Een nieuw trucje. Geen nieuwe benen.",
+      "cost": "Gratis EVO",
+      "effort": "1 wedstrijd · Squad Battles minimaal Semi-Pro of genoemde online modi",
+      "uses": 1,
+      "rounds": 1,
+      "summary": "Justin Kluivert met optie B is onze creatieve keuze. Optie A voegt Game Changer toe; optie B Inventive. Je kiest één pad, niet beide.",
+      "requirements": [
+        "Maximaal 80 OVR",
+        "Maximaal 3 PlayStyles",
+        "1 wedstrijd met je actieve EVO",
+        "Squad Battles minimaal Semi-Pro, of Rush/Rivals/Champions/Live Events"
+      ],
+      "caution": "Geen stats- of OVR-boost. De cijfers zijn de ongewijzigde basisstats. Kies een PlayStyle die de kaart nog niet heeft; een dubbele toevoeging levert niets nieuws op.",
+      "source_url": "https://www.fut.gg/evolutions/2488-intro-to-pathway-evolutions/",
+      "players": [
+        {
+          "id": "justin-kluivert",
+          "name": "Justin Kluivert",
+          "nation_code": "NL",
+          "gender": "male",
+          "position": "CAM",
+          "base_rating": 79,
+          "rating": 79,
+          "stats": {
+            "PAC": 86,
+            "SHO": 78,
+            "PAS": 77,
+            "DRI": 81,
+            "DEF": 42,
+            "PHY": 60
+          },
+          "why": "86 tempo, 81 dribbelen en 4★/4★: Inventive past bij een creatieve aanvallende middenvelder.",
+          "caution": "Alleen een extra PlayStyle; 60 fysiek wordt niet ineens een sportschoolabonnement.",
+          "upgrade": "Optie B · Inventive · geen statboost",
+          "option": "B",
+          "source_url": "https://www.fut.gg/players/236920-justin-kluivert/27-236920/"
+        },
+        {
+          "id": "crysencio-summerville",
+          "name": "Crysencio Summerville",
+          "nation_code": "NL",
+          "gender": "male",
+          "position": "LM",
+          "base_rating": 78,
+          "rating": 78,
+          "stats": {
+            "PAC": 89,
+            "SHO": 74,
+            "PAS": 70,
+            "DRI": 82,
+            "DEF": 36,
+            "PHY": 54
+          },
+          "why": "89 tempo en 82 dribbelen met Game Changer erbij. De gouden kaart kan verdedigers al genoeg ongemak bezorgen.",
+          "caution": "Dit is GOLD 78, niet objective 83. Blijft 3★/3★ en 35 kracht; minder prioriteit als je snel zijn objective haalt.",
+          "upgrade": "Optie A · Game Changer · geen statboost",
+          "option": "A",
+          "source_url": "https://www.fut.gg/players/251954-crysencio-summerville/27-251954/"
+        },
+        {
+          "id": "ernest-poku",
+          "name": "Ernest Poku",
+          "nation_code": "NL",
+          "gender": "male",
+          "position": "RM",
+          "base_rating": 76,
+          "rating": 76,
+          "stats": {
+            "PAC": 90,
+            "SHO": 67,
+            "PAS": 68,
+            "DRI": 77,
+            "DEF": 40,
+            "PHY": 64
+          },
+          "why": "90 tempo en 5★ zwakke voet: snelle optie voor beide flanken met Game Changer erbij.",
+          "caution": "Exact de Beşiktaş-kaart 76. De EVO repareert zijn 65 afwerking niet.",
+          "upgrade": "Optie A · Game Changer · geen statboost",
+          "option": "A",
+          "source_url": "https://www.fut.gg/players/264219-ernest-poku/27-50595867/"
+        },
+        {
+          "id": "kenneth-taylor",
+          "name": "Kenneth Taylor",
+          "nation_code": "NL",
+          "gender": "male",
+          "position": "CM",
+          "base_rating": 78,
+          "rating": 78,
+          "stats": {
+            "PAC": 69,
+            "SHO": 77,
+            "PAS": 78,
+            "DRI": 80,
+            "DEF": 67,
+            "PHY": 69
+          },
+          "why": "80 dribbelen, 78 passing en 5★ zwakke voet. Inventive voor wie af en toe een pass wil geven in plaats van alleen sprinten.",
+          "caution": "69 tempo blijft 69. Een spelmaker, geen snelle box-to-box-middenvelder.",
+          "upgrade": "Optie B · Inventive · geen statboost",
+          "option": "B",
+          "source_url": "https://www.fut.gg/players/255009-kenneth-taylor/27-255009/"
+        },
+        {
+          "id": "arnaut-danjuma",
+          "name": "Arnaut Danjuma",
+          "nation_code": "NL",
+          "gender": "male",
+          "position": "LW",
+          "base_rating": 75,
+          "rating": 75,
+          "stats": {
+            "PAC": 83,
+            "SHO": 75,
+            "PAS": 71,
+            "DRI": 76,
+            "DEF": 44,
+            "PHY": 68
+          },
+          "why": "4★/4★ met 83 tempo: Inventive geeft een creatieve aanvaller een passende extra optie.",
+          "caution": "Game Changer heeft hij al: kies niet A. Zijn 65 stamina krijgt geen upgrade.",
+          "upgrade": "Optie B · Inventive · geen statboost",
+          "option": "B",
+          "source_url": "https://www.fut.gg/players/236276-arnaut-danjuma/27-236276/"
+        }
+      ]
+    }
+  ]
+}
