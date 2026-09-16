@@ -1,8 +1,60 @@
 {
   "game": "FC27",
-  "checked_at": "2026-09-15T06:36:54.774916Z",
-  "updated_at": "2026-09-15T06:36:54.774916Z",
+  "checked_at": "2026-09-16T07:28:06.244216Z",
+  "updated_at": "2026-09-16T07:28:06.244216Z",
   "items": [
+    {
+      "id": "3aff7fa6b6d47cb42be0",
+      "title": "EA SPORTS FC 27 | First Gameplay Livestream",
+      "summary": "Verwijzing uit de gepubliceerde feed; lees het bericht bij de uitgever. Geen artikeltekst overgenomen en nog geen eigen inhoudelijke verificatie.",
+      "status": "reported",
+      "classification_basis": "feed_headline_only",
+      "game_scope": "FC27",
+      "source_id": "steam-fc27",
+      "source": {
+        "label": "FC27 op Steam",
+        "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1843481262705139"
+      },
+      "published_at": "2026-09-15T16:55:22Z",
+      "checked_at": "2026-09-16T07:28:06.244216Z",
+      "expires_at": "2026-09-18T16:55:22Z",
+      "impact": "Signaal om verder te onderzoeken. Geen bevestigde kaart, prijsverwachting of koopcall.",
+      "original_source_url": null
+    },
+    {
+      "id": "fc27-gameplay-stream-rewards-official-20260915",
+      "title": "Gisteren meegekeken? Controleer je verdiende startbonus",
+      "summary": "EA koppelde de gameplay-uitzending van 15 september aan kijkbeloningen. De stream liep van 19:00 tot 20:30 Nederlandse tijd; de aangekondigde pakketten zijn onverhandelbaar. Het langere kijkdoel bood daarnaast coins en een tijdelijke wedstrijdboost. Wie toen aan de kijk- en accountvoorwaarden voldeed, kan de bijbehorende claiminstructies controleren. Vandaag alleen de herhaling kijken is geen bevestigde route naar dezelfde beloningen.",
+      "status": "confirmed_official",
+      "published_at": "2026-09-15T00:00:00Z",
+      "published_precision": "date",
+      "checked_at": "2026-09-16T07:26:46Z",
+      "expires_at": "2026-09-16T17:01:00Z",
+      "source": {
+        "url": "https://www.ea.com/games/ea-sports-fc/fc-27/news/fc-27-first-gameplay-livestream",
+        "label": "EA SPORTS · gameplay-livestream en kijkvoorwaarden"
+      },
+      "original_source_url": null,
+      "impact": "Onze duiding: het startbudget kan per account verschillen; onverhandelbare packs zijn geen direct verkoopaanbod. Controleer je eigen geschiktheid en de platformvoorwaarden. Dit is geen voorspelling van kaartprijzen. Knalfuifje mag zijn drops checken, niet alvast een dividenduitkering aankondigen.",
+      "source_id": "editorial"
+    },
+    {
+      "id": "fc27-totw1-dutch-leak-20260915",
+      "title": "Mijnans en Brugts in een TOTW-lek: nog geen EA-stempel",
+      "summary": "ModdingWay toont een vermeende TOTW 1-selectie met onder anderen Mijnans en Brugts. De pagina noemt het een lek; een controleerbare oorspronkelijke EA-bevestiging of leakerpost ontbreekt in de geraadpleegde tekst. Daarom blijft dit secundaire, onbevestigde berichtgeving. De getoonde ratings, stats en PlayStyles nemen we niet over.",
+      "status": "rumour",
+      "published_at": "2026-09-15T00:00:00Z",
+      "published_precision": "date",
+      "checked_at": "2026-09-16T07:25:38Z",
+      "expires_at": "2026-09-16T17:01:00Z",
+      "source": {
+        "url": "https://www.moddingway.com/fut/totw/10201/fc-27-totw-1-leaked",
+        "label": "ModdingWay · secundair TOTW-lekbericht"
+      },
+      "original_source_url": null,
+      "impact": "Een ander artikel van dezelfde uitgever is geen onafhankelijke bevestiging van de eerdere voorspelling. Bij de releasecheck zoeken we de officiële selectie en exacte kaartversie; tot die tijd geen wijziging in Gold/Promo Watch of Meta Meter en geen koopgrens. Surimi stokje heeft de confetti, EA nog steeds de handtekening.",
+      "source_id": "editorial"
+    },
     {
       "id": "fc27-totw1-dutch-prediction-20260915",
       "title": "Mijnans en Brugts op het TOTW-prikbord",
@@ -27,14 +79,14 @@
       "status": "confirmed_official",
       "published_at": "2026-09-14T00:00:00Z",
       "published_precision": "date",
-      "checked_at": "2026-09-15T06:34:32Z",
-      "expires_at": "2026-09-16T06:34:32Z",
+      "checked_at": "2026-09-16T07:24:21Z",
+      "expires_at": "2026-09-16T17:01:00Z",
       "source": {
         "url": "https://www.ea.com/games/ea-sports-fc/fc-27/news/pitch-notes-fc27-launch-update",
         "label": "EA SPORTS · officiële Launch Update"
       },
       "original_source_url": null,
-      "impact": "Onze duiding: herbereken legend-links en vergelijk verdiende kaarten met aankopen zodra echte prijzen bestaan. Een lanceringsagenda bewijst geen koerswinst. De getoonde reguliere en premium pas bevatten geen Summerville; het oude lek is geen bevestigde pasbeloning. Knalfuifje mag de agenda trekken, niet alvast de clubkas.",
+      "impact": "Hercontrole op 16 september: de lanceringsagenda is ongewijzigd; dit blijft een bericht van 14 september, geen live-statusmeting. Onze duiding: vergelijk verdiende kaarten met aankopen zodra echte prijzen bestaan. Een lanceringsagenda bewijst geen koerswinst. De getoonde reguliere en premium pas bevestigen het oude Summerville-lek niet. Knalfuifje mag de agenda trekken, niet alvast de clubkas.",
       "source_id": "editorial"
     },
     {
@@ -121,41 +173,6 @@
       "original_source_url": null,
       "impact": "Duiding: twee Nederlandse namen om bij de officiële release opnieuw te controleren. Geen promo-artwork, aangepaste stats, in/out-of-packs-status of aankoopadvies op basis van dit gerucht.",
       "source_id": "editorial"
-    },
-    {
-      "id": "703d33eb5b6610b8aa0a",
-      "title": "EA SPORTS FC™ 27 | Closed Beta Feedback Update",
-      "summary": "Verwijzing uit de gepubliceerde feed; lees het bericht bij de uitgever. Geen artikeltekst overgenomen en nog geen eigen inhoudelijke verificatie.",
-      "status": "reported",
-      "classification_basis": "feed_headline_only",
-      "game_scope": "FC27",
-      "source_id": "steam-fc27",
-      "source": {
-        "label": "FC27 op Steam",
-        "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1842846814443654"
-      },
-      "published_at": "2026-09-03T15:02:09Z",
-      "checked_at": "2026-09-15T06:36:54.774916Z",
-      "expires_at": "2026-09-06T15:02:09Z",
-      "impact": "Signaal om verder te onderzoeken. Geen bevestigde kaart, prijsverwachting of koopcall.",
-      "original_source_url": null
-    },
-    {
-      "id": "fc27-liga-mx-partners-official-20260902",
-      "title": "EA bevestigt de terugkeer van Liga MX",
-      "summary": "EA bevestigt alle achttien Liga MX-clubs en de terugkeer van de officiële Lazio-licentie in FC27. Het bericht bevat geen specifieke Ultimate Team-promoselectie of kaartprijzen.",
-      "status": "confirmed_official",
-      "published_at": "2026-09-02T00:00:00Z",
-      "published_precision": "date",
-      "checked_at": "2026-09-10T09:07:52Z",
-      "expires_at": "2026-09-16T00:00:00Z",
-      "source": {
-        "url": "https://news.ea.com/press-releases/press-releases-details/2026/EA-SPORTS-FC-27-Brings-Fans-Closer-to-The-Worlds-Game-With-New-Partners-Leagues-and-Stadiums/default.aspx",
-        "label": "Electronic Arts · officieel persbericht"
-      },
-      "original_source_url": null,
-      "impact": "Duiding: nieuwe club- en competitiecontext voor het bouwen van teams. Controleer afzonderlijke UT-items en chemistry-links wanneer ze beschikbaar zijn; meer licenties bewijst geen koersstijging.",
-      "source_id": "editorial"
     }
   ],
   "sources": [
@@ -166,9 +183,9 @@
       "url": "https://api.steampowered.com/ISteamNews/GetNewsForApp/v2/?appid=4080220&count=20&maxlength=1&feeds=steam_community_announcements&format=json",
       "policy_url": "https://steamcommunity.com/dev/apiterms",
       "policy_reviewed_at": "2026-09-10T09:08:00Z",
-      "checked_at": "2026-09-15T06:36:54.774916Z",
-      "last_success_at": "2026-09-15T06:36:54.774916Z",
-      "matched_items": 2,
+      "checked_at": "2026-09-16T07:28:06.244216Z",
+      "last_success_at": "2026-09-16T07:28:06.244216Z",
+      "matched_items": 4,
       "usage_note": "Publieke Steam-nieuws-API, uitsluitend aankondigingen voor EA SPORTS FC27. Geen API-key nodig voor deze methode. Geen artikelbody of transfermarktprijzen. Steam is niet aan FBS verbonden; gegevens zoals aangeboden.",
       "status": "ok",
       "detail": "Feed gelezen; maximaal één bronverwijzing. Geen artikeltekst, afbeeldingen of prijzen gekopieerd."
@@ -181,8 +198,8 @@
       "policy_url": "https://www.pushsquare.com/contact",
       "terms_url": "https://www.pushsquare.com/terms",
       "policy_reviewed_at": "2026-09-10T09:08:00Z",
-      "checked_at": "2026-09-15T06:36:54.774916Z",
-      "last_success_at": "2026-09-15T06:36:54.774916Z",
+      "checked_at": "2026-09-16T07:28:06.244216Z",
+      "last_success_at": "2026-09-16T07:28:06.244216Z",
       "matched_items": 0,
       "usage_note": "Uitgever beveelt RSS aan om naar artikelen te linken. Alleen een eigen neutraal linklabel en de bron-URL; geen overgenomen kop, artikeltekst of afbeeldingen. Geen claim van algemene herpublicatielicentie.",
       "status": "ok",
@@ -196,8 +213,8 @@
       "policy_url": "https://www.purexbox.com/contact",
       "terms_url": "https://www.purexbox.com/terms",
       "policy_reviewed_at": "2026-09-10T09:08:00Z",
-      "checked_at": "2026-09-15T06:36:54.774916Z",
-      "last_success_at": "2026-09-15T06:36:54.774916Z",
+      "checked_at": "2026-09-16T07:28:06.244216Z",
+      "last_success_at": "2026-09-16T07:28:06.244216Z",
       "matched_items": 0,
       "usage_note": "Uitgever beveelt RSS aan om naar artikelen te linken. Alleen een eigen neutraal linklabel en de bron-URL; geen overgenomen kop, artikeltekst of afbeeldingen. Geen claim van algemene herpublicatielicentie.",
       "status": "ok",
@@ -270,8 +287,8 @@
       "detail": "Geen geautomatiseerde prijs-extractie geactiveerd. Een toepasselijke toestemming of uitzondering voor dit gebruik is niet vastgesteld; bronvermelding alleen activeert geen scanner."
     }
   ],
-  "editorial_checked_at": "2026-09-15T06:35:31Z",
-  "editorial_notice": "Dagupdate 15 september: nieuw op de radar staat EA's launch-update van 14 september, met daarnaast een afzonderlijk gelabelde TOTW-voorspelling. Elia's officiële Hall of FUT-statline is visueel gecontroleerd en verwerkt bij de Legends. De openbare nieuwsfeeds, EA-nieuwspagina's en geselecteerde ModdingWay-artikelen zijn nagekeken; dit is geen volledige internetmonitor. X is niet rechtstreeks gecontroleerd en actuele PS-prijzen ontbreken. Oudere berichten blijven in het archief met hun oorspronkelijke controletijd. Bronpublicatiedag en onze hercontroletermijn zijn verschillende dingen.",
+  "editorial_checked_at": "2026-09-16T07:26:46Z",
+  "editorial_notice": "Ochtendupdate 16 september: nieuw op ons bord staan EA's kijkbeloningen en een afzonderlijk TOTW-lekbericht van ModdingWay, beide gepubliceerd op 15 september. De Web App-agenda is opnieuw bevestigd, geen nieuw EA-bericht: opening staat gepland voor 16 september om 19:00 Nederlandse tijd; de werking is nog niet als live gecontroleerd. EA-nieuwspagina's en geselecteerde ModdingWay-artikelen zijn gelezen; de resultaten van de beoordeelde feeds staan bij de bronnen. Geen volledige internetdekking: X is niet rechtstreeks gecontroleerd en actuele PS-prijzen ontbreken. Geen nieuwe officiële Nederlandse promokaart vastgesteld binnen deze controle. Oude voorspellingen blijven archief; de externe kaartcontroles zijn niet opnieuw gedateerd. Hercontrolegrenzen hieronder zijn onze redactionele termijnen, geen EA-deadlines.",
   "notice": "Dagelijks en op de vaste release-avonden: gepubliceerde feeds plus apart gecontroleerde nieuws- en geruchtbronnen. Geen 24/7 marktscan. Geruchten zijn geen feiten; na hun termijn gaan berichten naar het archief. Steam-gegevens worden aangeboden zoals beschikbaar, zonder garantie op volledigheid, juistheid of beschikbaarheid. FBS is niet verbonden aan of goedgekeurd door Valve/Steam.",
   "method": "Feeds worden op FC27 of algemeen EA SPORTS FC-nieuws gefilterd; een onbekende editie wordt niet als FC27 bevestigd. Derdepartijberichtgeving blijft onbevestigd; meerdere sites die dezelfde leaker napraten tellen niet als onafhankelijke bevestiging. Geruchten veranderen geen kaartstatus of koopgrens."
 }

@@ -1,8 +1,40 @@
 {
   "game": "FC27",
-  "updated_at": "2026-09-15T06:35:31Z",
-  "notice": "Dagupdate 15 september: nieuw op de radar staat EA's launch-update van 14 september, met daarnaast een afzonderlijk gelabelde TOTW-voorspelling. Elia's officiële Hall of FUT-statline is visueel gecontroleerd en verwerkt bij de Legends. De openbare nieuwsfeeds, EA-nieuwspagina's en geselecteerde ModdingWay-artikelen zijn nagekeken; dit is geen volledige internetmonitor. X is niet rechtstreeks gecontroleerd en actuele PS-prijzen ontbreken. Oudere berichten blijven in het archief met hun oorspronkelijke controletijd. Bronpublicatiedag en onze hercontroletermijn zijn verschillende dingen.",
+  "updated_at": "2026-09-16T07:26:46Z",
+  "notice": "Ochtendupdate 16 september: nieuw op ons bord staan EA's kijkbeloningen en een afzonderlijk TOTW-lekbericht van ModdingWay, beide gepubliceerd op 15 september. De Web App-agenda is opnieuw bevestigd, geen nieuw EA-bericht: opening staat gepland voor 16 september om 19:00 Nederlandse tijd; de werking is nog niet als live gecontroleerd. EA-nieuwspagina's en geselecteerde ModdingWay-artikelen zijn gelezen; de resultaten van de beoordeelde feeds staan bij de bronnen. Geen volledige internetdekking: X is niet rechtstreeks gecontroleerd en actuele PS-prijzen ontbreken. Geen nieuwe officiële Nederlandse promokaart vastgesteld binnen deze controle. Oude voorspellingen blijven archief; de externe kaartcontroles zijn niet opnieuw gedateerd. Hercontrolegrenzen hieronder zijn onze redactionele termijnen, geen EA-deadlines.",
   "items": [
+    {
+      "id": "fc27-gameplay-stream-rewards-official-20260915",
+      "title": "Gisteren meegekeken? Controleer je verdiende startbonus",
+      "summary": "EA koppelde de gameplay-uitzending van 15 september aan kijkbeloningen. De stream liep van 19:00 tot 20:30 Nederlandse tijd; de aangekondigde pakketten zijn onverhandelbaar. Het langere kijkdoel bood daarnaast coins en een tijdelijke wedstrijdboost. Wie toen aan de kijk- en accountvoorwaarden voldeed, kan de bijbehorende claiminstructies controleren. Vandaag alleen de herhaling kijken is geen bevestigde route naar dezelfde beloningen.",
+      "status": "confirmed_official",
+      "source": {
+        "label": "EA SPORTS · gameplay-livestream en kijkvoorwaarden",
+        "url": "https://www.ea.com/games/ea-sports-fc/fc-27/news/fc-27-first-gameplay-livestream"
+      },
+      "published_at": "2026-09-15T00:00:00Z",
+      "published_precision": "date",
+      "checked_at": "2026-09-16T07:26:46Z",
+      "expires_at": "2026-09-16T17:01:00Z",
+      "impact": "Onze duiding: het startbudget kan per account verschillen; onverhandelbare packs zijn geen direct verkoopaanbod. Controleer je eigen geschiktheid en de platformvoorwaarden. Dit is geen voorspelling van kaartprijzen. Knalfuifje mag zijn drops checken, niet alvast een dividenduitkering aankondigen.",
+      "original_source_url": null
+    },
+    {
+      "id": "fc27-totw1-dutch-leak-20260915",
+      "title": "Mijnans en Brugts in een TOTW-lek: nog geen EA-stempel",
+      "summary": "ModdingWay toont een vermeende TOTW 1-selectie met onder anderen Mijnans en Brugts. De pagina noemt het een lek; een controleerbare oorspronkelijke EA-bevestiging of leakerpost ontbreekt in de geraadpleegde tekst. Daarom blijft dit secundaire, onbevestigde berichtgeving. De getoonde ratings, stats en PlayStyles nemen we niet over.",
+      "status": "rumour",
+      "source": {
+        "label": "ModdingWay · secundair TOTW-lekbericht",
+        "url": "https://www.moddingway.com/fut/totw/10201/fc-27-totw-1-leaked"
+      },
+      "published_at": "2026-09-15T00:00:00Z",
+      "published_precision": "date",
+      "checked_at": "2026-09-16T07:25:38Z",
+      "expires_at": "2026-09-16T17:01:00Z",
+      "impact": "Een ander artikel van dezelfde uitgever is geen onafhankelijke bevestiging van de eerdere voorspelling. Bij de releasecheck zoeken we de officiële selectie en exacte kaartversie; tot die tijd geen wijziging in Gold/Promo Watch of Meta Meter en geen koopgrens. Surimi stokje heeft de confetti, EA nog steeds de handtekening.",
+      "original_source_url": null
+    },
     {
       "id": "fc27-launch-update-official-20260914",
       "title": "EA geeft het startschot: agenda open, clubkas nog dicht",
@@ -14,9 +46,9 @@
       },
       "published_at": "2026-09-14T00:00:00Z",
       "published_precision": "date",
-      "checked_at": "2026-09-15T06:34:32Z",
-      "expires_at": "2026-09-16T06:34:32Z",
-      "impact": "Onze duiding: herbereken legend-links en vergelijk verdiende kaarten met aankopen zodra echte prijzen bestaan. Een lanceringsagenda bewijst geen koerswinst. De getoonde reguliere en premium pas bevatten geen Summerville; het oude lek is geen bevestigde pasbeloning. Knalfuifje mag de agenda trekken, niet alvast de clubkas.",
+      "checked_at": "2026-09-16T07:24:21Z",
+      "expires_at": "2026-09-16T17:01:00Z",
+      "impact": "Hercontrole op 16 september: de lanceringsagenda is ongewijzigd; dit blijft een bericht van 14 september, geen live-statusmeting. Onze duiding: vergelijk verdiende kaarten met aankopen zodra echte prijzen bestaan. Een lanceringsagenda bewijst geen koerswinst. De getoonde reguliere en premium pas bevestigen het oude Summerville-lek niet. Knalfuifje mag de agenda trekken, niet alvast de clubkas.",
       "original_source_url": null
     },
     {
