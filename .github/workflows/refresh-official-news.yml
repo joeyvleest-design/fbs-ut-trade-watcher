@@ -71,6 +71,7 @@ jobs:
           cp "$site_root"/.nojekyll "$site_root"/app.js "$site_root"/discord.html "$site_root"/discord.js "$site_root"/favicon.svg "$site_root"/index.html "$site_root"/logo.svg "$site_root"/news.html "$site_root"/news.js "$site_root"/styles.css _site/
           cp "$site_root"/refresh.js "$site_root"/card-art.js "$site_root"/dashboard.css "$site_root"/motion.js "$site_root"/discord-page.css "$site_root"/watch.js _site/
           cp "$site_root"/radar.js "$site_root"/radar.css _site/
+          cp "$site_root"/evolutions.js "$site_root"/evolutions.css _site/
           cp -R "$site_root"/assets _site/assets
           cp -R "$site_root"/data _site/data
 
