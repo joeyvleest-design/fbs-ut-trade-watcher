@@ -297,6 +297,8 @@ def build_radar(config: dict, editorial: dict, previous: dict, now: datetime, fe
             if not all(isinstance(item.get(key), str) and item[key].strip() for key in ("id", "title")):
                 continue
             copy = {key: item[key] for key in ("id", "title", "summary", "status", "published_at", "published_precision", "checked_at", "expires_at") if isinstance(item.get(key), str)}
+            if "published_at" in item and item["published_at"] is None and item.get("published_precision") == "unknown":
+                copy["published_at"] = None
             original_source = record(item.get("source"))
             copy["source"] = {"url": safe_url(original_source.get("url")), "label": original_source.get("label") if isinstance(original_source.get("label"), str) else "Redactionele bron"}
             copy["original_source_url"] = safe_url(item.get("original_source_url"))
@@ -312,9 +314,17 @@ def build_radar(config: dict, editorial: dict, previous: dict, now: datetime, fe
         checked = timestamp(item.get("checked_at"))
         expiry = timestamp(item.get("expires_at"))
         url = safe_url(record(item.get("source")).get("url"))
-        if at and checked and expiry and url and now - timedelta(days=14) <= at <= now + timedelta(minutes=5) and at <= checked <= now + timedelta(minutes=5) and expiry > at:
+        unknown = (item.get("source_id") == "editorial" and "published_at" in item
+                   and item["published_at"] is None and item.get("published_precision") == "unknown")
+        if unknown:
+            # A recent editorial check is not a publication date. Preserve null;
+            # unlike a feed item, this explicitly reviewed record can be undated.
+            dates_valid = checked and expiry and now - timedelta(days=14) <= checked <= now + timedelta(minutes=5) and expiry > checked
+        else:
+            dates_valid = item.get("published_precision") != "unknown" and at and checked and expiry and now - timedelta(days=14) <= at <= now + timedelta(minutes=5) and at <= checked <= now + timedelta(minutes=5) and expiry > at
+        if url and dates_valid:
             by_url[url] = item
-    ordered = sorted(by_url.values(), key=lambda item: item["published_at"], reverse=True)[:12]
+    ordered = sorted(by_url.values(), key=lambda item: timestamp(item.get("published_at")) or timestamp(item["checked_at"]), reverse=True)[:12]
     return {
         "game": "FC27", "checked_at": iso(now), "updated_at": iso(now),
         "items": ordered, "sources": sources,

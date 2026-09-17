@@ -244,6 +244,45 @@ def _merge_dutch_watch(target: dict[str, object], other: dict[str, object]) -> N
             target[key] = other[key]
 
 
+def _release_content_time(payload: dict[str, object]) -> datetime | None:
+    """Validate the independently reviewed release/objective content section.
+
+    Old snapshots have no section clock. An RSS check never creates one: reading
+    the press feed is not a review of card versions or objective requirements.
+    """
+    checked_at = _timestamp(payload.get("release_content_checked_at"))
+    if checked_at is None or not any(key in payload for key in ("releases", "objectives")):
+        return None
+    for key in ("releases", "objectives"):
+        if key not in payload:
+            continue
+        values = payload[key]
+        if not isinstance(values, list) or any(not isinstance(value, dict) for value in values):
+            return None
+    for release in payload.get("releases", []):
+        if "cards" in release and (not isinstance(release["cards"], list) or any(not isinstance(card, dict) for card in release["cards"])):
+            return None
+    if "content_notice" in payload and not isinstance(payload["content_notice"], str):
+        return None
+    return checked_at
+
+
+def _merge_release_content(target: dict[str, object], other: dict[str, object]) -> None:
+    """Keep the newer reviewed cards/objectives without advancing any clocks.
+
+    Only present fields travel with this content clock. Missing optional sections
+    must not erase a published section; an explicit empty list can clear one.
+    The overall RSS check, Dutch roster clock and Discord history are separate.
+    """
+    target_at = _release_content_time(target)
+    other_at = _release_content_time(other)
+    if other_at is None or (target_at is not None and target_at >= other_at):
+        return
+    for key in ("releases", "objectives", "content_notice", "release_content_checked_at"):
+        if key in other:
+            target[key] = other[key]
+
+
 def preserve_published_data(repository_root: Path, *, fetcher: Callable[[str], bytes] = fetch_published_json, read_status: dict[str, bool] | None = None) -> list[str]:
     """Carry newer, valid public Pages data into the next UI artifact unchanged.
 
@@ -266,6 +305,8 @@ def preserve_published_data(repository_root: Path, *, fetcher: Callable[[str], b
             required_lists = ("article", "signals", "sources") if filename == "marketwatch.json" else ("releases", "dutch_gold_watch")
             if not isinstance(payload.get("title"), str) or not all(isinstance(payload.get(key), list) for key in required_lists):
                 raise ValueError("Published snapshot is missing expected content")
+            if filename == "releases.json" and "release_content_checked_at" in payload and _release_content_time(payload) is None:
+                raise ValueError("Published release content has an invalid clock or collection")
             local = _read_json(data_root / filename)
             original_local = json.dumps(local, sort_keys=True)
             local_at = _timestamp(local.get("updated_at"))
@@ -274,6 +315,7 @@ def preserve_published_data(repository_root: Path, *, fetcher: Callable[[str], b
                 _merge_delivery_history(target, local if target is payload else payload)
             else:
                 _merge_dutch_watch(target, local if target is payload else payload)
+                _merge_release_content(target, local if target is payload else payload)
             if json.dumps(target, sort_keys=True) != original_local:
                 _write_json_atomically(data_root / filename, target)
                 restored.append(filename)
