@@ -1,16 +1,16 @@
 {
-  "mode": "planning",
-  "updated_at": "2026-09-07T12:00:00+00:00",
+  "mode": "source_backed",
+  "updated_at": "2026-09-16T19:56:25.228439Z",
   "timezone": "Europe/Amsterdam",
   "title": "Bibs Release Radar",
-  "notice": "De vaste kijkmomenten komen uit jullie planning. Namen, ratings, zichtbare stats en kaarttypes komen pas op het bord na een officiële EA-bron. Geen post = geen kaartfantasie.",
+  "notice": "Officiële EA-bron en externe kaartdatabase worden apart gelabeld. Een bronmelding mag op het releasebord; alleen primaire bevestiging telt voor de vaste Gold/Promo Watch. Geen verzonnen prijzen of statprofielen.",
   "schedule": [
     {
       "id": "totw",
       "kind": "TOTW",
       "weekday": "Woensdagavond",
       "label": "Team of the Week",
-      "detail": "De Wednesday Surprise Box: pas openmaken als EA de line-up echt heeft gepost."
+      "detail": "Woensdagavond de volledige selectie controleren; actuele databasegegevens en de oorspronkelijke EA-aankondiging apart vermelden."
     },
     {
       "id": "promo",
@@ -22,14 +22,1629 @@
   ],
   "releases": [
     {
-      "id": "totw-current",
+      "id": "totw-1-fc27",
+      "game": "FC27",
       "kind": "TOTW",
-      "status": "awaiting_official_confirmation",
-      "window": "Woensdagavond · wachten op EA",
-      "title": "TOTW: de Wednesday Surprise Box",
-      "intro": "De opstelling hangt nog achter de EA-gordijnen. Geen officiële post, dus ook geen verzonnen namen of ratings.",
-      "source": null,
-      "cards": []
+      "status": "reported",
+      "confirmed": false,
+      "window": "Uitgebracht woensdag 16 september 2026",
+      "window_note": "19:01 is het afgesproken redactionele controlemoment, niet een afzonderlijk geverifieerde releasetijd.",
+      "title": "TOTW 1: de eerste 23 zijn van de partij",
+      "intro": "23 kaarten, twee Nederlanders en meteen genoeg discussie voor vier managers. Mijnans en Brugts krijgen de Oranje-schijnwerper; Yamal en Thuram staan als meta-kandidaten vooraan. Dit is een brononderbouwd releaseoverzicht, geen koopadvies.",
+      "release_date": "2026-09-16",
+      "updated_at": "2026-09-17T06:59:00Z",
+      "timezone": "Europe/Amsterdam",
+      "gg_rating_basis": "GG Rating is een afzonderlijke derdepartijscore, handmatig gelezen op de zichtbare FUT.GG TOTW-lijst door de hoofdtaak om 06:46 UTC. gg_role is de positie waarvoor die score geldt, niet automatisch de primaire kaartpositie. Niet verwarren met het eigen FBS-statmodel.",
+      "source": {
+        "label": "FUT.GG · volledige TOTW 1-selectie",
+        "url": "https://www.fut.gg/rarities/rarity3/"
+      },
+      "notice": "23 geselecteerde kaarten, 23 GG-ratings en alle 23 statprofielen (zes basisstats per kaart) gecontroleerd. GG Rating en het eigen FBS-statmodel blijven apart vermeld. Broninformatie, geen officiële EA-publicatie of koopadvies.",
+      "meta_basis": "FBS-statmodel (0–100): som van de zes basisstats × rolgewicht / 100, afgerond op één decimaal. Keepers gebruiken DIV/HAN/KIC/REF/SPD/POS. Geen EA- of gameplay-meta-rating. PlayStyles, lichaamsbouw, rollen, chemistry en prijs tellen niet mee; verschillende rollen zijn niet rechtstreeks vergelijkbaar.",
+      "cards": [
+        {
+          "id": "fc27-totw1-lamine-yamal",
+          "game": "FC27",
+          "name": "Lamine Yamal",
+          "gg_rating": 91.1,
+          "gg_role": "RM",
+          "gg_source": {
+            "label": "FUT.GG · zichtbare FC 27 TOTW-lijst",
+            "url": "https://www.fut.gg/rarities/rarity3/"
+          },
+          "gg_checked_at": "2026-09-17T06:46:00Z",
+          "rating": 91,
+          "card_type": "TOTW 1",
+          "version": "Team of the Week",
+          "status": "reported",
+          "confirmed": false,
+          "featured": true,
+          "release_date": "2026-09-16",
+          "position": "RW",
+          "alternate_positions": [
+            "RM"
+          ],
+          "position_note": "Primaire en alternatieve posities volgens de geraadpleegde kaartweergave, niet overgenomen uit de eerdere voorspelling.",
+          "nation_code": "ES",
+          "nation": "Spanje",
+          "club": "FC Barcelona",
+          "competition": "LALIGA EA SPORTS",
+          "foot": "Links",
+          "skill_moves": 5,
+          "weak_foot": 3,
+          "stats": {
+            "PAC": 87,
+            "SHO": 85,
+            "PAS": 88,
+            "DRI": 94,
+            "DEF": 40,
+            "PHY": 63
+          },
+          "stats_status": "third_party_observed",
+          "meta_role": "winger",
+          "meta_weights": {
+            "PAC": 25,
+            "SHO": 15,
+            "PAS": 15,
+            "DRI": 35,
+            "DEF": 0,
+            "PHY": 10
+          },
+          "meta_rating": 86.9,
+          "meta_label": "TOTW-scouting · reguliere kaartversie",
+          "meta_text": "94 dribbelen, 95 wendbaarheid en 5★ skills: heerlijk voor de slalom. 3★ zwakke voet en 62 kracht zijn de concessies. De GG-score is hoog, maar een miljoenenprijs is geen bewijs van een goede trade.",
+          "meta_basis": "FBS-statmodel (0–100): som van de zes basisstats × rolgewicht / 100, afgerond op één decimaal. Keepers gebruiken DIV/HAN/KIC/REF/SPD/POS. Geen EA- of gameplay-meta-rating. PlayStyles, lichaamsbouw, rollen, chemistry en prijs tellen niet mee; verschillende rollen zijn niet rechtstreeks vergelijkbaar.",
+          "price": null,
+          "price_status": "manual_snapshot",
+          "price_note": "Handmatig bekeken prijs; geen live feed of koopgrens. Opnieuw controleren vóór een transactie.",
+          "source": {
+            "label": "FUT.GG · exacte TOTW-kaart",
+            "url": "https://www.fut.gg/players/277643-lamine-yamal-lamine-yamal/27-67386507/"
+          },
+          "roster_source": {
+            "label": "Everyeye · TOTW 1-releasebericht",
+            "url": "https://www.everyeye.it/notizie/ea-sports-fc-27-disponibile-totw-1-presto-arrivano-ones-to-watch-900728.html",
+            "published_at": "2026-09-16",
+            "date_precision": "day",
+            "displayed_publication": "16/09/2026, ore 21:22; tijdzone niet expliciet vermeld",
+            "verified_at": "2026-09-17T06:37:18Z"
+          },
+          "verified_at": "2026-09-17T06:50:00Z",
+          "detail_source": {
+            "label": "WeFUT · Lamine Yamal TOTW 91",
+            "url": "https://wefut.com/player/27/20741/lamine-yamal",
+            "verified_at": "2026-09-17T06:39:05Z"
+          },
+          "skills_source": {
+            "label": "ModdingWay · TOTW 1-releasekaart",
+            "url": "https://www.moddingway.com/fut/totw/10206/fc-27-team-of-the-week-1",
+            "verified_at": "2026-09-17T06:37:18Z"
+          },
+          "price_snapshot": {
+            "coins": 4000000,
+            "platform": "Console",
+            "observed_at": "2026-09-17T06:50:00Z",
+            "source_updated_at": "2026-09-17T06:49:00Z",
+            "source": {
+              "label": "FUT.GG · Console · momentopname",
+              "url": "https://www.fut.gg/players/277643-lamine-yamal-lamine-yamal/27-67386507/#prices"
+            }
+          },
+          "playstyles_note": "WeFUT noemt Technical, Finesse Shot, Incisive Pass, Inventive, Rapid, First Touch en Quick Step. Het Plus-niveau is niet afzonderlijk geverifieerd."
+        },
+        {
+          "id": "fc27-totw1-david-raya",
+          "game": "FC27",
+          "name": "David Raya",
+          "gg_rating": 86.9,
+          "gg_role": "GK",
+          "gg_source": {
+            "label": "FUT.GG · zichtbare FC 27 TOTW-lijst",
+            "url": "https://www.fut.gg/rarities/rarity3/"
+          },
+          "gg_checked_at": "2026-09-17T06:46:00Z",
+          "rating": 89,
+          "card_type": "TOTW 1",
+          "version": "Team of the Week",
+          "status": "reported",
+          "confirmed": false,
+          "featured": false,
+          "release_date": "2026-09-16",
+          "position": "GK",
+          "alternate_positions": [],
+          "position_note": "Primaire en alternatieve posities volgens de geraadpleegde kaartweergave, niet overgenomen uit de eerdere voorspelling.",
+          "stats": {
+            "DIV": 88,
+            "HAN": 87,
+            "KIC": 89,
+            "REF": 89,
+            "SPD": 60,
+            "POS": 88
+          },
+          "stats_status": "third_party_observed",
+          "meta_role": "goalkeeper",
+          "meta_weights": {
+            "DIV": 25,
+            "HAN": 15,
+            "KIC": 10,
+            "REF": 25,
+            "SPD": 5,
+            "POS": 20
+          },
+          "meta_rating": 86.8,
+          "meta_label": "TOTW 1",
+          "meta_text": "89 reflexen en 88 positionering: stevige sloten op de deur. 60 snelheid maakt hem nog geen extra vleugelspeler.",
+          "meta_basis": "FBS-statmodel (0–100): som van de zes basisstats × rolgewicht / 100, afgerond op één decimaal. Keepers gebruiken DIV/HAN/KIC/REF/SPD/POS. Geen EA- of gameplay-meta-rating. PlayStyles, lichaamsbouw, rollen, chemistry en prijs tellen niet mee; verschillende rollen zijn niet rechtstreeks vergelijkbaar.",
+          "price": null,
+          "price_status": "unverified",
+          "price_note": "Geen geschikte actuele platformgebonden prijs met meettijd en historie geverifieerd; geen koopgrens.",
+          "source": {
+            "label": "WeFUT · zichtbare FC 27 TOTW 1-kaartgegevens",
+            "url": "https://wefut.com/",
+            "verified_at": "2026-09-17T06:38:48Z",
+            "verification_method": "Zichtbare openbare homepage, sectie Latest FC 27 Rating Reveals; geen API of collector."
+          },
+          "roster_source": {
+            "label": "Everyeye · TOTW 1-releasebericht",
+            "url": "https://www.everyeye.it/notizie/ea-sports-fc-27-disponibile-totw-1-presto-arrivano-ones-to-watch-900728.html",
+            "published_at": "2026-09-16",
+            "date_precision": "day",
+            "displayed_publication": "16/09/2026, ore 21:22; tijdzone niet expliciet vermeld",
+            "verified_at": "2026-09-17T06:37:18Z"
+          },
+          "verified_at": "2026-09-17T06:38:48Z"
+        },
+        {
+          "id": "fc27-totw1-melchie-dumornay",
+          "game": "FC27",
+          "name": "Melchie Dumornay",
+          "gg_rating": 93.3,
+          "gg_role": "ST",
+          "gg_source": {
+            "label": "FUT.GG · zichtbare FC 27 TOTW-lijst",
+            "url": "https://www.fut.gg/rarities/rarity3/"
+          },
+          "gg_checked_at": "2026-09-17T06:46:00Z",
+          "rating": 89,
+          "card_type": "TOTW 1",
+          "version": "Team of the Week",
+          "status": "reported",
+          "confirmed": false,
+          "featured": false,
+          "release_date": "2026-09-16",
+          "position": "LW",
+          "alternate_positions": [
+            "LM",
+            "CAM",
+            "ST"
+          ],
+          "position_note": "Primaire en alternatieve posities volgens de geraadpleegde kaartweergave, niet overgenomen uit de eerdere voorspelling.",
+          "stats": {
+            "PAC": 93,
+            "SHO": 86,
+            "PAS": 81,
+            "DRI": 91,
+            "DEF": 62,
+            "PHY": 75
+          },
+          "stats_status": "third_party_observed",
+          "meta_role": "winger",
+          "meta_weights": {
+            "PAC": 25,
+            "SHO": 15,
+            "PAS": 15,
+            "DRI": 35,
+            "DEF": 0,
+            "PHY": 10
+          },
+          "meta_rating": 87.7,
+          "meta_label": "TOTW 1",
+          "meta_text": "93 snelheid en 91 dribbelen: de flank krijgt een spoedcursus achteruitlopen. 75 fysiek blijft een aandachtspunt.",
+          "meta_basis": "FBS-statmodel (0–100): som van de zes basisstats × rolgewicht / 100, afgerond op één decimaal. Keepers gebruiken DIV/HAN/KIC/REF/SPD/POS. Geen EA- of gameplay-meta-rating. PlayStyles, lichaamsbouw, rollen, chemistry en prijs tellen niet mee; verschillende rollen zijn niet rechtstreeks vergelijkbaar.",
+          "price": null,
+          "price_status": "unverified",
+          "price_note": "Geen geschikte actuele platformgebonden prijs met meettijd en historie geverifieerd; geen koopgrens.",
+          "source": {
+            "label": "WeFUT · zichtbare FC 27 TOTW 1-kaartgegevens",
+            "url": "https://wefut.com/",
+            "verified_at": "2026-09-17T06:38:48Z",
+            "verification_method": "Zichtbare openbare homepage, sectie Latest FC 27 Rating Reveals; geen API of collector."
+          },
+          "roster_source": {
+            "label": "Everyeye · TOTW 1-releasebericht",
+            "url": "https://www.everyeye.it/notizie/ea-sports-fc-27-disponibile-totw-1-presto-arrivano-ones-to-watch-900728.html",
+            "published_at": "2026-09-16",
+            "date_precision": "day",
+            "displayed_publication": "16/09/2026, ore 21:22; tijdzone niet expliciet vermeld",
+            "verified_at": "2026-09-17T06:37:18Z"
+          },
+          "verified_at": "2026-09-17T06:38:48Z"
+        },
+        {
+          "id": "fc27-totw1-felix-nmecha",
+          "game": "FC27",
+          "name": "Felix Nmecha",
+          "gg_rating": 89.6,
+          "gg_role": "CDM",
+          "gg_source": {
+            "label": "FUT.GG · zichtbare FC 27 TOTW-lijst",
+            "url": "https://www.fut.gg/rarities/rarity3/"
+          },
+          "gg_checked_at": "2026-09-17T06:46:00Z",
+          "rating": 86,
+          "card_type": "TOTW 1",
+          "version": "Team of the Week",
+          "status": "reported",
+          "confirmed": false,
+          "featured": false,
+          "release_date": "2026-09-16",
+          "position": "CM",
+          "alternate_positions": [
+            "CDM"
+          ],
+          "position_note": "Primaire en alternatieve posities volgens de geraadpleegde kaartweergave, niet overgenomen uit de eerdere voorspelling.",
+          "stats": {
+            "PAC": 84,
+            "SHO": 80,
+            "PAS": 80,
+            "DRI": 85,
+            "DEF": 83,
+            "PHY": 89
+          },
+          "stats_status": "third_party_observed",
+          "meta_role": "midfield",
+          "meta_weights": {
+            "PAC": 10,
+            "SHO": 10,
+            "PAS": 25,
+            "DRI": 20,
+            "DEF": 20,
+            "PHY": 15
+          },
+          "meta_rating": 83.4,
+          "meta_label": "TOTW 1",
+          "meta_text": "89 fysiek en 83 verdedigen geven het middenveld ruggengraat. 80 passen is degelijk, niet de automatische assistknop.",
+          "meta_basis": "FBS-statmodel (0–100): som van de zes basisstats × rolgewicht / 100, afgerond op één decimaal. Keepers gebruiken DIV/HAN/KIC/REF/SPD/POS. Geen EA- of gameplay-meta-rating. PlayStyles, lichaamsbouw, rollen, chemistry en prijs tellen niet mee; verschillende rollen zijn niet rechtstreeks vergelijkbaar.",
+          "price": null,
+          "price_status": "unverified",
+          "price_note": "Geen geschikte actuele platformgebonden prijs met meettijd en historie geverifieerd; geen koopgrens.",
+          "source": {
+            "label": "WeFUT · zichtbare FC 27 TOTW 1-kaartgegevens",
+            "url": "https://wefut.com/",
+            "verified_at": "2026-09-17T06:38:48Z",
+            "verification_method": "Zichtbare openbare homepage, sectie Latest FC 27 Rating Reveals; geen API of collector."
+          },
+          "roster_source": {
+            "label": "Everyeye · TOTW 1-releasebericht",
+            "url": "https://www.everyeye.it/notizie/ea-sports-fc-27-disponibile-totw-1-presto-arrivano-ones-to-watch-900728.html",
+            "published_at": "2026-09-16",
+            "date_precision": "day",
+            "displayed_publication": "16/09/2026, ore 21:22; tijdzone niet expliciet vermeld",
+            "verified_at": "2026-09-17T06:37:18Z"
+          },
+          "verified_at": "2026-09-17T06:38:48Z"
+        },
+        {
+          "id": "fc27-totw1-lucy-bronze",
+          "game": "FC27",
+          "name": "Lucy Bronze",
+          "gg_rating": 85,
+          "gg_role": "CB",
+          "gg_source": {
+            "label": "FUT.GG · zichtbare FC 27 TOTW-lijst",
+            "url": "https://www.fut.gg/rarities/rarity3/"
+          },
+          "gg_checked_at": "2026-09-17T06:46:00Z",
+          "rating": 86,
+          "card_type": "TOTW 1",
+          "version": "Team of the Week",
+          "status": "reported",
+          "confirmed": false,
+          "featured": false,
+          "release_date": "2026-09-16",
+          "position": "CB",
+          "alternate_positions": [
+            "RB",
+            "RM"
+          ],
+          "position_note": "Primaire en alternatieve posities volgens de geraadpleegde kaartweergave, niet overgenomen uit de eerdere voorspelling.",
+          "stats": {
+            "PAC": 73,
+            "SHO": 70,
+            "PAS": 82,
+            "DRI": 82,
+            "DEF": 86,
+            "PHY": 88
+          },
+          "stats_status": "third_party_observed",
+          "meta_role": "defense",
+          "meta_weights": {
+            "PAC": 15,
+            "SHO": 0,
+            "PAS": 5,
+            "DRI": 5,
+            "DEF": 50,
+            "PHY": 25
+          },
+          "meta_rating": 84.2,
+          "meta_label": "TOTW 1",
+          "meta_text": "86 verdedigen en 88 fysiek: deur dicht. 73 snelheid vraagt om dekking, niet om blind de middellijn op te kamperen.",
+          "meta_basis": "FBS-statmodel (0–100): som van de zes basisstats × rolgewicht / 100, afgerond op één decimaal. Keepers gebruiken DIV/HAN/KIC/REF/SPD/POS. Geen EA- of gameplay-meta-rating. PlayStyles, lichaamsbouw, rollen, chemistry en prijs tellen niet mee; verschillende rollen zijn niet rechtstreeks vergelijkbaar.",
+          "price": null,
+          "price_status": "unverified",
+          "price_note": "Geen geschikte actuele platformgebonden prijs met meettijd en historie geverifieerd; geen koopgrens.",
+          "source": {
+            "label": "WeFUT · zichtbare FC 27 TOTW 1-kaartgegevens",
+            "url": "https://wefut.com/",
+            "verified_at": "2026-09-17T06:38:48Z",
+            "verification_method": "Zichtbare openbare homepage, sectie Latest FC 27 Rating Reveals; geen API of collector."
+          },
+          "roster_source": {
+            "label": "Everyeye · TOTW 1-releasebericht",
+            "url": "https://www.everyeye.it/notizie/ea-sports-fc-27-disponibile-totw-1-presto-arrivano-ones-to-watch-900728.html",
+            "published_at": "2026-09-16",
+            "date_precision": "day",
+            "displayed_publication": "16/09/2026, ore 21:22; tijdzone niet expliciet vermeld",
+            "verified_at": "2026-09-17T06:37:18Z"
+          },
+          "verified_at": "2026-09-17T06:38:48Z"
+        },
+        {
+          "id": "fc27-totw1-marcus-thuram",
+          "game": "FC27",
+          "name": "Marcus Thuram",
+          "gg_rating": 85.1,
+          "gg_role": "ST",
+          "gg_source": {
+            "label": "FUT.GG · zichtbare FC 27 TOTW-lijst",
+            "url": "https://www.fut.gg/rarities/rarity3/"
+          },
+          "gg_checked_at": "2026-09-17T06:46:00Z",
+          "rating": 86,
+          "card_type": "TOTW 1",
+          "version": "Team of the Week",
+          "status": "reported",
+          "confirmed": false,
+          "featured": true,
+          "release_date": "2026-09-16",
+          "position": "ST",
+          "alternate_positions": [],
+          "position_note": "Primaire en alternatieve posities volgens de geraadpleegde kaartweergave, niet overgenomen uit de eerdere voorspelling.",
+          "foot": "Rechts",
+          "skill_moves": 3,
+          "weak_foot": 4,
+          "stats": {
+            "PAC": 87,
+            "SHO": 84,
+            "PAS": 77,
+            "DRI": 83,
+            "DEF": 51,
+            "PHY": 83
+          },
+          "stats_status": "third_party_observed",
+          "meta_role": "striker",
+          "meta_weights": {
+            "PAC": 25,
+            "SHO": 35,
+            "PAS": 5,
+            "DRI": 20,
+            "DEF": 0,
+            "PHY": 15
+          },
+          "meta_rating": 84.1,
+          "meta_label": "TOTW-scouting · reguliere kaartversie",
+          "meta_text": "87 snelheid, 86 afwerken en 86 kracht: een directe spits met 4★ zwakke voet. Lengthy en 192 cm geven een heel ander profiel dan Yamal; 65 balans en 3★ skills zijn de aandachtspunten. Sterk profiel is nog geen koopcall.",
+          "meta_basis": "FBS-statmodel (0–100): som van de zes basisstats × rolgewicht / 100, afgerond op één decimaal. Keepers gebruiken DIV/HAN/KIC/REF/SPD/POS. Geen EA- of gameplay-meta-rating. PlayStyles, lichaamsbouw, rollen, chemistry en prijs tellen niet mee; verschillende rollen zijn niet rechtstreeks vergelijkbaar.",
+          "price": null,
+          "price_status": "manual_snapshot",
+          "price_note": "Handmatig bekeken prijs; geen live feed of koopgrens. Opnieuw controleren vóór een transactie.",
+          "source": {
+            "label": "FUT.GG · exacte TOTW-kaart",
+            "url": "https://www.fut.gg/players/228093-marcus-thuram/27-67336957/"
+          },
+          "roster_source": {
+            "label": "Everyeye · TOTW 1-releasebericht",
+            "url": "https://www.everyeye.it/notizie/ea-sports-fc-27-disponibile-totw-1-presto-arrivano-ones-to-watch-900728.html",
+            "published_at": "2026-09-16",
+            "date_precision": "day",
+            "displayed_publication": "16/09/2026, ore 21:22; tijdzone niet expliciet vermeld",
+            "verified_at": "2026-09-17T06:37:18Z"
+          },
+          "verified_at": "2026-09-17T06:49:00Z",
+          "skills_source": {
+            "label": "ModdingWay · TOTW 1-releasekaart",
+            "url": "https://www.moddingway.com/fut/totw/10206/fc-27-team-of-the-week-1",
+            "verified_at": "2026-09-17T06:37:18Z"
+          },
+          "price_snapshot": {
+            "coins": 23500,
+            "platform": "Console",
+            "observed_at": "2026-09-17T06:49:00Z",
+            "source_updated_at": "2026-09-17T06:47:00Z",
+            "source": {
+              "label": "FUT.GG · Console · momentopname",
+              "url": "https://www.fut.gg/players/228093-marcus-thuram/27-67336957/#prices"
+            }
+          }
+        },
+        {
+          "id": "fc27-totw1-esmee-brugts",
+          "game": "FC27",
+          "name": "Esmee Brugts",
+          "gg_rating": 85.1,
+          "gg_role": "CM",
+          "gg_source": {
+            "label": "FUT.GG · zichtbare FC 27 TOTW-lijst",
+            "url": "https://www.fut.gg/rarities/rarity3/"
+          },
+          "gg_checked_at": "2026-09-17T06:46:00Z",
+          "rating": 85,
+          "card_type": "TOTW 1",
+          "version": "Team of the Week",
+          "status": "reported",
+          "confirmed": false,
+          "featured": true,
+          "release_date": "2026-09-16",
+          "position": "LB",
+          "alternate_positions": [
+            "CM",
+            "LM",
+            "CAM",
+            "ST",
+            "LW"
+          ],
+          "position_note": "Primaire en alternatieve posities volgens de geraadpleegde kaartweergave, niet overgenomen uit de eerdere voorspelling.",
+          "nation_code": "NL",
+          "nation": "Nederland",
+          "gender": "female",
+          "skill_moves": 4,
+          "weak_foot": 3,
+          "stamina": 92,
+          "detail_source": {
+            "label": "FUT.GG · Esmee Brugts TOTW 85, exact item 67376394",
+            "url": "https://www.fut.gg/players/267530-esmee-brugts/27-67376394/",
+            "verified_at": "2026-09-17T06:47:00Z",
+            "verification_method": "Handmatig gelezen in de zichtbare openbare browserpagina door de hoofdtaak."
+          },
+          "price_snapshot": {
+            "coins": 17250,
+            "platform": "Console",
+            "observed_at": "2026-09-17T06:48:00Z",
+            "source_updated_at": "2026-09-17T06:46:00Z",
+            "source": {
+              "label": "FUT.GG · Console · momentopname",
+              "url": "https://www.fut.gg/players/267530-esmee-brugts/27-67376394/#prices"
+            }
+          },
+          "stats": {
+            "PAC": 88,
+            "SHO": 75,
+            "PAS": 80,
+            "DRI": 82,
+            "DEF": 82,
+            "PHY": 76
+          },
+          "stats_status": "third_party_observed",
+          "meta_role": "fullback",
+          "meta_weights": {
+            "PAC": 25,
+            "SHO": 0,
+            "PAS": 15,
+            "DRI": 10,
+            "DEF": 35,
+            "PHY": 15
+          },
+          "meta_rating": 82.3,
+          "meta_label": "TOTW-scouting · reguliere kaartversie",
+          "meta_text": "88 snelheid en 82 verdedigen: Oranje heeft een snelle deurwachter. 76 fysiek vraagt om timing bij schouderduels.",
+          "meta_basis": "FBS-statmodel (0–100): som van de zes basisstats × rolgewicht / 100, afgerond op één decimaal. Keepers gebruiken DIV/HAN/KIC/REF/SPD/POS. Geen EA- of gameplay-meta-rating. PlayStyles, lichaamsbouw, rollen, chemistry en prijs tellen niet mee; verschillende rollen zijn niet rechtstreeks vergelijkbaar.",
+          "price": null,
+          "price_status": "manual_snapshot",
+          "price_note": "17.250 coins is een handmatig bekeken Console-momentopname van 17 september om 08:48 Nederlandse tijd; de bron toonde 08:46 als laatste update. Geen prijsfeed, vastgestelde historie of koopgrens.",
+          "source": {
+            "label": "FUT.GG · exacte TOTW-kaart",
+            "url": "https://www.fut.gg/players/267530-esmee-brugts/27-67376394/",
+            "verified_at": "2026-09-17T06:48:00Z",
+            "verification_method": "Handmatig gelezen in de zichtbare openbare kaartpagina; geen API of collector."
+          },
+          "roster_source": {
+            "label": "Everyeye · TOTW 1-releasebericht",
+            "url": "https://www.everyeye.it/notizie/ea-sports-fc-27-disponibile-totw-1-presto-arrivano-ones-to-watch-900728.html",
+            "published_at": "2026-09-16",
+            "date_precision": "day",
+            "displayed_publication": "16/09/2026, ore 21:22; tijdzone niet expliciet vermeld",
+            "verified_at": "2026-09-17T06:37:18Z"
+          },
+          "verified_at": "2026-09-17T06:48:00Z"
+        },
+        {
+          "id": "fc27-totw1-matvey-safonov",
+          "game": "FC27",
+          "name": "Matvey Safonov",
+          "gg_rating": 83.6,
+          "gg_role": "GK",
+          "gg_source": {
+            "label": "FUT.GG · zichtbare FC 27 TOTW-lijst",
+            "url": "https://www.fut.gg/rarities/rarity3/"
+          },
+          "gg_checked_at": "2026-09-17T06:46:00Z",
+          "rating": 84,
+          "card_type": "TOTW 1",
+          "version": "Team of the Week",
+          "status": "reported",
+          "confirmed": false,
+          "featured": false,
+          "release_date": "2026-09-16",
+          "position": "GK",
+          "alternate_positions": [],
+          "position_note": "Primaire en alternatieve posities volgens de geraadpleegde kaartweergave, niet overgenomen uit de eerdere voorspelling.",
+          "stats": {
+            "DIV": 83,
+            "HAN": 78,
+            "KIC": 81,
+            "REF": 87,
+            "SPD": 52,
+            "POS": 85
+          },
+          "stats_status": "third_party_observed",
+          "meta_role": "goalkeeper",
+          "meta_weights": {
+            "DIV": 25,
+            "HAN": 15,
+            "KIC": 10,
+            "REF": 25,
+            "SPD": 5,
+            "POS": 20
+          },
+          "meta_rating": 81.9,
+          "meta_label": "TOTW 1",
+          "meta_text": "87 reflexen en 85 positionering vallen op. 78 balbehandeling: houd rekening met een tweede bal in plaats van applaus.",
+          "meta_basis": "FBS-statmodel (0–100): som van de zes basisstats × rolgewicht / 100, afgerond op één decimaal. Keepers gebruiken DIV/HAN/KIC/REF/SPD/POS. Geen EA- of gameplay-meta-rating. PlayStyles, lichaamsbouw, rollen, chemistry en prijs tellen niet mee; verschillende rollen zijn niet rechtstreeks vergelijkbaar.",
+          "price": null,
+          "price_status": "unverified",
+          "price_note": "Geen geschikte actuele platformgebonden prijs met meettijd en historie geverifieerd; geen koopgrens.",
+          "source": {
+            "label": "WeFUT · zichtbare FC 27 TOTW 1-kaartgegevens",
+            "url": "https://wefut.com/",
+            "verified_at": "2026-09-17T06:38:48Z",
+            "verification_method": "Zichtbare openbare homepage, sectie Latest FC 27 Rating Reveals; geen API of collector."
+          },
+          "roster_source": {
+            "label": "Everyeye · TOTW 1-releasebericht",
+            "url": "https://www.everyeye.it/notizie/ea-sports-fc-27-disponibile-totw-1-presto-arrivano-ones-to-watch-900728.html",
+            "published_at": "2026-09-16",
+            "date_precision": "day",
+            "displayed_publication": "16/09/2026, ore 21:22; tijdzone niet expliciet vermeld",
+            "verified_at": "2026-09-17T06:37:18Z"
+          },
+          "verified_at": "2026-09-17T06:38:48Z"
+        },
+        {
+          "id": "fc27-totw1-ereleta-memeti",
+          "game": "FC27",
+          "name": "Erëleta Memeti",
+          "gg_rating": 84.8,
+          "gg_role": "LM",
+          "gg_source": {
+            "label": "FUT.GG · zichtbare FC 27 TOTW-lijst",
+            "url": "https://www.fut.gg/rarities/rarity3/"
+          },
+          "gg_checked_at": "2026-09-17T06:46:00Z",
+          "rating": 84,
+          "card_type": "TOTW 1",
+          "version": "Team of the Week",
+          "status": "reported",
+          "confirmed": false,
+          "featured": false,
+          "release_date": "2026-09-16",
+          "position": "RM",
+          "alternate_positions": [
+            "CDM",
+            "CM",
+            "LM",
+            "RW",
+            "LW"
+          ],
+          "position_note": "Primaire en alternatieve posities volgens de geraadpleegde kaartweergave, niet overgenomen uit de eerdere voorspelling.",
+          "stats": {
+            "PAC": 87,
+            "SHO": 81,
+            "PAS": 82,
+            "DRI": 84,
+            "DEF": 58,
+            "PHY": 68
+          },
+          "stats_status": "third_party_observed",
+          "meta_role": "winger",
+          "meta_weights": {
+            "PAC": 25,
+            "SHO": 15,
+            "PAS": 15,
+            "DRI": 35,
+            "DEF": 0,
+            "PHY": 10
+          },
+          "meta_rating": 82.4,
+          "meta_label": "TOTW 1",
+          "meta_text": "87 snelheid en 84 dribbelen bieden een vlotte flankoptie. 68 fysiek: liever vrijlopen dan de muur testen.",
+          "meta_basis": "FBS-statmodel (0–100): som van de zes basisstats × rolgewicht / 100, afgerond op één decimaal. Keepers gebruiken DIV/HAN/KIC/REF/SPD/POS. Geen EA- of gameplay-meta-rating. PlayStyles, lichaamsbouw, rollen, chemistry en prijs tellen niet mee; verschillende rollen zijn niet rechtstreeks vergelijkbaar.",
+          "price": null,
+          "price_status": "unverified",
+          "price_note": "Geen geschikte actuele platformgebonden prijs met meettijd en historie geverifieerd; geen koopgrens.",
+          "source": {
+            "label": "WeFUT · zichtbare FC 27 TOTW 1-kaartgegevens",
+            "url": "https://wefut.com/",
+            "verified_at": "2026-09-17T06:38:48Z",
+            "verification_method": "Zichtbare openbare homepage, sectie Latest FC 27 Rating Reveals; geen API of collector."
+          },
+          "roster_source": {
+            "label": "Everyeye · TOTW 1-releasebericht",
+            "url": "https://www.everyeye.it/notizie/ea-sports-fc-27-disponibile-totw-1-presto-arrivano-ones-to-watch-900728.html",
+            "published_at": "2026-09-16",
+            "date_precision": "day",
+            "displayed_publication": "16/09/2026, ore 21:22; tijdzone niet expliciet vermeld",
+            "verified_at": "2026-09-17T06:37:18Z"
+          },
+          "verified_at": "2026-09-17T06:38:48Z"
+        },
+        {
+          "id": "fc27-totw1-amanda-gutierres",
+          "game": "FC27",
+          "name": "Amanda Gutierres",
+          "gg_rating": 81.8,
+          "gg_role": "ST",
+          "gg_source": {
+            "label": "FUT.GG · zichtbare FC 27 TOTW-lijst",
+            "url": "https://www.fut.gg/rarities/rarity3/"
+          },
+          "gg_checked_at": "2026-09-17T06:46:00Z",
+          "rating": 83,
+          "card_type": "TOTW 1",
+          "version": "Team of the Week",
+          "status": "reported",
+          "confirmed": false,
+          "featured": false,
+          "release_date": "2026-09-16",
+          "position": "ST",
+          "alternate_positions": [],
+          "position_note": "Primaire en alternatieve posities volgens de geraadpleegde kaartweergave, niet overgenomen uit de eerdere voorspelling.",
+          "stats": {
+            "PAC": 82,
+            "SHO": 83,
+            "PAS": 66,
+            "DRI": 80,
+            "DEF": 41,
+            "PHY": 81
+          },
+          "stats_status": "third_party_observed",
+          "meta_role": "striker",
+          "meta_weights": {
+            "PAC": 25,
+            "SHO": 35,
+            "PAS": 5,
+            "DRI": 20,
+            "DEF": 0,
+            "PHY": 15
+          },
+          "meta_rating": 81,
+          "meta_label": "TOTW 1",
+          "meta_text": "83 schieten met 81 fysiek geeft een bruikbaar spitsenprofiel. 66 passen: laat iemand anders de sollicitatie voor nummer tien doen.",
+          "meta_basis": "FBS-statmodel (0–100): som van de zes basisstats × rolgewicht / 100, afgerond op één decimaal. Keepers gebruiken DIV/HAN/KIC/REF/SPD/POS. Geen EA- of gameplay-meta-rating. PlayStyles, lichaamsbouw, rollen, chemistry en prijs tellen niet mee; verschillende rollen zijn niet rechtstreeks vergelijkbaar.",
+          "price": null,
+          "price_status": "unverified",
+          "price_note": "Geen geschikte actuele platformgebonden prijs met meettijd en historie geverifieerd; geen koopgrens.",
+          "source": {
+            "label": "WeFUT · zichtbare FC 27 TOTW 1-kaartgegevens",
+            "url": "https://wefut.com/",
+            "verified_at": "2026-09-17T06:38:48Z",
+            "verification_method": "Zichtbare openbare homepage, sectie Latest FC 27 Rating Reveals; geen API of collector."
+          },
+          "roster_source": {
+            "label": "Everyeye · TOTW 1-releasebericht",
+            "url": "https://www.everyeye.it/notizie/ea-sports-fc-27-disponibile-totw-1-presto-arrivano-ones-to-watch-900728.html",
+            "published_at": "2026-09-16",
+            "date_precision": "day",
+            "displayed_publication": "16/09/2026, ore 21:22; tijdzone niet expliciet vermeld",
+            "verified_at": "2026-09-17T06:37:18Z"
+          },
+          "verified_at": "2026-09-17T06:38:48Z"
+        },
+        {
+          "id": "fc27-totw1-alvaro-carreras",
+          "game": "FC27",
+          "name": "Álvaro Carreras",
+          "gg_rating": 88,
+          "gg_role": "LB",
+          "gg_source": {
+            "label": "FUT.GG · zichtbare FC 27 TOTW-lijst",
+            "url": "https://www.fut.gg/rarities/rarity3/"
+          },
+          "gg_checked_at": "2026-09-17T06:46:00Z",
+          "rating": 83,
+          "card_type": "TOTW 1",
+          "version": "Team of the Week",
+          "status": "reported",
+          "confirmed": false,
+          "featured": false,
+          "release_date": "2026-09-16",
+          "position": "LB",
+          "alternate_positions": [
+            "CB",
+            "LM"
+          ],
+          "position_note": "Primaire en alternatieve posities volgens de geraadpleegde kaartweergave, niet overgenomen uit de eerdere voorspelling.",
+          "stats": {
+            "PAC": 88,
+            "SHO": 69,
+            "PAS": 80,
+            "DRI": 82,
+            "DEF": 78,
+            "PHY": 83
+          },
+          "stats_status": "third_party_observed",
+          "meta_role": "fullback",
+          "meta_weights": {
+            "PAC": 25,
+            "SHO": 0,
+            "PAS": 15,
+            "DRI": 10,
+            "DEF": 35,
+            "PHY": 15
+          },
+          "meta_rating": 82,
+          "meta_label": "TOTW 1",
+          "meta_text": "88 snelheid en 83 fysiek passen bij een actieve back. 78 verdedigen vraagt nog steeds om zelf de juiste man te volgen.",
+          "meta_basis": "FBS-statmodel (0–100): som van de zes basisstats × rolgewicht / 100, afgerond op één decimaal. Keepers gebruiken DIV/HAN/KIC/REF/SPD/POS. Geen EA- of gameplay-meta-rating. PlayStyles, lichaamsbouw, rollen, chemistry en prijs tellen niet mee; verschillende rollen zijn niet rechtstreeks vergelijkbaar.",
+          "price": null,
+          "price_status": "unverified",
+          "price_note": "Geen geschikte actuele platformgebonden prijs met meettijd en historie geverifieerd; geen koopgrens.",
+          "source": {
+            "label": "WeFUT · zichtbare FC 27 TOTW 1-kaartgegevens",
+            "url": "https://wefut.com/",
+            "verified_at": "2026-09-17T06:38:48Z",
+            "verification_method": "Zichtbare openbare homepage, sectie Latest FC 27 Rating Reveals; geen API of collector."
+          },
+          "roster_source": {
+            "label": "Everyeye · TOTW 1-releasebericht",
+            "url": "https://www.everyeye.it/notizie/ea-sports-fc-27-disponibile-totw-1-presto-arrivano-ones-to-watch-900728.html",
+            "published_at": "2026-09-16",
+            "date_precision": "day",
+            "displayed_publication": "16/09/2026, ore 21:22; tijdzone niet expliciet vermeld",
+            "verified_at": "2026-09-17T06:37:18Z"
+          },
+          "verified_at": "2026-09-17T06:38:48Z"
+        },
+        {
+          "id": "fc27-totw1-gabriel-martinelli",
+          "game": "FC27",
+          "name": "Gabriel Martinelli",
+          "gg_rating": 84.5,
+          "gg_role": "LM",
+          "gg_source": {
+            "label": "FUT.GG · zichtbare FC 27 TOTW-lijst",
+            "url": "https://www.fut.gg/rarities/rarity3/"
+          },
+          "gg_checked_at": "2026-09-17T06:46:00Z",
+          "rating": 82,
+          "card_type": "TOTW 1",
+          "version": "Team of the Week",
+          "status": "reported",
+          "confirmed": false,
+          "featured": false,
+          "release_date": "2026-09-16",
+          "position": "RW",
+          "alternate_positions": [
+            "RM",
+            "LM",
+            "LW"
+          ],
+          "position_note": "Primaire en alternatieve posities volgens de geraadpleegde kaartweergave, niet overgenomen uit de eerdere voorspelling.",
+          "stats": {
+            "PAC": 90,
+            "SHO": 80,
+            "PAS": 77,
+            "DRI": 84,
+            "DEF": 48,
+            "PHY": 72
+          },
+          "stats_status": "third_party_observed",
+          "meta_role": "winger",
+          "meta_weights": {
+            "PAC": 25,
+            "SHO": 15,
+            "PAS": 15,
+            "DRI": 35,
+            "DEF": 0,
+            "PHY": 10
+          },
+          "meta_rating": 82.7,
+          "meta_label": "TOTW 1",
+          "meta_text": "90 snelheid en 84 dribbelen zetten de flank aan. 77 passen en 72 fysiek maken dit geen alleskunner.",
+          "meta_basis": "FBS-statmodel (0–100): som van de zes basisstats × rolgewicht / 100, afgerond op één decimaal. Keepers gebruiken DIV/HAN/KIC/REF/SPD/POS. Geen EA- of gameplay-meta-rating. PlayStyles, lichaamsbouw, rollen, chemistry en prijs tellen niet mee; verschillende rollen zijn niet rechtstreeks vergelijkbaar.",
+          "price": null,
+          "price_status": "unverified",
+          "price_note": "Geen geschikte actuele platformgebonden prijs met meettijd en historie geverifieerd; geen koopgrens.",
+          "source": {
+            "label": "WeFUT · zichtbare FC 27 TOTW 1-kaartgegevens",
+            "url": "https://wefut.com/",
+            "verified_at": "2026-09-17T06:38:48Z",
+            "verification_method": "Zichtbare openbare homepage, sectie Latest FC 27 Rating Reveals; geen API of collector."
+          },
+          "roster_source": {
+            "label": "Everyeye · TOTW 1-releasebericht",
+            "url": "https://www.everyeye.it/notizie/ea-sports-fc-27-disponibile-totw-1-presto-arrivano-ones-to-watch-900728.html",
+            "published_at": "2026-09-16",
+            "date_precision": "day",
+            "displayed_publication": "16/09/2026, ore 21:22; tijdzone niet expliciet vermeld",
+            "verified_at": "2026-09-17T06:37:18Z"
+          },
+          "verified_at": "2026-09-17T06:38:48Z"
+        },
+        {
+          "id": "fc27-totw1-sven-mijnans",
+          "game": "FC27",
+          "name": "Sven Mijnans",
+          "gg_rating": 81.6,
+          "gg_role": "CM",
+          "gg_source": {
+            "label": "FUT.GG · zichtbare FC 27 TOTW-lijst",
+            "url": "https://www.fut.gg/rarities/rarity3/"
+          },
+          "gg_checked_at": "2026-09-17T06:46:00Z",
+          "rating": 80,
+          "card_type": "TOTW 1",
+          "version": "Team of the Week",
+          "status": "reported",
+          "confirmed": false,
+          "featured": true,
+          "release_date": "2026-09-16",
+          "position": "ST",
+          "alternate_positions": [
+            "CDM",
+            "CM",
+            "CAM"
+          ],
+          "position_note": "ST en alternatieve posities handmatig gecontroleerd op exact TOTW-item; oudere overzichten noemen CAM.",
+          "nation_code": "NL",
+          "nation": "Nederland",
+          "gender": "male",
+          "club": "PSV",
+          "competition": "Eredivisie",
+          "foot": "Links",
+          "skill_moves": 3,
+          "weak_foot": 3,
+          "stamina": 93,
+          "stats": {
+            "PAC": 73,
+            "SHO": 76,
+            "PAS": 81,
+            "DRI": 80,
+            "DEF": 68,
+            "PHY": 78
+          },
+          "stats_status": "third_party_observed",
+          "meta_role": "striker",
+          "meta_weights": {
+            "PAC": 25,
+            "SHO": 35,
+            "PAS": 5,
+            "DRI": 20,
+            "DEF": 0,
+            "PHY": 15
+          },
+          "meta_rating": 76.6,
+          "meta_label": "TOTW-scouting · reguliere kaartversie",
+          "meta_text": "81 passen en 80 dribbelen bieden meer tussen de linies dan 73 snelheid in de diepte. 93 stamina: hij werkt langer door dan de groepschat.",
+          "meta_basis": "FBS-statmodel (0–100): som van de zes basisstats × rolgewicht / 100, afgerond op één decimaal. Keepers gebruiken DIV/HAN/KIC/REF/SPD/POS. Geen EA- of gameplay-meta-rating. PlayStyles, lichaamsbouw, rollen, chemistry en prijs tellen niet mee; verschillende rollen zijn niet rechtstreeks vergelijkbaar.",
+          "price": null,
+          "price_status": "manual_snapshot",
+          "price_note": "Handmatig bekeken prijs; geen live feed of koopgrens. Opnieuw controleren vóór een transactie.",
+          "source": {
+            "label": "FUT.GG · exacte TOTW-kaart",
+            "url": "https://www.fut.gg/players/254789-sven-mijnans/27-67363653/"
+          },
+          "roster_source": {
+            "label": "Everyeye · TOTW 1-releasebericht",
+            "url": "https://www.everyeye.it/notizie/ea-sports-fc-27-disponibile-totw-1-presto-arrivano-ones-to-watch-900728.html",
+            "published_at": "2026-09-16",
+            "date_precision": "day",
+            "displayed_publication": "16/09/2026, ore 21:22; tijdzone niet expliciet vermeld",
+            "verified_at": "2026-09-17T06:37:18Z"
+          },
+          "verified_at": "2026-09-17T06:51:00Z",
+          "price_snapshot": {
+            "coins": 9900,
+            "platform": "Console",
+            "observed_at": "2026-09-17T06:51:00Z",
+            "source_updated_at": "2026-09-17T06:50:00Z",
+            "source": {
+              "label": "FUT.GG · Console · momentopname",
+              "url": "https://www.fut.gg/players/254789-sven-mijnans/27-67363653/#prices"
+            }
+          }
+        },
+        {
+          "id": "fc27-totw1-trent-kone-doherty",
+          "game": "FC27",
+          "name": "Trent Koné-Doherty",
+          "gg_rating": 82,
+          "gg_role": "LM",
+          "gg_source": {
+            "label": "FUT.GG · zichtbare FC 27 TOTW-lijst",
+            "url": "https://www.fut.gg/rarities/rarity3/"
+          },
+          "gg_checked_at": "2026-09-17T06:46:00Z",
+          "rating": 80,
+          "card_type": "TOTW 1",
+          "version": "Team of the Week",
+          "status": "reported",
+          "confirmed": false,
+          "featured": false,
+          "release_date": "2026-09-16",
+          "position": "RM",
+          "alternate_positions": [
+            "LM",
+            "RW",
+            "LW"
+          ],
+          "position_note": "Primaire en alternatieve posities handmatig gelezen op deze exacte FUT.GG TOTW-kaart.",
+          "stats": {
+            "PAC": 87,
+            "SHO": 78,
+            "PAS": 72,
+            "DRI": 85,
+            "DEF": 52,
+            "PHY": 65
+          },
+          "stats_status": "third_party_observed",
+          "meta_role": "winger",
+          "meta_weights": {
+            "PAC": 25,
+            "SHO": 15,
+            "PAS": 15,
+            "DRI": 35,
+            "DEF": 0,
+            "PHY": 10
+          },
+          "meta_rating": 80.5,
+          "meta_label": "TOTW 1",
+          "meta_text": "87 snelheid en 85 dribbelen maken de flank leuk. Met 65 fysiek liever ontsnappen dan een schouderduel uitvechten.",
+          "meta_basis": "FBS-statmodel (0–100): som van de zes basisstats × rolgewicht / 100, afgerond op één decimaal. Keepers gebruiken DIV/HAN/KIC/REF/SPD/POS. Geen EA- of gameplay-meta-rating. PlayStyles, lichaamsbouw, rollen, chemistry en prijs tellen niet mee; verschillende rollen zijn niet rechtstreeks vergelijkbaar.",
+          "price": null,
+          "price_status": "unverified",
+          "price_note": "Geen geschikte actuele platformgebonden prijs met meettijd en historie geverifieerd; geen koopgrens.",
+          "source": {
+            "label": "FUT.GG · exacte TOTW-kaart",
+            "url": "https://www.fut.gg/players/279541-trent-kone-doherty/27-67388405/",
+            "verified_at": "2026-09-17T06:59:00Z",
+            "verification_method": "Handmatig gelezen in de zichtbare openbare kaartpagina; geen API of collector."
+          },
+          "roster_source": {
+            "label": "Everyeye · TOTW 1-releasebericht",
+            "url": "https://www.everyeye.it/notizie/ea-sports-fc-27-disponibile-totw-1-presto-arrivano-ones-to-watch-900728.html",
+            "published_at": "2026-09-16",
+            "date_precision": "day",
+            "displayed_publication": "16/09/2026, ore 21:22; tijdzone niet expliciet vermeld",
+            "verified_at": "2026-09-17T06:37:18Z"
+          },
+          "verified_at": "2026-09-17T06:59:00Z",
+          "foot": "Rechts",
+          "skill_moves": 3,
+          "weak_foot": 3,
+          "playstyles_note": "FUT.GG noemt Acrobatic, Game Changer, Rapid. Het Plus-niveau is niet afzonderlijk geverifieerd."
+        },
+        {
+          "id": "fc27-totw1-xherdan-shaqiri",
+          "game": "FC27",
+          "name": "Xherdan Shaqiri",
+          "gg_rating": 83.5,
+          "gg_role": "CAM",
+          "gg_source": {
+            "label": "FUT.GG · zichtbare FC 27 TOTW-lijst",
+            "url": "https://www.fut.gg/rarities/rarity3/"
+          },
+          "gg_checked_at": "2026-09-17T06:46:00Z",
+          "rating": 80,
+          "card_type": "TOTW 1",
+          "version": "Team of the Week",
+          "status": "reported",
+          "confirmed": false,
+          "featured": false,
+          "release_date": "2026-09-16",
+          "position": "CAM",
+          "alternate_positions": [
+            "RM",
+            "CM",
+            "RW",
+            "ST"
+          ],
+          "position_note": "Primaire en alternatieve posities handmatig gelezen op deze exacte FUT.GG TOTW-kaart.",
+          "stats": {
+            "PAC": 73,
+            "SHO": 83,
+            "PAS": 82,
+            "DRI": 83,
+            "DEF": 44,
+            "PHY": 75
+          },
+          "stats_status": "third_party_observed",
+          "meta_role": "midfield",
+          "meta_weights": {
+            "PAC": 10,
+            "SHO": 10,
+            "PAS": 25,
+            "DRI": 20,
+            "DEF": 20,
+            "PHY": 15
+          },
+          "meta_rating": 72.8,
+          "meta_label": "TOTW 1",
+          "meta_text": "83 schieten en dribbelen, plus 5★ skills: de gereedschapskist zit vol. 73 snelheid en 44 verdedigen vragen om een aanvallende opdracht.",
+          "meta_basis": "FBS-statmodel (0–100): som van de zes basisstats × rolgewicht / 100, afgerond op één decimaal. Keepers gebruiken DIV/HAN/KIC/REF/SPD/POS. Geen EA- of gameplay-meta-rating. PlayStyles, lichaamsbouw, rollen, chemistry en prijs tellen niet mee; verschillende rollen zijn niet rechtstreeks vergelijkbaar.",
+          "price": null,
+          "price_status": "unverified",
+          "price_note": "Geen geschikte actuele platformgebonden prijs met meettijd en historie geverifieerd; geen koopgrens.",
+          "source": {
+            "label": "FUT.GG · exacte TOTW-kaart",
+            "url": "https://www.fut.gg/players/193348-xherdan-shaqiri/27-67302212/",
+            "verified_at": "2026-09-17T06:59:00Z",
+            "verification_method": "Handmatig gelezen in de zichtbare openbare kaartpagina; geen API of collector."
+          },
+          "roster_source": {
+            "label": "Everyeye · TOTW 1-releasebericht",
+            "url": "https://www.everyeye.it/notizie/ea-sports-fc-27-disponibile-totw-1-presto-arrivano-ones-to-watch-900728.html",
+            "published_at": "2026-09-16",
+            "date_precision": "day",
+            "displayed_publication": "16/09/2026, ore 21:22; tijdzone niet expliciet vermeld",
+            "verified_at": "2026-09-17T06:37:18Z"
+          },
+          "verified_at": "2026-09-17T06:59:00Z",
+          "foot": "Links",
+          "skill_moves": 5,
+          "weak_foot": 4,
+          "playstyles_note": "FUT.GG noemt Finesse Shot, Dead Ball, Low Driven, Game Changer, Incisive Pass, Inventive. Het Plus-niveau is niet afzonderlijk geverifieerd."
+        },
+        {
+          "id": "fc27-totw1-franco-mastantuono",
+          "game": "FC27",
+          "name": "Franco Mastantuono",
+          "gg_rating": 80.4,
+          "gg_role": "RM",
+          "gg_source": {
+            "label": "FUT.GG · zichtbare FC 27 TOTW-lijst",
+            "url": "https://www.fut.gg/rarities/rarity3/"
+          },
+          "gg_checked_at": "2026-09-17T06:46:00Z",
+          "rating": 80,
+          "card_type": "TOTW 1",
+          "version": "Team of the Week",
+          "status": "reported",
+          "confirmed": false,
+          "featured": false,
+          "release_date": "2026-09-16",
+          "position": "RM",
+          "alternate_positions": [
+            "CAM",
+            "RW"
+          ],
+          "position_note": "Primaire en alternatieve posities handmatig gelezen op deze exacte FUT.GG TOTW-kaart.",
+          "stats": {
+            "PAC": 80,
+            "SHO": 78,
+            "PAS": 79,
+            "DRI": 83,
+            "DEF": 53,
+            "PHY": 70
+          },
+          "stats_status": "third_party_observed",
+          "meta_role": "winger",
+          "meta_weights": {
+            "PAC": 25,
+            "SHO": 15,
+            "PAS": 15,
+            "DRI": 35,
+            "DEF": 0,
+            "PHY": 10
+          },
+          "meta_rating": 79.6,
+          "meta_label": "TOTW 1",
+          "meta_text": "83 dribbelen is het visitekaartje; 80 snelheid helpt op de flank. Met 3★ skills en zwakke voet blijft het repertoire bescheiden.",
+          "meta_basis": "FBS-statmodel (0–100): som van de zes basisstats × rolgewicht / 100, afgerond op één decimaal. Keepers gebruiken DIV/HAN/KIC/REF/SPD/POS. Geen EA- of gameplay-meta-rating. PlayStyles, lichaamsbouw, rollen, chemistry en prijs tellen niet mee; verschillende rollen zijn niet rechtstreeks vergelijkbaar.",
+          "price": null,
+          "price_status": "unverified",
+          "price_note": "Geen geschikte actuele platformgebonden prijs met meettijd en historie geverifieerd; geen koopgrens.",
+          "source": {
+            "label": "FUT.GG · exacte TOTW-kaart",
+            "url": "https://www.fut.gg/players/279173-franco-mastantuono/27-67388037/",
+            "verified_at": "2026-09-17T06:59:00Z",
+            "verification_method": "Handmatig gelezen in de zichtbare openbare kaartpagina; geen API of collector."
+          },
+          "roster_source": {
+            "label": "Everyeye · TOTW 1-releasebericht",
+            "url": "https://www.everyeye.it/notizie/ea-sports-fc-27-disponibile-totw-1-presto-arrivano-ones-to-watch-900728.html",
+            "published_at": "2026-09-16",
+            "date_precision": "day",
+            "displayed_publication": "16/09/2026, ore 21:22; tijdzone niet expliciet vermeld",
+            "verified_at": "2026-09-17T06:37:18Z"
+          },
+          "verified_at": "2026-09-17T06:59:00Z",
+          "foot": "Links",
+          "skill_moves": 3,
+          "weak_foot": 3,
+          "playstyles_note": "FUT.GG noemt Low Driven, Technical, Quick Step. Het Plus-niveau is niet afzonderlijk geverifieerd."
+        },
+        {
+          "id": "fc27-totw1-jose-paradela",
+          "game": "FC27",
+          "name": "José Paradela",
+          "gg_rating": 80,
+          "gg_role": "CM",
+          "gg_source": {
+            "label": "FUT.GG · zichtbare FC 27 TOTW-lijst",
+            "url": "https://www.fut.gg/rarities/rarity3/"
+          },
+          "gg_checked_at": "2026-09-17T06:46:00Z",
+          "rating": 80,
+          "card_type": "TOTW 1",
+          "version": "Team of the Week",
+          "status": "reported",
+          "confirmed": false,
+          "featured": false,
+          "release_date": "2026-09-16",
+          "position": "RW",
+          "alternate_positions": [
+            "RM",
+            "CM",
+            "CAM"
+          ],
+          "position_note": "Primaire en alternatieve posities handmatig gelezen op deze exacte FUT.GG TOTW-kaart.",
+          "stats": {
+            "PAC": 78,
+            "SHO": 73,
+            "PAS": 81,
+            "DRI": 81,
+            "DEF": 62,
+            "PHY": 70
+          },
+          "stats_status": "third_party_observed",
+          "meta_role": "winger",
+          "meta_weights": {
+            "PAC": 25,
+            "SHO": 15,
+            "PAS": 15,
+            "DRI": 35,
+            "DEF": 0,
+            "PHY": 10
+          },
+          "meta_rating": 78,
+          "meta_label": "TOTW 1",
+          "meta_text": "81 passen en dribbelen passen bij combineren. 78 snelheid en 73 schieten maken dit eerder een aangever dan een diepe afmaker.",
+          "meta_basis": "FBS-statmodel (0–100): som van de zes basisstats × rolgewicht / 100, afgerond op één decimaal. Keepers gebruiken DIV/HAN/KIC/REF/SPD/POS. Geen EA- of gameplay-meta-rating. PlayStyles, lichaamsbouw, rollen, chemistry en prijs tellen niet mee; verschillende rollen zijn niet rechtstreeks vergelijkbaar.",
+          "price": null,
+          "price_status": "unverified",
+          "price_note": "Geen geschikte actuele platformgebonden prijs met meettijd en historie geverifieerd; geen koopgrens.",
+          "source": {
+            "label": "FUT.GG · exacte TOTW-kaart",
+            "url": "https://www.fut.gg/players/245354-jose-paradela/27-67354218/",
+            "verified_at": "2026-09-17T06:59:00Z",
+            "verification_method": "Handmatig gelezen in de zichtbare openbare kaartpagina; geen API of collector."
+          },
+          "roster_source": {
+            "label": "Everyeye · TOTW 1-releasebericht",
+            "url": "https://www.everyeye.it/notizie/ea-sports-fc-27-disponibile-totw-1-presto-arrivano-ones-to-watch-900728.html",
+            "published_at": "2026-09-16",
+            "date_precision": "day",
+            "displayed_publication": "16/09/2026, ore 21:22; tijdzone niet expliciet vermeld",
+            "verified_at": "2026-09-17T06:37:18Z"
+          },
+          "verified_at": "2026-09-17T06:59:00Z",
+          "foot": "Links",
+          "skill_moves": 3,
+          "weak_foot": 3,
+          "playstyles_note": "FUT.GG noemt Finesse Shot, Pinged Pass, Technical. Het Plus-niveau is niet afzonderlijk geverifieerd."
+        },
+        {
+          "id": "fc27-totw1-bruno-damiani",
+          "game": "FC27",
+          "name": "Bruno Damiani",
+          "gg_rating": 77.3,
+          "gg_role": "ST",
+          "gg_source": {
+            "label": "FUT.GG · zichtbare FC 27 TOTW-lijst",
+            "url": "https://www.fut.gg/rarities/rarity3/"
+          },
+          "gg_checked_at": "2026-09-17T06:46:00Z",
+          "rating": 80,
+          "card_type": "TOTW 1",
+          "version": "Team of the Week",
+          "status": "reported",
+          "confirmed": false,
+          "featured": false,
+          "release_date": "2026-09-16",
+          "position": "ST",
+          "alternate_positions": [
+            "CAM"
+          ],
+          "position_note": "Primaire en alternatieve posities handmatig gelezen op deze exacte FUT.GG TOTW-kaart.",
+          "stats": {
+            "PAC": 78,
+            "SHO": 80,
+            "PAS": 70,
+            "DRI": 78,
+            "DEF": 43,
+            "PHY": 87
+          },
+          "stats_status": "third_party_observed",
+          "meta_role": "striker",
+          "meta_weights": {
+            "PAC": 25,
+            "SHO": 35,
+            "PAS": 5,
+            "DRI": 20,
+            "DEF": 0,
+            "PHY": 15
+          },
+          "meta_rating": 79.7,
+          "meta_label": "TOTW 1",
+          "meta_text": "87 fysiek en 80 schieten: een spits met body. 78 snelheid en 70 passen vragen om ondersteuning in de combinatie.",
+          "meta_basis": "FBS-statmodel (0–100): som van de zes basisstats × rolgewicht / 100, afgerond op één decimaal. Keepers gebruiken DIV/HAN/KIC/REF/SPD/POS. Geen EA- of gameplay-meta-rating. PlayStyles, lichaamsbouw, rollen, chemistry en prijs tellen niet mee; verschillende rollen zijn niet rechtstreeks vergelijkbaar.",
+          "price": null,
+          "price_status": "unverified",
+          "price_note": "Geen geschikte actuele platformgebonden prijs met meettijd en historie geverifieerd; geen koopgrens.",
+          "source": {
+            "label": "FUT.GG · exacte TOTW-kaart",
+            "url": "https://www.fut.gg/players/275046-bruno-damiani/27-67383910/",
+            "verified_at": "2026-09-17T06:59:00Z",
+            "verification_method": "Handmatig gelezen in de zichtbare openbare kaartpagina; geen API of collector."
+          },
+          "roster_source": {
+            "label": "Everyeye · TOTW 1-releasebericht",
+            "url": "https://www.everyeye.it/notizie/ea-sports-fc-27-disponibile-totw-1-presto-arrivano-ones-to-watch-900728.html",
+            "published_at": "2026-09-16",
+            "date_precision": "day",
+            "displayed_publication": "16/09/2026, ore 21:22; tijdzone niet expliciet vermeld",
+            "verified_at": "2026-09-17T06:37:18Z"
+          },
+          "verified_at": "2026-09-17T06:59:00Z",
+          "foot": "Links",
+          "skill_moves": 3,
+          "weak_foot": 3,
+          "playstyles_note": "FUT.GG noemt Chip Shot, Power Shot, Enforcer. Het Plus-niveau is niet afzonderlijk geverifieerd."
+        },
+        {
+          "id": "fc27-totw1-gift-orban",
+          "game": "FC27",
+          "name": "Gift Orban",
+          "gg_rating": 80.1,
+          "gg_role": "ST",
+          "gg_source": {
+            "label": "FUT.GG · zichtbare FC 27 TOTW-lijst",
+            "url": "https://www.fut.gg/rarities/rarity3/"
+          },
+          "gg_checked_at": "2026-09-17T06:46:00Z",
+          "rating": 80,
+          "card_type": "TOTW 1",
+          "version": "Team of the Week",
+          "status": "reported",
+          "confirmed": false,
+          "featured": false,
+          "release_date": "2026-09-16",
+          "position": "ST",
+          "alternate_positions": [],
+          "position_note": "Primaire positie handmatig gelezen op deze exacte FUT.GG TOTW-kaart; alternatieve posities niet afzonderlijk vastgelegd.",
+          "stats": {
+            "PAC": 82,
+            "SHO": 85,
+            "PAS": 73,
+            "DRI": 82,
+            "DEF": 26,
+            "PHY": 68
+          },
+          "stats_status": "third_party_observed",
+          "meta_role": "striker",
+          "meta_weights": {
+            "PAC": 25,
+            "SHO": 35,
+            "PAS": 5,
+            "DRI": 20,
+            "DEF": 0,
+            "PHY": 15
+          },
+          "meta_rating": 80.5,
+          "meta_label": "TOTW 1",
+          "meta_text": "85 schieten en 82 snelheid én dribbelen zetten de spitsfunctie centraal. 68 fysiek: wel afdrukken, geen worstelwedstrijd.",
+          "meta_basis": "FBS-statmodel (0–100): som van de zes basisstats × rolgewicht / 100, afgerond op één decimaal. Keepers gebruiken DIV/HAN/KIC/REF/SPD/POS. Geen EA- of gameplay-meta-rating. PlayStyles, lichaamsbouw, rollen, chemistry en prijs tellen niet mee; verschillende rollen zijn niet rechtstreeks vergelijkbaar.",
+          "price": null,
+          "price_status": "unverified",
+          "price_note": "Geen geschikte actuele platformgebonden prijs met meettijd en historie geverifieerd; geen koopgrens.",
+          "source": {
+            "label": "FUT.GG · exacte TOTW-kaart",
+            "url": "https://www.fut.gg/players/273564-gift-emmanuel-orban/27-67382428/",
+            "verified_at": "2026-09-17T06:59:00Z",
+            "verification_method": "Handmatig gelezen in de zichtbare openbare kaartpagina; geen API of collector."
+          },
+          "roster_source": {
+            "label": "Everyeye · TOTW 1-releasebericht",
+            "url": "https://www.everyeye.it/notizie/ea-sports-fc-27-disponibile-totw-1-presto-arrivano-ones-to-watch-900728.html",
+            "published_at": "2026-09-16",
+            "date_precision": "day",
+            "displayed_publication": "16/09/2026, ore 21:22; tijdzone niet expliciet vermeld",
+            "verified_at": "2026-09-17T06:37:18Z"
+          },
+          "verified_at": "2026-09-17T06:59:00Z",
+          "foot": "Rechts",
+          "skill_moves": 3,
+          "weak_foot": 3
+        },
+        {
+          "id": "fc27-totw1-yannik-engelhardt",
+          "game": "FC27",
+          "name": "Yannik Engelhardt",
+          "gg_rating": 82.8,
+          "gg_role": "CDM",
+          "gg_source": {
+            "label": "FUT.GG · zichtbare FC 27 TOTW-lijst",
+            "url": "https://www.fut.gg/rarities/rarity3/"
+          },
+          "gg_checked_at": "2026-09-17T06:46:00Z",
+          "rating": 80,
+          "card_type": "TOTW 1",
+          "version": "Team of the Week",
+          "status": "reported",
+          "confirmed": false,
+          "featured": false,
+          "release_date": "2026-09-16",
+          "position": "CDM",
+          "alternate_positions": [
+            "CM"
+          ],
+          "position_note": "Primaire en alternatieve posities handmatig gelezen op deze exacte FUT.GG TOTW-kaart.",
+          "stats": {
+            "PAC": 84,
+            "SHO": 60,
+            "PAS": 72,
+            "DRI": 71,
+            "DEF": 80,
+            "PHY": 84
+          },
+          "stats_status": "third_party_observed",
+          "meta_role": "midfield",
+          "meta_weights": {
+            "PAC": 10,
+            "SHO": 10,
+            "PAS": 25,
+            "DRI": 20,
+            "DEF": 20,
+            "PHY": 15
+          },
+          "meta_rating": 75.2,
+          "meta_label": "TOTW 1",
+          "meta_text": "84 snelheid en fysiek met 80 verdedigen: bruikbaar profiel voor balverovering. 60 schieten laat de afwerking liever aan een ander.",
+          "meta_basis": "FBS-statmodel (0–100): som van de zes basisstats × rolgewicht / 100, afgerond op één decimaal. Keepers gebruiken DIV/HAN/KIC/REF/SPD/POS. Geen EA- of gameplay-meta-rating. PlayStyles, lichaamsbouw, rollen, chemistry en prijs tellen niet mee; verschillende rollen zijn niet rechtstreeks vergelijkbaar.",
+          "price": null,
+          "price_status": "unverified",
+          "price_note": "Geen geschikte actuele platformgebonden prijs met meettijd en historie geverifieerd; geen koopgrens.",
+          "source": {
+            "label": "FUT.GG · exacte TOTW-kaart",
+            "url": "https://www.fut.gg/players/262906-yannik-engelhardt/27-67371770/",
+            "verified_at": "2026-09-17T06:59:00Z",
+            "verification_method": "Handmatig gelezen in de zichtbare openbare kaartpagina; geen API of collector."
+          },
+          "roster_source": {
+            "label": "Everyeye · TOTW 1-releasebericht",
+            "url": "https://www.everyeye.it/notizie/ea-sports-fc-27-disponibile-totw-1-presto-arrivano-ones-to-watch-900728.html",
+            "published_at": "2026-09-16",
+            "date_precision": "day",
+            "displayed_publication": "16/09/2026, ore 21:22; tijdzone niet expliciet vermeld",
+            "verified_at": "2026-09-17T06:37:18Z"
+          },
+          "verified_at": "2026-09-17T06:59:00Z",
+          "foot": "Rechts",
+          "skill_moves": 3,
+          "weak_foot": 3
+        },
+        {
+          "id": "fc27-totw1-tiago-santos",
+          "game": "FC27",
+          "name": "Tiago Santos",
+          "gg_rating": 82.8,
+          "gg_role": "RB",
+          "gg_source": {
+            "label": "FUT.GG · zichtbare FC 27 TOTW-lijst",
+            "url": "https://www.fut.gg/rarities/rarity3/"
+          },
+          "gg_checked_at": "2026-09-17T06:46:00Z",
+          "rating": 80,
+          "card_type": "TOTW 1",
+          "version": "Team of the Week",
+          "status": "reported",
+          "confirmed": false,
+          "featured": false,
+          "release_date": "2026-09-16",
+          "position": "RB",
+          "alternate_positions": [
+            "RM"
+          ],
+          "position_note": "Primaire en alternatieve posities handmatig gelezen op deze exacte FUT.GG TOTW-kaart.",
+          "stats": {
+            "PAC": 87,
+            "SHO": 61,
+            "PAS": 77,
+            "DRI": 81,
+            "DEF": 78,
+            "PHY": 70
+          },
+          "stats_status": "third_party_observed",
+          "meta_role": "fullback",
+          "meta_weights": {
+            "PAC": 25,
+            "SHO": 0,
+            "PAS": 15,
+            "DRI": 10,
+            "DEF": 35,
+            "PHY": 15
+          },
+          "meta_rating": 79.2,
+          "meta_label": "TOTW 1",
+          "meta_text": "87 snelheid en 81 dribbelen geven de rechterflank vaart. 70 fysiek blijft een aandachtspunt bij contact; niet alleen vooruit denken.",
+          "meta_basis": "FBS-statmodel (0–100): som van de zes basisstats × rolgewicht / 100, afgerond op één decimaal. Keepers gebruiken DIV/HAN/KIC/REF/SPD/POS. Geen EA- of gameplay-meta-rating. PlayStyles, lichaamsbouw, rollen, chemistry en prijs tellen niet mee; verschillende rollen zijn niet rechtstreeks vergelijkbaar.",
+          "price": null,
+          "price_status": "unverified",
+          "price_note": "Geen geschikte actuele platformgebonden prijs met meettijd en historie geverifieerd; geen koopgrens.",
+          "source": {
+            "label": "FUT.GG · exacte TOTW-kaart",
+            "url": "https://www.fut.gg/players/270559-tiago-santos/27-67379423/",
+            "verified_at": "2026-09-17T06:59:00Z",
+            "verification_method": "Handmatig gelezen in de zichtbare openbare kaartpagina; geen API of collector."
+          },
+          "roster_source": {
+            "label": "Everyeye · TOTW 1-releasebericht",
+            "url": "https://www.everyeye.it/notizie/ea-sports-fc-27-disponibile-totw-1-presto-arrivano-ones-to-watch-900728.html",
+            "published_at": "2026-09-16",
+            "date_precision": "day",
+            "displayed_publication": "16/09/2026, ore 21:22; tijdzone niet expliciet vermeld",
+            "verified_at": "2026-09-17T06:37:18Z"
+          },
+          "verified_at": "2026-09-17T06:59:00Z",
+          "foot": "Rechts",
+          "skill_moves": 3,
+          "weak_foot": 3
+        },
+        {
+          "id": "fc27-totw1-ianis-stoica",
+          "game": "FC27",
+          "name": "Ianis Stoica",
+          "gg_rating": 84.9,
+          "gg_role": "LM",
+          "gg_source": {
+            "label": "FUT.GG · zichtbare FC 27 TOTW-lijst",
+            "url": "https://www.fut.gg/rarities/rarity3/"
+          },
+          "gg_checked_at": "2026-09-17T06:46:00Z",
+          "rating": 80,
+          "card_type": "TOTW 1",
+          "version": "Team of the Week",
+          "status": "reported",
+          "confirmed": false,
+          "featured": false,
+          "release_date": "2026-09-16",
+          "position": "LM",
+          "alternate_positions": [
+            "CAM",
+            "ST",
+            "LW"
+          ],
+          "position_note": "Primaire en alternatieve posities handmatig gelezen op deze exacte FUT.GG TOTW-kaart.",
+          "stats": {
+            "PAC": 92,
+            "SHO": 80,
+            "PAS": 74,
+            "DRI": 81,
+            "DEF": 40,
+            "PHY": 78
+          },
+          "stats_status": "third_party_observed",
+          "meta_role": "winger",
+          "meta_weights": {
+            "PAC": 25,
+            "SHO": 15,
+            "PAS": 15,
+            "DRI": 35,
+            "DEF": 0,
+            "PHY": 10
+          },
+          "meta_rating": 82.3,
+          "meta_label": "TOTW 1",
+          "meta_text": "92 snelheid maakt de diepte interessant, met 80 schieten als bonus. 74 passen en 3★ zwakke voet begrenzen de finesse.",
+          "meta_basis": "FBS-statmodel (0–100): som van de zes basisstats × rolgewicht / 100, afgerond op één decimaal. Keepers gebruiken DIV/HAN/KIC/REF/SPD/POS. Geen EA- of gameplay-meta-rating. PlayStyles, lichaamsbouw, rollen, chemistry en prijs tellen niet mee; verschillende rollen zijn niet rechtstreeks vergelijkbaar.",
+          "price": null,
+          "price_status": "unverified",
+          "price_note": "Geen geschikte actuele platformgebonden prijs met meettijd en historie geverifieerd; geen koopgrens.",
+          "source": {
+            "label": "FUT.GG · exacte TOTW-kaart",
+            "url": "https://www.fut.gg/players/247955-ianis-stoica/27-67356819/",
+            "verified_at": "2026-09-17T06:59:00Z",
+            "verification_method": "Handmatig gelezen in de zichtbare openbare kaartpagina; geen API of collector."
+          },
+          "roster_source": {
+            "label": "Everyeye · TOTW 1-releasebericht",
+            "url": "https://www.everyeye.it/notizie/ea-sports-fc-27-disponibile-totw-1-presto-arrivano-ones-to-watch-900728.html",
+            "published_at": "2026-09-16",
+            "date_precision": "day",
+            "displayed_publication": "16/09/2026, ore 21:22; tijdzone niet expliciet vermeld",
+            "verified_at": "2026-09-17T06:37:18Z"
+          },
+          "verified_at": "2026-09-17T06:59:00Z",
+          "foot": "Rechts",
+          "skill_moves": 3,
+          "weak_foot": 3
+        },
+        {
+          "id": "fc27-totw1-lewis-dunk",
+          "game": "FC27",
+          "name": "Lewis Dunk",
+          "gg_rating": 71.3,
+          "gg_role": "CB",
+          "gg_source": {
+            "label": "FUT.GG · zichtbare FC 27 TOTW-lijst",
+            "url": "https://www.fut.gg/rarities/rarity3/"
+          },
+          "gg_checked_at": "2026-09-17T06:46:00Z",
+          "rating": 80,
+          "card_type": "TOTW 1",
+          "version": "Team of the Week",
+          "status": "reported",
+          "confirmed": false,
+          "featured": false,
+          "release_date": "2026-09-16",
+          "position": "CB",
+          "alternate_positions": [],
+          "position_note": "Primaire positie handmatig gelezen op deze exacte FUT.GG TOTW-kaart; alternatieve posities niet afzonderlijk vastgelegd.",
+          "stats": {
+            "PAC": 60,
+            "SHO": 55,
+            "PAS": 70,
+            "DRI": 70,
+            "DEF": 81,
+            "PHY": 82
+          },
+          "stats_status": "third_party_observed",
+          "meta_role": "defense",
+          "meta_weights": {
+            "PAC": 15,
+            "SHO": 0,
+            "PAS": 5,
+            "DRI": 5,
+            "DEF": 50,
+            "PHY": 25
+          },
+          "meta_rating": 77,
+          "meta_label": "TOTW 1",
+          "meta_text": "81 verdedigen en 82 fysiek bieden een stevig centrum. 60 snelheid is het duidelijke risico wanneer de achterlijn veel ruimte weggeeft.",
+          "meta_basis": "FBS-statmodel (0–100): som van de zes basisstats × rolgewicht / 100, afgerond op één decimaal. Keepers gebruiken DIV/HAN/KIC/REF/SPD/POS. Geen EA- of gameplay-meta-rating. PlayStyles, lichaamsbouw, rollen, chemistry en prijs tellen niet mee; verschillende rollen zijn niet rechtstreeks vergelijkbaar.",
+          "price": null,
+          "price_status": "unverified",
+          "price_note": "Geen geschikte actuele platformgebonden prijs met meettijd en historie geverifieerd; geen koopgrens.",
+          "source": {
+            "label": "FUT.GG · exacte TOTW-kaart",
+            "url": "https://www.fut.gg/players/199915-lewis-dunk/27-67308779/",
+            "verified_at": "2026-09-17T06:59:00Z",
+            "verification_method": "Handmatig gelezen in de zichtbare openbare kaartpagina; geen API of collector."
+          },
+          "roster_source": {
+            "label": "Everyeye · TOTW 1-releasebericht",
+            "url": "https://www.everyeye.it/notizie/ea-sports-fc-27-disponibile-totw-1-presto-arrivano-ones-to-watch-900728.html",
+            "published_at": "2026-09-16",
+            "date_precision": "day",
+            "displayed_publication": "16/09/2026, ore 21:22; tijdzone niet expliciet vermeld",
+            "verified_at": "2026-09-17T06:37:18Z"
+          },
+          "verified_at": "2026-09-17T06:59:00Z",
+          "foot": "Rechts",
+          "skill_moves": 2,
+          "weak_foot": 3
+        }
+      ]
     },
     {
       "id": "promo-current",
@@ -44,15 +1659,14 @@
   ],
   "sbc_of_week": {
     "status": "awaiting_official_confirmation",
-    "window": "ZONDAGAVOND · WACHT OP EA",
+    "window": "ZONDAGAVOND · BRON GECHECKT",
     "title": "Must-do SBC van de week",
-    "summary": "EA heeft nog geen bevestigde requirements, reward en eindtijd op het bord gezet. Zonder die drie gaan wij niet doen alsof je clubkas om een ‘must do’ schreeuwt.",
+    "summary": "De zondagcheck is gedaan. De officiële RSS leverde geen bevestigde SBC-requirements, reward en eindtijd op; dus geen geforceerde ‘must do’.",
     "why": [],
-    "risk": "Wacht op de officiële requirements en reward. Een lekkere card art is geen waardeberekening.",
+    "risk": "Zonder officiële requirements, reward en eindtijd blijft ‘must do’ vooral groepschatpoëzie.",
     "source": null
   },
   "dutch_gold_rule": "Acht bronbevestigde Nederlandse mannen: precies twee keepers, twee verdedigers, twee middenvelders en twee aanvallers. Minimaal Gold (75 ALG); een promo verschijnt alleen met een bron voor die exacte versie. De huidige selectie bestaat uit officiële FC 27 Gold-basisprofielen, niet uit bevestigde weekreleases. De twee vrouwen staan apart in de Meta-Meter; geen dubbele spelers.",
-  "dutch_gold_checked_at": "2026-09-10T08:51:57Z",
   "meta_watch_exclusions": [
     "Vivianne Miedema",
     "Jill Roord"
@@ -641,6 +2255,102 @@
         "url": "https://www.ea.com/nl/games/ea-sports-fc/ratings/player-ratings/brian-brobbey/251810",
         "verified_at": "2026-09-10T08:51:57Z"
       }
+    }
+  ],
+  "last_official_check": {
+    "at": "2026-09-16T19:56:25.228439Z",
+    "kind": "totw",
+    "source": "EA Press Release RSS",
+    "matching_entries": 2
+  },
+  "dutch_gold_checked_at": "2026-09-10T08:51:57Z",
+  "release_content_checked_at": "2026-09-17T07:02:52Z",
+  "content_notice": "TOTW 1: alle 23 spelers met GG-rating én volledige statlijn, plus vier gedateerde Console-prijzen. Brugts en Mijnans in de Oranje-spotlight. Daaronder Summerville en Diomandé: requirements, rewards en wat je kunt combineren. GG-rol en kaartpositie zijn niet hetzelfde; FBS-statmodel is onze eigen gewogen berekening.",
+  "objectives": [
+    {
+      "id": "summerville-otw-exhibition",
+      "name": "Crysencio Summerville",
+      "rating": 83,
+      "position": "LM",
+      "nation_code": "NL",
+      "card_type": "OTW",
+      "status": "reported",
+      "source": {
+        "url": "https://www.fut.gg/objectives/seasonal/88-season-1-ones-to-watch-exhibition/",
+        "label": "FUT.GG · Season 1: Ones to Watch Exhibition"
+      },
+      "card_source": "https://www.fut.gg/players/251954-crysencio-summerville/27-50583602/",
+      "requirements": [
+        "Speel 1 wedstrijd in Season 1: Ones to Watch Exhibition.",
+        "Speel 5 wedstrijden in dezelfde Exhibition.",
+        "Speel 15 wedstrijden in dezelfde Exhibition.",
+        "Geef in 15 afzonderlijke wedstrijden in dezelfde Exhibition een assist.",
+        "Geef in 20 afzonderlijke wedstrijden in dezelfde Exhibition een assist.",
+        "Scoor in 20 afzonderlijke wedstrijden in dezelfde Exhibition.",
+        "Scoor in 30 afzonderlijke wedstrijden in dezelfde Exhibition."
+      ],
+      "rewards": [
+        "Groepsbeloning: Crysencio Summerville · Ones to Watch · 83 ALG, niet-verhandelbaar.",
+        "1 wedstrijd: een consumable; het exacte type is niet bevestigd.",
+        "5 wedstrijden: Consumables Pack.",
+        "15 wedstrijden: 2x 75+ Gold Players Pack.",
+        "Assist in 15 wedstrijden: 2x 78+ Gold Players Pack.",
+        "Assist in 20 wedstrijden: 80+ Gold Player Pack.",
+        "Score in 20 wedstrijden: 2x 80+ Gold Players Pack.",
+        "Score in 30 wedstrijden: 2x 81+ Gold Players Pack.",
+        "Alle genoemde beloningen zijn niet-verhandelbaar."
+      ],
+      "overlap": "De zeven taken kunnen in dezelfde wedstrijden oplopen. Reken op minimaal 30 wedstrijden: scoor in alle 30 en geef in minstens 20 daarvan een assist. Dit minimum volgt uit de taakregels, niet uit een gemeten speelduur. Kijk tegelijk naar de actieve Exhibition Weekly Play-opdracht voor voortgang richting Diomandé; zijn vier weekvoltooiingen zijn geen directe bonus na 30 potjes.",
+      "mode_note": "Alle taken noemen specifiek Season 1: Ones to Watch Exhibition. Squad Battles, Rivals of de aparte Ones We Watched-singleplayerreeks tellen niet aantoonbaar mee. Geen winvereiste in de getoonde taken; toelatingseisen, wedstrijdlimiet en eventuele moeilijkheidsgraad zijn niet vastgesteld.",
+      "expires_at": null,
+      "caveat": "Opdracht en kaart gecontroleerd in een openbare derdepartijdatabase, niet in de eigen game of rechtstreeks door EA bevestigd. De objectivepagina toont ongeveer één maand resterend, geen exact geverifieerd eindtijdstip. Controleer de live eventvoorwaarden voor je begint. Dit is een objectivekaart, geen bevestigde Premium Pass-beloning en geen verhandelbare investering.",
+      "verified_at": "2026-09-17T06:44:00Z",
+      "stats": {
+        "PAC": 90,
+        "SHO": 80,
+        "PAS": 75,
+        "DRI": 86,
+        "DEF": 43,
+        "PHY": 60
+      },
+      "meta_text": "90 snelheid en 86 dribbelen: genoeg venijn om de back zijn avond te verpesten. Met 92 acceleratie en 92 wendbaarheid is hij een interessante starter op de flank. De rekening komt bij contact: 40 kracht, plus 3★ skills en 3★ zwakke voet, beperken zijn veelzijdigheid. Een te verdienen grindoptie voor je elftal, geen gegarandeerde eindbaas.",
+      "gg_rating": 85,
+      "gg_role": "LM",
+      "gg_source": {
+        "label": "FUT.GG · Summerville OTW-kaart",
+        "url": "https://www.fut.gg/players/251954-crysencio-summerville/27-50583602/"
+      },
+      "gg_checked_at": "2026-09-17T06:44:00Z"
+    },
+    {
+      "id": "diomande-otw-exhibition-completionist",
+      "name": "Ousmane Diomandé",
+      "rating": 83,
+      "position": "CB",
+      "nation_code": "CI",
+      "card_type": "OTW",
+      "status": "reported",
+      "source": {
+        "url": "https://futmind.com/objectives/79/season-1:-ones-to-watch-exhibition-completionist",
+        "label": "FUT Mind · Season 1: Ones to Watch Exhibition Completionist"
+      },
+      "card_source": "https://fifauteam.com/fc-27-ones-to-watch/",
+      "requirements": [
+        "Voltooi Season 1: Ones to Watch Exhibition Weekly Play 1 keer.",
+        "Voltooi dezelfde Weekly Play-opdracht 2 keer.",
+        "Voltooi dezelfde Weekly Play-opdracht 3 keer.",
+        "Voltooi dezelfde Weekly Play-opdracht 4 keer."
+      ],
+      "rewards": [
+        "De groepsomschrijving noemt Ones to Watch Ousmane Diomandé, een EVO en coins.",
+        "De kaart staat in het geraadpleegde FIFAUTeam-overzicht als 83 ALG, CB.",
+        "Niet-verhandelbare beloningen; het exacte EVO-type en de coinbedragen zijn niet vastgesteld."
+      ],
+      "overlap": "Dezelfde Exhibition als Summervilles objective wordt genoemd. Je kunt daarom tijdens je Summerville-potjes de actieve Weekly Play-opdracht controleren. Voor Diomandé zijn vier voltooiingen nodig: niet beloven dat één sessie of Summervilles 30 wedstrijden alles afvinkt. Het aantal wedstrijden per weekopdracht en de resetmomenten zijn nog niet geverifieerd.",
+      "mode_note": "Season 1: Ones to Watch Exhibition Weekly Play. De vier taken tellen voltooide weekopdrachten, niet alleen gespeelde wedstrijden. Geen bewezen overlap met Squad Battles of Rivals. Toelatingseisen en eventuele moeilijkheidsgraad zijn niet vastgesteld.",
+      "expires_at": null,
+      "caveat": "Verkrijgroute secundair gecontroleerd bij FUT Mind; rating en positie secundair bij FIFAUTeam. Geen officiële EA- of eigen in-game-verificatie. Exacte vervaldatum, eerste haalbare unlockdatum, kaartstats en PlayStyles zijn nog niet bevestigd. De verwijzing in een FUT Mind-redactioneel artikel naar een oude FC26-kaart is niet gebruikt. Andere OTW-SBC- en seizoensroutes krijgen zonder exacte objectivebevestiging geen grindbelofte.",
+      "verified_at": "2026-09-17T06:40:00Z"
     }
   ]
 }

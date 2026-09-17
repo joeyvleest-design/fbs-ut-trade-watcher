@@ -1,28 +1,51 @@
 {
   "game": "FC27",
-  "updated_at": "2026-09-17T06:24:03Z",
-  "notice": "Ochtendcheck 17 september: nieuw op ons bord staan EA's Season 1-uitleg en een apart TOTW-releasebericht van ModdingWay, beide van 16 september; het zijn geen publicaties van vandaag. Season 1 blijft het nieuwste artikel op de gecontroleerde EA-nieuwshub. ModdingWay meldt TOTW 1 in packs, maar exacte nieuwe Nederlandse bijzondere kaarten zijn in onze primaire broncontrole nog niet bevestigd. De Companion-update staat volgens EA vandaag om 19:00 Nederlandse tijd gepland; de agenda is geen live-statusmeting. Verlopen lekberichten blijven in het archief. Vier gerichte zoekopdrachten naar Sheriff-berichtgeving leveren geen volledige socials-scan op: de oorspronkelijke X-post en het profiel waren niet leesbaar; X-inhoud is niet geverifieerd. EA Press RSS gaf HTTP 403 en actuele PS-prijzen ontbreken. De beoordeelde feeds staan apart bij de bronnen. Eerdere publicatiedata en kaartverificaties blijven behouden; hercontrolegrenzen zijn redactionele termijnen, geen EA-deadlines.",
+  "updated_at": "2026-09-17T06:50:10Z",
+  "notice": "Aanvullende check 17 september: de volledige TOTW 1-selectie van 23 kaarten is nu gecontroleerd met FUT.GG, WeFUT en Everyeye, waaronder Esmee Brugts 85 en Sven Mijnans 80. Dit zijn gecontroleerde derdepartijgegevens, geen label 'officieel door EA bevestigd'. GG-scores staan apart als beoordeling van FUT.GG; Console-prijzen zijn gedateerde momentopnamen, geen bewezen koopkansen of historische prijsanalyse. Summervilles OTW-objective staat nu op het bord; de oude seizoenspasclaim is achterhaald en blijft met correctie in het archief. EA's nieuws van 16 september blijft als zodanig gedateerd. De Companion-update staat volgens EA vandaag om 19:00 Nederlandse tijd gepland; de agenda is geen live-statusmeting. De oorspronkelijke Sheriff-post en het X-profiel waren niet leesbaar: X-inhoud is niet geverifieerd en dit is geen volledige socials-scan. EA Press RSS gaf HTTP 403. Eerdere bronchecks blijven behouden; hercontrolegrenzen zijn redactionele termijnen, geen EA-deadlines.",
   "items": [
     {
       "id": "fc27-totw1-release-reported-20260916",
-      "title": "TOTW 1 volgens de berichtgeving in packs; de kas wacht op bewijs",
-      "summary": "ModdingWay meldt in een apart releasebericht dat TOTW 1 in packs zit. Dat is een andere melding dan zijn eerdere lekselectie. De gelezen tekst licht zes niet-Nederlandse kaarten uit, maar bevat geen oorspronkelijke EA- of Sheriff-postlink. Wij hebben de exacte Nederlandse items en hun beschikbaarheid niet onafhankelijk bevestigd. Dit blijft secundaire berichtgeving, geen nieuwe bevestigingsstempel voor onze watchlists.",
+      "title": "TOTW 1 compleet: 23 kaarten, twee Oranjetroeven",
+      "summary": "De volledige TOTW 1-selectie telt 23 kaarten. FUT.GG, WeFUT en Everyeye zijn gecontroleerd; voor de bibsies springen Esmee Brugts 85 en Sven Mijnans 80 eruit. De kaartversies staan nu in het releaseoverzicht. Dit gaat verder dan de oude voorspelling, maar blijft derdepartijverificatie: we plakken er geen officiële EA-bevestiging op.",
       "status": "reported",
       "source": {
-        "label": "ModdingWay · secundair TOTW-releasebericht",
-        "url": "https://www.moddingway.com/fut/totw/10206/fc-27-team-of-the-week-1"
+        "label": "FUT.GG · volledige TOTW 1-selectie, derdepartijbron",
+        "url": "https://www.fut.gg/squads/team-of-the-week/totw-1/"
       },
       "published_at": "2026-09-16T00:00:00Z",
       "published_precision": "date",
-      "checked_at": "2026-09-17T06:24:03Z",
+      "checked_at": "2026-09-17T06:50:10Z",
       "expires_at": "2026-09-18T06:00:00Z",
-      "impact": "Onze duiding: als de beschikbaarheid wordt bevestigd, kan nieuw packaanbod de markt beïnvloeden; richting en omvang zijn onbekend. De prijsgetallen in het artikel missen controleerbaar platform, waarnemingstijd en historie en zijn dus geen actuele PS-prijzen voor onze methode. Geen koopgrens, kaartstats of PlayStyles overgenomen. Vleesbeker mag naar het bord wijzen, niet naar een verzonnen winstgrafiek.",
+      "impact": "Onze duiding: vergelijk eerst de exacte kaartversie en positie. De weergegeven GG-rating is de beoordeling van FUT.GG, niet onze eigen metascore. Console-prijzen zijn brongebonden momentopnamen; zonder bruikbare historie en netto marge volgt geen koop- of verkoopadvies. Vleesbeker krijgt een volledig spelersbord, geen blanco cheque.",
+      "original_source_url": null
+    },
+    {
+      "id": "fc27-summerville-diomande-objectives-reported-20260917",
+      "title": "Summerville op het veld verdienen; Diomandé houdt een weekagenda",
+      "summary": "Summerville 83 OTW is de onverhandelbare beloning van Season 1: Ones to Watch Exhibition. De gecontroleerde taken vragen onder meer scoren in 30 afzonderlijke wedstrijden en assists in 20 afzonderlijke wedstrijden, specifiek in die Exhibition. De speel-, goal- en assistdoelen kunnen samen oplopen. Dit is geen bevestigde Premium Pass-route en geen grind die je zomaar naar Rivals of Squad Battles verplaatst.",
+      "status": "reported",
+      "source": {
+        "label": "FUT.GG · Summerville Exhibition-objective, derdepartijbron",
+        "url": "https://www.fut.gg/objectives/seasonal/88-season-1-ones-to-watch-exhibition/"
+      },
+      "published_at": null,
+      "published_precision": "unknown",
+      "checked_at": "2026-09-17T06:44:00Z",
+      "expires_at": "2026-09-18T06:00:00Z",
+      "impact": "Onze duiding: scoor en assist in dezelfde potjes, zodat de tellers samen oplopen. De apart bij FUT Mind gecontroleerde Diomandé Completionist vraagt 1, 2, 3 en 4 voltooiingen van Exhibition Weekly Play: dertig wedstrijden betekenen dus niet automatisch twee kaarten op één avond. Weekaantallen, resets en exacte objective-eindmomenten zijn nog niet vastgesteld. Deze bron heeft geen geverifieerde publicatiedatum; nieuw op ons bord is niet hetzelfde als vandaag uitgebracht.",
+      "related_sources": [
+        {
+          "label": "FUT Mind · Diomandé Exhibition Completionist, derdepartijbron",
+          "url": "https://futmind.com/objectives/79/season-1:-ones-to-watch-exhibition-completionist",
+          "checked_at": "2026-09-17T06:40:00Z"
+        }
+      ],
       "original_source_url": null
     },
     {
       "id": "fc27-season1-objectives-totw-official-20260916",
       "title": "EA vult het takenlijstje; Gerroe zoekt zijn leesbril",
-      "summary": "EA heeft de inhoud van Season 1 uitgewerkt. OTW-kaarten komen via de seizoenspas en vanaf Early Access ook via bepaalde SBC's en objectives. Tactical Trials koppelt onverhandelbare packs aan opdrachten met verschillende formaties; AFC Richmond-opdrachten leveren clubitems en een EVO-consumable op. Daarnaast krijgt TOTW in Season 1 een aangepast upgradepad. Dit artikel bevat geen volledige TOTW 1-selectie: de Nederlandse gelekte kaarten zijn hiermee niet bevestigd.",
+      "summary": "EA heeft de inhoud van Season 1 uitgewerkt. OTW-kaarten komen via de seizoenspas en vanaf Early Access ook via bepaalde SBC's en objectives. Tactical Trials koppelt onverhandelbare packs aan opdrachten met verschillende formaties; AFC Richmond-opdrachten leveren clubitems en een EVO-consumable op. Daarnaast krijgt TOTW in Season 1 een aangepast upgradepad. Deze officiële tekst alleen bevat geen volledige TOTW 1-selectie; de inmiddels gecontroleerde derdepartijkaartgegevens staan afzonderlijk in het releaseoverzicht.",
       "status": "confirmed_official",
       "source": {
         "label": "EA SPORTS · Season 1: Ones to Watch",
@@ -32,7 +55,7 @@
       "published_precision": "date",
       "checked_at": "2026-09-17T06:21:36Z",
       "expires_at": "2026-09-18T17:01:00Z",
-      "impact": "Onze duiding: bekijk straks de exacte objective-eisen en mogelijke overlap vóór je wedstrijden plant. De aankondiging bewijst nog geen slimste grind, werkende Web App of voordelige aankoop. Het oude Summerville-gerucht blijft apart; de gelezen tekst noemt hem niet. Eerst de opdrachten lezen, dan de groepschat coachen.",
+      "impact": "Onze duiding: lees de exacte objective-eisen vóór je wedstrijden plant. Redactionele aanvulling 17 september: Summervilles concrete Exhibition-route is inmiddels apart bij een derdepartij gecontroleerd; deze EA-tekst noemt hem niet en is daarvoor geen bewijs. De aankondiging bewijst evenmin een werkende Web App of voordelige aankoop. Eerst de opdrachten lezen, dan de groepschat coachen.",
       "original_source_url": null
     },
     {
@@ -80,7 +103,7 @@
       "published_precision": "date",
       "checked_at": "2026-09-17T06:21:36Z",
       "expires_at": "2026-09-18T06:00:00Z",
-      "impact": "Hercontrole op 17 september: EA plant de Companion-update voor vandaag om 19:00 Nederlandse tijd. Dit is nog steeds de agenda van 14 september, geen nieuwe aankondiging of controle van werkende toegang. Onze duiding: vergelijk verdiende kaarten met aankopen zodra betrouwbare prijzen bestaan. De pasinformatie bevestigt het oude Summerville-lek niet. Knalfuifje mag de agenda trekken, niet alvast de clubkas.",
+      "impact": "Hercontrole op 17 september: EA plant de Companion-update voor vandaag om 19:00 Nederlandse tijd. Dit is nog steeds de agenda van 14 september, geen nieuwe aankondiging of controle van werkende toegang. Onze duiding: vergelijk verdiende kaarten met aankopen zodra betrouwbare prijzen bestaan. Summervilles concrete objective is afzonderlijk gecontroleerd; de algemene pasinformatie hier bewijst zijn verkrijgroute niet. Knalfuifje mag de agenda trekken, niet alvast de clubkas.",
       "original_source_url": null
     },
     {
@@ -101,8 +124,8 @@
     },
     {
       "id": "fc27-summerville-season-pass-rumour-20260911",
-      "title": "Summerville op de seizoenspas? Eerst EA, dan de polonaise",
-      "summary": "ModdingWay noemt Summerville bij gelekte Ones to Watch voor Season Pass 1. Het artikel schrijft de selectie toe aan leakers, zonder controleerbare oorspronkelijke bevestiging. Ondanks het woord 'official' bij de getoonde stats behandelen wij dit uitsluitend als gerucht.",
+      "title": "Archiefcorrectie: Summerville-pasgerucht ingehaald door zijn objective",
+      "summary": "Dit oude ModdingWay-bericht noemde Summerville bij gelekte Ones to Watch voor Season Pass 1, zonder controleerbare oorspronkelijke bevestiging. Redactionele correctie 17 september: de inmiddels afzonderlijk gecontroleerde Exhibition-objective noemt Summerville als beloning. Gebruik deze achterhaalde pasclaim niet meer om zijn verkrijgroute te bepalen; het oude bericht blijft als gerucht in het archief.",
       "status": "rumour",
       "source": {
         "label": "ModdingWay · secundaire rapportage",
@@ -112,7 +135,7 @@
       "published_precision": "date",
       "checked_at": "2026-09-13T20:53:14Z",
       "expires_at": "2026-09-14T20:53:14Z",
-      "impact": "Scenario: als EA deze route bevestigt, kan een verdiende kaart een alternatief zijn voor een aankoop. Beschikbaarheid, gratis of premium, verhandelbaarheid en upgrades zijn hier niet bevestigd. Geen prijsdoel of Gold Watch-vervanging. De clubkas heeft nog geen toestemming van vleesbeker.",
+      "impact": "Archiefcorrectie op 17 september, geen nieuwe lezing van de oude bron: zie de actuele Summerville-objective voor de gecontroleerde Exhibition-route. Zijn onverhandelbare 83 OTW vraagt wedstrijdvoortgang, geen hier bevestigde Premium Pass-aankoop. De historische bronchecktijd en publicatiedatum blijven ongewijzigd; het woord 'official' uit een lek levert nog steeds geen EA-bevestiging op.",
       "original_source_url": null
     },
     {
