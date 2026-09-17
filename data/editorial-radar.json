@@ -1,11 +1,43 @@
 {
   "game": "FC27",
-  "updated_at": "2026-09-16T07:26:46Z",
-  "notice": "Ochtendupdate 16 september: nieuw op ons bord staan EA's kijkbeloningen en een afzonderlijk TOTW-lekbericht van ModdingWay, beide gepubliceerd op 15 september. De Web App-agenda is opnieuw bevestigd, geen nieuw EA-bericht: opening staat gepland voor 16 september om 19:00 Nederlandse tijd; de werking is nog niet als live gecontroleerd. EA-nieuwspagina's en geselecteerde ModdingWay-artikelen zijn gelezen; de resultaten van de beoordeelde feeds staan bij de bronnen. Geen volledige internetdekking: X is niet rechtstreeks gecontroleerd en actuele PS-prijzen ontbreken. Geen nieuwe officiële Nederlandse promokaart vastgesteld binnen deze controle. Oude voorspellingen blijven archief; de externe kaartcontroles zijn niet opnieuw gedateerd. Hercontrolegrenzen hieronder zijn onze redactionele termijnen, geen EA-deadlines.",
+  "updated_at": "2026-09-17T06:24:03Z",
+  "notice": "Ochtendcheck 17 september: nieuw op ons bord staan EA's Season 1-uitleg en een apart TOTW-releasebericht van ModdingWay, beide van 16 september; het zijn geen publicaties van vandaag. Season 1 blijft het nieuwste artikel op de gecontroleerde EA-nieuwshub. ModdingWay meldt TOTW 1 in packs, maar exacte nieuwe Nederlandse bijzondere kaarten zijn in onze primaire broncontrole nog niet bevestigd. De Companion-update staat volgens EA vandaag om 19:00 Nederlandse tijd gepland; de agenda is geen live-statusmeting. Verlopen lekberichten blijven in het archief. Vier gerichte zoekopdrachten naar Sheriff-berichtgeving leveren geen volledige socials-scan op: de oorspronkelijke X-post en het profiel waren niet leesbaar; X-inhoud is niet geverifieerd. EA Press RSS gaf HTTP 403 en actuele PS-prijzen ontbreken. De beoordeelde feeds staan apart bij de bronnen. Eerdere publicatiedata en kaartverificaties blijven behouden; hercontrolegrenzen zijn redactionele termijnen, geen EA-deadlines.",
   "items": [
     {
+      "id": "fc27-totw1-release-reported-20260916",
+      "title": "TOTW 1 volgens de berichtgeving in packs; de kas wacht op bewijs",
+      "summary": "ModdingWay meldt in een apart releasebericht dat TOTW 1 in packs zit. Dat is een andere melding dan zijn eerdere lekselectie. De gelezen tekst licht zes niet-Nederlandse kaarten uit, maar bevat geen oorspronkelijke EA- of Sheriff-postlink. Wij hebben de exacte Nederlandse items en hun beschikbaarheid niet onafhankelijk bevestigd. Dit blijft secundaire berichtgeving, geen nieuwe bevestigingsstempel voor onze watchlists.",
+      "status": "reported",
+      "source": {
+        "label": "ModdingWay · secundair TOTW-releasebericht",
+        "url": "https://www.moddingway.com/fut/totw/10206/fc-27-team-of-the-week-1"
+      },
+      "published_at": "2026-09-16T00:00:00Z",
+      "published_precision": "date",
+      "checked_at": "2026-09-17T06:24:03Z",
+      "expires_at": "2026-09-18T06:00:00Z",
+      "impact": "Onze duiding: als de beschikbaarheid wordt bevestigd, kan nieuw packaanbod de markt beïnvloeden; richting en omvang zijn onbekend. De prijsgetallen in het artikel missen controleerbaar platform, waarnemingstijd en historie en zijn dus geen actuele PS-prijzen voor onze methode. Geen koopgrens, kaartstats of PlayStyles overgenomen. Vleesbeker mag naar het bord wijzen, niet naar een verzonnen winstgrafiek.",
+      "original_source_url": null
+    },
+    {
+      "id": "fc27-season1-objectives-totw-official-20260916",
+      "title": "EA vult het takenlijstje; Gerroe zoekt zijn leesbril",
+      "summary": "EA heeft de inhoud van Season 1 uitgewerkt. OTW-kaarten komen via de seizoenspas en vanaf Early Access ook via bepaalde SBC's en objectives. Tactical Trials koppelt onverhandelbare packs aan opdrachten met verschillende formaties; AFC Richmond-opdrachten leveren clubitems en een EVO-consumable op. Daarnaast krijgt TOTW in Season 1 een aangepast upgradepad. Dit artikel bevat geen volledige TOTW 1-selectie: de Nederlandse gelekte kaarten zijn hiermee niet bevestigd.",
+      "status": "confirmed_official",
+      "source": {
+        "label": "EA SPORTS · Season 1: Ones to Watch",
+        "url": "https://www.ea.com/games/ea-sports-fc/fc-27/news/fc-27-season-1"
+      },
+      "published_at": "2026-09-16T00:00:00Z",
+      "published_precision": "date",
+      "checked_at": "2026-09-17T06:21:36Z",
+      "expires_at": "2026-09-18T17:01:00Z",
+      "impact": "Onze duiding: bekijk straks de exacte objective-eisen en mogelijke overlap vóór je wedstrijden plant. De aankondiging bewijst nog geen slimste grind, werkende Web App of voordelige aankoop. Het oude Summerville-gerucht blijft apart; de gelezen tekst noemt hem niet. Eerst de opdrachten lezen, dan de groepschat coachen.",
+      "original_source_url": null
+    },
+    {
       "id": "fc27-gameplay-stream-rewards-official-20260915",
-      "title": "Gisteren meegekeken? Controleer je verdiende startbonus",
+      "title": "Meegekeken op 15 september? Controleer je verdiende startbonus",
       "summary": "EA koppelde de gameplay-uitzending van 15 september aan kijkbeloningen. De stream liep van 19:00 tot 20:30 Nederlandse tijd; de aangekondigde pakketten zijn onverhandelbaar. Het langere kijkdoel bood daarnaast coins en een tijdelijke wedstrijdboost. Wie toen aan de kijk- en accountvoorwaarden voldeed, kan de bijbehorende claiminstructies controleren. Vandaag alleen de herhaling kijken is geen bevestigde route naar dezelfde beloningen.",
       "status": "confirmed_official",
       "source": {
@@ -30,14 +62,14 @@
       },
       "published_at": "2026-09-15T00:00:00Z",
       "published_precision": "date",
-      "checked_at": "2026-09-16T07:25:38Z",
-      "expires_at": "2026-09-16T17:01:00Z",
-      "impact": "Een ander artikel van dezelfde uitgever is geen onafhankelijke bevestiging van de eerdere voorspelling. Bij de releasecheck zoeken we de officiële selectie en exacte kaartversie; tot die tijd geen wijziging in Gold/Promo Watch of Meta Meter en geen koopgrens. Surimi stokje heeft de confetti, EA nog steeds de handtekening.",
+      "checked_at": "2026-09-16T17:04:48Z",
+      "expires_at": "2026-09-17T06:00:00Z",
+      "impact": "Avondhercontrole 16 september: dezelfde pagina noemt het nog steeds een lek. Dit is geen nieuw gepubliceerd bericht en geen onafhankelijke EA-bevestiging. Een gezochte oorspronkelijke Sheriff-post kon niet worden geverifieerd. Geen wijziging in Gold/Promo Watch of Meta Meter en geen koopgrens. Surimi stokje heeft de confetti, EA nog steeds de handtekening.",
       "original_source_url": null
     },
     {
       "id": "fc27-launch-update-official-20260914",
-      "title": "EA geeft het startschot: agenda open, clubkas nog dicht",
+      "title": "Companion op donderdag: de agenda is geen koopknop",
       "summary": "EA bevestigt de Web App voor 16 september om 19:00 Nederlandse tijd; de Companion-update volgt een dag later op hetzelfde tijdstip. Season 1 met Ones to Watch loopt van 17 september tot 22 oktober, via de pas, SBC's en objectives. Destined for Glory start op 25 september. Basis-Icons beginnen op 88 ALG. Icons krijgen +1 landbijdrage, Heroes +1 competitie; Hall of FUT volgt de Hero-chemie.",
       "status": "confirmed_official",
       "source": {
@@ -46,9 +78,9 @@
       },
       "published_at": "2026-09-14T00:00:00Z",
       "published_precision": "date",
-      "checked_at": "2026-09-16T07:24:21Z",
-      "expires_at": "2026-09-16T17:01:00Z",
-      "impact": "Hercontrole op 16 september: de lanceringsagenda is ongewijzigd; dit blijft een bericht van 14 september, geen live-statusmeting. Onze duiding: vergelijk verdiende kaarten met aankopen zodra echte prijzen bestaan. Een lanceringsagenda bewijst geen koerswinst. De getoonde reguliere en premium pas bevestigen het oude Summerville-lek niet. Knalfuifje mag de agenda trekken, niet alvast de clubkas.",
+      "checked_at": "2026-09-17T06:21:36Z",
+      "expires_at": "2026-09-18T06:00:00Z",
+      "impact": "Hercontrole op 17 september: EA plant de Companion-update voor vandaag om 19:00 Nederlandse tijd. Dit is nog steeds de agenda van 14 september, geen nieuwe aankondiging of controle van werkende toegang. Onze duiding: vergelijk verdiende kaarten met aankopen zodra betrouwbare prijzen bestaan. De pasinformatie bevestigt het oude Summerville-lek niet. Knalfuifje mag de agenda trekken, niet alvast de clubkas.",
       "original_source_url": null
     },
     {
