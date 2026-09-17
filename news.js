@@ -20,7 +20,7 @@
     if (!source?.url || !source?.label) return null;
     try {
       const parsed = new URL(source.url);
-      if (!/^https?:$/.test(parsed.protocol)) return null;
+      if (parsed.protocol !== "https:" || parsed.username || parsed.password) return null;
       const link = make("a", className, source.label);
       link.href = parsed.href;
       link.target = "_blank";
@@ -45,6 +45,24 @@
       && ["NL", "NLD"].includes(String(card.nation_code || "").toUpperCase())
       && String(card.base_item_tier || "").toLowerCase() === "gold"
       && Number(card.base_rating) >= 75;
+  }
+
+  function isDutch(card) {
+    return ["NL", "NLD"].includes(String(card?.nation_code || "").toUpperCase());
+  }
+
+  function officialConfirmation(card, source) {
+    if (card?.confirmed !== true) return false;
+    try {
+      const url = new URL(source?.url);
+      return url.protocol === "https:" && !url.username && !url.password && (url.hostname === "ea.com" || url.hostname.endsWith(".ea.com"));
+    } catch (_) { return false; }
+  }
+
+  function contentCheck(data) {
+    const date = new Date(data?.release_content_checked_at || data?.updated_at || NaN);
+    const valid = Number.isFinite(date.getTime()) && date.getTime() <= Date.now() + 300000;
+    return { date: valid ? date : null, stale: !valid || Date.now() - date.getTime() > 36 * 60 * 60 * 1000 };
   }
 
   function normalizedPlayerName(value) {
@@ -79,6 +97,8 @@
   function stateLabel(status) {
     return ({
       confirmed: "BEVESTIGD",
+      reported: "BRONMELDING · NIET DOOR EA GEVERIFIEERD",
+      rumour: "GERUCHT · NOG NIET BEVESTIGD",
       awaiting_official_confirmation: "WACHT OP EA",
       source_backed_base_profile: "GOLD WATCH",
     })[status] || "OP DE RADAR";
@@ -99,7 +119,7 @@
 
   function priceStatus(card, marketData) {
     if (!marketData) return "Koppel een toegestane live prijsfeed voor een echte prijs.";
-    if (marketData.mode === "demo") return "Demo telt niet als actuele prijs.";
+    if (marketData.mode === "demo") return "Demo telt niet als actuele prijs. Deze exacte kaartprijs is nog niet gecontroleerd.";
     if (window.FBSRefresh.get("market").stale) return "De prijsdata is verouderd of niet bereikbaar. Wacht op een nieuwe snapshot.";
     if (!marketData.market_data_licensed) return "Live prijsfeed is niet toegestaan of niet vers genoeg.";
     if (!card.market_item_id) return "Exacte kaart-ID ontbreekt nog in de toegestane prijsfeed.";
@@ -107,6 +127,19 @@
   }
 
   function renderCurrentPrice(card, marketData) {
+    const snapshot = card.price_snapshot;
+    const observed = new Date(snapshot?.observed_at || NaN);
+    const snapshotSource = safeLink(snapshot?.source);
+    if (snapshot && typeof snapshot.coins === "number" && Number.isFinite(snapshot.coins) && snapshot.coins > 0
+      && typeof snapshot.platform === "string" && snapshot.platform.trim() && snapshotSource
+      && Number.isFinite(observed.getTime()) && observed.getTime() <= Date.now() + 300000) {
+      const price = make("div", "release-price release-price--snapshot");
+      price.append(make("span", "release-price__label", `MOMENTOPNAME · ${snapshot.platform}`), make("strong", "", `${coinFormatter.format(snapshot.coins)} coins`), make("small", "", `Bekeken ${dateFormatter.format(observed)} · geen live prijs`));
+      const sourceTime = new Date(snapshot.source_updated_at || NaN);
+      if (Number.isFinite(sourceTime.getTime()) && sourceTime.getTime() <= observed.getTime() + 300000) price.append(make("small", "", `Bronmeting ${dateFormatter.format(sourceTime)}`));
+      price.append(snapshotSource);
+      return price;
+    }
     const item = marketItemFor(card, marketData);
     const price = make("div", "release-price");
     price.append(make("span", "release-price__label", "ACTUELE PRIJS"));
@@ -120,6 +153,20 @@
       price.append(make("strong", "", "—"), make("small", "", priceStatus(card, marketData)));
     }
     return price;
+  }
+
+  function ggRating(card) {
+    return typeof card?.gg_rating === "number" && Number.isFinite(card.gg_rating) && card.gg_rating >= 0 && card.gg_rating <= 100 ? card.gg_rating.toFixed(1) : null;
+  }
+
+  function renderGGSource(card) {
+    const source = typeof card.gg_source === "string" ? { label: "GG Rating · bron", url: card.gg_source } : card.gg_source;
+    const block = make("div", "release-gg-source");
+    block.append(make("p", "release-card__basis", `GG Rating is het eigen model van FUT.GG${card.gg_role ? ` voor de rol ${card.gg_role}` : ""}; geen EA-rating. De beoordeelde rol is niet noodzakelijk de primaire kaartpositie.`));
+    const link = safeLink(source); if (link) block.append(link);
+    const checked = new Date(card.gg_checked_at || NaN);
+    if (Number.isFinite(checked.getTime()) && checked.getTime() <= Date.now() + 300000) block.append(make("small", "release-card__basis", `GG Rating bekeken ${dateFormatter.format(checked)}`));
+    return block;
   }
 
   function renderSchedule(schedule) {
@@ -144,9 +191,11 @@
 
   function renderStats(stats) {
     const list = make("dl", "release-card__stats");
-    for (const stat of stats || []) {
+    const labels = { PAC: "SNL", SHO: "SCH", PAS: "PAS", DRI: "DRI", DEF: "VRD", PHY: "FYS" };
+    const values = Array.isArray(stats) ? stats : stats && typeof stats === "object" ? Object.entries(stats).map(([label, value]) => ({ label: labels[label] || label, value })) : [];
+    for (const stat of values) {
       const value = Number(stat?.value);
-      if (!stat?.label || !Number.isFinite(value)) continue;
+      if (!stat?.label || stat.value === null || stat.value === "" || !Number.isFinite(value) || value < 0 || value > 99) continue;
       const item = make("div", "release-card__stat");
       item.style.setProperty("--stat", String(Math.max(0, Math.min(100, value))));
       item.append(make("dt", "", stat.label), make("dd", "", String(value)));
@@ -156,7 +205,7 @@
   }
 
   function renderCard(card, options = {}) {
-    const dutch = options.dutch || isDutchGold(card);
+    const dutch = options.dutch || isDutch(card);
     const article = make("article", `release-card${dutch ? " release-card--dutch" : ""}`);
     article.dataset.position = card.position || "";
     article.dataset.line = card.line || "";
@@ -170,7 +219,7 @@
       const flag = make("span", "flag flag--nl");
       flag.setAttribute("role", "img");
       flag.setAttribute("aria-label", "Nederland");
-      visual.append(flag, make("span", "release-card__spotlight", "ORANJE GOUD"));
+      visual.append(flag, make("span", "release-card__spotlight", isDutchGold(card) ? "ORANJE GOUD" : "ORANJE SPOTLIGHT"));
     }
     const officialArt = window.FBSCardArt?.create(card, { baseProfile: card.card_type === "Gold Watch" });
     if (officialArt) {
@@ -180,8 +229,9 @@
     }
 
     const content = make("div", "release-card__content");
-    content.append(make("p", "release-card__eyebrow", dutch ? `${window.FBSWatch?.isPromo(card) ? "PROMO" : "GOLD"} WATCH · NEDERLAND` : kindLabel(options.kind || card.card_type)));
-    if (card.confirmed === true && safeLink(card.source || options.source)) content.append(make("span", "confirmed-badge", `✓ EA BEVESTIGD · ${window.FBSWatch?.isPromo(card) ? "PROMO" : "GOLD"}`));
+    content.append(make("p", "release-card__eyebrow", dutch ? `${isDutchGold(card) ? "GOLD WATCH" : kindLabel(card.card_type || options.kind)} · NEDERLAND` : kindLabel(options.kind || card.card_type)));
+    if (officialConfirmation(card, card.source || options.source)) content.append(make("span", "confirmed-badge", `✓ EA BEVESTIGD · ${isDutchGold(card) ? "GOLD" : kindLabel(card.card_type)}`));
+    else if (options.status || card.status) content.append(make("span", "release-evidence", stateLabel(card.status || options.status)));
     content.append(make("h3", "", card.name || "Nog niet bevestigd"));
     content.append(make("p", "release-card__role", card.meta_label || card.position || "Wacht op zichtbare stats"));
 
@@ -189,13 +239,19 @@
     if (stats.children.length) content.append(stats);
 
     const meter = make("div", "meta-meter");
-    meter.append(make("span", "", "BIBS META-METER"), make("strong", "", card.meta_rating === null || card.meta_rating === undefined ? "—" : `${card.meta_rating}/100`));
+    const gg = ggRating(card);
+    meter.append(make("span", "", gg !== null ? `GG RATING${card.gg_role ? ` · ${card.gg_role}` : ""}` : "EIGEN PROFIELSCORE"), make("strong", "", gg ?? (card.meta_rating == null ? "—" : `${card.meta_rating}/100`)));
     content.append(meter, renderCurrentPrice(card, options.marketData));
     const report = make("details", "player-details");
     const reportTitle = make("summary", "", "Scoutingsrapport ");
     const reportIcon = make("span", "", "+"); reportIcon.setAttribute("aria-hidden", "true");
     reportTitle.append(reportIcon);
     report.append(reportTitle, make("p", "release-card__meta", card.meta_text || "Stats nog niet bevestigd. We gaan er niet op gokken."));
+    appendCardDetails(report, card);
+    if (gg !== null) {
+      report.append(renderGGSource(card));
+      if (card.meta_rating != null) report.append(make("p", "release-card__basis", `FBS eigen profielscore: ${card.meta_rating}/100. Een ander statsmodel dan GG Rating; niet rechtstreeks vergelijken.`));
+    }
     if (card.meta_basis) report.append(make("p", "release-card__basis", card.meta_basis));
     if (card.meta_weights) report.append(make("p", "release-card__basis", `Rolgewichten: ${Object.entries(card.meta_weights).map(([label, weight]) => `${label} ${weight}%`).join(" · ")}`));
     if (card.release_note) report.append(make("p", "release-card__note", card.release_note));
@@ -204,6 +260,41 @@
     if (source) content.append(source);
     article.append(visual, content);
     return article;
+  }
+
+  function renderFullLineup(cards, release, marketData) {
+    const block = make("section", "release-lineup");
+    block.append(make("h4", "", `De volledige selectie · ${cards.length} kaarten`), make("p", "release-lineup__note", "Tik een naam open voor het profiel, de GG-rol en de bron. GG is de modelrating van FUT.GG; de eventuele FBS-profielscore in de details is onze eigen statsweging. Geen van beide is een EA-rating of gameplaytest. — betekent nog niet gecontroleerd."));
+    const list = make("div", "release-lineup__list");
+    for (const card of cards) {
+      const row = make("details", `release-lineup__row${isDutch(card) ? " release-lineup__row--dutch" : ""}`);
+      row.dataset.cardId = card.id || "";
+      const summary = make("summary");
+      const gg = ggRating(card);
+      summary.append(make("strong", "release-lineup__rating", String(card.rating ?? "—")), make("span", "release-lineup__position", card.position || "—"), make("span", "release-lineup__name", `${card.name}${isDutch(card) ? " · NL" : ""}`), make("span", "release-lineup__meta", gg !== null ? `GG ${gg}` : card.meta_rating == null ? "Meta —" : `FBS ${card.meta_rating}`));
+      const toggle = make("span", "release-lineup__toggle", "+"); toggle.setAttribute("aria-hidden", "true"); summary.append(toggle);
+      const report = make("div", "release-lineup__report");
+      report.append(make("span", "release-evidence", stateLabel(card.status || release.status)), make("p", "", card.meta_text || "Voor deze exacte kaart zijn de complete stats nog niet gecontroleerd. Daarom nog geen eigen Meta-score."));
+      if (gg !== null) report.append(make("p", "release-lineup__gg", `GG Rating · ${card.gg_role || "rol niet vermeld"}: ${gg}`), renderGGSource(card));
+      if (card.meta_rating != null) report.append(make("p", "release-card__basis", `FBS eigen profielscore: ${card.meta_rating}/100.`));
+      const stats = renderStats(card.stats); if (stats.children.length) report.append(stats);
+      appendCardDetails(report, card);
+      if (card.meta_basis) report.append(make("p", "release-card__basis", card.meta_basis));
+      const source = safeLink(card.source || release.source); if (source) report.append(source);
+      report.append(renderCurrentPrice(card, marketData));
+      row.append(summary, report); list.append(row);
+    }
+    block.append(list);
+    return block;
+  }
+
+  function appendCardDetails(container, card) {
+    const facts = [card.club, card.competition, card.foot ? `${card.foot}benig` : null];
+    if (card.skill_moves != null && card.weak_foot != null) facts.push(`${card.skill_moves}★ skills · ${card.weak_foot}★ zwakke voet`);
+    if (facts.some(Boolean)) container.append(make("p", "release-card__basis", facts.filter(Boolean).join(" · ")));
+    if (Array.isArray(card.alternate_positions) && card.alternate_positions.length) container.append(make("p", "release-card__basis", `Ook inzetbaar: ${card.alternate_positions.join(" / ")}`));
+    if (card.position_note && (!card.position || card.position === "—")) container.append(make("p", "release-card__basis", card.position_note));
+    if (card.playstyles_note) container.append(make("p", "release-card__basis", card.playstyles_note));
   }
 
   function renderRelease(release, marketData) {
@@ -221,12 +312,54 @@
     const grid = make("div", "release-card-grid");
     const cards = Array.isArray(release.cards) ? release.cards : [];
     if (cards.length) {
-      cards.forEach((card) => grid.append(renderCard(card, { kind: release.kind, source: release.source, marketData })));
+      lane.classList.add("release-lane--complete");
+      const featured = cards.filter((card) => card.featured === true);
+      const spotlights = featured.length ? featured : cards.slice(0, 4);
+      grid.classList.add("release-card-grid--featured");
+      spotlights.forEach((card) => grid.append(renderCard(card, { kind: release.kind, source: release.source, status: release.status, marketData })));
     } else {
       grid.append(empty("De radar staart nog naar een gesloten pack. Kom terug zodra EA echt iets dropt."));
     }
     lane.append(grid);
+    if (cards.length) lane.append(renderFullLineup(cards, release, marketData));
     return lane;
+  }
+
+  function renderObjectives(objectives) {
+    const container = $("#objectives-board");
+    if (!container) return;
+    container.replaceChildren();
+    for (const objective of Array.isArray(objectives) ? objectives : []) {
+      const card = make("article", "objective-card");
+      card.dataset.objectiveId = objective.id || "";
+      card.append(make("p", "kicker", `${objective.card_type || "OBJECTIVE"} · SPELEN VOOR JE KAART`), make("h4", "", objective.name || "Objective"));
+      const profile = [objective.rating == null ? null : `${objective.rating} ALG`, objective.position].filter(Boolean).join(" · ");
+      if (profile) card.append(make("p", "objective-card__profile", profile));
+      card.append(make("span", "release-evidence", stateLabel(objective.status)));
+      const gg = ggRating(objective);
+      if (gg !== null) card.append(make("p", "objective-card__gg", `GG Rating · ${objective.gg_role || "rol niet vermeld"}: ${gg}`), renderGGSource(objective));
+      const stats = renderStats(objective.stats); if (stats.children.length) card.append(stats);
+      if (objective.meta_text) card.append(make("p", "release-card__meta", objective.meta_text));
+      for (const [field, title] of [["requirements", "Wat moet je doen?"], ["rewards", "Wat levert het op?"]]) {
+        card.append(make("h5", "", title));
+        const values = Array.isArray(objective[field]) ? objective[field].filter((value) => typeof value === "string" && value.trim()) : [];
+        if (values.length) {
+          const list = make("ul", "objective-card__list"); values.forEach((value) => list.append(make("li", "", value))); card.append(list);
+        } else card.append(make("p", "", "Nog niet volledig geverifieerd; controleer de opdracht in-game."));
+      }
+      if (objective.mode_note) card.append(make("p", "objective-card__mode", objective.mode_note));
+      if (objective.overlap) {
+        card.append(make("h5", "", "Slim combineren"));
+        const overlap = Array.isArray(objective.overlap) ? objective.overlap.join(" ") : objective.overlap;
+        card.append(make("p", "objective-card__overlap", overlap));
+      }
+      const expires = new Date(objective.expires_at || NaN);
+      card.append(make("p", "objective-card__expiry", Number.isFinite(expires.getTime()) ? `Eindigt ${dateFormatter.format(expires)}` : "Eindtijd niet geverifieerd. Check de timer in-game voordat je gaat grinden."));
+      if (objective.caveat) card.append(make("p", "objective-card__caveat", objective.caveat));
+      const source = safeLink(objective.source); if (source) card.append(source);
+      container.append(card);
+    }
+    if (!container.children.length) container.append(empty("Nog geen gecontroleerde Objective-details. Geen grind uit de dikke duim."));
   }
 
   function renderReleaseBoard(releases, marketData) {
@@ -299,21 +432,23 @@
       $("#news-updated").textContent = "Nog geen gegevens geladen";
       $("#release-board").replaceChildren(empty("Geen release-data geladen. Ook de leukste chaos heeft een bron nodig."));
       $("#dutch-gold-grid").replaceChildren(empty("Gold Watch is tijdelijk niet bereikbaar."));
+      $("#objectives-board")?.replaceChildren(empty("Objective-informatie is tijdelijk niet bereikbaar."));
       return;
     }
     const releases = Array.isArray(data.releases) ? data.releases : [];
     const cardCount = releases.reduce((total, release) => total + (Array.isArray(release.cards) ? release.cards.length : 0), 0);
-    const confirmed = releases.some((release) => release.status === "confirmed");
+    const objectiveCount = Array.isArray(data.objectives) ? data.objectives.length : 0;
+    const hasReported = releases.some((release) => release.status === "reported") || (Array.isArray(data.objectives) ? data.objectives : []).some((objective) => objective.status === "reported");
     if (standaloneNewsPage) document.title = `Nieuws & Releases · de flikkerbibsjes UT Trade watcher`;
-    const updated = new Date(data.updated_at || NaN);
-    $("#news-updated").textContent = Number.isNaN(updated.getTime()) ? "Bronstatus wordt bijgewerkt" : `Bijgewerkt ${dateFormatter.format(updated)}`;
-    $("#news-mode").textContent = state.error ? "UPDATE ONBEREIKBAAR" : state.stale ? "OUDERE BRONDATA" : data.mode === "planning" ? "PLANNER · WACHT OP EA" : "OFFICIËLE BRON GELADEN";
-    $("#news-status-title").textContent = confirmed ? `${cardCount} kaarten op het bord` : "De packdeur is nog dicht";
-    $("#news-status-detail").textContent = state.error ? "De laatste controle mislukte. Eerder geladen kaartprofielen en releases blijven leesbaar; de brondatum staat erbij." : state.stale ? "Deze publicatie is ouder dan 36 uur. De kaartprofielen blijven ter referentie staan; nieuwe releases zijn nog niet bevestigd." : confirmed
-      ? "Elke kaart op dit bord heeft een bron. Nu mogen jullie pas moeilijk gaan doen."
-      : (data.notice || "We wachten op de officiële EA-fluit. Tot die tijd geen kaartfantasie.");
+    const checked = contentCheck(data);
+    $("#news-updated").textContent = checked.date ? `${data.release_content_checked_at ? "Kaarten & objectives gecontroleerd" : "Publicatie bijgewerkt"} ${dateFormatter.format(checked.date)}` : "Inhoudelijke broncheck nog niet gedateerd";
+    $("#news-mode").textContent = state.error ? "UPDATE ONBEREIKBAAR" : checked.stale ? "OUDERE INHOUDSCHECK" : hasReported ? "RELEASES · BRONMELDINGEN" : cardCount ? "RELEASES · BRONSTATUS PER KAART" : "PLANNER · BRONNEN NODIG";
+    $("#news-status-title").textContent = cardCount || objectiveCount ? `${cardCount} releasekaarten · ${objectiveCount} objectives` : "De radar staat aan";
+    const notice = data.content_notice || data.notice || "Bronstatus staat per kaart vermeld. Een eigen profielscore is geen EA-rating of koopadvies.";
+    $("#news-status-detail").textContent = state.error ? `Nieuwe publicatie niet bereikbaar; eerdere informatie blijft leesbaar. ${notice}` : checked.stale ? `De inhoudelijke broncheck is ouder dan 36 uur of niet betrouwbaar gedateerd. ${notice}` : notice;
     renderSchedule(data.schedule);
     renderReleaseBoard(releases, marketData);
+    renderObjectives(data.objectives);
     renderSbcOfWeek(data.sbc_of_week);
     renderDutchGold(data, marketData, metaData);
   }
@@ -322,7 +457,7 @@
   function renderLatest(data, state) {
     const market = window.FBSRefresh.get("market");
     const meta = window.FBSRefresh.get("meta");
-    const signature = JSON.stringify([data, state.error, state.stale, market.data, market.error, market.stale, meta.data]);
+    const signature = JSON.stringify([data, state.error, state.stale, contentCheck(data).stale, market.data, market.error, market.stale, meta.data]);
     if (signature === renderedSignature) return;
     render(data, state);
     renderedSignature = signature;

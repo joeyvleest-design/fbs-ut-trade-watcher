@@ -8,7 +8,7 @@
     <title>de flikkerbibsjes UT Trade watcher</title>
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="dashboard.css?v=daily-squad-1">
+    <link rel="stylesheet" href="dashboard.css?v=release-objectives-1">
     <link rel="stylesheet" href="radar.css?v=bibs-briefing-1">
     <link rel="stylesheet" href="evolutions.css?v=evo-lab-1">
   </head>
@@ -222,13 +222,13 @@
             <p class="kicker"><span class="section-number">04</span> NIEUWS &amp; RELEASES</p>
             <h2 id="release-radar-title">Woensdag TOTW. Vrijdag pack-chaos.</h2>
           </div>
-          <p>De vaste kijkmomenten voor nieuwe kaarten, met een bron erbij of helemaal niets.</p>
+          <p>De nieuwe selectie, onze uitblinkers en de Objectives die je club vooruithelpen. Met bronstatus, niet met groepschat-zekerheid.</p>
         </div>
         <aside class="release-status" aria-live="polite">
           <div>
             <p class="panel-label">DEZE WEEK · <span id="news-mode">PLANNER · BRONNEN NODIG</span></p>
-            <strong id="news-status-title">De packdeur is nog dicht</strong>
-            <p id="news-status-detail">We wachten op de officiële EA-fluit. Tot die tijd geen kaartfantasie.</p>
+            <strong id="news-status-title">De radar staat aan</strong>
+            <p id="news-status-detail">Kaarten, Objectives en hun bronstatus worden geladen.</p>
           </div>
           <span id="news-updated" class="updated-at">Release-radar laden…</span>
         </aside>
@@ -247,9 +247,17 @@
             <p class="kicker">NIEUWE KAARTEN</p>
             <h3 id="release-board-title">Het bord liegt niet. Wij ook niet.</h3>
           </div>
-          <p>Een kaart krijgt pas een naam, rating en Meta-tekst zodra de officiële bron ernaast staat.</p>
+          <p>Vier uitgelicht, de hele selectie eronder. GG Rating komt van FUT.GG; FBS-profielscores zijn onze eigen statsweging. Beide staan los van officiële EA-ratings.</p>
         </div>
         <div id="release-board" class="release-board" aria-live="polite"></div>
+        <div class="section-head objectives-heading">
+          <div>
+            <p class="kicker">OBJECTIVES · DE GRINDTAFEL</p>
+            <h3 id="objectives-title">Kaarten verdienen. Gerroe laten werken.</h3>
+          </div>
+          <p>Voorwaarden, rewards en wat je tegelijk kunt afvinken. Check de in-game timer vóór de ploegendienst begint.</p>
+        </div>
+        <div id="objectives-board" class="objectives-board" aria-labelledby="objectives-title" aria-live="polite"></div>
       </section>
 
       <section id="sbc-week" class="section sbc-week-section" aria-labelledby="sbc-week-title">
@@ -304,8 +312,8 @@
     <script src="card-art.js?v=daily-squad-1" defer></script>
     <script src="app.js?v=bibs-briefing-1" defer></script>
     <script src="watch.js?v=daily-squad-1" defer></script>
-    <script src="radar.js?v=bibs-briefing-1" defer></script>
-    <script src="news.js?v=daily-squad-1" defer></script>
+    <script src="radar.js?v=release-objectives-1" defer></script>
+    <script src="news.js?v=release-objectives-1" defer></script>
     <script src="evolutions.js?v=evo-lab-1" defer></script>
     <script src="motion.js?v=evo-lab-1" defer></script>
   </body>

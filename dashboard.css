@@ -336,6 +336,60 @@ body[data-page="dashboard"] #dutch-gold-grid { display: grid; grid-template-colu
 .legend-role { color: #83796a; font-size: .67rem; }.legend-numbers { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; border-top: 1px solid #e8e1d4; padding-top: 15px; margin: 18px 0; }.legend-numbers small,.legend-numbers strong { display: block; }.legend-numbers small { font-size: .57rem; letter-spacing: .13em; color: #8c806c; }.legend-numbers strong { font-size: .85rem; margin-top: 5px; }
 .legend-meta, .legend-card > p { font-size: .74rem; line-height: 1.7; color: #685f54; }.legend-scope { font-size: .65rem !important; color: #8d8070 !important; }.legend-preview { background: #f6f1e4; border-radius: 8px; padding: 12px; margin: 15px 0; }.legend-preview summary { cursor: pointer; font-size: .71rem; font-weight: 700; }.legend-preview p { font-size: .7rem; line-height: 1.7; }.legend-preview small { display: block; font-size: .64rem; line-height: 1.7; }.legend-checked { display: block; color: #8d8275; margin-top: 10px; font-size: .59rem; }
 .legend-card .release-price { margin-top: 16px; }.legend-card .release-price strong { font-size: .88rem; }.legend-pending { border-style: dashed; background: #f8f7f4; }
+
+/* The complete release desk: four spotlights, every card, and a useful grind plan. */
+body[data-page="dashboard"] .release-lane--complete { grid-column: 1 / -1; }
+body[data-page="dashboard"] .release-lane .release-card-grid--featured { grid-template-columns: repeat(4, minmax(0, 1fr)); align-items: start; }
+.release-evidence { display: inline-block; margin: 5px 0 10px; font-size: .57rem; font-weight: 800; line-height: 1.6; letter-spacing: .035em; color: #805b26; background: #faf1df; border: 1px solid #ead8b7; padding: 5px 8px; border-radius: 6px; }
+body[data-page="dashboard"] .release-card__stats { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+.release-lineup { margin-top: 30px; padding-top: 24px; border-top: 1px solid var(--line); }
+.release-lineup h4 { margin: 0 0 8px; font-size: 1rem; }
+.release-lineup__note { font-size: .74rem; line-height: 1.7; color: #736368; max-width: 760px; }
+.release-lineup__list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 16px; margin-top: 17px; align-items: start; }
+.release-lineup__row { min-width: 0; border: 1px solid var(--line); background: #fff; border-radius: 9px; overflow: hidden; }
+.release-lineup__row--dutch { border-color: #d6a155; background: #fffbf2; }
+.release-lineup__row > summary { list-style: none; display: grid; grid-template-columns: 31px 30px minmax(0, 1fr) auto 13px; gap: 10px; align-items: center; min-height: 58px; padding: 11px 14px; cursor: pointer; }
+.release-lineup__row > summary::-webkit-details-marker { display: none; }
+.release-lineup__row > summary:focus-visible, .release-lineup__report a:focus-visible, .objective-card a:focus-visible { outline: 3px solid #a71c31; outline-offset: -3px; }
+.release-lineup__rating { font-size: 1.12rem; color: #ad1d34; }
+.release-lineup__position { font-size: .63rem; color: #726267; }
+.release-lineup__name { font-size: .76rem; font-weight: 750; overflow-wrap: anywhere; }
+.release-lineup__meta { font-size: .64rem; font-weight: 750; white-space: nowrap; color: #685631; }
+.release-lineup__toggle { font-size: 1rem; color: #9f1730; transition: transform .2s ease; }
+.release-lineup__row[open] .release-lineup__toggle { transform: rotate(45deg); }
+.release-lineup__row[open] > summary { border-bottom: 1px solid var(--line); }
+.release-lineup__report { padding: 14px; font-size: .76rem; line-height: 1.7; color: #65575d; }
+.release-lineup__report .release-card__stats { margin: 12px 0; }
+.release-lineup__report .release-price { font-size: .68rem; }
+.release-lineup__gg, .objective-card__gg { font-weight: 750; color: #72572c; }
+.release-gg-source { padding-bottom: 8px; }.release-gg-source .release-source { margin-top: 4px; }
+.release-price--snapshot .release-source { grid-column: 1 / -1; margin: 0; }
+.objectives-heading { margin-top: 36px; }
+.objectives-board { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: 18px; }
+.objective-card { min-width: 0; padding: 25px; border: 1px solid #e6c8cd; border-top: 4px solid #aa1d35; border-radius: 14px; background: linear-gradient(135deg, #fff, #fff8f8); }
+.objective-card h4 { margin: 0 0 6px; font-size: 1.35rem; letter-spacing: -.03em; }
+.objective-card h5 { margin: 19px 0 7px; font-size: .8rem; }
+.objective-card p, .objective-card__list { font-size: .77rem; line-height: 1.75; color: #66585e; }
+.objective-card__profile { font-weight: 750; color: #9f1730 !important; }
+.objective-card__list { padding-left: 20px; margin: 8px 0; }
+.objective-card__list li + li { margin-top: 6px; }
+.objective-card__overlap { padding: 12px 14px; border-left: 3px solid #aa1d35; background: #fff0f2; border-radius: 0 8px 8px 0; }
+.objective-card__expiry, .objective-card__caveat { font-size: .69rem !important; }
+.objective-card__expiry { margin-top: 20px; font-weight: 700; }
+.objective-card .release-source { font-size: .68rem; }
+@media (max-width: 1100px) {
+  body[data-page="dashboard"] .release-lane .release-card-grid--featured { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 700px) {
+  .release-lineup__list, .objectives-board { grid-template-columns: minmax(0, 1fr); }
+  .objective-card { padding: 20px; }
+}
+@media (max-width: 480px) {
+  body[data-page="dashboard"] .release-lane .release-card-grid--featured { grid-template-columns: minmax(0, 1fr); }
+  .release-lineup__row > summary { gap: 7px; padding: 10px; grid-template-columns: 25px 25px minmax(0, 1fr) auto 10px; }
+  .release-lineup__name { font-size: .72rem; }
+}
+@media (prefers-reduced-motion: reduce) { .release-lineup__toggle { transition: none; } }
 @media(max-width:1100px) { body[data-page="dashboard"] #dutch-gold-grid { grid-template-columns: 1fr; }.legends-grid { grid-template-columns: repeat(2,minmax(0,1fr)); } }
 @media(max-width:760px) { body[data-page="dashboard"] .daily-trade { grid-template-columns: 1fr; gap: 18px; padding: 23px; margin-top: 0; }.daily-trade-heading { border-right: 0; border-bottom: 1px solid #ebd5d8; padding: 0 0 14px; }.daily-trade-heading > p:last-child { margin-bottom: 0; }.daily-topline { font-size: .55rem; }.legends-grid { grid-template-columns: 1fr; }.legend-card { padding: 23px; }.watch-line-heading span { font-size: .57rem; } }
 @media(max-width:420px) { .watch-line-cards { grid-template-columns: 1fr; }.daily-prices { grid-template-columns: 1fr; } }

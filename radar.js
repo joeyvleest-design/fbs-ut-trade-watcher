@@ -94,6 +94,14 @@
     row.append(content);
     return row;
   }
+  function unknownPublication(item) {
+    return item.source_id === "editorial" && item.published_at === null && item.published_precision === "unknown";
+  }
+  function publicationDates(item) {
+    return unknownPublication(item)
+      ? [dateLine("Publicatiedatum onbekend · gecontroleerd", item.checked_at)]
+      : [dateLine("Gepubliceerd", item.published_at, "Niet vastgelegd", item.published_precision), dateLine("Broncheck", item.checked_at)];
+  }
   function itemStatus(item) {
     if (!Object.hasOwn(statuses, item.status)) return "reported";
     if (item.status === "confirmed_official" && !officialUrl(item.source?.url) && !officialUrl(item.original_source_url)) return "reported";
@@ -108,19 +116,20 @@
       if (!item || typeof item.id !== "string" || !item.id || typeof item.title !== "string" || !item.title.trim() || seen.has(item.id)) continue;
       seen.add(item.id);
       const published = timestamp(item.published_at), itemChecked = timestamp(item.checked_at), expires = timestamp(item.expires_at);
+      const unknown = unknownPublication(item);
       let archiveReason = "";
       if (collectionStale) archiveReason = "De laatste radarcontrole is niet actueel of niet bereikbaar.";
       else if (!safeUrl(item.source?.url)) archiveReason = "Een veilige, controleerbare bronlink ontbreekt.";
       else if (!Object.hasOwn(statuses, item.status)) archiveReason = "De bronstatus is niet vastgesteld.";
-      else if (!published || !itemChecked || !expires) archiveReason = "Publicatiedatum, broncheck of hercontrolegrens ontbreekt.";
-      else if (published.getTime() > now || itemChecked.getTime() > now || itemChecked < published || expires <= published) archiveReason = "De brondatums zijn niet betrouwbaar genoeg voor het actuele overzicht.";
+      else if ((!published && !unknown) || !itemChecked || !expires) archiveReason = "Publicatiedatum, broncheck of hercontrolegrens ontbreekt.";
+      else if ((item.published_precision === "unknown" && !unknown) || itemChecked.getTime() > now || (unknown ? expires <= itemChecked : published.getTime() > now || itemChecked < published || expires <= published)) archiveReason = "De brondatums zijn niet betrouwbaar genoeg voor het actuele overzicht.";
       else if (expires.getTime() <= now) archiveReason = "De geplande hercontrolegrens van dit bericht is bereikt.";
       else if (now - itemChecked.getTime() > maximumAge) archiveReason = "De itemcontrole is ouder dan 36 uur.";
-      const record = { item, archiveReason, published: published?.getTime() || 0 };
+      const record = { item, archiveReason, sortAt: (unknown ? itemChecked : published)?.getTime() || 0 };
       (archiveReason ? archive : recent).push(record);
       if (!archiveReason) deadlines.push(expires.getTime(), itemChecked.getTime() + maximumAge + 1);
     }
-    const newestFirst = (a, b) => b.published - a.published || a.item.id.localeCompare(b.item.id);
+    const newestFirst = (a, b) => b.sortAt - a.sortAt || a.item.id.localeCompare(b.item.id);
     recent.sort(newestFirst); archive.sort(newestFirst);
     if (!collectionStale && checked) deadlines.push(checked.getTime() + maximumAge + 1);
     return { recent, archive, collectionStale, nextDeadline: Math.min(...deadlines.filter((value) => value > now)) };
@@ -149,7 +158,7 @@
     }
     if (archiveReason) article.append(make("p", "radar-expired", `${archiveReason} Alleen als context; geen actueel signaal.`));
     const dates = make("dl", "radar-dates");
-    dates.append(dateLine("Gepubliceerd", item.published_at, "Niet vastgelegd", item.published_precision), dateLine("Broncheck", item.checked_at), dateLine("Hercontrole uiterlijk", item.expires_at));
+    dates.append(...publicationDates(item), dateLine("Hercontrole uiterlijk", item.expires_at));
     article.append(dates);
     const footer = make("div", "radar-card-links");
     const link = sourceLink(item.source?.url, item.source?.label || "Lees de bron");
@@ -172,7 +181,7 @@
     const status = document.querySelector("#briefing-status");
     if (!news || !watch) return;
     news.replaceChildren(); watch.replaceChildren();
-    // Prioritize a verified official source, preserving publication order within
+    // Prioritize a verified official source, preserving date order within
     // each group. Use exactly the same freshness rules as the full news radar.
     const current = [...result.recent].sort((a, b) => Number(itemStatus(b.item) === "confirmed_official") - Number(itemStatus(a.item) === "confirmed_official"));
     for (const { item } of current.slice(0, 2)) {
@@ -183,7 +192,7 @@
       if (typeof item.summary === "string") card.append(make("p", "briefing-story-summary", item.summary));
       if (kind !== "confirmed_official") card.append(make("p", "briefing-caution", kind === "opinion" ? "Voorspelling of mening, geen EA-bevestiging." : "Niet officieel bevestigd. Geen koopsein."));
       const dates = make("dl", "briefing-dates");
-      dates.append(dateLine("Gepubliceerd", item.published_at, "Niet vastgelegd", item.published_precision), dateLine("Broncheck", item.checked_at));
+      dates.append(...publicationDates(item));
       card.append(dates);
       const source = sourceLink(item.source?.url, item.source?.label || "Lees de bron");
       if (source) card.append(source);
