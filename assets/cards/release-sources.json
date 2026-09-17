@@ -1,0 +1,45 @@
+{
+  "game": "EA SPORTS FC 27",
+  "publisher": "Electronic Arts",
+  "artwork_checked_on": "2026-09-17",
+  "verification_method": "Exact player item pages and their visible Download Assets dialog were inspected in an ordinary browser. The EA FC Item variant, described by FUT.GG as the official in-game card render, was selected. Files were exported from the rendered page asset inventory without alteration. Artwork attribution does not change the separate release confirmation status.",
+  "encoding": "The observed CDN URLs use format=auto and returned image/avif; local files retain those bytes with the matching .avif extension.",
+  "assets": [
+    {
+      "local_path": "assets/cards/totw1-lamine-yamal.avif",
+      "player": "Lamine Yamal", "rating": 91, "position": "RW", "card_type": "TOTW 1",
+      "source_page": "https://www.fut.gg/players/277643-lamine-yamal-lamine-yamal/27-67386507/",
+      "image_url": "https://game-assets.fut.gg/cdn-cgi/image/quality=85,width=360,format=auto/2027/player-item-card/27-67386507.4efe2d645cf156a4576d91816d62e859132361473a9f640fbf7fceb25a74a5cb.webp"
+    },
+    {
+      "local_path": "assets/cards/totw1-marcus-thuram.avif",
+      "player": "Marcus Thuram", "rating": 86, "position": "ST", "card_type": "TOTW 1",
+      "source_page": "https://www.fut.gg/players/228093-marcus-thuram/27-67336957/",
+      "image_url": "https://game-assets.fut.gg/cdn-cgi/image/quality=85,width=360,format=auto/2027/player-item-card/27-67336957.180b81e0b2844e82f206d7017e1f843ebad02dcf9e8484ffda6b6ab6f29bbf3f.webp"
+    },
+    {
+      "local_path": "assets/cards/totw1-esmee-brugts.avif",
+      "player": "Esmee Brugts", "rating": 85, "position": "LB", "card_type": "TOTW 1",
+      "source_page": "https://www.fut.gg/players/267530-esmee-brugts/27-67376394/",
+      "image_url": "https://game-assets.fut.gg/cdn-cgi/image/quality=85,width=360,format=auto/2027/player-item-card/27-67376394.492a9ae18b300588e018e84ad4b23b99d02ce9246e46a8d84f758064284d0601.webp"
+    },
+    {
+      "local_path": "assets/cards/totw1-sven-mijnans.avif",
+      "player": "Sven Mijnans", "rating": 80, "position": "ST", "card_type": "TOTW 1",
+      "source_page": "https://www.fut.gg/players/254789-sven-mijnans/27-67363653/",
+      "image_url": "https://game-assets.fut.gg/cdn-cgi/image/quality=85,width=360,format=auto/2027/player-item-card/27-67363653.61c12d23ed2876524bce488b5f863563342a6cca87c651339a18725f443660d5.webp"
+    },
+    {
+      "local_path": "assets/cards/otw-crysencio-summerville.avif",
+      "player": "Crysencio Summerville", "rating": 83, "position": "LM", "card_type": "OTW",
+      "source_page": "https://www.fut.gg/players/251954-crysencio-summerville/27-50583602/",
+      "image_url": "https://game-assets.fut.gg/cdn-cgi/image/quality=85,width=360,format=auto/2027/player-item-card/27-50583602.5d2196cde0f975a9866648b019ba5e2c777ee3511bd85becc3957d2bfb417d32.webp"
+    },
+    {
+      "local_path": "assets/cards/otw-ousmane-diomande.avif",
+      "player": "Ousmane Diomandé", "rating": 83, "position": "CB", "card_type": "OTW",
+      "source_page": "https://www.fut.gg/players/270531-ousmane-diomande/27-50602179/",
+      "image_url": "https://game-assets.fut.gg/cdn-cgi/image/quality=85,width=360,format=auto/2027/player-item-card/27-50602179.0c0e7cfc9038023c61d07886339237549b7a3d857aa2a10430f7b063ae6ed126.webp"
+    }
+  ]
+}
