@@ -332,6 +332,13 @@
     for (const objective of Array.isArray(objectives) ? objectives : []) {
       const card = make("article", "objective-card");
       card.dataset.objectiveId = objective.id || "";
+      const artwork = window.FBSCardArt?.create(objective, { objective: true });
+      if (artwork) {
+        const stage = make("div", "objective-card__art");
+        stage.append(artwork);
+        card.classList.add("has-official-art");
+        card.append(stage);
+      }
       card.append(make("p", "kicker", `${objective.card_type || "OBJECTIVE"} · SPELEN VOOR JE KAART`), make("h4", "", objective.name || "Objective"));
       const profile = [objective.rating == null ? null : `${objective.rating} ALG`, objective.position].filter(Boolean).join(" · ");
       if (profile) card.append(make("p", "objective-card__profile", profile));

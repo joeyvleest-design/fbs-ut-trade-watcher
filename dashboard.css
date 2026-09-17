@@ -367,6 +367,9 @@ body[data-page="dashboard"] .release-card__stats { grid-template-columns: repeat
 .objectives-heading { margin-top: 36px; }
 .objectives-board { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: 18px; }
 .objective-card { min-width: 0; padding: 25px; border: 1px solid #e6c8cd; border-top: 4px solid #aa1d35; border-radius: 14px; background: linear-gradient(135deg, #fff, #fff8f8); }
+.objective-card__art { display: grid; place-items: center; height: 245px; padding: 5px; margin-bottom: 22px; border: 1px solid #f0dce0; border-radius: 10px; background: radial-gradient(ellipse at 50% 78%, #d7939b25, transparent 64%), linear-gradient(90deg, #fff 0%, #fff 34%, #fbebee 34%, #fbebee 66%, #fff 66%); }
+.objective-card__art .official-card-art { width: 100%; max-width: 235px; height: 235px; object-fit: contain; }
+.objective-card:not(.has-official-art) .objective-card__art { display: none; }
 .objective-card h4 { margin: 0 0 6px; font-size: 1.35rem; letter-spacing: -.03em; }
 .objective-card h5 { margin: 19px 0 7px; font-size: .8rem; }
 .objective-card p, .objective-card__list { font-size: .77rem; line-height: 1.75; color: #66585e; }
